@@ -1,0 +1,259 @@
+---
+title: "Recommended process"
+subtitle: "Just some friendly advice ;-)"
+author: "Arnstein Gjestland"
+institute: "HVL"
+date: "Autumn 2021 (revised autumn 2022)"
+format:
+  revealjs:
+        theme: simple
+        footer: '[MSB205](/index.html)'
+        reveal_options:
+        code-fold: show
+        incremental: true
+        smaller: true
+        scrollable: true
+        slide-number: c/t
+editor: visual
+editor_options:
+  markdown:
+    wrap: 72
+    canonical: true
+    chunk_output_type: console
+echo: true
+eval: true
+bibliography: process.bib
+nocite: '@*'
+---
+
+```{r setup}
+#| include: false
+#suppressPackageStartupMessages({
+  library(tidyverse)
+  library(RefManageR)
+  library(ggplot2)
+  library(maps)
+  library(mapproj)
+  library(tmap)
+  library(rmapshaper)
+  library(sf)
+  library(spData)
+  library(spDataLarge)
+  library(stars)
+  library(mapview)
+  library(rgdal)
+  library(rgeos)
+  library(rnaturalearth)
+  library(rnaturalearthhires)
+  library(plotly)
+#})
+```
+
+```{r}
+#| include: false
+# create a bib file for the R packages
+# used in this document
+# Note! Needs to do a touch ag_model_basics.bib in terminal before first run
+# else stops when bibliography: "ag_model_basics.bib" not found in YAML
+knitr::write_bib(
+  c(
+  "tidyverse",
+  "RefManageR",
+  "ggplot2",
+  "maps",
+  "mapproj",
+  "tmap",
+  "rmapshaper",
+  "sf",
+  "spData",
+  "spDataLarge",
+  "stars",
+  "mapview",
+  "rgdal",
+  "rgeos",
+  "rnaturalearth",
+  "rnaturalearthhires",
+  "plotly"
+    ),
+  file = "process.bib"
+  )
+```
+
+```{r, load_refs, include=FALSE, cache=FALSE}
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           hyperlink = FALSE,
+           dashed = FALSE)
+myBib <- ReadBib("process.bib", check = FALSE)
+```
+
+## Recommended Process
+
+-   Do your data wrangling in R using the Tidyverse
+-   Prepare your map
+    -   In Qgis
+    -   In R using sf/sp
+-   Analysis
+    -   Write a reproducible document in Rmarkdown
+        -   Rstudio 1.4 GUI-like interface
+        -   Zotero integrated
+
+## Do your data wrangling in R using the Tidyverse
+
+-   Use a subdirectory relative to where your main document will reside
+    to contain your data wrangling scripts
+
+-   If you read in raw data from files, use a subdirectory ("raw_data")
+    of the data directory to house your raw data files.
+
+-   If you read in the data directly via an api there is no need for a
+    "raw_data" subdirectory
+
+-   Use an R markdown notebook to document the data wrangling and make
+    it reproducible. Place this R Notebook in your Data directory.
+
+    -   Read in the raw data at the top
+    -   Do your wrangling to **Tidy** data
+    -   Prepare an id to later link the data to a map (house id,
+        "kommunenummer", "grunnkretsnummer" etc.)
+    -   Save out your data in .Rdata and .csv (robust against time
+        decay) formats.
+
+-   Important to get the dataset finished (as far as possible). Will
+    save us huge amounts of time and work.
+
+## Do your data wrangling in R using the Tidyverse, cont.
+
+-   Check that the variables have the intended format, date, factor,
+    character, numeric etc.
+
+-   Note the format/class of every variable so that you can read the
+    data correctly back into R (.csv files do not have information about
+    the format of the variables. You have to specify it when you read
+    the data back into R). If you use a .Rdata file R will know the type
+    of each variable.
+
+-   In short: Make your raw data **Tidy** in a reproducible manner!
+
+## Prepare your map (map wrangling)
+
+-   Use a new Rmarkdown notebook to document the preparations done to
+    your map and the merging of data to the map.
+
+-   Use a subdirectory "maps" to do your map wrangling.
+
+-   Document the source of your map, either from file or downloaded from
+    an internet site
+
+-   Depending on the map it might be advantageous to load it into a GIS
+    program, i.e. Qgis.
+
+-   Qgis will give you a multi layer GIS system with a GUI. The
+    advantage is an intuitive and interactive environment. The drawback
+    is a low level of reproducibility (work done in a GUI is notoriously
+    difficult to make reproducible)
+
+-   An alternative is to use Qgis to experiment with the map and then
+    try to do the same reproducibly in R with the tools discussed below
+
+## Prepare your map (map wrangling)
+
+-   Start by filter your map to the wanted area
+
+-   Fix any topological problems (this can be a real hassle)
+
+-   Check (and double check) that the ids in the map correspond with the
+    ones in your dataset.
+
+-   Merge your dataset to the "features" (points, lines or polygons) in
+    your map. In Qgis or preferably in R.
+
+-   Check, and double check, that the map and data is as intended.
+
+-   Save the map in the format "GeoPackage", the "shape" format is
+    ancient, inconvenient (3-5 separate files) and have several
+    technical restrictions (10 char variable names, only proj4 support
+    etc.)
+
+## The analysis
+
+-   Read your map with the dataset into your main document
+
+-   Generate the weights matrix in R (import to GeoDa) or make it in
+    GeoDa
+
+-   Start with an Exploratory Data Analysis (EDA) in GeoDa
+
+-   Do descriptive statistics in R
+
+-   Test for local/global spatial autocorrelation i.e. global/local
+    Morans I in your dependent variable.
+
+## The analysis
+
+-   If no spatial autocorrelation, do normal linear regression (or
+    whatever)
+-   If spatial autocorrelation present.
+    -   Estimate initial linear model
+        -   Check for spatial effects in **residuals**
+        -   Our linear model *might* (not likely) be so good that no
+            spatial effects left in the residuals. If this is the case
+            keep the plain linear model.
+-   If there is spatial effects in residuals. We have to account for
+    this.
+-   Use sf/sp and test models
+-   Do we have a local or global phenomenon?
+    -   **Local**: Start with SDEM and test against nested models with
+        likelihood ratio tests
+    -   **Global**: Start with SDM and test against nested models with
+        likelihood ratio tests
+-   Thoroughly test your final spatial regression model.
+    -   Heteroscedasticity, normality residuals etc.
+
+## Maps for analysis/illustration
+
+-   Maps for analysis often quite terse and contains little geographical
+    information
+
+-   Should make better/more informative maps for illustrations
+
+-   Make your illustrative maps with `tmap` or `ggplot2` in R
+
+## What we have to learn
+
+-   Short refresh Tidyverse
+
+-   How to handle maps
+
+    -   How to get them
+    -   How to get them into our software
+    -   How to edit/manipulate them
+    -   How to link maps and data
+
+-   How to generate neighbour structures
+
+## What we have to learn cont.
+
+-   How to make weight matrices
+
+-   How to run spatial regressions
+
+-   How to do EDA with spatial data
+
+## Before all else
+
+-   Update R
+
+-   Update R Studio
+
+-   Install the packages we will need
+
+-   Install GeoDa
+
+-   Install/update Qgis
+
+-   Update Zotero
+
+## References
