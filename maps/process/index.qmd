@@ -22,7 +22,7 @@ editor_options:
     chunk_output_type: console
 echo: true
 eval: true
-bibliography: process.bib
+bibliography: [process.bib, process-packages.bib]
 nocite: '@*'
 ---
 
@@ -50,6 +50,7 @@ nocite: '@*'
 ```
 
 ```{r}
+#| eval: true
 #| include: false
 # create a bib file for the R packages
 # used in this document
@@ -75,11 +76,12 @@ knitr::write_bib(
   "rnaturalearthhires",
   "plotly"
     ),
-  file = "process.bib"
+  file = "process-packages.bib"
   )
 ```
 
 ```{r, load_refs, include=FALSE, cache=FALSE}
+#| eval: false
 BibOptions(check.entries = FALSE,
            bib.style = "authoryear",
            cite.style = "alphabetic",
@@ -97,8 +99,9 @@ myBib <- ReadBib("process.bib", check = FALSE)
     -   In R using sf/sp
 -   Analysis
     -   Write a reproducible document in Rmarkdown
-        -   Rstudio 1.4 GUI-like interface
-        -   Zotero integrated
+        -   RStudio 2022.07.1+554 "Spotted Wakerobin" GUI-like interface
+        -   Quarto Document/Presentation
+        -   Zotero 6/Better BibTeX integrated
 
 ## Do your data wrangling in R using the Tidyverse
 
@@ -111,8 +114,8 @@ myBib <- ReadBib("process.bib", check = FALSE)
 -   If you read in the data directly via an api there is no need for a
     "raw_data" subdirectory
 
--   Use an R markdown notebook to document the data wrangling and make
-    it reproducible. Place this R Notebook in your Data directory.
+-   Use a Quarto Document to document the data wrangling and make it
+    reproducible. Place this Quarto Document in your Data directory.
 
     -   Read in the raw data at the top
     -   Do your wrangling to **Tidy** data
@@ -122,7 +125,7 @@ myBib <- ReadBib("process.bib", check = FALSE)
         decay) formats.
 
 -   Important to get the dataset finished (as far as possible). Will
-    save us huge amounts of time and work.
+    save us a huge amount of time and work.
 
 ## Do your data wrangling in R using the Tidyverse, cont.
 
@@ -139,8 +142,8 @@ myBib <- ReadBib("process.bib", check = FALSE)
 
 ## Prepare your map (map wrangling)
 
--   Use a new Rmarkdown notebook to document the preparations done to
-    your map and the merging of data to the map.
+-   Use a new Quarto Document to document the preparations done to your
+    map and the merging of data to the map.
 
 -   Use a subdirectory "maps" to do your map wrangling.
 
@@ -158,7 +161,7 @@ myBib <- ReadBib("process.bib", check = FALSE)
 -   An alternative is to use Qgis to experiment with the map and then
     try to do the same reproducibly in R with the tools discussed below
 
-## Prepare your map (map wrangling)
+## Prepare your map (map wrangling) cont.
 
 -   Start by filter your map to the wanted area
 
@@ -170,19 +173,38 @@ myBib <- ReadBib("process.bib", check = FALSE)
 -   Merge your dataset to the "features" (points, lines or polygons) in
     your map. In Qgis or preferably in R.
 
+    -   use sf (not sp) as far as possible
+
+    -   <div>
+
+        > "Shifting to new visualization packages
+        > like **tmap**, **cartography**  and **mapview** should also be
+        > relativel yeasy, and use of  **sf** and the new visualization
+        > packages should certainly become standard for new research and
+        > teaching." [@bivand2021a]
+
+        </div>
+
 -   Check, and double check, that the map and data is as intended.
+
+## Prepare your map (map wrangling) cont.
 
 -   Save the map in the format "GeoPackage", the "shape" format is
     ancient, inconvenient (3-5 separate files) and have several
     technical restrictions (10 char variable names, only proj4 support
-    etc.)
+    etc.) [@ShapefileMust]
+
+. . .
+
+![Just say no to shape files.](prefer-geopackage.png){fig-align="center"
+width="345"}
 
 ## The analysis
 
 -   Read your map with the dataset into your main document
 
--   Generate the weights matrix in R (import to GeoDa) or make it in
-    GeoDa
+-   Generate the weights matrix in R (then import to GeoDa) or make it
+    in GeoDa
 
 -   Start with an Exploratory Data Analysis (EDA) in GeoDa
 
@@ -204,7 +226,7 @@ myBib <- ReadBib("process.bib", check = FALSE)
 -   If there is spatial effects in residuals. We have to account for
     this.
 -   Use sf/sp and test models
--   Do we have a local or global phenomenon?
+-   Do we have a local or global phenomenon? [@lesage2014]
     -   **Local**: Start with SDEM and test against nested models with
         likelihood ratio tests
     -   **Global**: Start with SDM and test against nested models with

@@ -1,0 +1,419 @@
+---
+title: "Maps and Projections"
+subtitle: "Getting data into maps"  
+author: "Arnstein Gjestland"
+institute: "HVL"
+date: "Spring 2021 (revised autumn 2022)"
+format:
+  revealjs:
+        theme: simple
+        footer: '[MSB205](/index.html)'
+        reveal_options:
+        code-fold: show
+        incremental: true
+        smaller: true
+        scrollable: true
+        slide-number: c/t
+editor: visual
+editor_options:
+  markdown:
+    wrap: 72
+    canonical: true
+    chunk_output_type: console
+echo: true
+eval: true
+bibliography: [proj1.bib, proj1-packages.bib]
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  fig.show = TRUE,
+  hiline = TRUE
+)
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(RefManageR)
+  library(ggplot2)
+  library(maps)
+  library(mapproj)
+  library(tmap)
+  library(rmapshaper)
+  library(sf)
+  library(spData)
+  library(spDataLarge)
+  library(stars)
+  library(mapview)
+  library(rgdal)
+  library(rgeos)
+  library(rnaturalearth)
+  library(rnaturalearthhires)
+  library(plotly)
+  library(units)
+})
+```
+
+```{r}
+#| eval: true
+#| include: false
+# create a bib file for the R packages
+# used in this document
+# Note! Needs to do a touch ag_model_basics.bib in terminal before first run
+# else stops when bibliography: "ag_model_basics.bib" not found in YAML
+knitr::write_bib(
+  c(
+  "tidyverse",
+  "RefManageR",
+  "ggplot2",
+  "maps",
+  "mapproj",
+  "tmap",
+  "rmapshaper",
+  "sf",
+  "spData",
+  "spDataLarge",
+  "stars",
+  "mapview",
+  "rgdal",
+  "rgeos",
+  "rnaturalearth",
+  "rnaturalearthhires",
+  "plotly",
+  "units"
+    ),
+  file = "proj1-packages.bib"
+  )
+```
+
+```{r, load_refs, include=FALSE, cache=FALSE}
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           hyperlink = FALSE,
+           dashed = FALSE)
+myBib <- ReadBib("../met2refs.bib", check = FALSE)
+```
+
+## Our first map
+
+::: columns
+::: {.column width="50%"}
+```{r}
+HgsdOgOmegn <- read_sf("HgsdOgOmegn.gpkg")
+HgsdOgOmegn %>% 
+  select(knavn) %>% 
+  plot(graticule = TRUE, axes = TRUE, key.pos = 1)
+```
+:::
+
+::: {.column width="50%"}
+-   We read in a map with `read_sf()`, `select()` the variable **knavn**
+    and then `plot()` the map. Notice that `plot()` knows how to plot a
+    map!
+-   When package sf is loaded there exists a function `plot.sf()` that
+    knows how to plot maps. See `?plot.sf` for details.
+-   The generic `plot()` function calls the right function for the
+    relevant kind of object.
+-   Mapdata originally from
+    [geonorge](https://kartkatalog.geonorge.no/metadata/administrative-enheter-historiske-versjoner/9bc064e3-6c34-4c3a-8421-00290052e9c0)
+:::
+:::
+
+## Our first map cont. (mapview)
+
+-   Same map using `mapview()` (java script). From the package
+    `mapview`. Nice for interactive use, perhaps not as well suited for
+    print.
+-   See `?mapview` and section **\## S4 method for signature 'sf'** for
+    details. `Mapview()` can also handle other kinds of map objects.
+
+## Vector to raster
+
+::: columns
+::: {.column width="60%"}
+```{r}
+#| eval: true
+HgsdOgOmegn %>% 
+  select(knavn) %>% 
+  st_rasterize(dx = 0.001) %>% #<<
+  plot(col=sf.colors(6), breaks = c(0:6))
+```
+:::
+
+::: {.column width="40%"}
+-   We can easily convert from vector to raster (the reverse is more
+    complicated).
+-   Bitmap, pixels, an image.
+-   `HgsdOgOmegn` was in vector format (i.e. a drawing). Points, with
+    lines drawn between the points, and a **fill** inside a closed
+    polygon
+:::
+:::
+
+## Vector to raster cont.
+
+```{r, echo=FALSE, cache=TRUE}
+HgsdOgOmegn %>% 
+  select(knavn) %>%
+  st_rasterize(dx = 0.001) %>% 
+  plot(col=sf.colors(6), breaks = c(0:6))
+```
+
+## Mapping with ggplot
+
+We know ggplot from before and it produces nice maps (although perhaps a
+bit slowly). Later we will also use the package. **tmap**
+
+. . .
+
+::: columns
+::: {.column width="30%"}
+```{r}
+#| echo: true
+#| eval: false
+HgsdOgOmegn %>% 
+  ggplot() + 
+  geom_sf(aes(fill = knavn))
+```
+:::
+
+::: {.column width="70%"}
+```{r}
+#| echo: false
+#| eval: true
+HgsdOgOmegn %>% 
+  ggplot() + 
+  geom_sf(aes(fill = knavn))
+```
+:::
+:::
+
+## Perhaps to much detail?
+
+-   We can find the size of the object HgsdOgOmegn with
+    `round(object.size(HgsdOgOmegn) / 1024)`:
+    `r round(object.size(HgsdOgOmegn) / 1024)`
+-   `sf` has `st_simplify()` with option preserveTopology = TRUE,
+    `HgsdOgOmegnSimp <- st_simplify(HgsdOgOmegn, preserveTopology = TRUE, dTolerance = 1000)`
+-   `st_simplify()` preserves topology for each feature (polygon), but
+    not between features (polygons).
+-   `ms_simplyfy()` from the **rmapshaper** package preserves topology
+    between features and is a better alternative.
+
+## Simplified map
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| echo: true
+#| eval: false
+HgsdOgOmegnSimp <- HgsdOgOmegn %>% 
+  select(knavn) %>% 
+  # keep_shapes = TRUE else we 
+  # risk to loose islands
+  # keep 5% of the points
+  ms_simplify(
+    keep = 0.05, 
+    keep_shapes = TRUE) %>% 
+  ggplot() + # Note + for ggplot
+  geom_sf(aes(fill = knavn))
+ 
+round(object.size(HgsdOgOmegn) / 1024)
+round(
+  object.size(HgsdOgOmegnSimp) / 1024
+  )
+
+HgsdOgOmegnSimp
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| eval: true
+HgsdOgOmegnSimp <- HgsdOgOmegn %>% 
+  select(knavn) %>% 
+  # keep_shapes = TRUE else we risk to loose islands
+  # keep 5% of the points
+  ms_simplify(keep = 0.05, keep_shapes = TRUE) %>% 
+  ggplot() + 
+  geom_sf(aes(fill = knavn))
+
+HgsdOgOmegnSimp # "print" our map
+```
+
+-   Looking better and much smaller
+
+-   Size HgsdOgOmegn: `r round(object.size(HgsdOgOmegn) / 1024)`
+
+-   Size HgsdOgOmegnSimp: `r round(object.size(HgsdOgOmegnSimp) / 1024)`
+:::
+:::
+
+## HgsdOgOmegnSimp full size
+
+```{r}
+#| echo: false
+#| eval: true
+HgsdOgOmegnSimp <- HgsdOgOmegn %>% 
+  select(knavn) %>% 
+  # keep_shapes = TRUE else we risk to loose islands
+  # keep 5% of the points
+  ms_simplify(keep = 0.05, keep_shapes = TRUE) %>% 
+  ggplot() + 
+  geom_sf(aes(fill = knavn))
+
+HgsdOgOmegnSimp # "print" our map
+```
+
+## HgsdOgOmegn full size
+
+```{r}
+#| echo: false
+#| eval: true
+HgsdOgOmegn %>% 
+  select(knavn) %>% 
+  ggplot() + 
+  geom_sf(aes(fill = knavn))
+```
+
+## The problem with projections
+
+[Projections illustrated](https://youtu.be/kIID5FDi2JQ)
+
+## Geographical coordinates
+
+-   Haugesund (wikipedia.org): 59°24′37″N 5°16′32″Ø?
+
+-   This is degrees, minutes and seconds. The map uses decimal degrees.
+
+-   Shows the position of Haugesund on the globe, in degrees, minutes
+    and seconds
+
+-   Old idea traceable back to Eratosthenes of Cyrene (276 - 194 BC),
+    Hipparchus of Nicaea (190 - 120 BC), Marinus of Tyre (70 - 130 AD)
+    and finally Claudius Ptolemy (100-170 AD) *Geographia*. *Geographia*
+    survived in arabic translation and was translated into latin 1406
+    (*Geographia Claudii Ptolemaei*).
+
+-   The first degree is **latitude**, measured north (N) from equator
+
+-   The second degree is **longitude**, east (E) from the zero meridian
+    (through Greenwich, just east of London).
+
+## Geographical coordinates cont.
+
+-   The position is given in the format geographers prefer, (latitude,
+    longitude)
+
+-   Programmers/data scientist went for (x,y), hence (longitude,
+    latitude)
+
+-   Still the source of much confusion
+
+-   Note that geographical coordinates on paper or screen are also a
+    kind of projection. (Think of a photo of a globe)
+
+-   Note that the axis have coordinates in decimal degrees (not minutes
+    and seconds)
+
+.left-column\[\] .right-column\[\]
+
+## Maps in Europe between Ptolemy and the Renaissance?
+
+.pull-left-40\[ - T and O maps - Jerusalem center, Asia up, Europe lower
+left, Africa lower right - Hereford mappa mundi, ca. 1300 (from
+wikipedi.org)\]
+
+## .pull-right-60\[ .center\[ ![Hereford mappa mundi](mappa_mundi.png)\]\]
+
+## Haugesund
+
+.pull-left-40\[ - Haugesund (wikipedia.org): 59°24′37″N 5°16′32″Ø\]
+.pull-right-60\[\]
+
+## What is "inside" HgsdOgOmegnSimp?
+
+.small\[\]
+
+## What is "inside" HgsdOgOmegnSimp? cont.
+
+-   That was quite clean
+
+-   Utilises the new list-column technique
+
+-   The geographical information is in the last column
+
+-   The geom column is persistent, we have to actively delete it
+
+-   We drop the geometry with `st_set_geometyr(NULL)` or
+    `st_drop_geometry`. Then we will be left with a plain
+    tibble/dataframe.
+
+## What is WGS84?
+
+-   EPSG:4326 WGS 84 -- WGS84 - World Geodetic System 1984
+-   Model of the whole planet, used with GPS
+-   geographical coordinates (eastings, northings etc.)
+    -   "71° Nord"
+
+From wikipidia.org:
+
+> The World Geodetic System (WGS) is a standard for use in cartography,
+> geodesy, and satellite navigation including GPS. This standard
+> includes the definition of the coordinate system's fundamental and
+> derived constants, the ellipsoidal (normal) Earth Gravitational Model
+> (EGM), a description of the associated World Magnetic Model (WMM), and
+> a current list of local datum transformations.
+
+## What is MULTIPOLYGON?
+
+-   MULTIPOLYGON is an example of a **simple feature**
+
+> Simple Features (officially Simple Feature Access) is a set of
+> standards that specify a common storage and access model of geographic
+> feature made of mostly two-dimensional geometries (point, line,
+> polygon, multi-point, multi-line, etc.) used by geographic information
+> systems. It is formalized by both the Open Geospatial Consortium (OGC)
+> and the International Organization for Standardization (ISO).
+> (wikipedia.org)
+
+-   **simple**: A 2D geometry is simple if it contains no
+    self-intersection
+
+-   Supported by **sf**, not by **sp**, postgis (PostgreSQL extension),
+    SpatiaLite (SQLite extension), GDAL etc.
+
+Simple features standard did not exist when **sp** was designed.
+
+## HgsdOgOmegnSimp as SpatialPolygonsDataframe
+
+```{r}
+#| eval: false
+HgsdOgOmegnSimp_sp <- HgsdOgOmegnSimp %>% 
+  as_Spatial()
+```
+
+## From environment tab
+
+![Plot title.](index_insertimage_3.png)
+
+-   This is just the top
+
+## References
+
+```{r results = "asis", echo = FALSE}
+PrintBibliography(myBib, .opts = list(check.entries = FALSE, sorting = "ynt"))
+```
+
+```{r}
+#siste
+```

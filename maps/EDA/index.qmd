@@ -1,0 +1,350 @@
+---
+title: "Exploratory Data Analysis (EDA)"
+author: "Arnstein Gjestland"
+institute: "HVL"
+date: "Autumn 2021 (revised autumn 2022)"
+format:
+  revealjs:
+        theme: simple
+        footer: '[MSB205](/index.html)'
+        reveal_options:
+        code-fold: show
+        incremental: true
+        smaller: true
+        scrollable: true
+        slide-number: c/t
+editor: visual
+editor_options:
+  markdown:
+    wrap: 72
+    canonical: true
+    chunk_output_type: console
+echo: true
+eval: true
+bibliography: [eda.bib, eda-packages.bib]
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  fig.show = TRUE,
+  hiline = TRUE
+)
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(RefManageR)
+  library(ggplot2)
+  library(maps)
+  library(mapproj)
+  library(tmap)
+  library(rmapshaper)
+  library(sf)
+  library(spData)
+  library(spDataLarge)
+  library(stars)
+  library(mapview)
+  library(rgdal)
+  library(rgeos)
+  library(rnaturalearth)
+  library(rnaturalearthhires)
+  library(plotly)
+})
+```
+
+```{r}
+#| eval: true
+#| include: false
+# create a bib file for the R packages
+# used in this document
+# Note! Needs to do a touch ag_model_basics.bib in terminal before first run
+# else stops when bibliography: "ag_model_basics.bib" not found in YAML
+knitr::write_bib(
+  c(
+  "tidyverse",
+  "RefManageR",
+  "ggplot2",
+  "maps",
+  "mapproj",
+  "tmap",
+  "rmapshaper",
+  "sf",
+  "spData",
+  "spDataLarge",
+  "stars",
+  "mapview",
+  "rgdal",
+  "rgeos",
+  "rnaturalearth",
+  "rnaturalearthhires",
+  "plotly"
+  ),
+  file = "eda-packages.bib"
+  )
+```
+
+## We will do EDA in GeoDa
+
+![Main Menu](eda_insertimage_1.png){alt=":scale 85%"}
+
+::: columns
+::: {.column width="50%"}
+-   See @zotero-1360, or use this [link](http://geodacenter.github.io),
+    for GeoDa Documentation
+-   We collect what we do in a project
+-   We start with a new empty project
+-   We can also open a previously saved project
+:::
+
+::: {.column width="50%"}
+![New Project](eda_insertimage_2.png)
+:::
+:::
+
+## Add our map
+
+::: columns
+::: {.column width="50%"}
+![Add Our Map](eda_insertimage_3.png){width="436"}
+:::
+
+::: {.column width="50%"}
+![Map of Norway (423
+municipalities)](eda_insertimage_4.png){width="472"}
+:::
+:::
+
+## Generate weights matrix
+
+::: columns
+::: {.column width="50%"}
+-   we have to find our neighbours
+-   We have our weights
+-   Make symmetric
+-   Important that min neighbours \> 0, else problems
+:::
+
+::: {.column width="50%"}
+![New Weight Matrix](eda_insertimage_7.png){alt=":scale 70%"
+width="450"}
+:::
+:::
+
+## Weights manager cont.
+
+::: columns
+::: {.column width="50%"}
+-   Do we have spatial autocorrelation in our data?
+
+-   ![Univariate Moran's I](eda_insertimage_10.png)
+
+-   ![Select Variable and Weights](eda_insertimage_6.png){width="429"}
+:::
+
+::: {.column width="50%"}
+-   Select variable and weights
+
+    -   Documentation is to be found at
+        [geodacenter.github.io](https://geodacenter.github.io/workbook/5a_global_auto/lab5a.html){.uri}.
+        Most of the following is taken from this source,
+
+    -   We select log_pm2 as variable and the queen based contiguity
+        weights
+
+-   Moran's I
+:::
+:::
+
+## Options for Global Morans I
+
+::: columns
+::: {.column width="50%"}
+![Moran's I](eda_insertimage_12.png){alt=":scale 70%"}
+:::
+
+::: {.column width="50%"}
+-   Right click/ctrl click on plot
+
+-   Click Randomisation
+
+-   Choose 999 Permutations
+:::
+:::
+
+## Other options
+
+::: columns
+::: {.column width="50%"}
+![Plot Moran's I](eda_insertimage_15.png){alt="Plot title."}
+:::
+
+::: {.column width="50%"}
+-   LOWESS smoother
+
+-   Regimes regression + Morans I for selected/not selected
+:::
+:::
+
+## The "killer" feature in GeoDa; linked plots
+
+![](eda_insertimage_14.png){width="581"}
+
+## Spatial Correlogram
+
+::: columns
+::: {.column width="50%"}
+![Spatial
+Correlogram](eda_insertimage_16.png){alt="Spatial Correlogram"}
+:::
+
+::: {.column width="50%"}
+-   Standardised variables ($\mu = 0, \sigma = 1$)
+
+-   $z_i · z_j = f(d_{ij}) + u$ - $d_{ij}$, distance between "center" of
+    $i$ polygon and $j$ polygon
+
+-   The smoothed line on the top shows how auto-correlation depends upon
+    distance between to places.
+
+-   The bar shows how many obs. we have for each distance
+
+-   Distance in meter, so max. dist. in figure is 70 km (ca. 1,5 hours
+    of commute time)
+:::
+:::
+
+## Local Spatial Autocorrelation
+
+::: columns
+::: {.column width="50%"}
+### Lets hunt clusters
+
+-   LISA, Local Indicator of Spatial Association (Anselin 1995)
+
+-   Local Morans I
+
+-   Global analysis: "Do we have spatial autocorrelation?"
+
+-   Local analysis: "**Where** is the spatial autocorrelation located?"
+
+-   Where should we expect clusters in our data?
+:::
+
+::: {.column width="50%"}
+![](eda_insertimage_18.png){alt=":scale 80%"}
+:::
+:::
+
+## LISA Cluster Map
+
+::: columns
+::: {.column width="50%"}
+![LISA cluster map](eda_insertimage_19.png)
+:::
+
+::: {.column width="50%"}
+### LISA
+
+-   High-High: this muni is high and its neighbouring munis are high
+
+-   Low-Low: this muni is low and its neighbouring munis are low
+
+-   Low-High; this muni is low, but its neighbours are high
+
+-   High-Low; this muni is high, but its munis are low
+
+-   Can this be connected with infrastructure?
+
+-   Note when High-High is clicked in the top map. The High-High munis
+    are selected in both figures
+:::
+:::
+
+## Significance
+
+::: columns
+::: {.column width="50%"}
+![Significance](eda_insertimage_20.png){alt=":scale 70%" width="443"}
+:::
+
+::: {.column width="50%"}
+-   Global Morans I:
+
+    -   $I = \frac{\sum_i\sum_j w_{ij}·z_i·z_j}{\sum_i z_i^2}$
+
+-   Local Morans I:
+
+    -   $I_i = \frac{\sum_j w_{ij}·z_i·z_j}{\sum_i z_i^2}$
+
+-   The global Morans I corresponds with the average of the local Morans
+    I (details Anselin 1995)
+
+-   Significance: analytic or conditional permutations
+
+    -   Analytical not very reliable in practice (Anselin 1995)
+
+    -   Conditional permutations: For each obs. (here muni) the local
+        value is kept constant (log_pm2 for this muni) while the
+        remaining n-1
+:::
+:::
+
+## Significance cont.
+
+::: columns
+::: {.column width="50%"}
+![Significance](eda_insertimage_20.png){alt=":scale 70%" width="443"}
+:::
+
+::: {.column width="50%"}
+-   values are randomly permuted.
+-   In this way we build a reference distribution
+-   The real value is then compared to this distribution
+-   Generate a "pseudo p-value" that can be used to assess significance
+:::
+:::
+
+# Other analysis in GeoDa
+
+-   Different kinds of plots, univariate, bivariate and multivariate
+    -   Histogram, boxplot, scatter plot, bubble chart, 3d chart,
+        Parallel Coordinate Plot and Conditional Plots
+    -   Plots will be linked
+    -   Tools like brushing, selection of subset etc. is avaialble
+    -   See documentation, Exploratory Data Analysis (1) and (2)
+-   Nice for exploring, but it's recommended that the final plots are
+    made in R, with the help of ggplot2, tmap etc., in a reproducible
+    manner
+-   GeoDa can also do some spatial regression analysis
+
+# Spatial regression analysis
+
+![Spatial Regression](eda_insertimage_21.png){alt=":scale 80%"
+width="550"}
+
+::: columns
+::: {.column width="50%"}
+-   Follows Anselins recommendations
+
+-   classic OLS
+
+-   Spatial lag
+:::
+
+::: {.column width="50%"}
+-   Spatial error
+
+-   No SLX (necessary to follow leSage 2014)
+
+-   Do your spatial econometrics in R, with sp/sf
+:::
+:::
+
+## References

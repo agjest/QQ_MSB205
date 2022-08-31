@@ -7,3 +7,6 @@ editor: visual
 ## Presentations
 
 -   [The Process](process/index.qmd)
+-   [EDA](EDA/index.qmd)
+-   [Projections 1](projections/proj1/index.qmd)
+-   [Projections 2](projections/proj2/index.qmd)
