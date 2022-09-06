@@ -1,0 +1,116 @@
+---
+title: "tmp devel winkel"
+output: html
+---
+
+```{r setup}
+library(tidyverse)
+library(sf)
+library(tmap)
+```
+
+```{r}
+(lats <- c(seq(90,-90,by=-60), seq(-90,90,by=60), 90))
+```
+
+```{r}
+(longs <- c(rep(c(180, -180), each = 4), 180))
+```
+
+```{r}
+pgon <- list(cbind(longs, lats)) %>%
+  st_polygon() %>% 
+  st_sfc(crs=4326) %>% 
+  st_sf() %>% 
+  st_cast()
+
+p <- matrix(c(longs, lats) , ncol=2) %>%
+  st_multipoint() %>% 
+  st_sfc(crs=4326) %>% 
+  st_sf() %>% 
+  st_cast()
+```
+
+```{r}
+pgon %>% 
+  ggplot() +
+  geom_sf() +
+  geom_sf(data = p, colour="blue")
+```
+
+```{r}
+pgon_proj <- pgon %>%
+  st_transform_proj(crs = crs_wintri)  %>% 
+  st_sf() %>% 
+  st_cast()
+
+p_proj <- p %>% 
+  st_transform_proj(crs = crs_wintri)  %>% 
+  st_sf() %>% 
+  st_cast()
+
+qtm(pgon_proj) +
+   qtm(p_proj, symbols.size=0.75, symbols.col="blue")
+
+
+
+```
+
+```{r}
+# ggplot will not run
+# pgon_proj %>% 
+#   ggplot() + 
+#   geom_sf()
+```
+
+```{r}
+print(lats <- c(seq(90,-90,by=-5), seq(-90,90,by=5), 90), width=80)
+```
+
+```{r}
+print(longs <- c(rep(c(180, -180), each = 37), 180), width=80)
+```
+
+```{r}
+pgon <- list(cbind(longs, lats)) %>%
+  st_polygon()
+
+p <- matrix(c(longs, lats) , ncol=2) %>%
+  st_multipoint()
+```
+
+```{r}
+  ggplot(data=pgon) +
+  geom_sf() +
+  geom_sf(data=p, colour="blue")
+```
+
+```{r}
+pgon_proj <- list(cbind(longs, lats)) %>%
+  st_polygon() %>%
+  st_sfc( # create sf geometry list column
+    crs = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+  ) %>%
+  st_sf() %>%
+  st_transform_proj(crs = crs_wintri)
+
+p_proj <- matrix(c(longs, lats) , ncol=2) %>%
+  st_multipoint() %>%
+  st_sfc( # create sf geometry list column
+    crs = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+  ) %>%
+  st_sf() %>%
+  st_transform_proj(crs = crs_wintri)
+```
+
+```{r}
+plot_sf(p_proj, axes=TRUE)
+plot_sf(pgon_proj, axes=TRUE)
+
+
+
+  
+qtm(pgon_proj) +
+  qtm(p_proj, symbols.size=.5, symbols.col="blue")
+
+```
