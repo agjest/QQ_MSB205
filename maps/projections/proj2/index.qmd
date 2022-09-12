@@ -939,11 +939,12 @@ world_ne %>%
 
 -   WGS 84 / Pseudo-Mercator
 -   The importance of authority_compliant
--   3035 is longitude latitude
--   our map is latitude longitude
--   if we insist to be authority_compliant, we will use latitude value
-    for longitude
--   and longitude value for latitude unless we swap axis order
+-   3035 is (latitude, longitude)
+-   our map is (longitude, latitude)
+-   if we insist to be authority_compliant, we will use longitude value
+    for latitude
+-   and latitude value for longitude
+-   **unless we swap axis order**
 
 ## 3035 is longitude latitude
 
@@ -1509,39 +1510,6 @@ sf
 
 ## What is Simple features?
 
-![Simple feature (fig. 2.2 Lovelace et.
-al.)](test_insertimage_1.png){alt="Simple feature (fig. 2.2 Lovelace et. al.)"}
-
-## Introduction
-
--   Maps and some projections
-
--   Geographical coordinates (latitude, longitude *or* longitude,
-    latitude)
-
--   Distance in degrees, minutes and seconds
-
--   Projected coordinates
-
--   Distance in meters/feet
-
--   4 (3) types of distortion
-
-    -   1\. Shape
-
-    -   2\. Area
-
-    -   3\. Distance
-
-    -   4\. Direction (No map has true direction everywhere.)
-
-## Introduction (cont.)
-
--   List-columns to store arbitrary data structures in a data frame
-
--   broom package to turn models into tidy data.
-
--   Example gapminder, we will use newgapminder our updated version of
-    the dataset from last assignment
+## 
 
 ## References

@@ -1,0 +1,6 @@
+---
+title: "Spatial Econometrics"
+editor: visual
+---
+
+-   [Getting Data](data/index.qmd)

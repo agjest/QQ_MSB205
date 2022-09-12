@@ -1,0 +1,1069 @@
+---
+title: "Get ssb data"
+author: "Arnstein Gjestland"
+institute: "HVL"
+date: "Spring 2021 (revised autumn 2022)"
+format:
+  revealjs:
+        theme: simple
+        footer: '[MSB205](/index.html)'
+        reveal_options:
+        code-fold: show
+        incremental: true
+        smaller: true
+        scrollable: true
+        slide-number: c/t
+editor: visual
+editor_options:
+  markdown:
+    wrap: 72
+    canonical: true
+    chunk_output_type: console
+echo: true
+eval: true
+bibliography: [data.bib, data-packages.bib]
+nocite: '@*'
+---
+
+```{r setup}
+library(PxWebApiData)
+library(tidyverse)
+library(readxl)
+library(sf)
+library(sp)
+library(spdep)
+library(spatialreg)
+library(broom)
+library(mctest)
+library(huxtable)
+library(tmap)
+```
+
+```{r}
+#| include: false
+# create a bib file for the R packages
+# used in this document
+# Note! Needs to do a touch ag_model_basics.bib in terminal before first run
+# else stops when bibliography: "ag_model_basics.bib" not found in YAML
+knitr::write_bib(
+  c(
+    "PxWebApiData",
+  "tidyverse",
+  "readxl",
+  "sf",
+  "sp",
+  "spdep",
+  "spatialreg",
+  "broom",
+  "mctest",
+  "huxtable",
+  "tmap"
+    ),
+  file = "data-packages.bib"
+  )
+```
+
+## Read in map 2017 (unedited)
+
+The map is converted from 432 to 426 multipolygons in Qgis (Vektor \>
+Geometriverktøy \> Samle geometrier ...). The routine with "
+group_by(knr) %\>% summarise(geometry = st_combine(geometry))" did not
+work.
+
+```{r}
+map_2017 <- st_read("map_2017_426.gpkg") %>% 
+  rename("knr" = KOMMUNENUM) %>% 
+  View()
+
+class(map_2017)
+
+map_2017 <- map_2017 %>% 
+group_by(knr) %>% 
+  st_combine()
+
+View(map_2017)
+
+
+plot(map_2017)
+```
+
+```{r}
+map_2017 <- st_read("map_2017_426.gpkg")
+map_2017 <- map_2017 %>% 
+  rename(
+    knr = KOMMUNENUM
+  )
+```
+
+## Get knr and kNavn from local file
+
+We want the Norvegian names, hence we have to adjust the municipality
+names for Vetsfold 2017.
+
+```{r}
+load("bld06_19.Rdata")
+
+knr_and_knavn <- bld90_19 %>% 
+  select(knrNavn) %>% 
+  unique() %>%
+  # separate at the space after last digit
+  separate(col = knrNavn, into = c("knr", "kNavn"), sep="\\s", extra = "merge") %>% 
+  filter(!knr %in% c("0712", "0715", "0729")) %>% 
+  bind_rows(
+    c(knr = "0702", kNavn = "Holmestrand"),
+    c(knr = "0709", kNavn = "Larvik"),
+    c(knr = "0714", kNavn = "Hof"),
+    c(knr = "0722", kNavn = "Nøtterøy"),
+    c(knr = "0723", kNavn = "Tjøme"),
+    c(knr = "0728", kNavn = "Lardal")
+  )
+```
+
+```{r}
+# View(knr_and_knavn)
+```
+
+## Get ssb data via api
+
+-   Get data registered on the municipality level from SSB
+
+    -   one trick to get a list of all these municipality tables is to
+        search at SSB for `(K)` and then click on `Statistikkbanken` in
+        the left column.
+
+-   We will use the SSB api exposed through the `PxWebApiData` R
+    package.
+
+    -   This API can also be used against most Nordic SSB sister
+        organisations.
+
+-   Since we have a list of the relevant municipalities for 2017
+    (`map_2017$knr`) we can restrict our api request to just these.
+
+-   We are just going to use some of these variables in the following
+    example
+
+    -   The other variables serves as examples and some might be used in
+        further analysis.
+
+-   There is still plenty of relevant data at SSB
+
+    -   Quite trivial to get access to these using the techniques shown
+        below.
+
+-   Our new dataset use pm2 for 2017 to avoid the big changes in
+    Trøndelag 1.1 2018.
+
+## Mean price per sqr. meter for SFD
+
+-   mean price per square meter in single family dwellings in each
+    municipality (426)
+
+. . .
+
+```{r}
+pm2_2017 <- ApiData(
+    urlToData = "06035",
+    Region = map_2017$knr,
+    Boligtype = "01",
+    Tid = "2017"
+)
+```
+
+-   Pick element 2, dataset, in list returned
+
+. . .
+
+```{r}
+pm2_2017 <- pm2_2017$dataset
+```
+
+## Mean price per sqr. meter for SFD cont.
+
+-   Make it tidy
+
+. . .
+
+```{r}
+# Work on it to get it tidy
+pm2_2017 <- pm2_2017 %>% 
+  select(-Boligtype, -Tid) %>% 
+  rename(
+    knr = Region
+  ) %>% 
+  pivot_wider(
+    id_cols = knr, 
+    names_from = "ContentsCode", 
+    values_from = "value"
+    ) %>% 
+  rename(
+    pm2 = KvPris,
+    num_dwelling_sales = Omsetninger 
+  )
+```
+
+-   We are tidy!
+
+. . .
+
+```{r}
+dim(pm2_2017)[1]
+```
+
+## Mean price per sqr. meter for SFD cont.
+
+-   Fill in for missing 2017
+-   Get average price per sqr. meter for single family dwellings (SFD)
+    in each municipality (426)
+
+. . .
+
+```{r}
+# 139 missing values. 
+# Try other years for these
+pm2_missing <- pm2_2017 %>% 
+  filter(is.na(pm2)) %>% 
+  select(knr)
+
+# Get data for the years 2010:2016 and 2018
+pm2_15to18 <- ApiData(
+    urlToData = "06035",
+    Region = pm2_missing$knr,
+    Boligtype = "01",
+    Tid = c(as.character(2010:2016), "2018")
+)
+
+
+```
+
+## Mean price per sqr. meter for SFD cont.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+# Bad name, pm2_15to18 has data fram 2010 to 2016 and 2018
+# Note tmp is not tidy, 8 obs. per row
+tmp <- pm2_15to18$dataset %>% 
+  select(-Boligtype) %>% 
+  rename(knr = Region) %>% 
+  pivot_wider(
+    id_cols = knr,
+    names_from = c("ContentsCode", "Tid"),
+    values_from = "value"
+    ) %>% 
+  mutate(
+    pm2 = rowMeans(
+      select(
+        .data = .,
+        KvPris_2010:KvPris_2018
+        ), 
+# calculate mean of existing values
+      na.rm = TRUE
+      ),
+    num_dwelling_sales = rowMeans(
+      select(
+        .data = .,
+        Omsetninger_2010:Omsetninger_2018
+        ),
+      na.rm = TRUE
+      )
+    ) %>%
+  select(knr, pm2, num_dwelling_sales)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+    # Very crude, we just take the mean of existing values
+    pm2_2017 <- pm2_2017 %>% 
+    # add new values from tmp to pm2_2017  
+      left_join(tmp, by = "knr") %>% 
+      mutate(
+        pm2 = if_else(
+          is.na(pm2.x), 
+          as.integer(pm2.y), 
+          pm2.x),
+        num_dwelling_sales =  if_else(
+          is.na(pm2.x), 
+          as.integer(num_dwelling_sales.y), 
+          num_dwelling_sales.x
+          )
+        ) %>% 
+      select(knr, pm2, num_dwelling_sales)
+```
+
+```{r}
+summary(pm2_2017$pm2)
+```
+:::
+:::
+
+## Population
+
+-   Start by getting metadata for the table 07459
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+```{r}
+metadata_07459 <- ApiData(
+  "http://data.ssb.no/api/v0/en/table/07459",
+  returnMetaFrames = TRUE
+  )
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+print(head(str(metadata_07459), n = 20))
+```
+:::
+:::
+
+## Population cont.
+
+-   API query
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#Get more info about table
+api_query <- ApiData(
+"http://data.ssb.no/api/v0/en/table/07459",
+returnApiQuery = TRUE
+) 
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+print(api_query)
+```
+:::
+:::
+
+## Population cont.
+
+-   Population, three categories 0-19, 20-64 and 65+
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+```{r}
+# Kjonn = FALSE, aggregate F+M
+# The F in "F0-19" DOES NOT indicate Female
+bef_2017 <- ApiData(
+    urlToData = "07459",
+# Pick data for the municipallities we have in our map 
+    Region = map_2017$knr,
+    Alder = list("agg:TredeltGrupperingB2", 
+                 c("F0-19", "F20-64", "F65+")),
+    Kjonn = FALSE,
+    Tid = "2017"
+)
+```
+
+```{r}
+# list with 2 elements, we want dataset
+bef_2017 <- bef_2017$dataset
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+# print function used to get console 
+# output in slides
+print(head(bef_2017, n = 4))
+```
+
+```{r}
+bef_2017 <- bef_2017 %>% 
+  select(Region, Alder, value) %>% 
+  rename(
+    alder = Alder,
+    knr = Region,
+    bef = value,
+  )
+```
+:::
+:::
+
+## Population cont.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+bef_2017 <- bef_2017 %>% 
+  pivot_wider(id_cols = knr, names_from = "alder", values_from = "bef") %>% 
+  # rename variables
+  rename(
+    pop_0_19 = `F0-19`,
+    pop_20_64 = `F20-64`,
+    pop_65p = `F65+`
+    ) %>% 
+  # Calculate tot. pop.
+  mutate(tot_pop = pop_0_19 + pop_20_64 + pop_65p)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+# we are tidy
+print(head(bef_2017, n = 5))
+```
+
+```{r}
+# we are tidy
+dim(bef_2017)[1]
+```
+:::
+:::
+
+## Education level (percentage each level)
+
+-   Metadata
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#Get metadata
+metadata_09429 <- ApiData(
+  urlToData = "http://data.ssb.no/api/v0/no/table/09429",  
+  returnMetaFrames = TRUE
+  )
+str(metadata_09429)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#Get metadata
+metadata_09429 <- ApiData(
+  urlToData = "http://data.ssb.no/api/v0/no/table/09429",  
+  returnMetaFrames = TRUE
+  )
+str(metadata_09429)
+```
+:::
+:::
+
+## Education level (percentage each level) cont.
+
+-   Api Query
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#Get more info about table
+api_query_09429 <- ApiData(
+"http://data.ssb.no/api/v0/en/table/09429",
+returnApiQuery = TRUE)
+
+print(api_query_09429)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#Get more info about table
+api_query_09429 <- ApiData(
+"http://data.ssb.no/api/v0/en/table/09429",
+returnApiQuery = TRUE)
+
+print(api_query_09429)
+```
+:::
+:::
+
+## Education level (percentage each level) cont.
+
+::: columns
+::: {.column width="40%"}
+```{r}
+# Get data from SSB
+edu_2017 <- ApiData(
+    urlToData = "09429",
+    # we want in percent
+    ContentsCode = "PersonerProsent",
+    Region = map_2017$knr,
+    # Drop "00" since total, 100%, also dro "09a" Uoppgit
+    Nivaa = c("01", "02a", "11", "03a", "04a"),
+    Kjonn = FALSE,
+    Tid = "2017"
+)
+```
+
+```{r}
+# Pick the needed variables
+edu_2017 <- tibble(
+  # want knr
+  knr = edu_2017$dataset$Region , 
+  # want level descriptions, not code
+  nivaa = edu_2017$`09429: Personer 16 år og over, etter region, nivå, statistikkvariabel og år`$nivå,
+  edu_lev_percent= edu_2017$dataset$value
+  )
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+# Have a look at it
+print(head(edu_2017, n=7))
+```
+:::
+:::
+
+## Education level (percentage each level) cont.
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#make tidy
+edu_2017 <- edu_2017 %>% 
+   pivot_wider(
+     id_cols = knr, 
+     names_from = "nivaa", 
+     values_from = "edu_lev_percent"
+     ) %>% 
+  rename(
+    edu_prim = `Grunnskolenivå`,
+    edu_sec = `Videregående skolenivå`,
+    edu_voc = `Fagskolenivå`,
+    edu_uni_short = `Universitets- og høgskolenivå, kort`,
+    edu_uni_long = `Universitets- og høgskolenivå, lang`
+  )
+```
+:::
+
+::: {#60 .column width="60%"}
+```{r}
+# Tidy OK
+print(head(edu_2017, n = 5))
+```
+
+```{r}
+dim(edu_2017)[1]
+```
+:::
+:::
+
+## Household income
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+# Get metadata 
+metadata_07183 <- ApiData(
+  urlToData = "http://data.ssb.no/api/v0/no/table/07183",
+  returnMetaFrames = TRUE
+  )
+
+print(str(metadata_07183))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+# Get metadata 
+metadata_07183 <- ApiData(
+  urlToData = "http://data.ssb.no/api/v0/no/table/07183",
+  returnMetaFrames = TRUE
+  )
+
+print(str(metadata_07183))
+```
+:::
+:::
+
+## Household income cont.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#Get more info about table
+api_query_07183 <- ApiData(
+"http://data.ssb.no/api/v0/en/table/07183",
+returnApiQuery = TRUE)
+
+print(api_query_07183)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#Get more info about table
+api_query_07183 <- ApiData(
+"http://data.ssb.no/api/v0/en/table/07183",
+returnApiQuery = TRUE)
+
+print(api_query_07183)
+```
+:::
+:::
+
+## Household income cont.
+
+::: columns
+::: {.column width="30%"}
+```{r}
+inc_2017 <- ApiData(
+    urlToData = "07183",
+    # "Hushold" would 
+    # also get us 
+    # total number of
+    # households in muni
+    ContentsCode = c(
+      paste(
+        "Inntekt", 
+        seq(
+          from = 1, 
+          to = 7), 
+        sep = ""
+        )
+      ),
+    Region = map_2017$knr,
+    Tid = "2017"
+)
+```
+:::
+
+::: {.column width="70%"}
+```{r}
+print(head(
+  inc_2017$`07183: Husholdninger, etter region, statistikkvariabel og år`, 
+  n=9
+  ))
+```
+:::
+:::
+
+## Household income cont.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+inc_2017 <- tibble(
+  # want knr
+  knr = inc_2017$dataset$Region , 
+  # want level descriptions, not code
+  inc_cat = inc_2017$`07183: Husholdninger, etter region, statistikkvariabel og år`$statistikkvariabel,
+  inc_lev_percent = inc_2017$dataset$value
+)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+inc_2017 <- inc_2017 %>% 
+  pivot_wider(
+     id_cols = knr, 
+     names_from = "inc_cat", 
+     values_from = "inc_lev_percent"
+     ) %>% 
+  rename(
+    # Some problem with names here, had to do names(inc_2017) above and 
+    # then copy the text strings
+    inc_0_150 = `Samlet inntekt under 150 000 kr, prosent`,
+    inc_150_250 = `Samlet inntekt 150 000 - 249 999 kr, prosent`,
+    inc_250_350 = `Samlet inntekt  250 000 - 349 999 kr, prosent`,
+    inc_350_450 = `Samlet inntekt  350 000 - 449 999 kr, prosent`,
+    inc_450_550 = `Samlet inntekt  450 000 - 549 999 kr, prosent`,
+    inc_550_750 = `Samlet inntekt  550 000 - 749 999 kr, prosent`,
+    inc_750k_p = `Samlet inntekt 750 000 kr og over, prosent`
+  )
+```
+
+```{r}
+dim(inc_2017)[1]
+```
+:::
+:::
+
+## Household income cont.
+
+```{r}
+# we are tidy
+print(head(inc_2017, n = 7))
+```
+
+## Household net capital (wealth)
+
+::: columns
+::: {.column width="50%"}
+```{r}
+wealth_2017_ssb <- ApiData(
+    urlToData = "10320",
+    # "Hushold" would also get us 
+    # total number of households in muni
+    ContentsCode = c("Hushald (prosent)"),
+    Nettoform = c("12", "13", "10", 
+                  "25", "31", "11", "32"
+                  ),
+    Region = map_2017$knr,
+    Tid = "2017"
+)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+wealth_2017 <- wealth_2017_ssb$dataset %>% 
+  tibble() %>% 
+  select(-ContentsCode, -Tid) %>% 
+  rename(
+    knr = Region,
+    net_cap = Nettoform,
+    cap_lev_percent = value) %>% 
+  pivot_wider(
+     id_cols = knr, 
+     names_from = "net_cap", 
+     values_from = "cap_lev_percent"
+     ) %>% 
+  rename(
+    net_cap_0_250k = `12`,
+    net_cap_250k_500k = `13`,
+    net_cap_500k_1000k = `10`,
+    net_cap_1000k_2000k = `25`,
+    net_cap_2000k_3000k = `31`,
+    net_cap_3000k_4000k = `11`,
+    net_cap_4000k_p = `32`,
+  )
+
+```
+:::
+:::
+
+## Household net capital (wealth)
+
+```{r}
+# we are tidy
+print(head(wealth_2017, n = 6))
+```
+
+```{r}
+dim(wealth_2017)[1]
+```
+
+## Employed by government
+
+::: columns
+::: {.column width="50%"}
+```{r}
+# Get vdata from SSB
+gov_emp_2017 <- ApiData(
+    urlToData = "12628",
+    # total num.of gov. emp. 
+    # in each muni
+    StatligEnhet = "0",
+    # in yearly eq.
+    ContentsCode = "AvtalteArsverk",
+    Region = map_2017$knr,
+    Tid = "2017"
+)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+# Select wanted variables
+gov_emp_2017 <- gov_emp_2017$dataset %>% 
+  select(Region, value) %>% 
+  rename(
+    knr = Region,
+    gov_emp = value
+  )
+```
+:::
+:::
+
+## Employed by government
+
+```{r}
+#we are tidy
+print(head(gov_emp_2017, n = 15))
+```
+
+```{r}
+dim(gov_emp_2017)[1]
+```
+
+## Wholesale and retail trade sales
+
+::: columns
+::: {.column width="50%"}
+```{r}
+sales_per_capita_2017  <- ApiData(
+    urlToData = "04776",
+    Region = map_2017$knr,
+    Tid = "2017"
+)
+
+sales_per_capita_2017  <- 
+  sales_per_capita_2017$dataset %>%  
+  select(Region, value) %>% 
+  # spc sales per capita
+  rename(
+    knr = Region,
+    spc = value
+  )
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+# we are tidy
+print(head(sales_per_capita_2017))
+```
+
+```{r}
+dim(sales_per_capita_2017)[1]
+```
+:::
+:::
+
+## Household income before and after tax in decile (percent)
+
+-   Percent relative to national decile.
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+```{r}
+inc_dec_2017 <- ApiData(
+    urlToData = "12558",
+    ContentsCode = "AndelHush",
+    Desiler = c(paste(0, 1:9, sep = ""), "10"),
+    Region = map_2017$knr,
+    Tid = "2017"
+)
+
+inc_dec_2017 <- tibble(
+  # want knr
+  knr = inc_dec_2017$dataset$Region , 
+  # want level descriptions, not code
+  tax = inc_dec_2017$`12558: Husholdninger, etter region, inntekt før/etter skatt, desil, statistikkvariabel og år`$`inntekt før/etter skatt`,
+  decile = inc_dec_2017$dataset$Desiler,
+  percent = inc_dec_2017$dataset$value
+  )
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+inc_dec_2017 <- inc_dec_2017 %>% 
+  mutate(
+    tax = case_when(
+      # income before and after tax
+      tax == "Samlet inntekt" ~ "inc_bt",
+      tax == "Inntekt etter skatt" ~ "inc_at",
+      TRUE ~ as.character(tax)
+    )
+  ) %>%
+  pivot_wider(
+     id_cols = knr, 
+     names_from = c("tax", "decile"), 
+     values_from = "percent"
+     )
+```
+:::
+:::
+
+## Household income before and after tax in decile (percent) cont.
+
+```{r}
+# we are tidy
+print(head(inc_dec_2017))
+```
+
+```{r}
+dim(inc_dec_2017)[1]
+```
+
+## Industries
+
+::: columns
+::: {.column width="50%"}
+```{r}
+num_emp_2017_ssb <- ApiData(
+    urlToData = "07196",
+    OrgFormer = c("99","02","03","04","10","24"),
+    AntAnsatte = c("99", "00", "01","02","03","04","05","15","16"),
+    NACE2007 = c("01-99"),
+    Region = map_2017$knr,
+    Tid = "2017"
+)
+#so that we keep the ssb data
+num_emp_2017 <- num_emp_2017_ssb$`07196: Foretak (1.1.) unntatt offentlig forvaltning og primærnæringene, etter region, organisasjonsform, næring (SN2007), antall ansatte, statistikkvariabel og år`
+num_emp_2017$knr <- num_emp_2017_ssb$dataset$Region
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+num_emp_2017 <- num_emp_2017 %>% 
+  # drop two variables
+  select(-region, -statistikkvariabel, -år, -`næring (SN2007)`) %>% 
+  # want knr to the left, really not necessary 
+  select(knr,everything()) %>% 
+  # rename before pivot to names liked by R
+  rename(
+    org_form = organisasjonsform,
+    num_emp_group = `antall ansatte`,
+    firms = value
+  )
+
+num_emp_2017 <-  num_emp_2017 %>% 
+  pivot_wider(
+     id_cols = knr, 
+     names_from = c("org_form", "num_emp_group"), 
+     values_from = "firms"
+     )
+```
+:::
+:::
+
+## Industries cont.
+
+```{r}
+# we are tidy
+print(head(num_emp_2017))
+```
+
+```{r}
+dim(num_emp_2017)[1]
+```
+
+## Supply of single family dwellings (SFD)
+
+```{r}
+sup_sfd_2017 <- ApiData(
+    urlToData = "05940",
+    Byggeareal = c("111", "112"),
+    Region = map_2017$knr,
+    Tid = "2017"
+)
+
+sup_sfd_2017 <- sup_sfd_2017$`05940: Boligbygg, etter region, bygningstype, statistikkvariabel og år` %>% 
+  as_tibble() %>% 
+  mutate(region = sup_sfd_2017$dataset$Region) %>% 
+  rename(knr = region) %>% 
+  select(-år) %>% 
+  unite(tmp, bygningstype, statistikkvariabel, sep = "_") %>% 
+    pivot_wider(
+     id_cols = knr, 
+     names_from = "tmp", 
+     values_from = "value"
+     ) %>% 
+  # sfd Single Family Dwelling
+  # We have to escape the old variable names because of the spaces 
+  rename(
+    sfd_started = `Enebolig_Igangsatte boliger`,
+    sfd_ba_started = `Enebolig_Bruksareal igangsatte boliger (m²)`,
+    sfd_ba_completed = `Enebolig_Bruksareal fullførte boliger (m²)`,
+    # w2u with 2 units
+    sfd_w2u_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Igangsatte boliger`,
+    sfd_w2u_ba_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal igangsatte boliger (m²)`,
+    sfd_w2u_ba_completed = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal fullførte boliger (m²)`  
+    )
+```
+
+## Supply of single family dwellings (SFD) cont.
+
+```{r}
+# we are tidy
+print(head(sup_sfd_2017, n = 8))
+```
+
+```{r}
+dim(sup_sfd_2017)[1]
+```
+
+## Centrality index
+
+-   From SSB, for the year 2018, but we use it for 2017. Probably very
+    small changes from 2017 to 2018. Changed knr for Trøndelag to the
+    old numbers. Split 5054 Indre Fosen into 1624 Rissa and 1718
+    Leksvik. The last two was given the same centrality as the combined
+    entity.
+
+. . .
+
+```{r}
+centrality_2018_ed <- read_excel("Sentralitet 2018_ed.xlsx")
+```
+
+## Centrality index cont.
+
+```{r}
+print(head(centrality_2018_ed))
+```
+
+## Put it all together
+
+```{r}
+names(pm2_2017)
+
+data_2017 <- knr_and_knavn %>% 
+  left_join(pm2_2017) %>% 
+  left_join(bef_2017) %>% 
+  left_join(edu_2017) %>% 
+  left_join(inc_2017) %>% 
+  left_join(gov_emp_2017) %>%
+  left_join(sales_per_capita_2017) %>%
+  left_join(inc_dec_2017) %>%
+  left_join(wealth_2017) %>% 
+  left_join(num_emp_2017) %>%
+  left_join(sup_sfd_2017) %>% 
+  left_join(centrality_2018_ed ) %>% 
+  mutate(
+    log_pm2 = log(pm2),
+    spc_100k = spc/100000,
+    gov_emp_1k = gov_emp/1000,
+    sen_ind_1k = sen_ind/1000
+  ) %>% 
+  # rearrange 
+  select(knr, kNavn, pm2, log_pm2, everything())
+```
+
+## Put it all together cont.
+
+```{r}
+dim(data_2017)
+```
+
+-   We have 115 variables and 426 observations.
+
+## Add data to our map
+
+```{r}
+# join map and data
+map_data_2017 <- map_2017 %>% 
+  left_join(data_2017)
+# write out new map with data
+# if one add new variables it might 
+# be necessary to delete the file 
+# before writing new version
+st_write(
+  obj = map_data_2017, 
+  dsn = "map_data_2017.gpkg", 
+  driver = "GPKG", 
+  append = FALSE
+  )
+```
+
+## References

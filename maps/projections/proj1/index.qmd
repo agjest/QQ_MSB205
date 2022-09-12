@@ -529,7 +529,8 @@ From wikipidia.org:
 
 ## Simple Features
 
-![](simple_features.png)
+![Simple feature (fig. 2.2 Lovelace et.
+al.)](simple_features.png){alt="Simple feature (fig. 2.2 Lovelace et. al.)"}
 
 ## HgsdOgOmegnSimp as SpatialPolygonsDataframe
 
