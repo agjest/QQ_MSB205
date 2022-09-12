@@ -65,34 +65,14 @@ knitr::write_bib(
 
 ## Read in map 2017 (unedited)
 
-The map is converted from 432 to 426 multipolygons in Qgis (Vektor \>
-Geometriverktøy \> Samle geometrier ...). The routine with "
-group_by(knr) %\>% summarise(geometry = st_combine(geometry))" did not
-work.
+The map is converted from 432 to 426 multipolygons.
 
 ```{r}
-map_2017 <- st_read("map_2017_426.gpkg") %>% 
+map_2017 <- st_read("map_2017_uned.gpkg") %>% 
   rename("knr" = KOMMUNENUM) %>% 
-  View()
-
-class(map_2017)
-
-map_2017 <- map_2017 %>% 
-group_by(knr) %>% 
-  st_combine()
-
-View(map_2017)
-
-
-plot(map_2017)
-```
-
-```{r}
-map_2017 <- st_read("map_2017_426.gpkg")
-map_2017 <- map_2017 %>% 
-  rename(
-    knr = KOMMUNENUM
-  )
+  group_by(knr) %>% 
+  summarise() %>% 
+  st_transform("EPSG:5973")
 ```
 
 ## Get knr and kNavn from local file
@@ -459,6 +439,8 @@ str(metadata_09429)
 
 -   Api Query
 
+. . .
+
 ::: columns
 ::: {.column width="50%"}
 ```{r}
@@ -496,8 +478,10 @@ edu_2017 <- ApiData(
     # we want in percent
     ContentsCode = "PersonerProsent",
     Region = map_2017$knr,
-    # Drop "00" since total, 100%, also dro "09a" Uoppgit
-    Nivaa = c("01", "02a", "11", "03a", "04a"),
+    # Drop "00" since total, 
+    # 100%, also dro "09a" Uoppgit
+    Nivaa = c("01", "02a", 
+              "11", "03a", "04a"),
     Kjonn = FALSE,
     Tid = "2017"
 )
@@ -510,7 +494,7 @@ edu_2017 <- tibble(
   knr = edu_2017$dataset$Region , 
   # want level descriptions, not code
   nivaa = edu_2017$`09429: Personer 16 år og over, etter region, nivå, statistikkvariabel og år`$nivå,
-  edu_lev_percent= edu_2017$dataset$value
+  edu_lev_percent = edu_2017$dataset$value
   )
 ```
 :::
