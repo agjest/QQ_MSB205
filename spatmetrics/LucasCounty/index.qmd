@@ -1,0 +1,562 @@
+---
+title: "Spatial Hedonic Model for subset (n=3000) of Lucas County housing data"
+author: "Arnstein Gjestland"
+institute: "HVL"
+date: "Spring 2021 (revised autumn 2022)"
+format:
+  revealjs:
+        theme: simple
+        footer: '[MSB205](/index.html)'
+        reveal_options:
+        code-fold: show
+        incremental: true
+        smaller: true
+        scrollable: true
+        slide-number: c/t
+editor: visual
+editor_options:
+  markdown:
+    wrap: sentence
+    canonical: true
+    chunk_output_type: console
+echo: true
+eval: true
+bibliography: [references.bib, LucasCounty-packages.bib]
+nocite: '@*'
+---
+
+```{r}
+# To install urbnmapr from github
+devtools::install_github("UrbanInstitute/urbnmapr")
+```
+
+```{r}
+# for demean
+suppressPackageStartupMessages({
+library(Jmisc)
+library(sf)
+library(urbnmapr)
+library(tidyverse)
+library(ggplot2)
+library(sp)
+library(spdep)
+library(spatialreg)
+library(spData)
+library(huxtable)
+library(knitr)
+})
+# Options
+options(scipen = 7)
+```
+
+```{r}
+#| include: false
+# create a bib file for the R packages
+# used in this document
+# Note! Needs to do a touch ag_model_basics.bib in terminal before first run
+# else stops when bibliography: "ag_model_basics.bib" not found in YAML
+knitr::write_bib(
+  c(
+  Jmisc,
+  sf,
+  urbnmapr,
+  tidyverse,
+  ggplot2,
+  sp,
+  spdep,
+  spatialreg,
+  spData,
+  huxtable,
+  knitr
+    ),
+  file = "LucasCounty-packages.bib"
+  )
+```
+
+## Read in data
+
+```{r}
+data(house)
+#head(house, n=10)
+house_sf <- st_as_sf(house)
+#head(house_sf, n=10)
+dim(house_sf)
+set.seed(42)# What else could it be?
+red_house_sf <- house_sf[sample(1:dim(house_sf)[1], size = 3000), ]
+plot(house_sf["price"], cex = 0.01, pch = 20)
+dim(red_house_sf)
+```
+
+## Some info regarding the dataset (from R help)
+
+Data on 25,357 single family homes sold in Lucas County, Ohio, 1993-1998 from the county auditor.
+
+Formal class 'SpatialPointsDataFrame' \[package "sp"\] with 5 slots.
+The data slot is a data frame with 25357 observations on the following 24 variables.
+
+price
+
+:   a numeric vector
+
+yrbuilt
+
+:   a numeric vector
+
+stories
+
+:   a factor with levels one bilevel multilvl one+half two two+half three
+
+TLA
+
+:   a numeric vector
+
+wall
+
+:   a factor with levels stucdrvt ccbtile metlvnyl brick stone wood partbrk
+
+beds
+
+:   a numeric vector
+
+baths
+
+:   a numeric vector
+
+halfbaths
+
+:   a numeric vector
+
+## Some info regarding the dataset (from R help) cont.
+
+frontage
+
+:   a numeric vector
+
+depth
+
+:   a numeric vector
+
+garage
+
+:   a factor with levels no garage basement attached detached carport
+
+garagesqft
+
+:   a numeric vector
+
+rooms
+
+:   a numeric vector
+
+lotsize
+
+:   a numeric vector
+
+sdate
+
+:   a numeric vector
+
+avalue
+
+:   a numeric vector
+
+## Some info regarding the dataset (from R help) cont.
+
+s1993
+
+:   a numeric vector
+
+s1994
+
+:   a numeric vector
+
+s1995
+
+:   a numeric vector
+
+s1996
+
+:   a numeric vector
+
+s1997
+
+:   a numeric vector
+
+s1998
+
+:   a numeric vector
+
+syear
+
+:   a factor with levels 1993 1994 1995 1996 1997 1998
+
+age
+
+:   a numeric vector
+
+## Some info regarding the dataset (from R help) cont.
+
+Its projection is CRS(+init=epsg:2834), the Ohio North State Plane.
+
+## Convert from SpatialPointsDataFrame to sf
+
+We convert from SpatialPointsDataFrame to sf (simple feature, point).
+
+```{r}
+hist(100*house_sf$age, breaks = 30)
+summary(100*house_sf$age)
+```
+
+```{r}
+my_age <- as.numeric(levels(house_sf$syear))[as.integer(house_sf$syear)] - house_sf$yrbuilt
+my_age <- my_age + 3
+my_age1 <- 1999 - house_sf$yrbuilt
+summary(100*house_sf$age - my_age)
+hist(my_age1, breaks = 30)
+summary(my_age1)
+table(round(my_age1, 3) == round(100*house_sf$age, 3))
+```
+
+## Changing the age variable
+
+Ok, the age variable is the age of the house 1999 (not when sold), divided by 100.
+The age of the house when sold seems to be a more reasonable variable.
+
+```{r}
+# Trying to follow Bivand 2011, NHH Discussion Paper
+# age seems to include strange values. Turns out to be age in 1999 divided by 100
+# We calculate age at time of sale as age_sold = syear - yrbuilt
+# syear is factor, convert to numeric
+red_house_sf$age_sold <- as.numeric(levels(red_house_sf$syear))[as.integer(red_house_sf$syear)] - red_house_sf$yrbuilt
+# Scale age_sold by dividing by 100
+red_house_sf$age_sold <- red_house_sf$age_sold/100
+hmod1 <- "I(log(price)) ~ I(age_sold) + I(age_sold^2) + 
+I(age_sold^3) + I(log(TLA)) + I(log(lotsize)) + rooms + beds + syear"
+```
+
+## Running the first model
+
+```{r}
+lm1 <- lm(hmod1, data = red_house_sf)
+```
+
+```{r}
+summary(lm1)
+```
+
+## Generate neighbour structure
+
+**Find 5 nearest,** make neighbour list and finally convert the neighbour list to a row standardised weight matrix.
+
+```{r}
+red_house_sf_mat_nb <- knearneigh(red_house_sf, k = 5)
+red_house_sf_nb <- knn2nb(red_house_sf_mat_nb)
+red_house_sf_w <- nb2listw(red_house_sf_nb, style = "W")
+```
+
+Plot the price of a house against the mean price of its (5 nearest) neighbours.
+There seems to be a positive spatial association
+
+## Moran Plot
+
+```{r}
+moran.plot(log(red_house_sf$price), listw = red_house_sf_w, labels = FALSE, pch = 20, cex=0.3)
+```
+
+## Approximate profile-likelihood estimator (APLE)
+
+Approximate profile-likelihood estimator (APLE), see [@OnestepEstimationSpatial]
+
+```{r}
+# Calculate APLE for the variables
+red_house_sf %>% 
+  select(price, age_sold, TLA, lotsize, rooms, beds) %>% 
+  st_set_geometry(., NULL) %>% 
+  demean() %>% 
+  as_tibble() %>% 
+  map(aple,listw = red_house_sf_w)
+```
+
+## Conclusion APLE
+
+We see that the strength of positive spatial dependence is greatest for `price` and `lotsize` and lowest for number of bedrooms (`beds`) in the dwellings.
+The slightly negative spatial association for the age of a sold house is perhaps a bit more surprising.
+
+> \[APLE\], which may be viewed somewhat like a correlation coefficient between the values observed for each state and the average values for neighbouring states.[@bivandReviewSoftwareSpatial2021]
+
+```{r}
+# If we want to see which obs. are the most influential we can change labels to TRUE
+# The row number for each influential obs. will then be plotted in the figure.
+moran.plot(red_house_sf$age_sold, listw = red_house_sf_w, 
+           labels = FALSE, pch = 20, cex=0.3)
+```
+
+```{r}
+# Remember that age_sold is scaled by 1/100, so the max age 1.59 is in fact 159 years
+summary(red_house_sf$age_sold)
+```
+
+## Spatial models
+
+-   Local: SDEM, SEM, SLX, lm
+
+-   Global: SDM, SAR, SLX, SEM, lm
+
+## Local, start with SDEM
+
+```{r SDEM, cache=TRUE}
+# Some of these models are quite expensive to compute, so we cache the results
+# It should automagically be recomputed if something change, but caching is complex
+# so we should check that the models really are recomputed if we change the data or model
+# Note the use of the option Durbin to choose the kind of model, used to be done by the options
+# type and etype until recently.
+SDEM <- errorsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRUE)
+```
+
+```{r}
+summary(impacts(SDEM), zstats = TRUE)
+```
+
+## Local, SEM
+
+```{r SEM, cache = TRUE}
+# No spatial effects in the explanatory variables
+SEM <- errorsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = FALSE)
+```
+
+```{r}
+# normal summary, no impacts
+summary(SEM)
+```
+
+## Local, SLX
+
+```{r SLX}
+# SLX is not costly to compute, so no caching
+SLX <- lmSLX(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRUE)
+```
+
+```{r}
+# NEW
+summary(SLX)
+```
+
+```{r}
+summary(impacts(SLX))
+```
+
+## Choosing a local model
+
+```{r}
+LR.Sarlm(SEM, SDEM)
+```
+
+Discard H0, do not restrict to SEM.
+We keep $\theta > 0$.
+
+```{r}
+LR.Sarlm(SDEM, SLX)
+```
+
+We discard H0 and will not restrict to SLX, continue with SDEM.
+
+```{r}
+LR.Sarlm(SDEM, lm1)
+```
+
+Discard H0, we will not restrict to OLS.
+
+We end up with SDEM as the best local model (no endogeniety in the price variable).
+
+```{r}
+# residuals are with attributes, hence as.vector()
+moran.plot(SDEM$residuals, listw = red_house_sf_w)
+```
+
+## Results
+
+```{r}
+# Do not use "SDEM" = SDEM, report coeffisent estimates not impacts
+huxreg("OLS" = lm1, "SEM" = SEM, 
+       error_format = "({statistic})",
+       note = "{stars}. T-values reported.")
+```
+
+### Compare impacts from SDEM and SLX model
+
+```{r}
+# tidy(SDEM) or tidy(SLX) reports regression coefficients
+# make our own table for easy comparison of impacts
+i_SDEM <- impacts(SDEM)$impacts %>% 
+  as_tibble() %>% 
+  mutate(
+    variable = names(impacts(SDEM)$impacts$direct)
+  ) %>% 
+  select(variable, everything())
+
+i_SLX <- impacts(SLX)$impacts %>% 
+  as_tibble()
+
+names(i_SDEM)[2:4] <- paste("SDEM", names(i_SDEM)[2:4], sep = "_")
+names(i_SLX) <- paste("SLX", names(i_SLX), sep = "_")
+i_SDEM_SLX <- cbind(i_SDEM, i_SLX)
+i_SDEM_SLX <- cbind(variable = i_SDEM_SLX[, "variable"], 
+                    round(i_SDEM_SLX[, -1], 6))
+kable(i_SDEM_SLX[, c(1:2,5,3,6,4,7)])
+```
+
+## Global
+
+Spatial lag in y and X.
+
+```{r SDM, cache=TRUE}
+# expensive to compute
+SDM <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRUE)
+```
+
+```{r SDMimpacts, cache = TRUE}
+# Computing the impacts is expensive too
+impacts(SDM, listw = red_house_sf_w)
+```
+
+```{r SDMimpactsZ, cache = TRUE}
+# Simulated, varies somewhat with each sample (note that seed is set above). Results might 
+# differ with another seed
+summary(impacts(SDM, listw = red_house_sf_w, R=500), zstats = TRUE)
+```
+
+```{r SAR, cache = TRUE}
+SAR <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = FALSE)
+```
+
+```{r}
+# NEW
+summary(SAR)
+```
+
+```{r SARimpactsZ, cache = TRUE}
+summary(impacts(SAR, listw = red_house_sf_w, R=500), zstats = TRUE)
+```
+
+```{r}
+LR.Sarlm(SDM, SAR)
+```
+
+We reject H0 and do not restrict to SAR.
+Keep SDM.
+
+```{r}
+# SLX estimated above
+LR.Sarlm(SDM, SLX)
+```
+
+We reject H0 and do not restrict to SLX.
+Keep SDM.
+
+```{r}
+# Common factor?
+LR.Sarlm(SDM, SEM)
+```
+
+We reject H0 and do not restrict to SEM.
+Keep SDM.
+
+```{r}
+LR.Sarlm(SDM, lm1)
+```
+
+We reject H0 and do not restrict to OLS.
+SDM seems to be the best global model.
+We have spatial effects both in price and the explanatory variables.
+There is a strong negative indirect effect regarding number of rooms that might be regarded as counter intuitive and should perhaps be looked further into.
+
+```{r, cache=TRUE}
+summary(impacts(SDM, listw = red_house_sf_w, R=1000), zstats = TRUE)
+```
+
+```{r}
+# residuals are with attributes, hence as.vector()
+moran.plot(as.vector(SDM$residuals), listw = red_house_sf_w)
+```
+
+## Some tests
+
+## Are our residuals normal?
+
+SDEM
+
+```{r}
+library(DescTools)
+# H0: residuals normal
+JarqueBeraTest(residuals(SDEM), robust = TRUE)
+# Conclusion: not normal
+```
+
+Far from normal.
+
+SDM
+
+```{r}
+# H0: residuals normal
+JarqueBeraTest(residuals(SDM), robust = TRUE)
+# Conclusion: not normal
+```
+
+Far from normal.
+
+## Heteroskedasticity?
+
+```{r}
+# test for Heteroskedasticity
+bptest.Sarlm(SDEM, studentize = TRUE)
+```
+
+```{r}
+# test for Heteroskedasticity
+bptest.Sarlm(SDM, studentize = TRUE)
+```
+
+## MAPS
+
+```{r}
+#  Start of code to draw a map of Lucas County
+#
+#
+# counties %>% 
+#   filter(county_name == "Lucas County")
+# 
+# 
+# tmp <- countydata %>% 
+#   left_join(counties, by = "county_fips") %>% 
+#   filter(state_name =="Ohio") %>% 
+#   filter(county_name == "Lucas County") %>% 
+#   ggplot(mapping = aes(long, lat, group = group, fill = horate)) +
+#   geom_polygon(color = "#ffffff", size = .25)
+# 
+# class(countydata)
+# names(countydata)
+# class(counties)
+# names(counties)
+# 
+# tmp_sf <- st_as_sf(counties, coords = c("long", "lat"), 
+#     crs = 2834)
+# 
+# names(tmp_sf)
+# 
+# tmp_sf %>% 
+#   filter(state_name == "Ohio") %>% 
+#   filter(county_name == "Lucas County") 
+# 
+# test <- st_cast(tmp_sf, "MULTIPOINT")
+# test1 <- st_cast(test, "POLYGON")
+# 
+# names(tmp_sf)
+# 
+# tmp <- st_transform(tmp, 2834)
+# tmp
+# head(countydata)
+```
+
+```{r}
+#siste
+```

@@ -4,3 +4,4 @@ editor: visual
 ---
 
 -   [Getting Data](data/index.qmd)
+-   [Lucas County Houseing Data](LucasCounty/index.qmd)
