@@ -75,6 +75,8 @@ knitr::write_bib(
 
 ## Read in data
 
+Bare midlertidig tull
+
 ```{r}
 data(house)
 #head(house, n=10)
