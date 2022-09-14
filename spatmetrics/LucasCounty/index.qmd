@@ -220,6 +220,11 @@ summary(100*house_sf$age - my_age)
 
 ```{r}
 hist(my_age1, breaks = 30)
+```
+
+## From SpatialPointsDataFrame to sf cont.
+
+```{r}
 summary(my_age1)
 table(round(my_age1, 3) == round(100*house_sf$age, 3))
 ```
@@ -237,15 +242,22 @@ The age of the house when sold seems to be a more reasonable variable.
 red_house_sf$age_sold <- as.numeric(levels(red_house_sf$syear))[as.integer(red_house_sf$syear)] - red_house_sf$yrbuilt
 # Scale age_sold by dividing by 100
 red_house_sf$age_sold <- red_house_sf$age_sold/100
-hmod1 <- "I(log(price)) ~ I(age_sold) + I(age_sold^2) + 
-I(age_sold^3) + I(log(TLA)) + I(log(lotsize)) + rooms + beds + syear"
 ```
 
 ## Running the first model
 
 ```{r}
+# define the model
+hmod1 <- "I(log(price)) ~ I(age_sold) + I(age_sold^2) + 
+I(age_sold^3) + I(log(TLA)) + I(log(lotsize)) + rooms + beds + syear"
+```
+
+```{r}
+# put result in lm1
 lm1 <- lm(hmod1, data = red_house_sf)
 ```
+
+## Running the first model cont.
 
 ```{r}
 summary(lm1)
@@ -286,16 +298,16 @@ red_house_sf %>%
 
 ## Conclusion APLE
 
-We see that the strength of positive spatial dependence is greatest for `price` and `lotsize` and lowest for number of bedrooms (`beds`) in the dwellings.
-The slightly negative spatial association for the age of a sold house is perhaps a bit more surprising.
+We see that the strength of positive spatial dependence is greatest for `price`, `TLA` and `lotsize` and lowest for number of bedrooms (`beds`) in the dwellings.
 
 > \[APLE\], which may be viewed somewhat like a correlation coefficient between the values observed for each state and the average values for neighbouring states.[@bivandReviewSoftwareSpatial2021]
 
 ```{r}
-# If we want to see which obs. are the most influential we can change labels to TRUE
+# If we want to see which obs. are the most influential we can 
+# change labels to TRUE
 # The row number for each influential obs. will then be plotted in the figure.
 moran.plot(red_house_sf$age_sold, listw = red_house_sf_w, 
-           labels = FALSE, pch = 20, cex=0.3)
+           labels = FALSE, pch = 20, cex = 0.3)
 ```
 
 ```{r}
@@ -311,14 +323,18 @@ summary(red_house_sf$age_sold)
 
 ## Local, start with SDEM
 
-```{r SDEM, cache=TRUE}
+```{r SDEM}
+#| cache: true
+#
 # Some of these models are quite expensive to compute, so we cache the results
 # It should automagically be recomputed if something change, but caching is complex
 # so we should check that the models really are recomputed if we change the data or model
-# Note the use of the option Durbin to choose the kind of model, used to be done by the options
+# Note the use of the option Durbin to choose the kind of model. Used to be done by the options
 # type and etype until recently.
 SDEM <- errorsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRUE)
 ```
+
+## Local, start with SDEM cont.
 
 ```{r}
 summary(impacts(SDEM), zstats = TRUE)
@@ -326,10 +342,14 @@ summary(impacts(SDEM), zstats = TRUE)
 
 ## Local, SEM
 
-```{r SEM, cache = TRUE}
+```{r SEM}
+#| cache: true
+#
 # No spatial effects in the explanatory variables
 SEM <- errorsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = FALSE)
 ```
+
+## Local, SEM cont.
 
 ```{r}
 # normal summary, no impacts
@@ -343,10 +363,14 @@ summary(SEM)
 SLX <- lmSLX(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRUE)
 ```
 
+## Local, SLX cont.
+
 ```{r}
 # NEW
 summary(SLX)
 ```
+
+## Local, SLX cont.
 
 ```{r}
 summary(impacts(SLX))
@@ -416,23 +440,31 @@ kable(i_SDEM_SLX[, c(1:2,5,3,6,4,7)])
 
 Spatial lag in y and X.
 
-```{r SDM, cache=TRUE}
+```{r SDM}
+#| cache: true
+#
 # expensive to compute
 SDM <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRUE)
 ```
 
-```{r SDMimpacts, cache = TRUE}
+```{r SDMimpacts}
+#| cache: true
+#
 # Computing the impacts is expensive too
 impacts(SDM, listw = red_house_sf_w)
 ```
 
-```{r SDMimpactsZ, cache = TRUE}
+```{r SDMimpactsZ}
+#| cache: true
+#
 # Simulated, varies somewhat with each sample (note that seed is set above). Results might 
 # differ with another seed
 summary(impacts(SDM, listw = red_house_sf_w, R=500), zstats = TRUE)
 ```
 
-```{r SAR, cache = TRUE}
+```{r SAR}
+#| cache: true
+#
 SAR <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = FALSE)
 ```
 
@@ -441,7 +473,9 @@ SAR <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = FAL
 summary(SAR)
 ```
 
-```{r SARimpactsZ, cache = TRUE}
+```{r SARimpactsZ}
+#| cache: true
+#
 summary(impacts(SAR, listw = red_house_sf_w, R=500), zstats = TRUE)
 ```
 
