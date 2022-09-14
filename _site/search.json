@@ -1272,5 +1272,26 @@
     "title": "Spatial Hedonic Model",
     "section": "Dataset info (R help)",
     "text": "Dataset info (R help)\nIts projection is CRS(+init=epsg:2834), the Ohio North State Plane."
+  },
+  {
+    "objectID": "spatmetrics/LucasCounty/index.html#from-spatialpointsdataframe-to-sf",
+    "href": "spatmetrics/LucasCounty/index.html#from-spatialpointsdataframe-to-sf",
+    "title": "Spatial Hedonic Model",
+    "section": "From SpatialPointsDataFrame to sf",
+    "text": "From SpatialPointsDataFrame to sf\nWe convert from SpatialPointsDataFrame to sf (simple feature, point).\n\n\nCode\nhist(100*house_sf$age, breaks = 30)"
+  },
+  {
+    "objectID": "spatmetrics/LucasCounty/index.html#from-spatialpointsdataframe-to-sf-cont.",
+    "href": "spatmetrics/LucasCounty/index.html#from-spatialpointsdataframe-to-sf-cont.",
+    "title": "Spatial Hedonic Model",
+    "section": "From SpatialPointsDataFrame to sf cont.",
+    "text": "From SpatialPointsDataFrame to sf cont.\n\n\nCode\nsummary(100*house_sf$age)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00   35.00   49.00   53.66   75.00  164.00 \n\n\n\n\nCode\nmy_age <- as.numeric(levels(house_sf$syear))[as.integer(house_sf$syear)] - house_sf$yrbuilt\nmy_age <- my_age + 3\nmy_age1 <- 1999 - house_sf$yrbuilt\n\n\n\n\nCode\nsummary(100*house_sf$age - my_age)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n-2.0000 -1.0000  0.0000  0.2981  2.0000  3.0000"
+  },
+  {
+    "objectID": "spatmetrics/LucasCounty/index.html#from-spatialpointsdataframe-to-sf-cont.-1",
+    "href": "spatmetrics/LucasCounty/index.html#from-spatialpointsdataframe-to-sf-cont.-1",
+    "title": "Spatial Hedonic Model",
+    "section": "From SpatialPointsDataFrame to sf cont.",
+    "text": "From SpatialPointsDataFrame to sf cont.\n\n\nCode\nhist(my_age1, breaks = 30)\n\n\n\nCode\nsummary(my_age1)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   1.00   35.00   49.00   53.66   75.00  164.00 \n\n\nCode\ntable(round(my_age1, 3) == round(100*house_sf$age, 3))\n\n\n\n TRUE \n25357"
   }
 ]

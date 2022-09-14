@@ -192,12 +192,17 @@ age
 
 Its projection is CRS(+init=epsg:2834), the Ohio North State Plane.
 
-## Convert from SpatialPointsDataFrame to sf
+## From SpatialPointsDataFrame to sf
 
 We convert from SpatialPointsDataFrame to sf (simple feature, point).
 
 ```{r}
 hist(100*house_sf$age, breaks = 30)
+```
+
+## From SpatialPointsDataFrame to sf cont.
+
+```{r}
 summary(100*house_sf$age)
 ```
 
@@ -205,7 +210,15 @@ summary(100*house_sf$age)
 my_age <- as.numeric(levels(house_sf$syear))[as.integer(house_sf$syear)] - house_sf$yrbuilt
 my_age <- my_age + 3
 my_age1 <- 1999 - house_sf$yrbuilt
+```
+
+```{r}
 summary(100*house_sf$age - my_age)
+```
+
+## From SpatialPointsDataFrame to sf cont.
+
+```{r}
 hist(my_age1, breaks = 30)
 summary(my_age1)
 table(round(my_age1, 3) == round(100*house_sf$age, 3))
