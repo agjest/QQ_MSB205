@@ -1,5 +1,6 @@
 ---
-title: "Spatial Hedonic Model for subset (n=3000) of Lucas County housing data"
+title: "Spatial Hedonic Model"
+subtitle: "Subset (n=3000) of Lucas County housing data"
 author: "Arnstein Gjestland"
 institute: "HVL"
 date: "Spring 2021 (revised autumn 2022)"
@@ -24,6 +25,8 @@ eval: true
 bibliography: [references.bib, LucasCounty-packages.bib]
 nocite: '@*'
 ---
+
+## Loading packages
 
 ```{r}
 # To install urbnmapr from github
@@ -57,25 +60,23 @@ options(scipen = 7)
 # else stops when bibliography: "ag_model_basics.bib" not found in YAML
 knitr::write_bib(
   c(
-  Jmisc,
-  sf,
-  urbnmapr,
-  tidyverse,
-  ggplot2,
-  sp,
-  spdep,
-  spatialreg,
-  spData,
-  huxtable,
-  knitr
+  "Jmisc",
+  "sf",
+  "urbnmapr",
+  "tidyverse",
+  "ggplot2",
+  "sp",
+  "spdep",
+  "spatialreg",
+  "spData",
+  "huxtable",
+  "knitr"
     ),
   file = "LucasCounty-packages.bib"
   )
 ```
 
 ## Read in data
-
-Bare midlertidig tull
 
 ```{r}
 data(house)
@@ -85,11 +86,20 @@ house_sf <- st_as_sf(house)
 dim(house_sf)
 set.seed(42)# What else could it be?
 red_house_sf <- house_sf[sample(1:dim(house_sf)[1], size = 3000), ]
+```
+
+## Quick check of data
+
+```{r}
+#| cache: true
 plot(house_sf["price"], cex = 0.01, pch = 20)
+```
+
+```{r}
 dim(red_house_sf)
 ```
 
-## Some info regarding the dataset (from R help)
+## Dataset info (R help)
 
 Data on 25,357 single family homes sold in Lucas County, Ohio, 1993-1998 from the county auditor.
 
@@ -112,6 +122,8 @@ TLA
 
 :   a numeric vector
 
+## Dataset info (R help)
+
 wall
 
 :   a factor with levels stucdrvt ccbtile metlvnyl brick stone wood partbrk
@@ -127,8 +139,6 @@ baths
 halfbaths
 
 :   a numeric vector
-
-## Some info regarding the dataset (from R help) cont.
 
 frontage
 
@@ -150,6 +160,8 @@ rooms
 
 :   a numeric vector
 
+## Dataset info (R help)
+
 lotsize
 
 :   a numeric vector
@@ -162,9 +174,7 @@ avalue
 
 :   a numeric vector
 
-## Some info regarding the dataset (from R help) cont.
-
-s1993
+s1993 to s1998
 
 :   a numeric vector
 
@@ -196,7 +206,7 @@ age
 
 :   a numeric vector
 
-## Some info regarding the dataset (from R help) cont.
+## Dataset info (R help)
 
 Its projection is CRS(+init=epsg:2834), the Ohio North State Plane.
 

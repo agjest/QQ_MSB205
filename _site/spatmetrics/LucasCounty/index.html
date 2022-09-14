@@ -1,0 +1,2700 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.36">
+
+  <meta name="author" content="Arnstein Gjestland">
+  <title>MSB205 - Spatial Hedonic Model</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Spatial Hedonic Model</h1>
+  <p class="subtitle">Subset (n=3000) of Lucas County housing data</p>
+  <p class="author">Arnstein Gjestland</p>
+  <p class="institute">HVL</p>
+  <p class="date">Spring 2021 (revised autumn 2022)</p>
+</section>
+
+<section id="loading-packages" class="slide level2">
+<h2>Loading packages</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># To install urbnmapr from github</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"UrbanInstitute/urbnmapr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># for demean</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">library</span>(Jmisc)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">library</span>(urbnmapr)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="fu">library</span>(sp)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">library</span>(spatialreg)</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="fu">library</span>(spData)</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="fu">library</span>(huxtable)</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-14"><a href="#cb2-14"></a>})</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># Options</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="read-in-data" class="slide level2">
+<h2>Read in data</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">data</span>(house)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#head(house, n=10)</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>house_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(house)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#head(house_sf, n=10)</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">dim</span>(house_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25357    25</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)<span class="co"># What else could it be?</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>red_house_sf <span class="ot">&lt;-</span> house_sf[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(house_sf)[<span class="dv">1</span>], <span class="at">size =</span> <span class="dv">3000</span>), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="quick-check-of-data" class="slide level2">
+<h2>Quick check of data</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-5_f17229dd1707c266c7a18063b723c9c5">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">plot</span>(house_sf[<span class="st">"price"</span>], <span class="at">cex =</span> <span class="fl">0.01</span>, <span class="at">pch =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">dim</span>(red_house_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3000   25</code></pre>
+</div>
+</div>
+</section>
+<section id="dataset-info-r-help" class="slide level2">
+<h2>Dataset info (R help)</h2>
+<p>Data on 25,357 single family homes sold in Lucas County, Ohio, 1993-1998 from the county auditor.</p>
+<p>Formal class ‘SpatialPointsDataFrame’ [package “sp”] with 5 slots. The data slot is a data frame with 25357 observations on the following 24 variables.</p>
+<dl>
+<dt class="fragment">price</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">yrbuilt</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">stories</dt>
+<dd class="fragment">
+<p>a factor with levels one bilevel multilvl one+half two two+half three</p>
+</dd>
+<dt class="fragment">TLA</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+</dl>
+</section>
+<section id="dataset-info-r-help-1" class="slide level2">
+<h2>Dataset info (R help)</h2>
+<dl>
+<dt class="fragment">wall</dt>
+<dd class="fragment">
+<p>a factor with levels stucdrvt ccbtile metlvnyl brick stone wood partbrk</p>
+</dd>
+<dt class="fragment">beds</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">baths</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">halfbaths</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">frontage</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">depth</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">garage</dt>
+<dd class="fragment">
+<p>a factor with levels no garage basement attached detached carport</p>
+</dd>
+<dt class="fragment">garagesqft</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">rooms</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+</dl>
+</section>
+<section id="dataset-info-r-help-2" class="slide level2">
+<h2>Dataset info (R help)</h2>
+<dl>
+<dt class="fragment">lotsize</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">sdate</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">avalue</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">s1993 to s1998</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">s1994</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">s1995</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">s1996</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">s1997</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">s1998</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+<dt class="fragment">syear</dt>
+<dd class="fragment">
+<p>a factor with levels 1993 1994 1995 1996 1997 1998</p>
+</dd>
+<dt class="fragment">age</dt>
+<dd class="fragment">
+<p>a numeric vector</p>
+</dd>
+</dl>
+</section>
+<section id="dataset-info-r-help-3" class="slide level2">
+<h2>Dataset info (R help)</h2>
+<p>Its projection is CRS(+init=epsg:2834), the Ohio North State Plane.</p>
+</section>
+<section id="convert-from-spatialpointsdataframe-to-sf" class="slide level2">
+<h2>Convert from SpatialPointsDataFrame to sf</h2>
+<p>We convert from SpatialPointsDataFrame to sf (simple feature, point).</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">hist</span>(<span class="dv">100</span><span class="sc">*</span>house_sf<span class="sc">$</span>age, <span class="at">breaks =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">summary</span>(<span class="dv">100</span><span class="sc">*</span>house_sf<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00   35.00   49.00   53.66   75.00  164.00 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>my_age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">levels</span>(house_sf<span class="sc">$</span>syear))[<span class="fu">as.integer</span>(house_sf<span class="sc">$</span>syear)] <span class="sc">-</span> house_sf<span class="sc">$</span>yrbuilt</span>
+<span id="cb12-2"><a href="#cb12-2"></a>my_age <span class="ot">&lt;-</span> my_age <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>my_age1 <span class="ot">&lt;-</span> <span class="dv">1999</span> <span class="sc">-</span> house_sf<span class="sc">$</span>yrbuilt</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">summary</span>(<span class="dv">100</span><span class="sc">*</span>house_sf<span class="sc">$</span>age <span class="sc">-</span> my_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-2.0000 -1.0000  0.0000  0.2981  2.0000  3.0000 </code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">hist</span>(my_age1, <span class="at">breaks =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">summary</span>(my_age1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00   35.00   49.00   53.66   75.00  164.00 </code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">table</span>(<span class="fu">round</span>(my_age1, <span class="dv">3</span>) <span class="sc">==</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>house_sf<span class="sc">$</span>age, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ TRUE 
+25357 </code></pre>
+</div>
+</div>
+</section>
+<section id="changing-the-age-variable" class="slide level2">
+<h2>Changing the age variable</h2>
+<p>Ok, the age variable is the age of the house 1999 (not when sold), divided by 100. The age of the house when sold seems to be a more reasonable variable.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Trying to follow Bivand 2011, NHH Discussion Paper</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="co"># age seems to include strange values. Turns out to be age in 1999 divided by 100</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="co"># We calculate age at time of sale as age_sold = syear - yrbuilt</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># syear is factor, convert to numeric</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>red_house_sf<span class="sc">$</span>age_sold <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">levels</span>(red_house_sf<span class="sc">$</span>syear))[<span class="fu">as.integer</span>(red_house_sf<span class="sc">$</span>syear)] <span class="sc">-</span> red_house_sf<span class="sc">$</span>yrbuilt</span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="co"># Scale age_sold by dividing by 100</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>red_house_sf<span class="sc">$</span>age_sold <span class="ot">&lt;-</span> red_house_sf<span class="sc">$</span>age_sold<span class="sc">/</span><span class="dv">100</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a>hmod1 <span class="ot">&lt;-</span> <span class="st">"I(log(price)) ~ I(age_sold) + I(age_sold^2) + </span></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="st">I(age_sold^3) + I(log(TLA)) + I(log(lotsize)) + rooms + beds + syear"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="running-the-first-model" class="slide level2">
+<h2>Running the first model</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(hmod1, <span class="at">data =</span> red_house_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = hmod1, data = red_house_sf)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.28253 -0.17076  0.04916  0.23925  2.19288 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      3.18294    0.24525  12.979  &lt; 2e-16 ***
+I(age_sold)      1.36458    0.18896   7.222 6.49e-13 ***
+I(age_sold^2)   -3.07357    0.35572  -8.640  &lt; 2e-16 ***
+I(age_sold^3)    0.69686    0.19888   3.504 0.000465 ***
+I(log(TLA))      0.87255    0.03930  22.203  &lt; 2e-16 ***
+I(log(lotsize))  0.17240    0.01170  14.736  &lt; 2e-16 ***
+rooms            0.02096    0.01216   1.723 0.084952 .  
+beds            -0.03325    0.01771  -1.877 0.060574 .  
+syear1994        0.06870    0.02856   2.406 0.016201 *  
+syear1995        0.09797    0.02789   3.513 0.000450 ***
+syear1996        0.14211    0.02746   5.176 2.42e-07 ***
+syear1997        0.16377    0.02710   6.043 1.70e-09 ***
+syear1998        0.26449    0.02802   9.439  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4175 on 2987 degrees of freedom
+Multiple R-squared:  0.6897,    Adjusted R-squared:  0.6884 
+F-statistic: 553.2 on 12 and 2987 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="generate-neighbour-structure" class="slide level2">
+<h2>Generate neighbour structure</h2>
+<p><strong>Find 5 nearest,</strong> make neighbour list and finally convert the neighbour list to a row standardised weight matrix.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>red_house_sf_mat_nb <span class="ot">&lt;-</span> <span class="fu">knearneigh</span>(red_house_sf, <span class="at">k =</span> <span class="dv">5</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>red_house_sf_nb <span class="ot">&lt;-</span> <span class="fu">knn2nb</span>(red_house_sf_mat_nb)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>red_house_sf_w <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(red_house_sf_nb, <span class="at">style =</span> <span class="st">"W"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Plot the price of a house against the mean price of its (5 nearest) neighbours. There seems to be a positive spatial association</p>
+</section>
+<section id="moran-plot" class="slide level2">
+<h2>Moran Plot</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">moran.plot</span>(<span class="fu">log</span>(red_house_sf<span class="sc">$</span>price), <span class="at">listw =</span> red_house_sf_w, <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex=</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<section id="approximate-profile-likelihood-estimator-aple" class="slide level2">
+<h2>Approximate profile-likelihood estimator (APLE)</h2>
+<p>Approximate profile-likelihood estimator (APLE), see <span class="citation" data-cites="OnestepEstimationSpatial">(<a href="#/ref-OnestepEstimationSpatial" role="doc-biblioref" onclick="return false;"><strong>OnestepEstimationSpatial?</strong></a>)</span></p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Calculate APLE for the variables</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>red_house_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">select</span>(price, age_sold, TLA, lotsize, rooms, beds) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">st_set_geometry</span>(., <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">demean</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">map</span>(aple,<span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$price
+[1] 0.7672068
+
+$age_sold
+[1] 0.7658228
+
+$TLA
+[1] 0.7120571
+
+$lotsize
+[1] 0.5974422
+
+$rooms
+[1] 0.5652239
+
+$beds
+[1] 0.4316318</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion-aple" class="slide level2">
+<h2>Conclusion APLE</h2>
+<p>We see that the strength of positive spatial dependence is greatest for <code>price</code> and <code>lotsize</code> and lowest for number of bedrooms (<code>beds</code>) in the dwellings. The slightly negative spatial association for the age of a sold house is perhaps a bit more surprising.</p>
+<blockquote>
+<p>[APLE], which may be viewed somewhat like a correlation coefficient between the values observed for each state and the average values for neighbouring states.<span class="citation" data-cites="bivandReviewSoftwareSpatial2021">(<a href="#/ref-bivandReviewSoftwareSpatial2021" role="doc-biblioref" onclick="return false;"><strong>bivandReviewSoftwareSpatial2021?</strong></a>)</span></p>
+</blockquote>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># If we want to see which obs. are the most influential we can change labels to TRUE</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co"># The row number for each influential obs. will then be plotted in the figure.</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">moran.plot</span>(red_house_sf<span class="sc">$</span>age_sold, <span class="at">listw =</span> red_house_sf_w, </span>
+<span id="cb27-4"><a href="#cb27-4"></a>           <span class="at">labels =</span> <span class="cn">FALSE</span>, <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex=</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"><div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Remember that age_sold is scaled by 1/100, so the max age 1.59 is in fact 159 years</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="fu">summary</span>(red_house_sf<span class="sc">$</span>age_sold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-0.0200  0.3000  0.4600  0.5014  0.7200  1.5500 </code></pre>
+</div>
+</div>
+</section>
+<section id="spatial-models" class="slide level2">
+<h2>Spatial models</h2>
+<ul>
+<li class="fragment"><p>Local: SDEM, SEM, SLX, lm</p></li>
+<li class="fragment"><p>Global: SDM, SAR, SLX, SEM, lm</p></li>
+</ul>
+</section>
+<section id="local-start-with-sdem" class="slide level2">
+<h2>Local, start with SDEM</h2>
+<div class="cell" data-hash="index_cache/revealjs/SDEM_f81d6fa1ff2cac789943b4aec335cd4a">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Some of these models are quite expensive to compute, so we cache the results</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co"># It should automagically be recomputed if something change, but caching is complex</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="co"># so we should check that the models really are recomputed if we change the data or model</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># Note the use of the option Durbin to choose the kind of model, used to be done by the options</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="co"># type and etype until recently.</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>SDEM <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDEM), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (SDEM, estimable, n):
+                     Direct     Indirect       Total
+I(age_sold)      0.54354495  1.724313763  2.26785872
+I(age_sold^2)   -1.21151106 -3.154619724 -4.36613078
+I(age_sold^3)    0.11989915  0.858429426  0.97832858
+I(log(TLA))      0.72161017  0.325829444  1.04743962
+I(log(lotsize))  0.12000068  0.002125825  0.12212651
+rooms            0.02297956  0.022089512  0.04506907
+beds            -0.02377263 -0.044374996 -0.06814763
+syear1994        0.05822351  0.014444954  0.07266846
+syear1995        0.08315349 -0.081602445  0.00155105
+syear1996        0.11349889 -0.004495018  0.10900387
+syear1997        0.15008363 -0.051995070  0.09808856
+syear1998        0.25156113  0.082365747  0.33392688
+========================================================
+Standard errors:
+                    Direct   Indirect      Total
+I(age_sold)     0.18923927 0.38948601 0.43443469
+I(age_sold^2)   0.34201530 0.75080528 0.85762746
+I(age_sold^3)   0.18247954 0.42982524 0.49956776
+I(log(TLA))     0.03385523 0.08982915 0.10418040
+I(log(lotsize)) 0.01291015 0.02403307 0.02544146
+rooms           0.01026090 0.02939071 0.03485904
+beds            0.01499544 0.04409250 0.05258579
+syear1994       0.02411830 0.07143272 0.08526701
+syear1995       0.02367407 0.06854508 0.08227209
+syear1996       0.02326275 0.06749020 0.08095887
+syear1997       0.02276712 0.06575233 0.07821040
+syear1998       0.02378814 0.06937785 0.08321369
+========================================================
+Z-values:
+                    Direct    Indirect       Total
+I(age_sold)      2.8722631  4.42715202  5.22025240
+I(age_sold^2)   -3.5422715 -4.20164829 -5.09094101
+I(age_sold^3)    0.6570553  1.99715921  1.95835012
+I(log(TLA))     21.3145857  3.62721279 10.05409494
+I(log(lotsize))  9.2950616  0.08845415  4.80029465
+rooms            2.2395272  0.75158132  1.29289471
+beds            -1.5853238 -1.00640696 -1.29593239
+syear1994        2.4140802  0.20221761  0.85224590
+syear1995        3.5124295 -1.19049312  0.01885269
+syear1996        4.8789969 -0.06660253  1.34641049
+syear1997        6.5921205 -0.79077157  1.25416262
+syear1998       10.5750638  1.18720529  4.01288416
+
+p-values:
+                Direct            Indirect     Total        
+I(age_sold)     0.00407544        0.0000095485 0.00000017868
+I(age_sold^2)   0.00039670        0.0000264979 0.00000035629
+I(age_sold^3)   0.51114534        0.0458079    0.050189     
+I(log(TLA))     &lt; 2.22e-16        0.0002865    &lt; 2.22e-16   
+I(log(lotsize)) &lt; 2.22e-16        0.9295157    0.00000158432
+rooms           0.02512163        0.4523029    0.196047     
+beds            0.11289279        0.3142198    0.194999     
+syear1994       0.01577499        0.8397466    0.394078     
+syear1995       0.00044403        0.2338526    0.984959     
+syear1996       0.000001066267611 0.9468981    0.178170     
+syear1997       0.000000000043359 0.4290773    0.209783     
+syear1998       &lt; 2.22e-16        0.2351467    0.00005998135</code></pre>
+</div>
+</div>
+</section>
+<section id="local-sem" class="slide level2">
+<h2>Local, SEM</h2>
+<div class="cell" data-hash="index_cache/revealjs/SEM_fb25fb96adb00ba95e4122e4a7f3b3ec">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># No spatial effects in the explanatory variables</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>SEM <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># normal summary, no impacts</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">summary</span>(SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:errorsarlm(formula = hmod1, data = red_house_sf, listw = red_house_sf_w, 
+    Durbin = FALSE)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-2.247145 -0.123725  0.048252  0.183358  1.409720 
+
+Type: error 
+Coefficients: (asymptotic standard errors) 
+                  Estimate Std. Error z value  Pr(&gt;|z|)
+(Intercept)      4.5722371  0.2218972 20.6052 &lt; 2.2e-16
+I(age_sold)      0.4324416  0.1929360  2.2414 0.0250019
+I(age_sold^2)   -1.2513269  0.3432463 -3.6456 0.0002668
+I(age_sold^3)    0.2529478  0.1798265  1.4066 0.1595397
+I(log(TLA))      0.6881769  0.0328172 20.9700 &lt; 2.2e-16
+I(log(lotsize))  0.1547907  0.0129766 11.9285 &lt; 2.2e-16
+rooms            0.0203277  0.0094133  2.1595 0.0308137
+beds            -0.0154644  0.0134197 -1.1524 0.2491686
+syear1994        0.0591256  0.0214624  2.7549 0.0058719
+syear1995        0.1019680  0.0209649  4.8638 1.152e-06
+syear1996        0.1156346  0.0206226  5.6072 2.057e-08
+syear1997        0.1581283  0.0206646  7.6521 1.976e-14
+syear1998        0.2419856  0.0210379 11.5024 &lt; 2.2e-16
+
+Lambda: 0.71779, LR test value: 1068.1, p-value: &lt; 2.22e-16
+Asymptotic standard error: 0.012617
+    z-value: 56.889, p-value: &lt; 2.22e-16
+Wald statistic: 3236.4, p-value: &lt; 2.22e-16
+
+Log likelihood: -1095.658 for error model
+ML residual variance (sigma squared): 0.10709, (sigma: 0.32725)
+Number of observations: 3000 
+Number of parameters estimated: 15 
+AIC: 2221.3, (AIC for lm: 3287.4)</code></pre>
+</div>
+</div>
+</section>
+<section id="local-slx" class="slide level2">
+<h2>Local, SLX</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># SLX is not costly to compute, so no caching</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>SLX <span class="ot">&lt;-</span> <span class="fu">lmSLX</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># NEW</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">summary</span>(SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = formula(paste("y ~ ", paste(colnames(x)[-1], collapse = "+"))), 
+    data = as.data.frame(x), weights = weights)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.14787 -0.16031  0.03406  0.21892  1.74104 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)          1.38667    0.39699   3.493 0.000485 ***
+I.age_sold.          0.38157    0.22873   1.668 0.095382 .  
+I.age_sold.2.       -0.85171    0.40573  -2.099 0.035883 *  
+I.age_sold.3.       -0.09377    0.21181  -0.443 0.658017    
+I.log.TLA..          0.73652    0.03866  19.052  &lt; 2e-16 ***
+I.log.lotsize..      0.12926    0.01603   8.065 1.05e-15 ***
+rooms                0.01628    0.01124   1.449 0.147501    
+beds                -0.02206    0.01622  -1.360 0.173951    
+syear1994            0.05145    0.02611   1.970 0.048899 *  
+syear1995            0.07881    0.02553   3.086 0.002045 ** 
+syear1996            0.11734    0.02513   4.670 3.15e-06 ***
+syear1997            0.14640    0.02488   5.885 4.41e-09 ***
+syear1998            0.23996    0.02566   9.351  &lt; 2e-16 ***
+lag.I.age_sold.      1.15103    0.30450   3.780 0.000160 ***
+lag.I.age_sold.2.   -1.64942    0.57575  -2.865 0.004202 ** 
+lag.I.age_sold.3.   -0.19096    0.32339  -0.591 0.554896    
+lag.I.log.TLA..      0.53352    0.07137   7.475 1.01e-13 ***
+lag.I.log.lotsize.. -0.03657    0.02014  -1.815 0.069590 .  
+lag.rooms           -0.02126    0.02312  -0.920 0.357889    
+lag.beds            -0.07522    0.03587  -2.097 0.036045 *  
+lag.syear1994        0.00707    0.05885   0.120 0.904383    
+lag.syear1995       -0.11414    0.05515  -2.070 0.038566 *  
+lag.syear1996        0.04710    0.05467   0.862 0.389028    
+lag.syear1997       -0.04288    0.05345  -0.802 0.422461    
+lag.syear1998        0.01115    0.05630   0.198 0.843002    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.3806 on 2975 degrees of freedom
+Multiple R-squared:  0.7432,    Adjusted R-squared:  0.7411 
+F-statistic: 358.7 on 24 and 2975 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SLX))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (SlX, estimable, n-k):
+                     Direct    Indirect        Total
+I(age_sold)      0.38156590  1.15103005  1.532595952
+I(age_sold^2)   -0.85170575 -1.64942197 -2.501127726
+I(age_sold^3)   -0.09376923 -0.19096402 -0.284733249
+I(log(TLA))      0.73652194  0.53352169  1.270043628
+I(log(lotsize))  0.12925829 -0.03656680  0.092691491
+rooms            0.01628444 -0.02125872 -0.004974276
+beds            -0.02206352 -0.07522198 -0.097285494
+syear1994        0.05145317  0.00707043  0.058523597
+syear1995        0.07880749 -0.11414540 -0.035337908
+syear1996        0.11733890  0.04710113  0.164440031
+syear1997        0.14640447 -0.04288481  0.103519660
+syear1998        0.23996283  0.01115155  0.251114383
+========================================================
+Standard errors:
+                    Direct   Indirect      Total
+I(age_sold)     0.22872967 0.30449602 0.24918360
+I(age_sold^2)   0.40572698 0.57575170 0.50525662
+I(age_sold^3)   0.21181383 0.32339030 0.30064908
+I(log(TLA))     0.03865767 0.07137542 0.07111016
+I(log(lotsize)) 0.01602681 0.02014448 0.01484568
+rooms           0.01124002 0.02311892 0.02442589
+beds            0.01622385 0.03586492 0.03868248
+syear1994       0.02611467 0.05885307 0.06406798
+syear1995       0.02553422 0.05515050 0.06017843
+syear1996       0.02512742 0.05467291 0.05970609
+syear1997       0.02487559 0.05345438 0.05731268
+syear1998       0.02566200 0.05630042 0.06152147
+========================================================
+Z-values:
+                    Direct   Indirect      Total
+I(age_sold)      1.6681959  3.7801153  6.1504688
+I(age_sold^2)   -2.0992091 -2.8648148 -4.9502127
+I(age_sold^3)   -0.4426965 -0.5905063 -0.9470618
+I(log(TLA))     19.0524144  7.4748656 17.8602283
+I(log(lotsize))  8.0651294 -1.8152268  6.2436693
+rooms            1.4487917 -0.9195379 -0.2036477
+beds            -1.3599432 -2.0973689 -2.5149753
+syear1994        1.9702784  0.1201370  0.9134610
+syear1995        3.0863483 -2.0697075 -0.5872189
+syear1996        4.6697557  0.8615077  2.7541587
+syear1997        5.8854663 -0.8022693  1.8062261
+syear1998        9.3509031  0.1980722  4.0817360
+
+p-values:
+                Direct     Indirect   Total           
+I(age_sold)     0.0952768  0.00015676 0.00000000077254
+I(age_sold^2)   0.0357985  0.00417253 0.00000074132419
+I(age_sold^3)   0.6579853  0.55485125 0.3436073       
+I(log(TLA))     &lt; 2.22e-16 7.7272e-14 &lt; 2.22e-16      
+I(log(lotsize)) 6.6613e-16 0.06948906 0.00000000042742
+rooms           0.1473958  0.35781429 0.8386288       
+beds            0.1738479  0.03596093 0.0119041       
+syear1994       0.0488065  0.90437463 0.3610001       
+syear1995       0.0020263  0.03847974 0.5570567       
+syear1996       3.0156e-06 0.38895846 0.0058843       
+syear1997       3.9693e-09 0.42239720 0.0708830       
+syear1998       &lt; 2.22e-16 0.84298854 0.00004470055406</code></pre>
+</div>
+</div>
+</section>
+<section id="choosing-a-local-model" class="slide level2">
+<h2>Choosing a local model</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">LR.Sarlm</span>(SEM, SDEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = -266.63, df = 12, p-value &lt; 2.2e-16
+sample estimates:
+ Log likelihood of SEM Log likelihood of SDEM 
+            -1095.6575              -962.3424 </code></pre>
+</div>
+</div>
+<p>Discard H0, do not restrict to SEM. We keep <span class="math inline">\(\theta &gt; 0\)</span>.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">LR.Sarlm</span>(SDEM, SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 767.28, df = 1, p-value &lt; 2.2e-16
+sample estimates:
+Log likelihood of SDEM  Log likelihood of SLX 
+             -962.3424             -1345.9840 </code></pre>
+</div>
+</div>
+<p>We discard H0 and will not restrict to SLX, continue with SDEM.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">LR.Sarlm</span>(SDEM, lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 1334.7, df = 13, p-value &lt; 2.2e-16
+sample estimates:
+Log likelihood of SDEM  Log likelihood of lm1 
+             -962.3424             -1629.6987 </code></pre>
+</div>
+</div>
+<p>Discard H0, we will not restrict to OLS.</p>
+<p>We end up with SDEM as the best local model (no endogeniety in the price variable).</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># residuals are with attributes, hence as.vector()</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="fu">moran.plot</span>(SDEM<span class="sc">$</span>residuals, <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<section id="results" class="slide level2">
+<h2>Results</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Do not use "SDEM" = SDEM, report coeffisent estimates not impacts</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="fu">huxreg</span>(<span class="st">"OLS"</span> <span class="ot">=</span> lm1, <span class="st">"SEM"</span> <span class="ot">=</span> SEM, </span>
+<span id="cb48-3"><a href="#cb48-3"></a>       <span class="at">error_format =</span> <span class="st">"({statistic})"</span>,</span>
+<span id="cb48-4"><a href="#cb48-4"></a>       <span class="at">note =</span> <span class="st">"{stars}. T-values reported."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-25">
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">OLS</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SEM</th></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(Intercept)</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3.183 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">4.572 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(12.979)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(20.605)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">I(age_sold)</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">1.365 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.432 *&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(7.222)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(2.241)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">I(age_sold^2)</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-3.074 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-1.251 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(-8.640)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(-3.646)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">I(age_sold^3)</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.697 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.253&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(3.504)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(1.407)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">I(log(TLA))</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.873 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.688 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(22.203)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(20.970)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">I(log(lotsize))</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.172 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.155 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(14.736)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(11.928)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">rooms</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.021&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.020 *&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(1.723)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(2.159)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">beds</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-0.033&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-0.015&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(-1.877)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(-1.152)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">syear1994</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.069 *&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.059 **&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(2.406)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(2.755)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">syear1995</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.098 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.102 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(3.513)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(4.864)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">syear1996</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.142 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.116 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(5.176)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(5.607)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">syear1997</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.164 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.158 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(6.043)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(7.652)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">syear1998</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.264 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.242 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(9.439)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(11.502)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">lambda</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.718 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(56.889)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">N</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">R2</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.690&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.815&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">logLik</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-1629.699&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-1095.658&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">AIC</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">3287.397&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">2221.315&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th colspan="3" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"> *** p &lt; 0.001;  ** p &lt; 0.01;  * p &lt; 0.05. T-values reported.</th></tr>
+</tbody></table>
+
+</div>
+</div>
+<h3 id="compare-impacts-from-sdem-and-slx-model">Compare impacts from SDEM and SLX model</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># tidy(SDEM) or tidy(SLX) reports regression coefficients</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="co"># make our own table for easy comparison of impacts</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a>i_SDEM <span class="ot">&lt;-</span> <span class="fu">impacts</span>(SDEM)<span class="sc">$</span>impacts <span class="sc">%&gt;%</span> </span>
+<span id="cb49-4"><a href="#cb49-4"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb49-5"><a href="#cb49-5"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb49-6"><a href="#cb49-6"></a>    <span class="at">variable =</span> <span class="fu">names</span>(<span class="fu">impacts</span>(SDEM)<span class="sc">$</span>impacts<span class="sc">$</span>direct)</span>
+<span id="cb49-7"><a href="#cb49-7"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-8"><a href="#cb49-8"></a>  <span class="fu">select</span>(variable, <span class="fu">everything</span>())</span>
+<span id="cb49-9"><a href="#cb49-9"></a></span>
+<span id="cb49-10"><a href="#cb49-10"></a>i_SLX <span class="ot">&lt;-</span> <span class="fu">impacts</span>(SLX)<span class="sc">$</span>impacts <span class="sc">%&gt;%</span> </span>
+<span id="cb49-11"><a href="#cb49-11"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb49-12"><a href="#cb49-12"></a></span>
+<span id="cb49-13"><a href="#cb49-13"></a><span class="fu">names</span>(i_SDEM)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"SDEM"</span>, <span class="fu">names</span>(i_SDEM)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb49-14"><a href="#cb49-14"></a><span class="fu">names</span>(i_SLX) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"SLX"</span>, <span class="fu">names</span>(i_SLX), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb49-15"><a href="#cb49-15"></a>i_SDEM_SLX <span class="ot">&lt;-</span> <span class="fu">cbind</span>(i_SDEM, i_SLX)</span>
+<span id="cb49-16"><a href="#cb49-16"></a>i_SDEM_SLX <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">variable =</span> i_SDEM_SLX[, <span class="st">"variable"</span>], </span>
+<span id="cb49-17"><a href="#cb49-17"></a>                    <span class="fu">round</span>(i_SDEM_SLX[, <span class="sc">-</span><span class="dv">1</span>], <span class="dv">6</span>))</span>
+<span id="cb49-18"><a href="#cb49-18"></a><span class="fu">kable</span>(i_SDEM_SLX[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">7</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">variable</th>
+<th style="text-align: right;">SDEM_direct</th>
+<th style="text-align: right;">SLX_direct</th>
+<th style="text-align: right;">SDEM_indirect</th>
+<th style="text-align: right;">SLX_indirect</th>
+<th style="text-align: right;">SDEM_total</th>
+<th style="text-align: right;">SLX_total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">I(age_sold)</td>
+<td style="text-align: right;">0.543545</td>
+<td style="text-align: right;">0.381566</td>
+<td style="text-align: right;">1.724314</td>
+<td style="text-align: right;">1.151030</td>
+<td style="text-align: right;">2.267859</td>
+<td style="text-align: right;">1.532596</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I(age_sold^2)</td>
+<td style="text-align: right;">-1.211511</td>
+<td style="text-align: right;">-0.851706</td>
+<td style="text-align: right;">-3.154620</td>
+<td style="text-align: right;">-1.649422</td>
+<td style="text-align: right;">-4.366131</td>
+<td style="text-align: right;">-2.501128</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I(age_sold^3)</td>
+<td style="text-align: right;">0.119899</td>
+<td style="text-align: right;">-0.093769</td>
+<td style="text-align: right;">0.858429</td>
+<td style="text-align: right;">-0.190964</td>
+<td style="text-align: right;">0.978329</td>
+<td style="text-align: right;">-0.284733</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I(log(TLA))</td>
+<td style="text-align: right;">0.721610</td>
+<td style="text-align: right;">0.736522</td>
+<td style="text-align: right;">0.325829</td>
+<td style="text-align: right;">0.533522</td>
+<td style="text-align: right;">1.047440</td>
+<td style="text-align: right;">1.270044</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I(log(lotsize))</td>
+<td style="text-align: right;">0.120001</td>
+<td style="text-align: right;">0.129258</td>
+<td style="text-align: right;">0.002126</td>
+<td style="text-align: right;">-0.036567</td>
+<td style="text-align: right;">0.122127</td>
+<td style="text-align: right;">0.092691</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rooms</td>
+<td style="text-align: right;">0.022980</td>
+<td style="text-align: right;">0.016284</td>
+<td style="text-align: right;">0.022090</td>
+<td style="text-align: right;">-0.021259</td>
+<td style="text-align: right;">0.045069</td>
+<td style="text-align: right;">-0.004974</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">beds</td>
+<td style="text-align: right;">-0.023773</td>
+<td style="text-align: right;">-0.022064</td>
+<td style="text-align: right;">-0.044375</td>
+<td style="text-align: right;">-0.075222</td>
+<td style="text-align: right;">-0.068148</td>
+<td style="text-align: right;">-0.097285</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">syear1994</td>
+<td style="text-align: right;">0.058224</td>
+<td style="text-align: right;">0.051453</td>
+<td style="text-align: right;">0.014445</td>
+<td style="text-align: right;">0.007070</td>
+<td style="text-align: right;">0.072668</td>
+<td style="text-align: right;">0.058524</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">syear1995</td>
+<td style="text-align: right;">0.083153</td>
+<td style="text-align: right;">0.078807</td>
+<td style="text-align: right;">-0.081602</td>
+<td style="text-align: right;">-0.114145</td>
+<td style="text-align: right;">0.001551</td>
+<td style="text-align: right;">-0.035338</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">syear1996</td>
+<td style="text-align: right;">0.113499</td>
+<td style="text-align: right;">0.117339</td>
+<td style="text-align: right;">-0.004495</td>
+<td style="text-align: right;">0.047101</td>
+<td style="text-align: right;">0.109004</td>
+<td style="text-align: right;">0.164440</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">syear1997</td>
+<td style="text-align: right;">0.150084</td>
+<td style="text-align: right;">0.146404</td>
+<td style="text-align: right;">-0.051995</td>
+<td style="text-align: right;">-0.042885</td>
+<td style="text-align: right;">0.098089</td>
+<td style="text-align: right;">0.103520</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">syear1998</td>
+<td style="text-align: right;">0.251561</td>
+<td style="text-align: right;">0.239963</td>
+<td style="text-align: right;">0.082366</td>
+<td style="text-align: right;">0.011152</td>
+<td style="text-align: right;">0.333927</td>
+<td style="text-align: right;">0.251114</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="global" class="slide level2">
+<h2>Global</h2>
+<p>Spatial lag in y and X.</p>
+<div class="cell" data-hash="index_cache/revealjs/SDM_3fd788c138579138407a322efaf6bc58">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># expensive to compute</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>SDM <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-hash="index_cache/revealjs/SDMimpacts_9c89c25d773b505cc524164ab7b4f525">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Computing the impacts is expensive too</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (mixed, exact):
+                     Direct     Indirect        Total
+I(age_sold)      0.44458343  1.998987232  2.443570658
+I(age_sold^2)   -1.00533917 -3.230813468 -4.236152639
+I(age_sold^3)    0.03747523  0.571379837  0.608855065
+I(log(TLA))      0.73179133  0.538408810  1.270200141
+I(log(lotsize))  0.11643717 -0.031417681  0.085019488
+rooms            0.01892389 -0.009570688  0.009353204
+beds            -0.02425261 -0.074563783 -0.098816393
+syear1994        0.05338215  0.010866667  0.064248814
+syear1995        0.08036644 -0.127280373 -0.046913936
+syear1996        0.11360203  0.019036422  0.132638448
+syear1997        0.14408151 -0.083271804  0.060809708
+syear1998        0.24456200  0.065133136  0.309695135</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/revealjs/SDMimpactsZ_d6b18a8b4e71d0ffabf75f641ff40ba9">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># Simulated, varies somewhat with each sample (note that seed is set above). Results might </span></span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="co"># differ with another seed</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w, <span class="at">R=</span><span class="dv">500</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (mixed, exact):
+                     Direct     Indirect        Total
+I(age_sold)      0.44458343  1.998987232  2.443570658
+I(age_sold^2)   -1.00533917 -3.230813468 -4.236152639
+I(age_sold^3)    0.03747523  0.571379837  0.608855065
+I(log(TLA))      0.73179133  0.538408810  1.270200141
+I(log(lotsize))  0.11643717 -0.031417681  0.085019488
+rooms            0.01892389 -0.009570688  0.009353204
+beds            -0.02425261 -0.074563783 -0.098816393
+syear1994        0.05338215  0.010866667  0.064248814
+syear1995        0.08036644 -0.127280373 -0.046913936
+syear1996        0.11360203  0.019036422  0.132638448
+syear1997        0.14408151 -0.083271804  0.060809708
+syear1998        0.24456200  0.065133136  0.309695135
+========================================================
+Simulation results ( variance matrix):
+Direct:
+
+Iterations = 1:500
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 500 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                    Mean      SD  Naive SE Time-series SE
+I(age_sold)      0.43570 0.19042 0.0085158      0.0085158
+I(age_sold^2)   -0.99295 0.34738 0.0155351      0.0155351
+I(age_sold^3)    0.03269 0.18442 0.0082475      0.0082475
+I(log(TLA))      0.73000 0.03447 0.0015415      0.0015415
+I(log(lotsize))  0.11661 0.01307 0.0005846      0.0005846
+rooms            0.01909 0.01092 0.0004882      0.0004882
+beds            -0.02397 0.01598 0.0007145      0.0007145
+syear1994        0.05506 0.02482 0.0011101      0.0012457
+syear1995        0.08085 0.02429 0.0010863      0.0011869
+syear1996        0.11416 0.02495 0.0011160      0.0011160
+syear1997        0.14598 0.02399 0.0010726      0.0010726
+syear1998        0.24526 0.02551 0.0011409      0.0010602
+
+2. Quantiles for each variable:
+
+                     2.5%      25%      50%      75%     97.5%
+I(age_sold)      0.095565  0.30503  0.44227  0.54876  0.809285
+I(age_sold^2)   -1.724104 -1.20116 -0.96789 -0.76943 -0.334029
+I(age_sold^3)   -0.315551 -0.09222  0.02300  0.15148  0.416582
+I(log(TLA))      0.665457  0.70655  0.72949  0.75204  0.799164
+I(log(lotsize))  0.090251  0.10840  0.11656  0.12512  0.142325
+rooms           -0.001500  0.01174  0.01959  0.02626  0.038572
+beds            -0.055530 -0.03359 -0.02394 -0.01279  0.007231
+syear1994        0.005699  0.03975  0.05516  0.07112  0.101494
+syear1995        0.036205  0.06447  0.07939  0.09711  0.129766
+syear1996        0.067438  0.09793  0.11354  0.13034  0.165083
+syear1997        0.099891  0.12911  0.14580  0.16159  0.194748
+syear1998        0.197348  0.22780  0.24600  0.26312  0.292044
+
+========================================================
+Indirect:
+
+Iterations = 1:500
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 500 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                     Mean      SD Naive SE Time-series SE
+I(age_sold)      2.025320 0.46676 0.020874       0.019017
+I(age_sold^2)   -3.266763 0.92210 0.041238       0.037790
+I(age_sold^3)    0.584661 0.54236 0.024255       0.022181
+I(log(TLA))      0.535366 0.12898 0.005768       0.005357
+I(log(lotsize)) -0.030654 0.02804 0.001254       0.001254
+rooms           -0.009554 0.04452 0.001991       0.001991
+beds            -0.073332 0.06929 0.003099       0.003349
+syear1994        0.021722 0.11005 0.004922       0.004992
+syear1995       -0.126917 0.10376 0.004640       0.004640
+syear1996        0.019737 0.10825 0.004841       0.004841
+syear1997       -0.076148 0.10519 0.004704       0.004704
+syear1998        0.072323 0.10853 0.004854       0.004854
+
+2. Quantiles for each variable:
+
+                    2.5%      25%       50%       75%    97.5%
+I(age_sold)      1.15398  1.70131  2.008675  2.331730  3.00100
+I(age_sold^2)   -5.03359 -3.91820 -3.271442 -2.690050 -1.43346
+I(age_sold^3)   -0.50260  0.22930  0.598291  0.958270  1.61196
+I(log(TLA))      0.30486  0.44808  0.530356  0.622814  0.79635
+I(log(lotsize)) -0.08743 -0.04791 -0.032662 -0.012741  0.02549
+rooms           -0.09241 -0.03704 -0.008471  0.018965  0.07568
+beds            -0.20182 -0.12365 -0.069357 -0.025177  0.05546
+syear1994       -0.18232 -0.05392  0.016279  0.093570  0.23186
+syear1995       -0.32440 -0.19655 -0.125605 -0.060039  0.08411
+syear1996       -0.18293 -0.05864  0.020883  0.096351  0.22812
+syear1997       -0.27454 -0.14934 -0.071229 -0.004911  0.12856
+syear1998       -0.13039 -0.00286  0.070220  0.149466  0.27953
+
+========================================================
+Total:
+
+Iterations = 1:500
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 500 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                     Mean      SD Naive SE Time-series SE
+I(age_sold)      2.461016 0.50719 0.022682       0.019115
+I(age_sold^2)   -4.259714 1.01230 0.045271       0.041124
+I(age_sold^3)    0.617346 0.59918 0.026796       0.024313
+I(log(TLA))      1.265368 0.14348 0.006417       0.006417
+I(log(lotsize))  0.085955 0.02923 0.001307       0.001307
+rooms            0.009539 0.05049 0.002258       0.002258
+beds            -0.097298 0.07854 0.003512       0.003798
+syear1994        0.076780 0.12487 0.005584       0.005802
+syear1995       -0.046069 0.11801 0.005278       0.005278
+syear1996        0.133893 0.12292 0.005497       0.005497
+syear1997        0.069828 0.11893 0.005319       0.004983
+syear1998        0.317586 0.12483 0.005583       0.005583
+
+2. Quantiles for each variable:
+
+                    2.5%       25%      50%      75%    97.5%
+I(age_sold)      1.45427  2.111280  2.49526  2.76011  3.48662
+I(age_sold^2)   -6.32389 -4.889165 -4.28008 -3.56764 -2.32134
+I(age_sold^3)   -0.57794  0.205209  0.62019  1.03076  1.84534
+I(log(TLA))      1.00436  1.167136  1.25655  1.36218  1.56029
+I(log(lotsize))  0.03000  0.066597  0.08467  0.10659  0.14223
+rooms           -0.08354 -0.024711  0.01104  0.04254  0.10627
+beds            -0.24361 -0.154012 -0.09187 -0.04515  0.05514
+syear1994       -0.14955 -0.009261  0.06750  0.16067  0.32880
+syear1995       -0.26477 -0.122388 -0.04623  0.02764  0.18902
+syear1996       -0.09288  0.047321  0.14036  0.21944  0.38363
+syear1997       -0.15751 -0.017669  0.07465  0.14384  0.30954
+syear1998        0.07058  0.235313  0.31418  0.40323  0.55379
+
+========================================================
+Simulated standard errors
+                    Direct   Indirect      Total
+I(age_sold)     0.19041885 0.46676400 0.50719217
+I(age_sold^2)   0.34737516 0.92209917 1.01229557
+I(age_sold^3)   0.18442029 0.54235807 0.59917636
+I(log(TLA))     0.03446933 0.12897668 0.14347930
+I(log(lotsize)) 0.01307219 0.02803738 0.02922747
+rooms           0.01091571 0.04451850 0.05049288
+beds            0.01597671 0.06929074 0.07854027
+syear1994       0.02482295 0.11005341 0.12486755
+syear1995       0.02429102 0.10376346 0.11801248
+syear1996       0.02495361 0.10825326 0.12291700
+syear1997       0.02398517 0.10519073 0.11893279
+syear1998       0.02551176 0.10853417 0.12483401
+
+Simulated z-values:
+                    Direct   Indirect      Total
+I(age_sold)      2.2880916  4.3390667  4.8522356
+I(age_sold^2)   -2.8584393 -3.5427457 -4.2079742
+I(age_sold^3)    0.1772314  1.0779973  1.0303237
+I(log(TLA))     21.1783112  4.1508715  8.8191672
+I(log(lotsize))  8.9203562 -1.0933185  2.9408911
+rooms            1.7491371 -0.2146006  0.1889252
+beds            -1.5000821 -1.0583224 -1.2388335
+syear1994        2.2180426  0.1973775  0.6148950
+syear1995        3.3283225 -1.2231399 -0.3903728
+syear1996        4.5747137  0.1823254  1.0892957
+syear1997        6.0860982 -0.7239017  0.5871244
+syear1998        9.6137168  0.6663654  2.5440680
+
+Simulated p-values:
+                Direct         Indirect    Total       
+I(age_sold)     0.02213218     0.000014309 0.0000012208
+I(age_sold^2)   0.00425731     0.00039598  0.0000257670
+I(age_sold^3)   0.85932663     0.28103497  0.3028581   
+I(log(TLA))     &lt; 2.22e-16     0.000033121 &lt; 2.22e-16  
+I(log(lotsize)) &lt; 2.22e-16     0.27425396  0.0032727   
+rooms           0.08026732     0.83007876  0.8501515   
+beds            0.13359315     0.28990849  0.2154072   
+syear1994       0.02655193     0.84353210  0.5386240   
+syear1995       0.00087371     0.22127688  0.6962609   
+syear1996       0.000004768716 0.85532733  0.2760235   
+syear1997       0.000000001157 0.46912608  0.5571201   
+syear1998       &lt; 2.22e-16     0.50517759  0.0109570   </code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/revealjs/SAR_e328ce1d26d0a17a9fa51ebc6d8d7a31">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>SAR <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># NEW</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="fu">summary</span>(SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:lagsarlm(formula = hmod1, data = red_house_sf, listw = red_house_sf_w, 
+    Durbin = FALSE)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-2.107445 -0.138104  0.035175  0.189967  1.226065 
+
+Type: lag 
+Coefficients: (asymptotic standard errors) 
+                  Estimate Std. Error z value  Pr(&gt;|z|)
+(Intercept)     -0.2514883  0.2074699 -1.2122 0.2254484
+I(age_sold)      1.1792030  0.1497421  7.8749 3.331e-15
+I(age_sold^2)   -2.1020853  0.2832284 -7.4219 1.155e-13
+I(age_sold^3)    0.4826410  0.1578425  3.0577 0.0022301
+I(log(TLA))      0.6415673  0.0317194 20.2263 &lt; 2.2e-16
+I(log(lotsize))  0.0632934  0.0097473  6.4935 8.389e-11
+rooms            0.0098137  0.0096416  1.0178 0.3087538
+beds            -0.0103466  0.0140334 -0.7373 0.4609509
+syear1994        0.0530507  0.0226122  2.3461 0.0189707
+syear1995        0.0831306  0.0220890  3.7634 0.0001676
+syear1996        0.1124883  0.0217470  5.1726 2.309e-07
+syear1997        0.1434820  0.0214686  6.6834 2.335e-11
+syear1998        0.2302061  0.0222179 10.3613 &lt; 2.2e-16
+
+Rho: 0.53679, LR test value: 1211, p-value: &lt; 2.22e-16
+Asymptotic standard error: 0.013019
+    z-value: 41.23, p-value: &lt; 2.22e-16
+Wald statistic: 1699.9, p-value: &lt; 2.22e-16
+
+Log likelihood: -1024.179 for lag model
+ML residual variance (sigma squared): 0.10922, (sigma: 0.33048)
+Number of observations: 3000 
+Number of parameters estimated: 15 
+AIC: 2078.4, (AIC for lm: 3287.4)
+LM test for residual autocorrelation
+test value: 16.821, p-value: 0.000041075</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/revealjs/SARimpactsZ_1b092371520734437ead898ede0d989e">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SAR, <span class="at">listw =</span> red_house_sf_w, <span class="at">R=</span><span class="dv">500</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (lag, exact):
+                     Direct    Indirect       Total
+I(age_sold)      1.26420440  1.28149989  2.54570429
+I(age_sold^2)   -2.25361156 -2.28444307 -4.53805462
+I(age_sold^3)    0.51743158  0.52451052  1.04194210
+I(log(TLA))      0.68781390  0.69722384  1.38503774
+I(log(lotsize))  0.06785580  0.06878413  0.13663994
+rooms            0.01052106  0.01066500  0.02118606
+beds            -0.01109238 -0.01124413 -0.02233651
+syear1994        0.05687482  0.05765292  0.11452773
+syear1995        0.08912299  0.09034227  0.17946526
+syear1996        0.12059686  0.12224674  0.24284360
+syear1997        0.15382468  0.15592915  0.30975383
+syear1998        0.24680025  0.25017671  0.49697696
+========================================================
+Simulation results ( variance matrix):
+Direct:
+
+Iterations = 1:500
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 500 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                    Mean      SD  Naive SE Time-series SE
+I(age_sold)      1.26025 0.15977 0.0071450      0.0071450
+I(age_sold^2)   -2.24439 0.30058 0.0134423      0.0134423
+I(age_sold^3)    0.51261 0.16883 0.0075505      0.0075505
+I(log(TLA))      0.68739 0.03446 0.0015409      0.0015409
+I(log(lotsize))  0.06759 0.01040 0.0004651      0.0004651
+rooms            0.01021 0.01044 0.0004669      0.0004669
+beds            -0.01100 0.01487 0.0006649      0.0006952
+syear1994        0.05764 0.02449 0.0010951      0.0010951
+syear1995        0.08795 0.02304 0.0010303      0.0009506
+syear1996        0.12164 0.02300 0.0010284      0.0010284
+syear1997        0.15275 0.02228 0.0009964      0.0009964
+syear1998        0.24797 0.02337 0.0010451      0.0010451
+
+2. Quantiles for each variable:
+
+                    2.5%       25%      50%       75%    97.5%
+I(age_sold)      0.95193  1.146580  1.26169  1.369476  1.56285
+I(age_sold^2)   -2.86083 -2.449798 -2.24210 -2.019410 -1.69138
+I(age_sold^3)    0.20056  0.386196  0.51102  0.626061  0.85781
+I(log(TLA))      0.61733  0.664741  0.68938  0.710671  0.75385
+I(log(lotsize))  0.04816  0.060242  0.06767  0.074200  0.08775
+rooms           -0.01036  0.003069  0.01005  0.016863  0.03122
+beds            -0.03873 -0.021511 -0.01093 -0.001402  0.01758
+syear1994        0.01349  0.040084  0.05661  0.073386  0.10991
+syear1995        0.04036  0.072303  0.08829  0.103800  0.13469
+syear1996        0.07525  0.105768  0.12192  0.136018  0.16755
+syear1997        0.11034  0.137457  0.15303  0.169033  0.19775
+syear1998        0.20171  0.231964  0.24718  0.263191  0.29284
+
+========================================================
+Indirect:
+
+Iterations = 1:500
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 500 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                    Mean      SD  Naive SE Time-series SE
+I(age_sold)      1.28535 0.17304 0.0077384      0.0077384
+I(age_sold^2)   -2.28791 0.31545 0.0141071      0.0141071
+I(age_sold^3)    0.52215 0.17191 0.0076880      0.0076880
+I(log(TLA))      0.70101 0.04624 0.0020680      0.0020680
+I(log(lotsize))  0.06881 0.01027 0.0004592      0.0004592
+rooms            0.01040 0.01063 0.0004753      0.0004753
+beds            -0.01122 0.01520 0.0006798      0.0007161
+syear1994        0.05876 0.02501 0.0011183      0.0011183
+syear1995        0.08967 0.02371 0.0010604      0.0009817
+syear1996        0.12411 0.02436 0.0010896      0.0010896
+syear1997        0.15576 0.02364 0.0010573      0.0010573
+syear1998        0.25289 0.02626 0.0011743      0.0010732
+
+2. Quantiles for each variable:
+
+                    2.5%       25%      50%       75%    97.5%
+I(age_sold)      0.98056  1.159990  1.28737  1.401580  1.60832
+I(age_sold^2)   -2.89437 -2.515919 -2.28766 -2.038621 -1.73314
+I(age_sold^3)    0.20727  0.396610  0.52308  0.640856  0.85633
+I(log(TLA))      0.61581  0.668739  0.69880  0.731618  0.78762
+I(log(lotsize))  0.04977  0.061999  0.06859  0.075324  0.08888
+rooms           -0.01058  0.003169  0.01018  0.017436  0.03188
+beds            -0.03854 -0.021630 -0.01124 -0.001413  0.01811
+syear1994        0.01366  0.041261  0.05775  0.075834  0.11084
+syear1995        0.04134  0.074005  0.09025  0.104628  0.13693
+syear1996        0.07679  0.109271  0.12332  0.139899  0.17421
+syear1997        0.10973  0.138764  0.15444  0.172310  0.20128
+syear1998        0.20578  0.234911  0.25280  0.269421  0.30551
+
+========================================================
+Total:
+
+Iterations = 1:500
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 500 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                    Mean      SD  Naive SE Time-series SE
+I(age_sold)      2.54560 0.32720 0.0146329      0.0146329
+I(age_sold^2)   -4.53229 0.60627 0.0271132      0.0271132
+I(age_sold^3)    1.03476 0.33978 0.0151952      0.0151952
+I(log(TLA))      1.38840 0.07422 0.0033194      0.0033194
+I(log(lotsize))  0.13640 0.02041 0.0009125      0.0009125
+rooms            0.02060 0.02106 0.0009416      0.0009416
+beds            -0.02221 0.03005 0.0013441      0.0014106
+syear1994        0.11641 0.04940 0.0022092      0.0022092
+syear1995        0.17762 0.04654 0.0020815      0.0019233
+syear1996        0.24575 0.04698 0.0021008      0.0021008
+syear1997        0.30851 0.04530 0.0020259      0.0020259
+syear1998        0.50085 0.04819 0.0021550      0.0020016
+
+2. Quantiles for each variable:
+
+                    2.5%       25%      50%       75%    97.5%
+I(age_sold)      1.93314  2.302860  2.54386  2.773892  3.18479
+I(age_sold^2)   -5.73807 -4.955812 -4.53804 -4.069087 -3.46982
+I(age_sold^3)    0.40600  0.779277  1.03778  1.266064  1.70556
+I(log(TLA))      1.24824  1.340392  1.38644  1.441256  1.53225
+I(log(lotsize))  0.09875  0.122579  0.13666  0.149246  0.17677
+rooms           -0.02104  0.006228  0.02030  0.034402  0.06266
+beds            -0.07717 -0.042681 -0.02233 -0.002814  0.03584
+syear1994        0.02714  0.081830  0.11438  0.149401  0.21800
+syear1995        0.08231  0.146453  0.17925  0.208317  0.26745
+syear1996        0.15390  0.216484  0.24499  0.275720  0.34104
+syear1997        0.21935  0.276633  0.30762  0.341804  0.39632
+syear1998        0.41329  0.465082  0.50072  0.531943  0.59766
+
+========================================================
+Simulated standard errors
+                    Direct   Indirect      Total
+I(age_sold)     0.15976723 0.17303609 0.32720114
+I(age_sold^2)   0.30057961 0.31544513 0.60626867
+I(age_sold^3)   0.16883390 0.17190919 0.33977541
+I(log(TLA))     0.03445540 0.04624199 0.07422347
+I(log(lotsize)) 0.01039887 0.01026724 0.02040508
+rooms           0.01044088 0.01062763 0.02105534
+beds            0.01486771 0.01520147 0.03005495
+syear1994       0.02448819 0.02500572 0.04939863
+syear1995       0.02303752 0.02371105 0.04654484
+syear1996       0.02299602 0.02436439 0.04697513
+syear1997       0.02228025 0.02364143 0.04530111
+syear1998       0.02336821 0.02625869 0.04818774
+
+Simulated z-values:
+                    Direct   Indirect      Total
+I(age_sold)      7.8880583  7.4281924  7.7799196
+I(age_sold^2)   -7.4668589 -7.2529490 -7.4757169
+I(age_sold^3)    3.0361977  3.0373582  3.0454320
+I(log(TLA))     19.9501148 15.1596347 18.7056837
+I(log(lotsize))  6.4997999  6.7022049  6.6847881
+rooms            0.9774854  0.9782034  0.9784588
+beds            -0.7396518 -0.7379508 -0.7391418
+syear1994        2.3539528  2.3500092  2.3564971
+syear1995        3.8178655  3.7815947  3.8160992
+syear1996        5.2896726  5.0940188  5.2315784
+syear1997        6.8558430  6.5884934  6.8102374
+syear1998       10.6112557  9.6306610 10.3938194
+
+Simulated p-values:
+                Direct     Indirect   Total     
+I(age_sold)     3.1086e-15 1.1013e-13 7.3275e-15
+I(age_sold^2)   8.2157e-14 4.0790e-13 7.6827e-14
+I(age_sold^3)   0.00239582 0.00238662 0.00232346
+I(log(TLA))     &lt; 2.22e-16 &lt; 2.22e-16 &lt; 2.22e-16
+I(log(lotsize)) 8.0427e-11 2.0530e-11 2.3126e-11
+rooms           0.32832888 0.32797373 0.32784747
+beds            0.45951133 0.46054434 0.45982088
+syear1994       0.01857497 0.01877295 0.01844821
+syear1995       0.00013461 0.00015583 0.00013558
+syear1996       1.2254e-07 3.5055e-07 1.6807e-07
+syear1997       7.0892e-12 4.4431e-11 9.7438e-12
+syear1998       &lt; 2.22e-16 &lt; 2.22e-16 &lt; 2.22e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">LR.Sarlm</span>(SDM, SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 160.38, df = 12, p-value &lt; 2.2e-16
+sample estimates:
+Log likelihood of SDM Log likelihood of SAR 
+            -943.9908            -1024.1791 </code></pre>
+</div>
+</div>
+<p>We reject H0 and do not restrict to SAR. Keep SDM.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># SLX estimated above</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a><span class="fu">LR.Sarlm</span>(SDM, SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 803.99, df = 1, p-value &lt; 2.2e-16
+sample estimates:
+Log likelihood of SDM Log likelihood of SLX 
+            -943.9908            -1345.9840 </code></pre>
+</div>
+</div>
+<p>We reject H0 and do not restrict to SLX. Keep SDM.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># Common factor?</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">LR.Sarlm</span>(SDM, SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 303.33, df = 12, p-value &lt; 2.2e-16
+sample estimates:
+Log likelihood of SDM Log likelihood of SEM 
+            -943.9908            -1095.6575 </code></pre>
+</div>
+</div>
+<p>We reject H0 and do not restrict to SEM. Keep SDM.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">LR.Sarlm</span>(SDM, lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 1371.4, df = 13, p-value &lt; 2.2e-16
+sample estimates:
+Log likelihood of SDM Log likelihood of lm1 
+            -943.9908            -1629.6987 </code></pre>
+</div>
+</div>
+<p>We reject H0 and do not restrict to OLS. SDM seems to be the best global model. We have spatial effects both in price and the explanatory variables. There is a strong negative indirect effect regarding number of rooms that might be regarded as counter intuitive and should perhaps be looked further into.</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-32_53c60580b4aaf5dab2127349c3851865">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w, <span class="at">R=</span><span class="dv">1000</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (mixed, exact):
+                     Direct     Indirect        Total
+I(age_sold)      0.44458343  1.998987232  2.443570658
+I(age_sold^2)   -1.00533917 -3.230813468 -4.236152639
+I(age_sold^3)    0.03747523  0.571379837  0.608855065
+I(log(TLA))      0.73179133  0.538408810  1.270200141
+I(log(lotsize))  0.11643717 -0.031417681  0.085019488
+rooms            0.01892389 -0.009570688  0.009353204
+beds            -0.02425261 -0.074563783 -0.098816393
+syear1994        0.05338215  0.010866667  0.064248814
+syear1995        0.08036644 -0.127280373 -0.046913936
+syear1996        0.11360203  0.019036422  0.132638448
+syear1997        0.14408151 -0.083271804  0.060809708
+syear1998        0.24456200  0.065133136  0.309695135
+========================================================
+Simulation results ( variance matrix):
+Direct:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                    Mean      SD  Naive SE Time-series SE
+I(age_sold)      0.44163 0.19377 0.0061276      0.0061276
+I(age_sold^2)   -0.99382 0.35057 0.0110860      0.0102378
+I(age_sold^3)    0.02969 0.18626 0.0058901      0.0051524
+I(log(TLA))      0.73078 0.03257 0.0010299      0.0010863
+I(log(lotsize))  0.11679 0.01215 0.0003843      0.0003843
+rooms            0.01923 0.01035 0.0003274      0.0003274
+beds            -0.02409 0.01587 0.0005018      0.0004713
+syear1994        0.05342 0.02498 0.0007900      0.0007900
+syear1995        0.08006 0.02421 0.0007657      0.0007657
+syear1996        0.11402 0.02340 0.0007401      0.0007401
+syear1997        0.14407 0.02386 0.0007545      0.0007545
+syear1998        0.24365 0.02383 0.0007537      0.0007181
+
+2. Quantiles for each variable:
+
+                     2.5%      25%      50%      75%     97.5%
+I(age_sold)      0.074639  0.31072  0.44131  0.57788  0.823934
+I(age_sold^2)   -1.654443 -1.23954 -0.98375 -0.74901 -0.312213
+I(age_sold^3)   -0.331864 -0.09906  0.02408  0.16328  0.384121
+I(log(TLA))      0.662652  0.70997  0.73028  0.75257  0.794955
+I(log(lotsize))  0.093972  0.10851  0.11640  0.12506  0.141285
+rooms           -0.000960  0.01248  0.01921  0.02617  0.039231
+beds            -0.056780 -0.03526 -0.02444 -0.01286  0.007228
+syear1994        0.005384  0.03728  0.05332  0.06965  0.103500
+syear1995        0.032870  0.06292  0.07937  0.09665  0.126562
+syear1996        0.071023  0.09945  0.11395  0.12923  0.159480
+syear1997        0.096356  0.12847  0.14491  0.16070  0.188601
+syear1998        0.197509  0.22849  0.24247  0.25867  0.291718
+
+========================================================
+Indirect:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                     Mean      SD  Naive SE Time-series SE
+I(age_sold)      1.994437 0.48431 0.0153152      0.0144140
+I(age_sold^2)   -3.229999 0.95731 0.0302729      0.0283359
+I(age_sold^3)    0.575901 0.55609 0.0175853      0.0151665
+I(log(TLA))      0.539949 0.12916 0.0040846      0.0040846
+I(log(lotsize)) -0.031352 0.02798 0.0008847      0.0008847
+rooms           -0.009271 0.04387 0.0013873      0.0013228
+beds            -0.075175 0.07048 0.0022288      0.0022288
+syear1994        0.007199 0.11337 0.0035849      0.0035849
+syear1995       -0.126615 0.11073 0.0035017      0.0029545
+syear1996        0.015906 0.10680 0.0033774      0.0033774
+syear1997       -0.086813 0.10132 0.0032040      0.0032040
+syear1998        0.063025 0.10730 0.0033932      0.0033932
+
+2. Quantiles for each variable:
+
+                    2.5%      25%       50%      75%    97.5%
+I(age_sold)      1.01684  1.66122  1.978365  2.32081  2.94284
+I(age_sold^2)   -5.11638 -3.84502 -3.221522 -2.61815 -1.35199
+I(age_sold^3)   -0.54360  0.21805  0.569439  0.93971  1.65820
+I(log(TLA))      0.27728  0.45640  0.542007  0.62837  0.78507
+I(log(lotsize)) -0.08540 -0.05012 -0.031308 -0.01405  0.02491
+rooms           -0.09071 -0.03874 -0.010332  0.02283  0.07262
+beds            -0.21370 -0.12136 -0.075312 -0.02773  0.05845
+syear1994       -0.20521 -0.06970  0.006784  0.08441  0.22773
+syear1995       -0.34029 -0.19814 -0.127557 -0.05271  0.09324
+syear1996       -0.19977 -0.05091  0.013166  0.09140  0.21724
+syear1997       -0.29699 -0.15556 -0.083571 -0.01477  0.09978
+syear1998       -0.14518 -0.01269  0.062252  0.13750  0.26969
+
+========================================================
+Total:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                     Mean      SD  Naive SE Time-series SE
+I(age_sold)      2.436063 0.51093 0.0161569      0.0151156
+I(age_sold^2)   -4.223821 1.03839 0.0328367      0.0306742
+I(age_sold^3)    0.605587 0.61494 0.0194460      0.0147596
+I(log(TLA))      1.270729 0.14184 0.0044854      0.0044854
+I(log(lotsize))  0.085441 0.02879 0.0009106      0.0009106
+rooms            0.009956 0.04928 0.0015584      0.0014839
+beds            -0.099269 0.07971 0.0025206      0.0025206
+syear1994        0.060621 0.12829 0.0040570      0.0040570
+syear1995       -0.046555 0.12591 0.0039817      0.0033623
+syear1996        0.129926 0.12085 0.0038217      0.0038217
+syear1997        0.057257 0.11588 0.0036643      0.0036643
+syear1998        0.306675 0.12106 0.0038283      0.0038283
+
+2. Quantiles for each variable:
+
+                    2.5%      25%      50%      75%   97.5%
+I(age_sold)      1.43744  2.10139  2.43041  2.75368  3.4702
+I(age_sold^2)   -6.31630 -4.89596 -4.20326 -3.56986 -2.2270
+I(age_sold^3)   -0.63654  0.20606  0.60551  1.00928  1.8235
+I(log(TLA))      0.98215  1.17960  1.27291  1.37072  1.5434
+I(log(lotsize))  0.02875  0.06531  0.08558  0.10425  0.1428
+rooms           -0.08065 -0.02585  0.01045  0.04540  0.1035
+beds            -0.25372 -0.15241 -0.10144 -0.04542  0.0566
+syear1994       -0.18865 -0.02399  0.06155  0.14613  0.3073
+syear1995       -0.29434 -0.12999 -0.04696  0.03934  0.1981
+syear1996       -0.12225  0.05450  0.12698  0.21204  0.3625
+syear1997       -0.18161 -0.01896  0.05603  0.14139  0.2682
+syear1998        0.07651  0.22255  0.30815  0.38914  0.5382
+
+========================================================
+Simulated standard errors
+                    Direct   Indirect      Total
+I(age_sold)     0.19377043 0.48430840 0.51092743
+I(age_sold^2)   0.35056995 0.95731289 1.03838680
+I(age_sold^3)   0.18626069 0.55609460 0.61493681
+I(log(TLA))     0.03256839 0.12916484 0.14184154
+I(log(lotsize)) 0.01215369 0.02797698 0.02879443
+rooms           0.01035366 0.04387138 0.04927992
+beds            0.01586979 0.07047965 0.07970720
+syear1994       0.02498084 0.11336570 0.12829442
+syear1995       0.02421323 0.11073355 0.12591184
+syear1996       0.02340386 0.10680158 0.12085180
+syear1997       0.02385899 0.10131951 0.11587633
+syear1998       0.02383429 0.10730107 0.12106130
+
+Simulated z-values:
+                    Direct    Indirect      Total
+I(age_sold)      2.2791192  4.11811449  4.7679244
+I(age_sold^2)   -2.8348746 -3.37402650 -4.0676758
+I(age_sold^3)    0.1593776  1.03561785  0.9847959
+I(log(TLA))     22.4383057  4.18031245  8.9587916
+I(log(lotsize))  9.6096536 -1.12062046  2.9672808
+rooms            1.8570362 -0.21132079  0.2020332
+beds            -1.5182149 -1.06662051 -1.2454182
+syear1994        2.1385335  0.06349941  0.4725149
+syear1995        3.3064592 -1.14341815 -0.3697403
+syear1996        4.8718380  0.14893491  1.0750879
+syear1997        6.0383741 -0.85682032  0.4941207
+syear1998       10.2226717  0.58736331  2.5332198
+
+Simulated p-values:
+                Direct          Indirect    Total       
+I(age_sold)     0.02265998      0.000038198 0.0000018613
+I(age_sold^2)   0.00458437      0.00074077  0.0000474844
+I(age_sold^3)   0.87337138      0.30038046  0.3247243   
+I(log(TLA))     &lt; 2.22e-16      0.000029111 &lt; 2.22e-16  
+I(log(lotsize)) &lt; 2.22e-16      0.26244945  0.0030045   
+rooms           0.06330600      0.83263696  0.8398908   
+beds            0.12896023      0.28614323  0.2129781   
+syear1994       0.03247347      0.94936883  0.6365593   
+syear1995       0.00094483      0.25286502  0.7115760   
+syear1996       0.0000011056480 0.88160500  0.2823354   
+syear1997       0.0000000015567 0.39154419  0.6212209   
+syear1998       &lt; 2.22e-16      0.55695973  0.0113020   </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># residuals are with attributes, hence as.vector()</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="fu">moran.plot</span>(<span class="fu">as.vector</span>(SDM<span class="sc">$</span>residuals), <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch"></section>
+<section id="some-tests" class="slide level2">
+<h2>Some tests</h2>
+</section>
+<section id="are-our-residuals-normal" class="slide level2">
+<h2>Are our residuals normal?</h2>
+<p>SDEM</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb71-2"><a href="#cb71-2"></a><span class="co"># H0: residuals normal</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SDEM), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Robust Jarque Bera Test
+
+data:  residuals(SDEM)
+X-squared = 10280, df = 2, p-value &lt; 2.2e-16</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># Conclusion: not normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Far from normal.</p>
+<p>SDM</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># H0: residuals normal</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SDM), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Robust Jarque Bera Test
+
+data:  residuals(SDM)
+X-squared = 10921, df = 2, p-value &lt; 2.2e-16</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># Conclusion: not normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Far from normal.</p>
+</section>
+<section id="heteroskedasticity" class="slide level2">
+<h2>Heteroskedasticity?</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># test for Heteroskedasticity</span></span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="fu">bptest.Sarlm</span>(SDEM, <span class="at">studentize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  
+BP = 531.81, df = 24, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="co"># test for Heteroskedasticity</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a><span class="fu">bptest.Sarlm</span>(SDM, <span class="at">studentize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  
+BP = 550.1, df = 24, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="maps" class="slide level2 smaller scrollable">
+<h2>MAPS</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="co">#  Start of code to draw a map of Lucas County</span></span>
+<span id="cb81-2"><a href="#cb81-2"></a><span class="co">#</span></span>
+<span id="cb81-3"><a href="#cb81-3"></a><span class="co">#</span></span>
+<span id="cb81-4"><a href="#cb81-4"></a><span class="co"># counties %&gt;% </span></span>
+<span id="cb81-5"><a href="#cb81-5"></a><span class="co">#   filter(county_name == "Lucas County")</span></span>
+<span id="cb81-6"><a href="#cb81-6"></a><span class="co"># </span></span>
+<span id="cb81-7"><a href="#cb81-7"></a><span class="co"># </span></span>
+<span id="cb81-8"><a href="#cb81-8"></a><span class="co"># tmp &lt;- countydata %&gt;% </span></span>
+<span id="cb81-9"><a href="#cb81-9"></a><span class="co">#   left_join(counties, by = "county_fips") %&gt;% </span></span>
+<span id="cb81-10"><a href="#cb81-10"></a><span class="co">#   filter(state_name =="Ohio") %&gt;% </span></span>
+<span id="cb81-11"><a href="#cb81-11"></a><span class="co">#   filter(county_name == "Lucas County") %&gt;% </span></span>
+<span id="cb81-12"><a href="#cb81-12"></a><span class="co">#   ggplot(mapping = aes(long, lat, group = group, fill = horate)) +</span></span>
+<span id="cb81-13"><a href="#cb81-13"></a><span class="co">#   geom_polygon(color = "#ffffff", size = .25)</span></span>
+<span id="cb81-14"><a href="#cb81-14"></a><span class="co"># </span></span>
+<span id="cb81-15"><a href="#cb81-15"></a><span class="co"># class(countydata)</span></span>
+<span id="cb81-16"><a href="#cb81-16"></a><span class="co"># names(countydata)</span></span>
+<span id="cb81-17"><a href="#cb81-17"></a><span class="co"># class(counties)</span></span>
+<span id="cb81-18"><a href="#cb81-18"></a><span class="co"># names(counties)</span></span>
+<span id="cb81-19"><a href="#cb81-19"></a><span class="co"># </span></span>
+<span id="cb81-20"><a href="#cb81-20"></a><span class="co"># tmp_sf &lt;- st_as_sf(counties, coords = c("long", "lat"), </span></span>
+<span id="cb81-21"><a href="#cb81-21"></a><span class="co">#     crs = 2834)</span></span>
+<span id="cb81-22"><a href="#cb81-22"></a><span class="co"># </span></span>
+<span id="cb81-23"><a href="#cb81-23"></a><span class="co"># names(tmp_sf)</span></span>
+<span id="cb81-24"><a href="#cb81-24"></a><span class="co"># </span></span>
+<span id="cb81-25"><a href="#cb81-25"></a><span class="co"># tmp_sf %&gt;% </span></span>
+<span id="cb81-26"><a href="#cb81-26"></a><span class="co">#   filter(state_name == "Ohio") %&gt;% </span></span>
+<span id="cb81-27"><a href="#cb81-27"></a><span class="co">#   filter(county_name == "Lucas County") </span></span>
+<span id="cb81-28"><a href="#cb81-28"></a><span class="co"># </span></span>
+<span id="cb81-29"><a href="#cb81-29"></a><span class="co"># test &lt;- st_cast(tmp_sf, "MULTIPOINT")</span></span>
+<span id="cb81-30"><a href="#cb81-30"></a><span class="co"># test1 &lt;- st_cast(test, "POLYGON")</span></span>
+<span id="cb81-31"><a href="#cb81-31"></a><span class="co"># </span></span>
+<span id="cb81-32"><a href="#cb81-32"></a><span class="co"># names(tmp_sf)</span></span>
+<span id="cb81-33"><a href="#cb81-33"></a><span class="co"># </span></span>
+<span id="cb81-34"><a href="#cb81-34"></a><span class="co"># tmp &lt;- st_transform(tmp, 2834)</span></span>
+<span id="cb81-35"><a href="#cb81-35"></a><span class="co"># tmp</span></span>
+<span id="cb81-36"><a href="#cb81-36"></a><span class="co"># head(countydata)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="co">#siste</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+<div class="footer footer-default">
+<p><a href="../../index.html">MSB205</a></p>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-zotero-1363" class="csl-entry" role="doc-biblioentry">
+<span>“0.1 <span>The Reproducible R Toolkit</span> (<span>RRT</span>).”</span> n.d. <a href="https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html" class="uri">https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html</a>.
+</div>
+<div id="ref-zotero-718" class="csl-entry" role="doc-biblioentry">
+<span>“16 <span>Product Fails That Defined The Decade</span>.”</span> n.d. <em>BuzzFeed News</em>. <a href="https://www.buzzfeednews.com/article/nicolenguyen/notable-tech-fails-of-2010s" class="uri">https://www.buzzfeednews.com/article/nicolenguyen/notable-tech-fails-of-2010s</a>.
+</div>
+<div id="ref-bechhofer2013" class="csl-entry" role="doc-biblioentry">
+Bechhofer, Sean, Iain Buchan, David De Roure, Paolo Missier, John Ainsworth, Jiten Bhagat, Philip Couch, et al. 2013. <span>“Why Linked Data Is Not Enough for Scientists.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+</div>
+<div id="ref-spdep2022" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger. 2022a. <span>“R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.”</span> <em>Geographical Analysis</em> 54 (3): 488–518. <a href="https://doi.org/10.1111/gean.12319">https://doi.org/10.1111/gean.12319</a>.
+</div>
+<div id="ref-R-spdep" class="csl-entry" role="doc-biblioentry">
+———. 2022b. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.
+</div>
+<div id="ref-sp2013" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spatialreg2013b" class="csl-entry" role="doc-biblioentry">
+———. 2013b. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spdep2013" class="csl-entry" role="doc-biblioentry">
+———. 2013c. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spatialreg2013a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. <span>“Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.”</span> <em>Geographical Analysis</em> 45 (2): 150–79. <a href="https://doi.org/10.1111/gean.12008">https://doi.org/10.1111/gean.12008</a>.
+</div>
+<div id="ref-spatialreg2021a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. <span>“A Review of Software for Spatial Econometrics in <span>R</span>.”</span> <em>Mathematics</em> 9 (11). <a href="https://doi.org/10.3390/math9111276">https://doi.org/10.3390/math9111276</a>.
+</div>
+<div id="ref-R-spData" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Jakub Nowosad, and Robin Lovelace. 2021. <em>spData: Datasets for Spatial Analysis</em>. <a href="https://nowosad.github.io/spData/">https://nowosad.github.io/spData/</a>.
+</div>
+<div id="ref-spatialreg2015a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, and Gianfranco Piras. 2015. <span>“Comparing Implementations of Estimation Methods for Spatial Econometrics.”</span> <em>Journal of Statistical Software</em> 63 (18): 1–36. <a href="https://doi.org/10.18637/jss.v063.i18">https://doi.org/10.18637/jss.v063.i18</a>.
+</div>
+<div id="ref-R-spatialreg" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Spatialreg: Spatial Regression Analysis</em>. <a href="https://CRAN.R-project.org/package=spatialreg">https://CRAN.R-project.org/package=spatialreg</a>.
+</div>
+<div id="ref-spdep2018" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, and David W. S. Wong. 2018. <span>“Comparing Implementations of Global and Local Indicators of Spatial Association.”</span> <em>TEST</em> 27 (3): 716–48. <a href="https://doi.org/10.1007/s11749-018-0599-x">https://doi.org/10.1007/s11749-018-0599-x</a>.
+</div>
+<div id="ref-R-Jmisc" class="csl-entry" role="doc-biblioentry">
+Chan, TszKin Julian. 2022. <em>Jmisc: Julian Miscellaneous Function</em>. <a href="https://CRAN.R-project.org/package=Jmisc">https://CRAN.R-project.org/package=Jmisc</a>.
+</div>
+<div id="ref-Grossenbacher2022" class="csl-entry" role="doc-biblioentry">
+Grossenbacher, Timo. n.d. <span>“A (Truly) Reproducible <span>R</span> Workflow.”</span> <a href="https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/" class="uri">https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/</a>.
+</div>
+<div id="ref-R-huxtable" class="csl-entry" role="doc-biblioentry">
+Hugh-Jones, David. 2022. <em>Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats</em>. <a href="https://hughjonesd.github.io/huxtable/">https://hughjonesd.github.io/huxtable/</a>.
+</div>
+<div id="ref-sf2018" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
+</div>
+<div id="ref-R-sf" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
+</div>
+<div id="ref-sp2005" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer J., and Roger S. Bivand. 2005. <span>“Classes and Methods for Spatial Data in <span>R</span>.”</span> <em>R News</em> 5 (2): 9–13. <a href="https://CRAN.R-project.org/doc/Rnews/">https://CRAN.R-project.org/doc/Rnews/</a>.
+</div>
+<div id="ref-R-sp" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer, and Roger Bivand. 2022. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp">https://CRAN.R-project.org/package=sp</a>.
+</div>
+<div id="ref-R-urbnmapr" class="csl-entry" role="doc-biblioentry">
+Strochak, Sarah, Kyle Ueyama, and Aaron Williams. 2022. <em>Urbnmapr: State and County Shapefiles in Sf and Tibble Format</em>. <a href="https://github.com/UrbanInstitute/urbnmapr">https://github.com/UrbanInstitute/urbnmapr</a>.
+</div>
+<div id="ref-ggplot22016" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-tidyverse2019" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-R-ggplot2" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2022. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
+</div>
+<div id="ref-knitr2014" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui. 2014. <span>“Knitr: A Comprehensive Tool for Reproducible Research in <span>R</span>.”</span> In <em>Implementing Reproducible Computational Research</em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC. <a href="http://www.crcpress.com/product/isbn/9781466561595">http://www.crcpress.com/product/isbn/9781466561595</a>.
+</div>
+<div id="ref-knitr2015" class="csl-entry" role="doc-biblioentry">
+———. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-R-knitr" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-xie2020" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781003097471">https://doi.org/10.1201/9781003097471</a>.
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
