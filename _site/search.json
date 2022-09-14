@@ -25,7 +25,7 @@
     "href": "maps/EDA/index.html#weights-manager-cont.",
     "title": "Exploratory Data Analysis (EDA)",
     "section": "Weights manager cont.",
-    "text": "Weights manager cont.\n\n\n\nDo we have spatial autocorrelation in our data?\n\n\n\nUnivariate Moran’s I\n\n\n\n\n\nSelect Variable and Weights\n\n\n\n\n\nSelect variable and weights\n\nDocumentation is to be found at geodacenter.github.io. Most of the following is taken from this source,\nWe select log_pm2 as variable and the queen based contiguity weights\n\nMoran’s I"
+    "text": "Weights manager cont.\n\n\n\nDo we have spatial autocorrelation in our data?\n\n\n\nUnivariate Moran's I\n\n\n\n\n\nSelect Variable and Weights\n\n\n\n\n\nSelect variable and weights\n\nDocumentation is to be found at geodacenter.github.io. Most of the following is taken from this source,\nWe select log_pm2 as variable and the queen based contiguity weights\n\nMoran’s I"
   },
   {
     "objectID": "maps/EDA/index.html#options-for-global-morans-i",
@@ -812,312 +812,11 @@
     "text": "References\n\n\nMSB205\n\n\n\nAppelhans, Tim, Florian Detsch, Christoph Reudenbach, and Stefan Woellauer. 2022. Mapview: Interactive Viewing of Spatial Data in r. https://github.com/r-spatial/mapview.\n\n\nBivand, Roger S. 2021. “Progress in the R Ecosystem for Representing and Handling Spatial Data.” Journal of Geographical Systems 23 (4): 515–46. https://doi.org/10.1007/s10109-020-00336-0.\n\n\nBivand, Roger, Tim Keitt, and Barry Rowlingson. 2022. Rgdal: Bindings for the Geospatial Data Abstraction Library. https://CRAN.R-project.org/package=rgdal.\n\n\nBivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. “A Review of Software for Spatial Econometrics in R.” Mathematics 9 (11): 1276. https://doi.org/10.3390/math9111276.\n\n\nBivand, Roger, Jakub Nowosad, and Robin Lovelace. 2021. spData: Datasets for Spatial Analysis. https://nowosad.github.io/spData/.\n\n\nBivand, Roger, and Colin Rundel. 2021. Rgeos: Interface to Geometry Engine - Open Source (GEOS). https://CRAN.R-project.org/package=rgeos.\n\n\nBrownrigg, Ray. 2021. Maps: Draw Geographical Maps. https://CRAN.R-project.org/package=maps.\n\n\nLeSage, James P. n.d. “What Regional Scientists Need to Know about Spatial Econometrics,” 31.\n\n\nLeSage, James P. 2014. “What Regional Scientists Need to Know About Spatial Econometrics.” {{SSRN}} Scholarly Paper ID 2420725. Rochester, NY: Social Science Research Network. https://doi.org/10.2139/ssrn.2420725.\n\n\nMcIlroy, Doug, Ray Brownrigg, Thomas P Minka, and Roger Bivand. 2022. Mapproj: Map Projections. https://CRAN.R-project.org/package=mapproj.\n\n\nMcLean, Mathew W. 2020. RefManageR: Straightforward BibTeX and BibLaTeX Bibliography Management. https://github.com/ropensci/RefManageR/.\n\n\nMcLean, Mathew William. 2014. Straightforward Bibliography Management in r Using the RefManager Package. https://arxiv.org/abs/1403.2036.\n\n\n———. 2017. “RefManageR: Import and Manage BibTeX and BibLaTeX References in r.” The Journal of Open Source Software. https://doi.org/10.21105/joss.00338.\n\n\nNowosad, Jakub, and Robin Lovelace. 2022. spDataLarge: Large Datasets for Spatial Analysis. https://github.com/Nowosad/spData.\n\n\nPebesma, Edzer. 2018. “Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal 10 (1): 439–46. https://doi.org/10.32614/RJ-2018-009.\n\n\n———. 2022a. Sf: Simple Features for r. https://CRAN.R-project.org/package=sf.\n\n\n———. 2022b. Stars: Spatiotemporal Arrays, Raster and Vector Data Cubes. https://CRAN.R-project.org/package=stars.\n\n\n“Shapefile Must Die!” n.d. http://switchfromshapefile.org/.\n\n\nSievert, Carson. 2020. Interactive Web-Based Data Visualization with r, Plotly, and Shiny. Chapman; Hall/CRC. https://plotly-r.com.\n\n\nSievert, Carson, Chris Parmer, Toby Hocking, Scott Chamberlain, Karthik Ram, Marianne Corvellec, and Pedro Despouy. 2021. Plotly: Create Interactive Web Graphics via Plotly.js. https://CRAN.R-project.org/package=plotly.\n\n\nSouth, Andy. 2017. Rnaturalearth: World Map Data from Natural Earth. https://github.com/ropenscilabs/rnaturalearth.\n\n\n———. 2022. Rnaturalearthhires: High Resolution World Vector Map Data from Natural Earth Used in Rnaturalearth.\n\n\nTennekes, Martijn. 2018. “tmap: Thematic Maps in R.” Journal of Statistical Software 84 (6): 1–39. https://doi.org/10.18637/jss.v084.i06.\n\n\n———. 2022. Tmap: Thematic Maps. https://github.com/r-tmap/tmap.\n\n\nTeucher, Andy, and Kenton Russell. 2022. Rmapshaper: Client for Mapshaper for Geospatial Operations. https://github.com/ateucher/rmapshaper.\n\n\nWickham, Hadley. 2016. Ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. https://ggplot2.tidyverse.org.\n\n\n———. 2022. Tidyverse: Easily Install and Load the Tidyverse. https://CRAN.R-project.org/package=tidyverse.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2022. Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. https://CRAN.R-project.org/package=ggplot2."
   },
   {
-    "objectID": "spatmetrics/index.html",
-    "href": "spatmetrics/index.html",
-    "title": "Spatial Econometrics",
-    "section": "",
-    "text": "Getting Data\nLucas County Houseing Data"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#read-in-map-2017-unedited",
-    "href": "spatmetrics/data/index.html#read-in-map-2017-unedited",
-    "title": "Get ssb data",
-    "section": "Read in map 2017 (unedited)",
-    "text": "Read in map 2017 (unedited)\nThe map is converted from 432 to 426 multipolygons.\n\n\nCode\nmap_2017 <- st_read(\"map_2017_uned.gpkg\") %>% \n  rename(\"knr\" = KOMMUNENUM) %>% \n  group_by(knr) %>% \n  summarise() %>% \n  st_transform(\"EPSG:5973\")\n\n\nReading layer `map_2017_uned' from data source \n  `/Users/ag/Dev/QQ_MSB205/spatmetrics/data/map_2017_uned.gpkg' \n  using driver `GPKG'\nSimple feature collection with 432 features and 1 field\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744\nProjected CRS: ETRS89 / UTM zone 33N"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#get-knr-and-knavn-from-local-file",
-    "href": "spatmetrics/data/index.html#get-knr-and-knavn-from-local-file",
-    "title": "Get ssb data",
-    "section": "Get knr and kNavn from local file",
-    "text": "Get knr and kNavn from local file\nWe want the Norvegian names, hence we have to adjust the municipality names for Vetsfold 2017.\n\n\nCode\nload(\"bld06_19.Rdata\")\n\nknr_and_knavn <- bld90_19 %>% \n  select(knrNavn) %>% \n  unique() %>%\n  # separate at the space after last digit\n  separate(col = knrNavn, into = c(\"knr\", \"kNavn\"), sep=\"\\\\s\", extra = \"merge\") %>% \n  filter(!knr %in% c(\"0712\", \"0715\", \"0729\")) %>% \n  bind_rows(\n    c(knr = \"0702\", kNavn = \"Holmestrand\"),\n    c(knr = \"0709\", kNavn = \"Larvik\"),\n    c(knr = \"0714\", kNavn = \"Hof\"),\n    c(knr = \"0722\", kNavn = \"Nøtterøy\"),\n    c(knr = \"0723\", kNavn = \"Tjøme\"),\n    c(knr = \"0728\", kNavn = \"Lardal\")\n  )\n\n\n\n\nCode\n# View(knr_and_knavn)"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#get-ssb-data-via-api",
-    "href": "spatmetrics/data/index.html#get-ssb-data-via-api",
-    "title": "Get ssb data",
-    "section": "Get ssb data via api",
-    "text": "Get ssb data via api\n\nGet data registered on the municipality level from SSB\n\none trick to get a list of all these municipality tables is to search at SSB for (K) and then click on Statistikkbanken in the left column.\n\nWe will use the SSB api exposed through the PxWebApiData R package.\n\nThis API can also be used against most Nordic SSB sister organisations.\n\nSince we have a list of the relevant municipalities for 2017 (map_2017$knr) we can restrict our api request to just these.\nWe are just going to use some of these variables in the following example\n\nThe other variables serves as examples and some might be used in further analysis.\n\nThere is still plenty of relevant data at SSB\n\nQuite trivial to get access to these using the techniques shown below.\n\nOur new dataset use pm2 for 2017 to avoid the big changes in Trøndelag 1.1 2018."
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd",
-    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd",
-    "title": "Get ssb data",
-    "section": "Mean price per sqr. meter for SFD",
-    "text": "Mean price per sqr. meter for SFD\n\nmean price per square meter in single family dwellings in each municipality (426)\n\n\n\n\nCode\npm2_2017 <- ApiData(\n    urlToData = \"06035\",\n    Region = map_2017$knr,\n    Boligtype = \"01\",\n    Tid = \"2017\"\n)\n\n\n\nPick element 2, dataset, in list returned\n\n\n\n\n\nCode\npm2_2017 <- pm2_2017$dataset"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#get-avarage-price-per-sqr.-meter-single-family-dwellings-in-each-municipality-426",
-    "href": "spatmetrics/data/index.html#get-avarage-price-per-sqr.-meter-single-family-dwellings-in-each-municipality-426",
-    "title": "Get ssb data",
-    "section": "Get avarage price per sqr. meter single family dwellings in each municipality (426)",
-    "text": "Get avarage price per sqr. meter single family dwellings in each municipality (426)\n\n\nCode\n# 139 missing values. \n# Try other years for these\npm2_missing <- pm2_2017 %>% \n  filter(is.na(pm2)) %>% \n  select(knr)\n\npm2_15to18 <- ApiData(\n    urlToData = \"06035\",\n    Region = pm2_missing$knr,\n    Boligtype = \"01\",\n    Tid = c(as.character(2010:2016), \"2018\")\n)\n\ntmp <- pm2_15to18$dataset %>% \n  select(-Boligtype) %>% \n  rename(knr = Region) %>% \n  pivot_wider(\n    id_cols = knr,\n    names_from = c(\"ContentsCode\", \"Tid\"),\n    values_from = \"value\"\n    ) %>% \n  mutate(\n    pm2 = rowMeans(\n      select(\n        .data = .,\n        KvPris_2010:KvPris_2018\n        ), \n      na.rm = TRUE\n      ),\n    num_dwelling_sales = rowMeans(\n      select(\n        .data = .,\n        Omsetninger_2010:Omsetninger_2018\n        ),\n      ,\n      na.rm = TRUE\n      )\n    ) %>%\n  select(knr, pm2, num_dwelling_sales)\n\n# Very crude, we just take the mean of existing values\n\npm2_2017 <- pm2_2017 %>% \n  left_join(tmp, by = \"knr\") %>% \n  mutate(\n    pm2 = if_else(\n      is.na(pm2.x), \n      as.integer(pm2.y), \n      pm2.x),\n    num_dwelling_sales =  if_else(\n      is.na(pm2.x), \n      as.integer(num_dwelling_sales.y), \n      num_dwelling_sales.x\n      )\n    ) %>% \n  select(knr, pm2, num_dwelling_sales)"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#population-three-categories-0-19-20-64-and-65",
-    "href": "spatmetrics/data/index.html#population-three-categories-0-19-20-64-and-65",
-    "title": "Get ssb data",
-    "section": "Population, three categories 0-19, 20-64 and 65+",
-    "text": "Population, three categories 0-19, 20-64 and 65+\n\n\n\n\nCode\n# Kjonn = FALSE, aggregate F+M\n# The F in \"F0-19\" DOES NOT indicate Female\nbef_2017 <- ApiData(\n    urlToData = \"07459\",\n    Region = map_2017$knr,\n    Alder = list(\"agg:TredeltGrupperingB2\", \n                 c(\"F0-19\", \"F20-64\", \"F65+\")),\n    Kjonn = FALSE,\n    Tid = \"2017\"\n)\n\n# list with 2 elements, we want dataset\nbef_2017 <- bef_2017$dataset\n\n\n\n\nCode\nprint(head(bef_2017, n = 6))\n\n\n  Region  Alder ContentsCode  Tid value\n1   0101  F0-19    Personer1 2017  7033\n2   0101 F20-64    Personer1 2017 17828\n3   0101   F65+    Personer1 2017  5929\n4   0104  F0-19    Personer1 2017  7453\n5   0104 F20-64    Personer1 2017 18688\n6   0104   F65+    Personer1 2017  6266\n\n\nCode\nbef_2017 <- bef_2017 %>% \n  select(Region, Alder, value) %>% \n  rename(\n    alder = Alder,\n    knr = Region,\n    bef = value,\n  )\n\n\n\n\n\nCode\nbef_2017 <- bef_2017 %>% \n  pivot_wider(id_cols = knr, names_from = \"alder\", values_from = \"bef\") %>% \n  # rename so we do not have to escape names\n  rename(\n    pop_0_19 = `F0-19`,\n    pop_20_64 = `F20-64`,\n    pop_65p = `F65+`\n    ) %>% \n  # Calculate tot. pop.\n  mutate(tot_pop = pop_0_19 + pop_20_64 + pop_65p)\n\n# we are tidy\nprint(head(bef_2017, n = 5))\n\n\n# A tibble: 5 × 5\n  knr   pop_0_19 pop_20_64 pop_65p tot_pop\n  <chr>    <int>     <int>   <int>   <int>\n1 0101      7033     17828    5929   30790\n2 0104      7453     18688    6266   32407\n3 0105     13227     31829   10071   55127\n4 0106     18728     46969   14424   80121\n5 0111       882      2533    1102    4517\n\n\nCode\ndim(bef_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level",
-    "href": "spatmetrics/data/index.html#education-level-percentage-each-level",
-    "title": "Get ssb data",
-    "section": "Education level (percentage each level)",
-    "text": "Education level (percentage each level)\n\nMetadata\n\n\n\n\n\n\nCode\n#Get metadata\nmetadata_09429 <- ApiData(\n  urlToData = \"http://data.ssb.no/api/v0/no/table/09429\",  \n  returnMetaFrames = TRUE\n  )\nstr(metadata_09429)\n\n\n\n\n\nList of 5\n $ Region      :'data.frame':   857 obs. of  2 variables:\n  ..$ values    : chr [1:857] \"0\" \"30\" \"01\" \"3001\" ...\n  ..$ valueTexts: chr [1:857] \"Hele landet\" \"Viken\" \"Østfold (-2019)\" \"Halden\" ...\n $ Nivaa       :'data.frame':   7 obs. of  2 variables:\n  ..$ values    : chr [1:7] \"00\" \"01\" \"02a\" \"11\" ...\n  ..$ valueTexts: chr [1:7] \"Utdanningsnivå i alt\" \"Grunnskolenivå\" \"Videregående skolenivå\" \"Fagskolenivå\" ...\n $ Kjonn       :'data.frame':   3 obs. of  2 variables:\n  ..$ values    : chr [1:3] \"0\" \"1\" \"2\"\n  ..$ valueTexts: chr [1:3] \"Begge kjønn\" \"Menn\" \"Kvinner\"\n $ ContentsCode:'data.frame':   2 obs. of  2 variables:\n  ..$ values    : chr [1:2] \"Personer\" \"PersonerProsent\"\n  ..$ valueTexts: chr [1:2] \"Personer 16 år og over\" \"Personer 16 år og over (prosent)\"\n $ Tid         :'data.frame':   43 obs. of  2 variables:\n  ..$ values    : chr [1:43] \"1970\" \"1980\" \"1981\" \"1982\" ...\n  ..$ valueTexts: chr [1:43] \"1970\" \"1980\" \"1981\" \"1982\" ...\n - attr(*, \"text\")= Named chr [1:5] \"region\" \"nivå\" \"kjønn\" \"statistikkvariabel\" ...\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Nivaa\" \"Kjonn\" \"ContentsCode\" ...\n - attr(*, \"elimination\")= Named logi [1:5] TRUE TRUE TRUE FALSE FALSE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Nivaa\" \"Kjonn\" \"ContentsCode\" ...\n - attr(*, \"time\")= Named logi [1:5] FALSE FALSE FALSE FALSE TRUE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Nivaa\" \"Kjonn\" \"ContentsCode\" ..."
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-income",
-    "href": "spatmetrics/data/index.html#household-income",
-    "title": "Get ssb data",
-    "section": "Household income",
-    "text": "Household income\n\n\n\n\nCode\n# Get metadata \nmetadata_07183 <- ApiData(\n  urlToData = \"http://data.ssb.no/api/v0/no/table/07183\",\n  returnMetaFrames = TRUE\n  )\n\nprint(str(metadata_07183))\n\n\n\n\n\nList of 3\n $ Region      :'data.frame':   822 obs. of  2 variables:\n  ..$ values    : chr [1:822] \"3001\" \"3002\" \"3003\" \"3004\" ...\n  ..$ valueTexts: chr [1:822] \"Halden\" \"Moss\" \"Sarpsborg\" \"Fredrikstad\" ...\n $ ContentsCode:'data.frame':   8 obs. of  2 variables:\n  ..$ values    : chr [1:8] \"Hushold\" \"Inntekt1\" \"Inntekt2\" \"Inntekt3\" ...\n  ..$ valueTexts: chr [1:8] \"Antall husholdninger\" \"Samlet inntekt under 150 000 kr, prosent\" \"Samlet inntekt 150 000 - 249 999 kr, prosent\" \"Samlet inntekt  250 000 - 349 999 kr, prosent\" ...\n $ Tid         :'data.frame':   15 obs. of  2 variables:\n  ..$ values    : chr [1:15] \"2006\" \"2007\" \"2008\" \"2009\" ...\n  ..$ valueTexts: chr [1:15] \"2006\" \"2007\" \"2008\" \"2009\" ...\n - attr(*, \"text\")= Named chr [1:3] \"region\" \"statistikkvariabel\" \"år\"\n  ..- attr(*, \"names\")= chr [1:3] \"Region\" \"ContentsCode\" \"Tid\"\n - attr(*, \"elimination\")= Named logi [1:3] FALSE FALSE FALSE\n  ..- attr(*, \"names\")= chr [1:3] \"Region\" \"ContentsCode\" \"Tid\"\n - attr(*, \"time\")= Named logi [1:3] FALSE FALSE TRUE\n  ..- attr(*, \"names\")= chr [1:3] \"Region\" \"ContentsCode\" \"Tid\"\nNULL"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-net-capital-wealth",
-    "href": "spatmetrics/data/index.html#household-net-capital-wealth",
-    "title": "Get ssb data",
-    "section": "Household net capital (wealth)",
-    "text": "Household net capital (wealth)\n\n\n\n\nCode\nwealth_2017_ssb <- ApiData(\n    urlToData = \"10320\",\n    # \"Hushold\" would also get us \n    # total number of households in muni\n    ContentsCode = c(\"Hushald (prosent)\"),\n    Nettoform = c(\"12\", \"13\", \"10\", \n                  \"25\", \"31\", \"11\", \"32\"\n                  ),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\n\n\n\n\nCode\nwealth_2017 <- wealth_2017_ssb$dataset %>% \n  tibble() %>% \n  select(-ContentsCode, -Tid) %>% \n  rename(\n    knr = Region,\n    net_cap = Nettoform,\n    cap_lev_percent = value) %>% \n  pivot_wider(\n     id_cols = knr, \n     names_from = \"net_cap\", \n     values_from = \"cap_lev_percent\"\n     ) %>% \n  rename(\n    net_cap_0_250k = `12`,\n    net_cap_250k_500k = `13`,\n    net_cap_500k_1000k = `10`,\n    net_cap_1000k_2000k = `25`,\n    net_cap_2000k_3000k = `31`,\n    net_cap_3000k_4000k = `11`,\n    net_cap_4000k_p = `32`,\n  )"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#employed-by-government",
-    "href": "spatmetrics/data/index.html#employed-by-government",
-    "title": "Get ssb data",
-    "section": "Employed by government",
-    "text": "Employed by government\n\n\n\n\nCode\n# Get vdata from SSB\ngov_emp_2017 <- ApiData(\n    urlToData = \"12628\",\n    # total num.of gov. emp. \n    # in each muni\n    StatligEnhet = \"0\",\n    # in yearly eq.\n    ContentsCode = \"AvtalteArsverk\",\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\n\n\n\n\nCode\n# Select wanted variables\ngov_emp_2017 <- gov_emp_2017$dataset %>% \n  select(Region, value) %>% \n  rename(\n    knr = Region,\n    gov_emp = value\n  )"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#wholesale-and-retail-trade-sales",
-    "href": "spatmetrics/data/index.html#wholesale-and-retail-trade-sales",
-    "title": "Get ssb data",
-    "section": "Wholesale and retail trade sales",
-    "text": "Wholesale and retail trade sales\n\n\n\n\nCode\nsales_per_capita_2017  <- ApiData(\n    urlToData = \"04776\",\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\nsales_per_capita_2017  <- \n  sales_per_capita_2017$dataset %>%  \n  select(Region, value) %>% \n  # spc sales per capita\n  rename(\n    knr = Region,\n    spc = value\n  )\n\n\n\n\n\nCode\n# we are tidy\nprint(head(sales_per_capita_2017))\n\n\n   knr   spc\n1 0101 65919\n2 0104 77498\n3 0105 69540\n4 0106 80019\n5 0111 96079\n6 0118 19794\n\n\n\n\nCode\ndim(sales_per_capita_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent",
-    "href": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent",
-    "title": "Get ssb data",
-    "section": "Household income before and after tax in decile (percent)",
-    "text": "Household income before and after tax in decile (percent)\n\nPercent relative to national decile.\n\n\n\n\n\n\nCode\ninc_dec_2017 <- ApiData(\n    urlToData = \"12558\",\n    ContentsCode = \"AndelHush\",\n    Desiler = c(paste(0, 1:9, sep = \"\"), \"10\"),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\ninc_dec_2017 <- tibble(\n  # want knr\n  knr = inc_dec_2017$dataset$Region , \n  # want level descriptions, not code\n  tax = inc_dec_2017$`12558: Husholdninger, etter region, inntekt før/etter skatt, desil, statistikkvariabel og år`$`inntekt før/etter skatt`,\n  decile = inc_dec_2017$dataset$Desiler,\n  percent = inc_dec_2017$dataset$value\n  )\n\n\n\n\n\nCode\ninc_dec_2017 <- inc_dec_2017 %>% \n  mutate(\n    tax = case_when(\n      # income before and after tax\n      tax == \"Samlet inntekt\" ~ \"inc_bt\",\n      tax == \"Inntekt etter skatt\" ~ \"inc_at\",\n      TRUE ~ as.character(tax)\n    )\n  ) %>%\n  pivot_wider(\n     id_cols = knr, \n     names_from = c(\"tax\", \"decile\"), \n     values_from = \"percent\"\n     )"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#industries",
-    "href": "spatmetrics/data/index.html#industries",
-    "title": "Get ssb data",
-    "section": "Industries",
-    "text": "Industries\n\n\n\n\nCode\nnum_emp_2017_ssb <- ApiData(\n    urlToData = \"07196\",\n    OrgFormer = c(\"99\",\"02\",\"03\",\"04\",\"10\",\"24\"),\n    AntAnsatte = c(\"99\", \"00\", \"01\",\"02\",\"03\",\"04\",\"05\",\"15\",\"16\"),\n    NACE2007 = c(\"01-99\"),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n#so that we keep the ssb data\nnum_emp_2017 <- num_emp_2017_ssb$`07196: Foretak (1.1.) unntatt offentlig forvaltning og primærnæringene, etter region, organisasjonsform, næring (SN2007), antall ansatte, statistikkvariabel og år`\nnum_emp_2017$knr <- num_emp_2017_ssb$dataset$Region\n\n\n\n\n\nCode\nnum_emp_2017 <- num_emp_2017 %>% \n  # drop two variables\n  select(-region, -statistikkvariabel, -år, -`næring (SN2007)`) %>% \n  # want knr to the left, really not necessary \n  select(knr,everything()) %>% \n  # rename before pivot to names liked by R\n  rename(\n    org_form = organisasjonsform,\n    num_emp_group = `antall ansatte`,\n    firms = value\n  )\n\nnum_emp_2017 <-  num_emp_2017 %>% \n  pivot_wider(\n     id_cols = knr, \n     names_from = c(\"org_form\", \"num_emp_group\"), \n     values_from = \"firms\"\n     )"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#supply-of-single-family-dwellings",
-    "href": "spatmetrics/data/index.html#supply-of-single-family-dwellings",
-    "title": "Get ssb data",
-    "section": "Supply of single family dwellings",
-    "text": "Supply of single family dwellings\n\n\nCode\nsup_sfd_2017 <- ApiData(\n    urlToData = \"05940\",\n    Byggeareal = c(\"111\", \"112\"),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\nsup_sfd_2017 <- sup_sfd_2017$`05940: Boligbygg, etter region, bygningstype, statistikkvariabel og år` %>% \n  as_tibble() %>% \n  mutate(region = sup_sfd_2017$dataset$Region) %>% \n  rename(knr = region) %>% \n  select(-år) %>% \n  unite(tmp, bygningstype, statistikkvariabel, sep=\"_\") %>% \n    pivot_wider(\n     id_cols = knr, \n     names_from = \"tmp\", \n     values_from = \"value\"\n     ) %>% \n  # sfd Single Family Dwelling\n  # We have to escape the old variable names because of the spaces \n  rename(\n    sfd_started = `Enebolig_Igangsatte boliger`,\n    sfd_ba_started = `Enebolig_Bruksareal igangsatte boliger (m²)`,\n    sfd_ba_completed = `Enebolig_Bruksareal fullførte boliger (m²)`,\n    # w2u with 2 units\n    sfd_w2u_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Igangsatte boliger`,\n    sfd_w2u_ba_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal igangsatte boliger (m²)`,\n    sfd_w2u_ba_completed = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal fullførte boliger (m²)`  \n    )\n\n# we are tidy\nhead(sup_sfd_2017, n=4)\n\n\n\n\n\nknrsfd_startedsfd_ba_startedsfd_ba_completedsfd_w2u_startedsfd_w2u_ba_startedsfd_w2u_ba_completed\n\n0101691193390142019981907\n\n010420440128792325291\n\n0105277744104801417402139\n\n01068015658150842025002236\n\n\n\n\nCode\ndim(sup_sfd_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#centrality-index",
-    "href": "spatmetrics/data/index.html#centrality-index",
-    "title": "Get ssb data",
-    "section": "Centrality index",
-    "text": "Centrality index\n\nFrom SSB, for the year 2018, but we use it for 2017. Probably very small changes from 2017 to 2018. Changed knr for Trøndelag to the old numbers. Split 5054 Indre Fosen into 1624 Rissa and 1718 Leksvik. The last two was given the same centrality as the combined entity.\n\n\n\n\nCode\ncentrality_2018_ed <- read_excel(\"Sentralitet 2018_ed.xlsx\")"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#put-it-all-together",
-    "href": "spatmetrics/data/index.html#put-it-all-together",
-    "title": "Get ssb data",
-    "section": "Put it all together",
-    "text": "Put it all together\n\n\nCode\nnames(pm2_2017)\n\n\n[1] \"knr\"                \"pm2\"                \"num_dwelling_sales\"\n\n\nCode\ndata_2017 <- knr_and_knavn %>% \n  left_join(pm2_2017) %>% \n  left_join(bef_2017) %>% \n  left_join(edu_2017) %>% \n  left_join(inc_2017) %>% \n  left_join(gov_emp_2017) %>%\n  left_join(sales_per_capita_2017) %>%\n  left_join(inc_dec_2017) %>%\n  left_join(wealth_2017) %>% \n  left_join(num_emp_2017) %>%\n  left_join(sup_sfd_2017) %>% \n  left_join(centrality_2018_ed ) %>% \n  mutate(\n    log_pm2 = log(pm2),\n    spc_100k = spc/100000,\n    gov_emp_1k = gov_emp/1000,\n    sen_ind_1k = sen_ind/1000\n  ) %>% \n  # rearrange \n  select(knr, kNavn, pm2, log_pm2, everything())"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#add-data-to-our-map",
-    "href": "spatmetrics/data/index.html#add-data-to-our-map",
-    "title": "Get ssb data",
-    "section": "Add data to our map",
-    "text": "Add data to our map\n\n\nCode\n# join map and data\nmap_data_2017 <- map_2017 %>% \n  left_join(data_2017)\n# write out new map with data\n# if one add new variables it might \n# be necessary to delete the file \n# before writing new version\nst_write(\n  obj = map_data_2017, \n  dsn = \"map_data_2017.gpkg\", \n  driver = \"GPKG\", \n  append = FALSE\n  )\n\n\nDeleting layer `map_data_2017' using driver `GPKG'\nWriting layer `map_data_2017' to data source `map_data_2017.gpkg' using driver `GPKG'\nWriting 426 features with 115 fields and geometry type Multi Polygon."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MSB205",
-    "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.",
-    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.",
-    "title": "Get ssb data",
-    "section": "Mean price per sqr. meter for SFD cont.",
-    "text": "Mean price per sqr. meter for SFD cont.\n\nMake it tidy\n\n\n\n\nCode\n# Work on it to get it tidy\npm2_2017 <- pm2_2017 %>% \n  select(-Boligtype, -Tid) %>% \n  rename(\n    knr = Region\n  ) %>% \n  pivot_wider(\n    id_cols = knr, \n    names_from = \"ContentsCode\", \n    values_from = \"value\"\n    ) %>% \n  rename(\n    pm2 = KvPris,\n    num_dwelling_sales = Omsetninger \n  )\n\n\n\nWe are tidy!\n\n\n\n\n\nCode\ndim(pm2_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-1",
-    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-1",
-    "title": "Get ssb data",
-    "section": "Mean price per sqr. meter for SFD cont.",
-    "text": "Mean price per sqr. meter for SFD cont.\n\nFill in for missing 2017\nGet average price per sqr. meter for single family dwellings (SFD) in each municipality (426)\n\n\n\n\nCode\n# 139 missing values. \n# Try other years for these\npm2_missing <- pm2_2017 %>% \n  filter(is.na(pm2)) %>% \n  select(knr)\n\n# Get data for the years 2010:2016 and 2018\npm2_15to18 <- ApiData(\n    urlToData = \"06035\",\n    Region = pm2_missing$knr,\n    Boligtype = \"01\",\n    Tid = c(as.character(2010:2016), \"2018\")\n)"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-2",
-    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-2",
-    "title": "Get ssb data",
-    "section": "Mean price per sqr. meter for SFD cont.",
-    "text": "Mean price per sqr. meter for SFD cont.\n\n\n\n\nCode\n# Bad name, pm2_15to18 has data fram 2010 to 2016 and 2018\n# Note tmp is not tidy, 8 obs. per row\ntmp <- pm2_15to18$dataset %>% \n  select(-Boligtype) %>% \n  rename(knr = Region) %>% \n  pivot_wider(\n    id_cols = knr,\n    names_from = c(\"ContentsCode\", \"Tid\"),\n    values_from = \"value\"\n    ) %>% \n  mutate(\n    pm2 = rowMeans(\n      select(\n        .data = .,\n        KvPris_2010:KvPris_2018\n        ), \n# calculate mean of existing values\n      na.rm = TRUE\n      ),\n    num_dwelling_sales = rowMeans(\n      select(\n        .data = .,\n        Omsetninger_2010:Omsetninger_2018\n        ),\n      na.rm = TRUE\n      )\n    ) %>%\n  select(knr, pm2, num_dwelling_sales)\n\n\n\n\n\nCode\n    # Very crude, we just take the mean of existing values\n    pm2_2017 <- pm2_2017 %>% \n    # add new values from tmp to pm2_2017  \n      left_join(tmp, by = \"knr\") %>% \n      mutate(\n        pm2 = if_else(\n          is.na(pm2.x), \n          as.integer(pm2.y), \n          pm2.x),\n        num_dwelling_sales =  if_else(\n          is.na(pm2.x), \n          as.integer(num_dwelling_sales.y), \n          num_dwelling_sales.x\n          )\n        ) %>% \n      select(knr, pm2, num_dwelling_sales)\n\n\n\n\nCode\nsummary(pm2_2017$pm2)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n   5317   13213   16731   18177   21300   57525      95"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#population",
-    "href": "spatmetrics/data/index.html#population",
-    "title": "Get ssb data",
-    "section": "Population",
-    "text": "Population\n\nStart by getting metadata for the table 07459\n\n\n\n\n\n\nCode\nmetadata_07459 <- ApiData(\n  \"http://data.ssb.no/api/v0/en/table/07459\",\n  returnMetaFrames = TRUE\n  )\n\n\n\n\n\nCode\nprint(head(str(metadata_07459), n = 20))\n\n\nList of 5\n $ Region      :'data.frame':   856 obs. of  2 variables:\n  ..$ values    : chr [1:856] \"0\" \"30\" \"01\" \"3001\" ...\n  ..$ valueTexts: chr [1:856] \"The whole country\" \"Viken\" \"Østfold (-2019)\" \"Halden\" ...\n $ Kjonn       :'data.frame':   2 obs. of  2 variables:\n  ..$ values    : chr [1:2] \"1\" \"2\"\n  ..$ valueTexts: chr [1:2] \"Males\" \"Females\"\n $ Alder       :'data.frame':   106 obs. of  2 variables:\n  ..$ values    : chr [1:106] \"000\" \"001\" \"002\" \"003\" ...\n  ..$ valueTexts: chr [1:106] \"0 years\" \"1 year\" \"2 years\" \"3 years\" ...\n $ ContentsCode:'data.frame':   1 obs. of  2 variables:\n  ..$ values    : chr \"Personer1\"\n  ..$ valueTexts: chr \"Persons\"\n $ Tid         :'data.frame':   37 obs. of  2 variables:\n  ..$ values    : chr [1:37] \"1986\" \"1987\" \"1988\" \"1989\" ...\n  ..$ valueTexts: chr [1:37] \"1986\" \"1987\" \"1988\" \"1989\" ...\n - attr(*, \"text\")= Named chr [1:5] \"region\" \"sex\" \"age\" \"contents\" ...\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Kjonn\" \"Alder\" \"ContentsCode\" ...\n - attr(*, \"elimination\")= Named logi [1:5] TRUE TRUE TRUE FALSE FALSE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Kjonn\" \"Alder\" \"ContentsCode\" ...\n - attr(*, \"time\")= Named logi [1:5] FALSE FALSE FALSE FALSE TRUE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Kjonn\" \"Alder\" \"ContentsCode\" ...\nNULL"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#population-cont.",
-    "href": "spatmetrics/data/index.html#population-cont.",
-    "title": "Get ssb data",
-    "section": "Population cont.",
-    "text": "Population cont.\n\nAPI query\n\n\n\n\n\n\nCode\n#Get more info about table\napi_query <- ApiData(\n\"http://data.ssb.no/api/v0/en/table/07459\",\nreturnApiQuery = TRUE\n) \n\n\n\n\n\nCode\nprint(api_query)\n\n\n{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"0\", \"99\", \"9999\"]\n      }\n    },\n    {\n      \"code\": \"Kjonn\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"1\", \"2\"]\n      }\n    },\n    {\n      \"code\": \"Alder\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"000\", \"104\", \"105+\"]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"Personer1\"]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"1986\", \"2021\", \"2022\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat\"\n  }\n}"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#population-cont.-1",
-    "href": "spatmetrics/data/index.html#population-cont.-1",
-    "title": "Get ssb data",
-    "section": "Population cont.",
-    "text": "Population cont.\n\nPopulation, three categories 0-19, 20-64 and 65+\n\n\n\n\n\n\nCode\n# Kjonn = FALSE, aggregate F+M\n# The F in \"F0-19\" DOES NOT indicate Female\nbef_2017 <- ApiData(\n    urlToData = \"07459\",\n# Pick data for the municipallities we have in our map \n    Region = map_2017$knr,\n    Alder = list(\"agg:TredeltGrupperingB2\", \n                 c(\"F0-19\", \"F20-64\", \"F65+\")),\n    Kjonn = FALSE,\n    Tid = \"2017\"\n)\n\n\n\n\nCode\n# list with 2 elements, we want dataset\nbef_2017 <- bef_2017$dataset\n\n\n\n\n\nCode\n# print function used to get console \n# output in slides\nprint(head(bef_2017, n = 4))\n\n\n  Region  Alder ContentsCode  Tid value\n1   0101  F0-19    Personer1 2017  7033\n2   0101 F20-64    Personer1 2017 17828\n3   0101   F65+    Personer1 2017  5929\n4   0104  F0-19    Personer1 2017  7453\n\n\n\n\nCode\nbef_2017 <- bef_2017 %>% \n  select(Region, Alder, value) %>% \n  rename(\n    alder = Alder,\n    knr = Region,\n    bef = value,\n  )"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#population-cont.-2",
-    "href": "spatmetrics/data/index.html#population-cont.-2",
-    "title": "Get ssb data",
-    "section": "Population cont.",
-    "text": "Population cont.\n\n\n\n\nCode\nbef_2017 <- bef_2017 %>% \n  pivot_wider(id_cols = knr, names_from = \"alder\", values_from = \"bef\") %>% \n  # rename variables\n  rename(\n    pop_0_19 = `F0-19`,\n    pop_20_64 = `F20-64`,\n    pop_65p = `F65+`\n    ) %>% \n  # Calculate tot. pop.\n  mutate(tot_pop = pop_0_19 + pop_20_64 + pop_65p)\n\n\n\n\n\nCode\n# we are tidy\nprint(head(bef_2017, n = 5))\n\n\n# A tibble: 5 × 5\n  knr   pop_0_19 pop_20_64 pop_65p tot_pop\n  <chr>    <int>     <int>   <int>   <int>\n1 0101      7033     17828    5929   30790\n2 0104      7453     18688    6266   32407\n3 0105     13227     31829   10071   55127\n4 0106     18728     46969   14424   80121\n5 0111       882      2533    1102    4517\n\n\n\n\nCode\n# we are tidy\ndim(bef_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.",
-    "href": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.",
-    "title": "Get ssb data",
-    "section": "Education level (percentage each level) cont.",
-    "text": "Education level (percentage each level) cont.\n\nApi Query\n\n\n\n\n\n\nCode\n#Get more info about table\napi_query_09429 <- ApiData(\n\"http://data.ssb.no/api/v0/en/table/09429\",\nreturnApiQuery = TRUE)\n\nprint(api_query_09429)\n\n\n\n\n\n{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"0\", \"99\", \"9999\"]\n      }\n    },\n    {\n      \"code\": \"Nivaa\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"00\", \"04a\", \"09a\"]\n      }\n    },\n    {\n      \"code\": \"Kjonn\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"0\", \"1\", \"2\"]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"Personer\", \"PersonerProsent\"]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"1970\", \"2020\", \"2021\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat\"\n  }\n}"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-income-cont.",
-    "href": "spatmetrics/data/index.html#household-income-cont.",
-    "title": "Get ssb data",
-    "section": "Household income cont.",
-    "text": "Household income cont.\n\n\n\n\nCode\n#Get more info about table\napi_query_07183 <- ApiData(\n\"http://data.ssb.no/api/v0/en/table/07183\",\nreturnApiQuery = TRUE)\n\nprint(api_query_07183)\n\n\n\n\n\n{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"3001\", \"2599\", \"9999\"]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"Hushold\", \"Inntekt6\", \"Inntekt7\"]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"2006\", \"2019\", \"2020\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat\"\n  }\n}"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-income-cont.-1",
-    "href": "spatmetrics/data/index.html#household-income-cont.-1",
-    "title": "Get ssb data",
-    "section": "Household income cont.",
-    "text": "Household income cont.\n\n\n\n\nCode\ninc_2017 <- ApiData(\n    urlToData = \"07183\",\n    # \"Hushold\" would \n    # also get us \n    # total number of\n    # households in muni\n    ContentsCode = c(\n      paste(\n        \"Inntekt\", \n        seq(\n          from = 1, \n          to = 7), \n        sep = \"\"\n        )\n      ),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\n\n\n\n\nCode\nprint(head(\n  inc_2017$`07183: Husholdninger, etter region, statistikkvariabel og år`, \n  n=9\n  ))\n\n\n          region                            statistikkvariabel   år value\n1 Halden (-2019)      Samlet inntekt under 150 000 kr, prosent 2017     3\n2 Halden (-2019)  Samlet inntekt 150 000 - 249 999 kr, prosent 2017     9\n3 Halden (-2019) Samlet inntekt  250 000 - 349 999 kr, prosent 2017    13\n4 Halden (-2019) Samlet inntekt  350 000 - 449 999 kr, prosent 2017    12\n5 Halden (-2019) Samlet inntekt  450 000 - 549 999 kr, prosent 2017    11\n6 Halden (-2019) Samlet inntekt  550 000 - 749 999 kr, prosent 2017    17\n7 Halden (-2019)    Samlet inntekt 750 000 kr og over, prosent 2017    37\n8   Moss (-2019)      Samlet inntekt under 150 000 kr, prosent 2017     3\n9   Moss (-2019)  Samlet inntekt 150 000 - 249 999 kr, prosent 2017     8\n  NAstatus\n1     <NA>\n2     <NA>\n3     <NA>\n4     <NA>\n5     <NA>\n6     <NA>\n7     <NA>\n8     <NA>\n9     <NA>"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-1",
-    "href": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-1",
-    "title": "Get ssb data",
-    "section": "Education level (percentage each level) cont.",
-    "text": "Education level (percentage each level) cont.\n\n\n\n\nCode\n# Get data from SSB\nedu_2017 <- ApiData(\n    urlToData = \"09429\",\n    # we want in percent\n    ContentsCode = \"PersonerProsent\",\n    Region = map_2017$knr,\n    # Drop \"00\" since total, \n    # 100%, also dro \"09a\" Uoppgit\n    Nivaa = c(\"01\", \"02a\", \n              \"11\", \"03a\", \"04a\"),\n    Kjonn = FALSE,\n    Tid = \"2017\"\n)\n\n\n\n\nCode\n# Pick the needed variables\nedu_2017 <- tibble(\n  # want knr\n  knr = edu_2017$dataset$Region , \n  # want level descriptions, not code\n  nivaa = edu_2017$`09429: Personer 16 år og over, etter region, nivå, statistikkvariabel og år`$nivå,\n  edu_lev_percent = edu_2017$dataset$value\n  )\n\n\n\n\n\nCode\n# Have a look at it\nprint(head(edu_2017, n=7))\n\n\n# A tibble: 7 × 3\n  knr   nivaa                               edu_lev_percent\n  <chr> <chr>                                         <dbl>\n1 0101  Grunnskolenivå                                 30.7\n2 0101  Videregående skolenivå                         39.8\n3 0101  Fagskolenivå                                    2.3\n4 0101  Universitets- og høgskolenivå, kort            21.6\n5 0101  Universitets- og høgskolenivå, lang             5.6\n6 0104  Grunnskolenivå                                 29.8\n7 0104  Videregående skolenivå                         37.6"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-2",
-    "href": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-2",
-    "title": "Get ssb data",
-    "section": "Education level (percentage each level) cont.",
-    "text": "Education level (percentage each level) cont.\n\n\n\n\nCode\n#make tidy\nedu_2017 <- edu_2017 %>% \n   pivot_wider(\n     id_cols = knr, \n     names_from = \"nivaa\", \n     values_from = \"edu_lev_percent\"\n     ) %>% \n  rename(\n    edu_prim = `Grunnskolenivå`,\n    edu_sec = `Videregående skolenivå`,\n    edu_voc = `Fagskolenivå`,\n    edu_uni_short = `Universitets- og høgskolenivå, kort`,\n    edu_uni_long = `Universitets- og høgskolenivå, lang`\n  )\n\n\n\n\n\nCode\n# Tidy OK\nprint(head(edu_2017, n = 5))\n\n\n# A tibble: 5 × 6\n  knr   edu_prim edu_sec edu_voc edu_uni_short edu_uni_long\n  <chr>    <dbl>   <dbl>   <dbl>         <dbl>        <dbl>\n1 0101      30.7    39.8     2.3          21.6          5.6\n2 0104      29.8    37.6     2.5          21.8          8.3\n3 0105      33.2    40.2     2.5          19.9          4.2\n4 0106      29.8    38.6     2.6          22.6          6.3\n5 0111      25.7    42       3.3          21.9          7.1\n\n\n\n\nCode\ndim(edu_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-income-cont.-2",
-    "href": "spatmetrics/data/index.html#household-income-cont.-2",
-    "title": "Get ssb data",
-    "section": "Household income cont.",
-    "text": "Household income cont.\n\n\n\n\nCode\ninc_2017 <- tibble(\n  # want knr\n  knr = inc_2017$dataset$Region , \n  # want level descriptions, not code\n  inc_cat = inc_2017$`07183: Husholdninger, etter region, statistikkvariabel og år`$statistikkvariabel,\n  inc_lev_percent = inc_2017$dataset$value\n)\n\n\n\n\n\nCode\ninc_2017 <- inc_2017 %>% \n  pivot_wider(\n     id_cols = knr, \n     names_from = \"inc_cat\", \n     values_from = \"inc_lev_percent\"\n     ) %>% \n  rename(\n    # Some problem with names here, had to do names(inc_2017) above and \n    # then copy the text strings\n    inc_0_150 = `Samlet inntekt under 150 000 kr, prosent`,\n    inc_150_250 = `Samlet inntekt 150 000 - 249 999 kr, prosent`,\n    inc_250_350 = `Samlet inntekt  250 000 - 349 999 kr, prosent`,\n    inc_350_450 = `Samlet inntekt  350 000 - 449 999 kr, prosent`,\n    inc_450_550 = `Samlet inntekt  450 000 - 549 999 kr, prosent`,\n    inc_550_750 = `Samlet inntekt  550 000 - 749 999 kr, prosent`,\n    inc_750k_p = `Samlet inntekt 750 000 kr og over, prosent`\n  )\n\n\n\n\nCode\ndim(inc_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-income-cont.-3",
-    "href": "spatmetrics/data/index.html#household-income-cont.-3",
-    "title": "Get ssb data",
-    "section": "Household income cont.",
-    "text": "Household income cont.\n\n\nCode\n# we are tidy\nprint(head(inc_2017, n = 7))\n\n\n# A tibble: 7 × 8\n  knr   inc_0_150 inc_150_250 inc_250_350 inc_350_450 inc_450_…¹ inc_5…² inc_7…³\n  <chr>     <int>       <int>       <int>       <int>      <int>   <int>   <int>\n1 0101          3           9          13          12         11      17      37\n2 0104          3           8          13          12         11      17      36\n3 0105          2           9          13          11         11      17      37\n4 0106          2           9          12          10         11      16      39\n5 0111          1           6           9           9         10      18      46\n6 0118          3           7          13           9         11      17      40\n7 0119          2           9          14          12         10      17      36\n# … with abbreviated variable names ¹​inc_450_550, ²​inc_550_750, ³​inc_750k_p"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-net-capital-wealth-1",
-    "href": "spatmetrics/data/index.html#household-net-capital-wealth-1",
-    "title": "Get ssb data",
-    "section": "Household net capital (wealth)",
-    "text": "Household net capital (wealth)\n\n\nCode\n# we are tidy\nprint(head(wealth_2017, n = 6))\n\n\n# A tibble: 6 × 8\n  knr   net_cap_0_250k net_cap_250k_500k net_c…¹ net_c…² net_c…³ net_c…⁴ net_c…⁵\n  <chr>          <dbl>             <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>\n1 0101            31.6               5.1    10.1    19.6    13.4     8.6    11.5\n2 0104            28.7               4.1     8      17.5    15       9.7    16.9\n3 0105            27.7               4.5     9.5    19.2    15.6    10.1    13.4\n4 0106            28.8               4.3     8.1    17.6    15.7    10.4    15  \n5 0111            18.4               3.1     5.3    12.7    14      14.7    31.9\n6 0118            30.7               5.6    12.2    19.1    14.3     7.4    10.6\n# … with abbreviated variable names ¹​net_cap_500k_1000k, ²​net_cap_1000k_2000k,\n#   ³​net_cap_2000k_3000k, ⁴​net_cap_3000k_4000k, ⁵​net_cap_4000k_p\n\n\n\n\nCode\ndim(wealth_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#employed-by-government-1",
-    "href": "spatmetrics/data/index.html#employed-by-government-1",
-    "title": "Get ssb data",
-    "section": "Employed by government",
-    "text": "Employed by government\n\n\nCode\n#we are tidy\nprint(head(gov_emp_2017, n = 15))\n\n\n    knr gov_emp\n1  0101     997\n2  0104     614\n3  0105    1102\n4  0106     740\n5  0111      18\n6  0118       3\n7  0119      67\n8  0121       1\n9  0122     142\n10 0123      12\n11 0124     102\n12 0125      48\n13 0127       4\n14 0128      16\n15 0135      56\n\n\n\n\nCode\ndim(gov_emp_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#wholesale-and-retail-trade-sales-1",
-    "href": "spatmetrics/data/index.html#wholesale-and-retail-trade-sales-1",
-    "title": "Get ssb data",
-    "section": "Wholesale and retail trade sales",
-    "text": "Wholesale and retail trade sales\n\n\nCode\n# we are tidy\nprint(head(sales_per_capita_2017))\n\n\n   knr   spc\n1 0101 65919\n2 0104 77498\n3 0105 69540\n4 0106 80019\n5 0111 96079\n6 0118 19794\n\n\n\n\nCode\ndim(sales_per_capita_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent-cont.",
-    "href": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent-cont.",
-    "title": "Get ssb data",
-    "section": "Household income before and after tax in decile (percent) cont.",
-    "text": "Household income before and after tax in decile (percent) cont.\n\n\nCode\n# we are tidy\nprint(head(inc_dec_2017))\n\n\n# A tibble: 6 × 21\n  knr   inc_bt…¹ inc_b…² inc_b…³ inc_b…⁴ inc_b…⁵ inc_b…⁶ inc_b…⁷ inc_b…⁸ inc_b…⁹\n  <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>\n1 0101      11.7    12      11.3    10.4    10.5    10.5    10       9.7     8.3\n2 0104      10.7    12.2    11.5    11.3    10.4    10.3     9.1     8.6     8.4\n3 0105      10.8    12      10.5    11      10.6    10.6    10.5    10.1     7.9\n4 0106      10.7    11.4    10.2    10.8    10.3    10.2    10.1     9.7     9.1\n5 0111       7.5     8.3     9.4     9.2    10.8    11.6    10.6    11.5    10.3\n6 0118       9.6    11.9     9      10.1    11.3    11.3    11.9    10.6     7.9\n# … with 11 more variables: inc_bt_10 <dbl>, inc_at_01 <dbl>, inc_at_02 <dbl>,\n#   inc_at_03 <dbl>, inc_at_04 <dbl>, inc_at_05 <dbl>, inc_at_06 <dbl>,\n#   inc_at_07 <dbl>, inc_at_08 <dbl>, inc_at_09 <dbl>, inc_at_10 <dbl>, and\n#   abbreviated variable names ¹​inc_bt_01, ²​inc_bt_02, ³​inc_bt_03, ⁴​inc_bt_04,\n#   ⁵​inc_bt_05, ⁶​inc_bt_06, ⁷​inc_bt_07, ⁸​inc_bt_08, ⁹​inc_bt_09\n# ℹ Use `colnames()` to see all variable names\n\n\n\n\nCode\ndim(inc_dec_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#industries-cont.",
-    "href": "spatmetrics/data/index.html#industries-cont.",
-    "title": "Get ssb data",
-    "section": "Industries cont.",
-    "text": "Industries cont.\n\n\nCode\n# we are tidy\nprint(head(num_emp_2017))\n\n\n# A tibble: 6 × 55\n  knr   I alt_…¹ I alt…² I alt…³ I alt…⁴ I alt…⁵ I alt…⁶ I alt…⁷ I alt…⁸ I alt…⁹\n  <chr>    <int>   <int>   <int>   <int>   <int>   <int>   <int>   <int>   <int>\n1 0101      2098    1407     414     142      82      40       8       3       2\n2 0104      2550    1698     534     153      87      55      11      11       1\n3 0105      3564    2255     782     261     161      69      19      14       3\n4 0106      6035    3994    1251     384     231     119      32      19       5\n5 0111       429     306      87      25       8       3       0       0       0\n6 0118       114      88      18       5       3       0       0       0       0\n# … with 45 more variables: `Ansvarlig selskap_Alle størrelsesgrupper` <int>,\n#   `Ansvarlig selskap_Ingen ansatte` <int>,\n#   `Ansvarlig selskap_1-4 ansatte` <int>,\n#   `Ansvarlig selskap_5-9 ansatte` <int>,\n#   `Ansvarlig selskap_10-19 ansatte` <int>,\n#   `Ansvarlig selskap_20-49 ansatte` <int>,\n#   `Ansvarlig selskap_50-99 ansatte` <int>, …\n# ℹ Use `colnames()` to see all variable names\n\n\n\n\nCode\ndim(num_emp_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd",
-    "href": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd",
-    "title": "Get ssb data",
-    "section": "Supply of single family dwellings (SFD)",
-    "text": "Supply of single family dwellings (SFD)\n\n\nCode\nsup_sfd_2017 <- ApiData(\n    urlToData = \"05940\",\n    Byggeareal = c(\"111\", \"112\"),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\nsup_sfd_2017 <- sup_sfd_2017$`05940: Boligbygg, etter region, bygningstype, statistikkvariabel og år` %>% \n  as_tibble() %>% \n  mutate(region = sup_sfd_2017$dataset$Region) %>% \n  rename(knr = region) %>% \n  select(-år) %>% \n  unite(tmp, bygningstype, statistikkvariabel, sep = \"_\") %>% \n    pivot_wider(\n     id_cols = knr, \n     names_from = \"tmp\", \n     values_from = \"value\"\n     ) %>% \n  # sfd Single Family Dwelling\n  # We have to escape the old variable names because of the spaces \n  rename(\n    sfd_started = `Enebolig_Igangsatte boliger`,\n    sfd_ba_started = `Enebolig_Bruksareal igangsatte boliger (m²)`,\n    sfd_ba_completed = `Enebolig_Bruksareal fullførte boliger (m²)`,\n    # w2u with 2 units\n    sfd_w2u_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Igangsatte boliger`,\n    sfd_w2u_ba_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal igangsatte boliger (m²)`,\n    sfd_w2u_ba_completed = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal fullførte boliger (m²)`  \n    )"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd-cont.",
-    "href": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd-cont.",
-    "title": "Get ssb data",
-    "section": "Supply of single family dwellings (SFD) cont.",
-    "text": "Supply of single family dwellings (SFD) cont.\n\n\nCode\n# we are tidy\nprint(head(sup_sfd_2017, n = 8))\n\n\n# A tibble: 8 × 7\n  knr   sfd_started sfd_ba_started sfd_ba_completed sfd_w2u_st…¹ sfd_w…² sfd_w…³\n  <chr>       <int>          <int>            <int>        <int>   <int>   <int>\n1 0101           69          11933             9014           20    1998    1907\n2 0104           20           4401             2879            2     325     291\n3 0105           27           7744            10480           14    1740    2139\n4 0106           80          15658            15084           20    2500    2236\n5 0111           18           3223             4013            0       0     303\n6 0118            0              0              338            0       0       0\n7 0119           10           1942             1526            0       0       0\n8 0121            1            156              156            0       0       0\n# … with abbreviated variable names ¹​sfd_w2u_started, ²​sfd_w2u_ba_started,\n#   ³​sfd_w2u_ba_completed\n\n\n\n\nCode\ndim(sup_sfd_2017)[1]\n\n\n[1] 426"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#centrality-index-cont.",
-    "href": "spatmetrics/data/index.html#centrality-index-cont.",
-    "title": "Get ssb data",
-    "section": "Centrality index cont.",
-    "text": "Centrality index cont.\n\n\nCode\nprint(head(centrality_2018_ed))\n\n\n# A tibble: 6 × 3\n  knr   sen_ind sen_kl\n  <chr>   <dbl>  <dbl>\n1 0101      843      3\n2 0104      932      1\n3 0105      887      2\n4 0106      884      2\n5 0111      725      4\n6 0118      660      4"
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#references",
-    "href": "spatmetrics/data/index.html#references",
-    "title": "Get ssb data",
-    "section": "References",
-    "text": "References\n\n\nMSB205\n\n\n\nBivand, Roger. 2022a. “R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.” Geographical Analysis 54 (3): 488–518. https://doi.org/10.1111/gean.12319.\n\n\n———. 2022b. Spdep: Spatial Dependence: Weighting Schemes, Statistics. https://CRAN.R-project.org/package=spdep.\n\n\nBivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\n———. 2013b. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\n———. 2013c. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\nBivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. “Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.” Geographical Analysis 45 (2): 150–79. https://doi.org/10.1111/gean.12008.\n\n\nBivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. “A Review of Software for Spatial Econometrics in R.” Mathematics 9 (11). https://doi.org/10.3390/math9111276.\n\n\nBivand, Roger, and Gianfranco Piras. 2015. “Comparing Implementations of Estimation Methods for Spatial Econometrics.” Journal of Statistical Software 63 (18): 1–36. https://doi.org/10.18637/jss.v063.i18.\n\n\n———. 2022. Spatialreg: Spatial Regression Analysis. https://CRAN.R-project.org/package=spatialreg.\n\n\nBivand, Roger, and David W. S. Wong. 2018. “Comparing Implementations of Global and Local Indicators of Spatial Association.” TEST 27 (3): 716–48. https://doi.org/10.1007/s11749-018-0599-x.\n\n\nHugh-Jones, David. 2022. Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats. https://hughjonesd.github.io/huxtable/.\n\n\nImdad, M. U., M. Aslam, S. Altaf, and A. Munir. 2019. “Some New Diagnostics of Multicollinearity in Linear Regression Model.” Sains Malaysiana 48(9): 2051–60. http://dx.doi.org/10.17576/jsm-2019-4809-26.\n\n\nImdadullah, M., M. Aslam, and S. Altaf. 2016. “Mctest: An r Package for Deteection of Collinearity Among Regressors.” The R Journal 8(2): 499–509. https://journal.r-project.org/archive/2016/RJ-2016-062/index.html.\n\n\nLangsrud, Øyvind, and Jan Bruusgaard. 2021. PxWebApiData: PX-Web Data by API. https://github.com/statisticsnorway/PxWebApiData.\n\n\nMuhammad, Imdad Ullah, and Aslam Muhammad. 2020. Mctest: Multicollinearity Diagnostic Measures. https://CRAN.R-project.org/package=mctest.\n\n\nPebesma, Edzer. 2018. “Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal 10 (1): 439–46. https://doi.org/10.32614/RJ-2018-009.\n\n\n———. 2022. Sf: Simple Features for r. https://CRAN.R-project.org/package=sf.\n\n\nPebesma, Edzer J., and Roger S. Bivand. 2005. “Classes and Methods for Spatial Data in R.” R News 5 (2): 9–13. https://CRAN.R-project.org/doc/Rnews/.\n\n\nPebesma, Edzer, and Roger Bivand. 2022. Sp: Classes and Methods for Spatial Data. https://CRAN.R-project.org/package=sp.\n\n\nRobinson, David, Alex Hayes, and Simon Couch. 2022. Broom: Convert Statistical Objects into Tidy Tibbles. https://CRAN.R-project.org/package=broom.\n\n\nTennekes, Martijn. 2018. “tmap: Thematic Maps in R.” Journal of Statistical Software 84 (6): 1–39. https://doi.org/10.18637/jss.v084.i06.\n\n\n———. 2022. Tmap: Thematic Maps. https://github.com/r-tmap/tmap.\n\n\nWickham, Hadley. 2022. Tidyverse: Easily Install and Load the Tidyverse. https://CRAN.R-project.org/package=tidyverse.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, and Jennifer Bryan. 2022. Readxl: Read Excel Files. https://CRAN.R-project.org/package=readxl."
-  },
-  {
-    "objectID": "spatmetrics/data/index.html#put-it-all-together-cont.",
-    "href": "spatmetrics/data/index.html#put-it-all-together-cont.",
-    "title": "Get ssb data",
-    "section": "Put it all together cont.",
-    "text": "Put it all together cont.\n\n\nCode\ndim(data_2017)\n\n\n[1] 426 115\n\n\n\nWe have 115 variables and 426 observations."
+    "objectID": "spatmetrics/LucasCounty/index.html#loading-packages",
+    "href": "spatmetrics/LucasCounty/index.html#loading-packages",
+    "title": "Spatial Hedonic Model",
+    "section": "Loading packages",
+    "text": "Loading packages\n\n\nCode\n# To install urbnmapr from github\ndevtools::install_github(\"UrbanInstitute/urbnmapr\")\n\n\n\n\nCode\n# for demean\nsuppressPackageStartupMessages({\nlibrary(Jmisc)\nlibrary(sf)\nlibrary(urbnmapr)\nlibrary(tidyverse)\nlibrary(ggplot2)\nlibrary(sp)\nlibrary(spdep)\nlibrary(spatialreg)\nlibrary(spData)\nlibrary(huxtable)\nlibrary(knitr)\n})\n# Options\noptions(scipen = 7)"
   },
   {
     "objectID": "spatmetrics/LucasCounty/index.html#read-in-data",
@@ -1127,32 +826,39 @@
     "text": "Read in data\n\n\nCode\ndata(house)\n#head(house, n=10)\nhouse_sf <- st_as_sf(house)\n#head(house_sf, n=10)\ndim(house_sf)\n\n\n[1] 25357    25\n\n\nCode\nset.seed(42)# What else could it be?\nred_house_sf <- house_sf[sample(1:dim(house_sf)[1], size = 3000), ]"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help",
-    "href": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help",
+    "objectID": "spatmetrics/LucasCounty/index.html#quick-check-of-data",
+    "href": "spatmetrics/LucasCounty/index.html#quick-check-of-data",
     "title": "Spatial Hedonic Model",
-    "section": "Some info regarding the dataset (from R help)",
-    "text": "Some info regarding the dataset (from R help)\nData on 25,357 single family homes sold in Lucas County, Ohio, 1993-1998 from the county auditor.\nFormal class ‘SpatialPointsDataFrame’ [package “sp”] with 5 slots. The data slot is a data frame with 25357 observations on the following 24 variables.\n\nprice\n\na numeric vector\n\nyrbuilt\n\na numeric vector\n\nstories\n\na factor with levels one bilevel multilvl one+half two two+half three\n\nTLA\n\na numeric vector\n\nwall\n\na factor with levels stucdrvt ccbtile metlvnyl brick stone wood partbrk\n\nbeds\n\na numeric vector\n\nbaths\n\na numeric vector\n\nhalfbaths\n\na numeric vector"
+    "section": "Quick check of data",
+    "text": "Quick check of data\n\n\nCode\nplot(house_sf[\"price\"], cex = 0.01, pch = 20)\n\n\n\n\n\nCode\ndim(red_house_sf)\n\n\n[1] 3000   25"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help-cont.",
-    "href": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help-cont.",
+    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help",
+    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help",
     "title": "Spatial Hedonic Model",
-    "section": "Some info regarding the dataset (from R help) cont.",
-    "text": "Some info regarding the dataset (from R help) cont.\n\nfrontage\n\na numeric vector\n\ndepth\n\na numeric vector\n\ngarage\n\na factor with levels no garage basement attached detached carport\n\ngaragesqft\n\na numeric vector\n\nrooms\n\na numeric vector\n\nlotsize\n\na numeric vector\n\nsdate\n\na numeric vector\n\navalue\n\na numeric vector"
+    "section": "Dataset info (R help)",
+    "text": "Dataset info (R help)\nData on 25,357 single family homes sold in Lucas County, Ohio, 1993-1998 from the county auditor.\nFormal class ‘SpatialPointsDataFrame’ [package “sp”] with 5 slots. The data slot is a data frame with 25357 observations on the following 24 variables.\n\nprice\n\na numeric vector\n\nyrbuilt\n\na numeric vector\n\nstories\n\na factor with levels one bilevel multilvl one+half two two+half three\n\nTLA\n\na numeric vector"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help-cont.-1",
-    "href": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help-cont.-1",
+    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-1",
+    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-1",
     "title": "Spatial Hedonic Model",
-    "section": "Some info regarding the dataset (from R help) cont.",
-    "text": "Some info regarding the dataset (from R help) cont.\n\ns1993\n\na numeric vector\n\ns1994\n\na numeric vector\n\ns1995\n\na numeric vector\n\ns1996\n\na numeric vector\n\ns1997\n\na numeric vector\n\ns1998\n\na numeric vector\n\nsyear\n\na factor with levels 1993 1994 1995 1996 1997 1998\n\nage\n\na numeric vector"
+    "section": "Dataset info (R help)",
+    "text": "Dataset info (R help)\n\nwall\n\na factor with levels stucdrvt ccbtile metlvnyl brick stone wood partbrk\n\nbeds\n\na numeric vector\n\nbaths\n\na numeric vector\n\nhalfbaths\n\na numeric vector\n\nfrontage\n\na numeric vector\n\ndepth\n\na numeric vector"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help-cont.-2",
-    "href": "spatmetrics/LucasCounty/index.html#some-info-regarding-the-dataset-from-r-help-cont.-2",
+    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-2",
+    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-2",
     "title": "Spatial Hedonic Model",
-    "section": "Some info regarding the dataset (from R help) cont.",
-    "text": "Some info regarding the dataset (from R help) cont.\nIts projection is CRS(+init=epsg:2834), the Ohio North State Plane."
+    "section": "Dataset info (R help)",
+    "text": "Dataset info (R help)\n\ngarage\n\na factor with levels no garage basement attached detached carport\n\ngaragesqft\n\na numeric vector\n\nrooms\n\na numeric vector\n\nlotsize\n\na numeric vector\n\nsdate\n\na numeric vector\n\navalue\n\na numeric vector"
+  },
+  {
+    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-3",
+    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-3",
+    "title": "Spatial Hedonic Model",
+    "section": "Dataset info (R help)",
+    "text": "Dataset info (R help)\n\ns1993 to s1998\n\na numeric vector\n\nsyear\n\na factor with levels 1993 1994 1995 1996 1997 1998\n\nage\n\na numeric vector"
   },
   {
     "objectID": "spatmetrics/LucasCounty/index.html#convert-from-spatialpointsdataframe-to-sf",
@@ -1281,43 +987,288 @@
     "text": "MAPS\n\n\nCode\n#  Start of code to draw a map of Lucas County\n#\n#\n# counties %>% \n#   filter(county_name == \"Lucas County\")\n# \n# \n# tmp <- countydata %>% \n#   left_join(counties, by = \"county_fips\") %>% \n#   filter(state_name ==\"Ohio\") %>% \n#   filter(county_name == \"Lucas County\") %>% \n#   ggplot(mapping = aes(long, lat, group = group, fill = horate)) +\n#   geom_polygon(color = \"#ffffff\", size = .25)\n# \n# class(countydata)\n# names(countydata)\n# class(counties)\n# names(counties)\n# \n# tmp_sf <- st_as_sf(counties, coords = c(\"long\", \"lat\"), \n#     crs = 2834)\n# \n# names(tmp_sf)\n# \n# tmp_sf %>% \n#   filter(state_name == \"Ohio\") %>% \n#   filter(county_name == \"Lucas County\") \n# \n# test <- st_cast(tmp_sf, \"MULTIPOINT\")\n# test1 <- st_cast(test, \"POLYGON\")\n# \n# names(tmp_sf)\n# \n# tmp <- st_transform(tmp, 2834)\n# tmp\n# head(countydata)\n\n\n\n\nCode\n#siste\n\n\n\n\nMSB205\n\n\n\n“0.1 The Reproducible R Toolkit (RRT).” n.d. https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html.\n\n\n“16 Product Fails That Defined The Decade.” n.d. BuzzFeed News. https://www.buzzfeednews.com/article/nicolenguyen/notable-tech-fails-of-2010s.\n\n\nBechhofer, Sean, Iain Buchan, David De Roure, Paolo Missier, John Ainsworth, Jiten Bhagat, Philip Couch, et al. 2013. “Why Linked Data Is Not Enough for Scientists.” Future Generation Computer Systems 29 (2): 599611. https://doi.org/10.1016/j.future.2011.08.004.\n\n\nBivand, Roger. 2022a. “R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.” Geographical Analysis 54 (3): 488–518. https://doi.org/10.1111/gean.12319.\n\n\n———. 2022b. Spdep: Spatial Dependence: Weighting Schemes, Statistics. https://CRAN.R-project.org/package=spdep.\n\n\nBivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\n———. 2013b. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\n———. 2013c. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\nBivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. “Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.” Geographical Analysis 45 (2): 150–79. https://doi.org/10.1111/gean.12008.\n\n\nBivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. “A Review of Software for Spatial Econometrics in R.” Mathematics 9 (11). https://doi.org/10.3390/math9111276.\n\n\nBivand, Roger, Jakub Nowosad, and Robin Lovelace. 2021. spData: Datasets for Spatial Analysis. https://nowosad.github.io/spData/.\n\n\nBivand, Roger, and Gianfranco Piras. 2015. “Comparing Implementations of Estimation Methods for Spatial Econometrics.” Journal of Statistical Software 63 (18): 1–36. https://doi.org/10.18637/jss.v063.i18.\n\n\n———. 2022. Spatialreg: Spatial Regression Analysis. https://CRAN.R-project.org/package=spatialreg.\n\n\nBivand, Roger, and David W. S. Wong. 2018. “Comparing Implementations of Global and Local Indicators of Spatial Association.” TEST 27 (3): 716–48. https://doi.org/10.1007/s11749-018-0599-x.\n\n\nChan, TszKin Julian. 2022. Jmisc: Julian Miscellaneous Function. https://CRAN.R-project.org/package=Jmisc.\n\n\nGrossenbacher, Timo. n.d. “A (Truly) Reproducible R Workflow.” https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/.\n\n\nHugh-Jones, David. 2022. Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats. https://hughjonesd.github.io/huxtable/.\n\n\nPebesma, Edzer. 2018. “Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal 10 (1): 439–46. https://doi.org/10.32614/RJ-2018-009.\n\n\n———. 2022. Sf: Simple Features for r. https://CRAN.R-project.org/package=sf.\n\n\nPebesma, Edzer J., and Roger S. Bivand. 2005. “Classes and Methods for Spatial Data in R.” R News 5 (2): 9–13. https://CRAN.R-project.org/doc/Rnews/.\n\n\nPebesma, Edzer, and Roger Bivand. 2022. Sp: Classes and Methods for Spatial Data. https://CRAN.R-project.org/package=sp.\n\n\nStrochak, Sarah, Kyle Ueyama, and Aaron Williams. 2022. Urbnmapr: State and County Shapefiles in Sf and Tibble Format. https://github.com/UrbanInstitute/urbnmapr.\n\n\nWickham, Hadley. 2016. Ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. https://ggplot2.tidyverse.org.\n\n\n———. 2022. Tidyverse: Easily Install and Load the Tidyverse. https://CRAN.R-project.org/package=tidyverse.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2022. Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. https://CRAN.R-project.org/package=ggplot2.\n\n\nXie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research in R.” In Implementing Reproducible Computational Research, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC. http://www.crcpress.com/product/isbn/9781466561595.\n\n\n———. 2015. Dynamic Documents with R and Knitr. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. https://yihui.org/knitr/.\n\n\n———. 2022. Knitr: A General-Purpose Package for Dynamic Report Generation in r. https://yihui.org/knitr/.\n\n\nXie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. R Markdown Cookbook. Chapman; Hall/CRC. https://doi.org/10.1201/9781003097471."
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#loading-packages",
-    "href": "spatmetrics/LucasCounty/index.html#loading-packages",
-    "title": "Spatial Hedonic Model",
-    "section": "Loading packages",
-    "text": "Loading packages\n\n\nCode\n# To install urbnmapr from github\ndevtools::install_github(\"UrbanInstitute/urbnmapr\")\n\n\n\n\nCode\n# for demean\nsuppressPackageStartupMessages({\nlibrary(Jmisc)\nlibrary(sf)\nlibrary(urbnmapr)\nlibrary(tidyverse)\nlibrary(ggplot2)\nlibrary(sp)\nlibrary(spdep)\nlibrary(spatialreg)\nlibrary(spData)\nlibrary(huxtable)\nlibrary(knitr)\n})\n# Options\noptions(scipen = 7)"
+    "objectID": "spatmetrics/index.html",
+    "href": "spatmetrics/index.html",
+    "title": "Spatial Econometrics",
+    "section": "",
+    "text": "Getting Data\nLucas County Houseing Data"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#quick-check-of-data",
-    "href": "spatmetrics/LucasCounty/index.html#quick-check-of-data",
-    "title": "Spatial Hedonic Model",
-    "section": "Quick check of data",
-    "text": "Quick check of data\n\n\nCode\nplot(house_sf[\"price\"], cex = 0.01, pch = 20)\n\n\n\n\n\nCode\ndim(red_house_sf)\n\n\n[1] 3000   25"
+    "objectID": "spatmetrics/data/index.html#read-in-map-2017-unedited",
+    "href": "spatmetrics/data/index.html#read-in-map-2017-unedited",
+    "title": "Get ssb data",
+    "section": "Read in map 2017 (unedited)",
+    "text": "Read in map 2017 (unedited)\nThe map is converted from 432 to 426 multipolygons.\n\n\nCode\nmap_2017 <- st_read(\"map_2017_uned.gpkg\") %>% \n  rename(\"knr\" = KOMMUNENUM) %>% \n  group_by(knr) %>% \n  summarise() %>% \n  st_transform(\"EPSG:5973\")\n\n\nReading layer `map_2017_uned' from data source \n  `/Users/ag/Dev/QQ_MSB205/spatmetrics/data/map_2017_uned.gpkg' \n  using driver `GPKG'\nSimple feature collection with 432 features and 1 field\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744\nProjected CRS: ETRS89 / UTM zone 33N"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help",
-    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help",
-    "title": "Spatial Hedonic Model",
-    "section": "Dataset info (R help)",
-    "text": "Dataset info (R help)\nData on 25,357 single family homes sold in Lucas County, Ohio, 1993-1998 from the county auditor.\nFormal class ‘SpatialPointsDataFrame’ [package “sp”] with 5 slots. The data slot is a data frame with 25357 observations on the following 24 variables.\n\nprice\n\na numeric vector\n\nyrbuilt\n\na numeric vector\n\nstories\n\na factor with levels one bilevel multilvl one+half two two+half three\n\nTLA\n\na numeric vector"
+    "objectID": "spatmetrics/data/index.html#get-knr-and-knavn-from-local-file",
+    "href": "spatmetrics/data/index.html#get-knr-and-knavn-from-local-file",
+    "title": "Get ssb data",
+    "section": "Get knr and kNavn from local file",
+    "text": "Get knr and kNavn from local file\nWe want the Norvegian names, hence we have to adjust the municipality names for Vetsfold 2017.\n\n\nCode\nload(\"bld06_19.Rdata\")\n\nknr_and_knavn <- bld90_19 %>% \n  select(knrNavn) %>% \n  unique() %>%\n  # separate at the space after last digit\n  separate(col = knrNavn, into = c(\"knr\", \"kNavn\"), sep=\"\\\\s\", extra = \"merge\") %>% \n  filter(!knr %in% c(\"0712\", \"0715\", \"0729\")) %>% \n  bind_rows(\n    c(knr = \"0702\", kNavn = \"Holmestrand\"),\n    c(knr = \"0709\", kNavn = \"Larvik\"),\n    c(knr = \"0714\", kNavn = \"Hof\"),\n    c(knr = \"0722\", kNavn = \"Nøtterøy\"),\n    c(knr = \"0723\", kNavn = \"Tjøme\"),\n    c(knr = \"0728\", kNavn = \"Lardal\")\n  )\n\n\n\n\nCode\n# View(knr_and_knavn)"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-1",
-    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-1",
-    "title": "Spatial Hedonic Model",
-    "section": "Dataset info (R help)",
-    "text": "Dataset info (R help)\n\nwall\n\na factor with levels stucdrvt ccbtile metlvnyl brick stone wood partbrk\n\nbeds\n\na numeric vector\n\nbaths\n\na numeric vector\n\nhalfbaths\n\na numeric vector\n\nfrontage\n\na numeric vector\n\ndepth\n\na numeric vector\n\ngarage\n\na factor with levels no garage basement attached detached carport\n\ngaragesqft\n\na numeric vector\n\nrooms\n\na numeric vector"
+    "objectID": "spatmetrics/data/index.html#get-ssb-data-via-api",
+    "href": "spatmetrics/data/index.html#get-ssb-data-via-api",
+    "title": "Get ssb data",
+    "section": "Get ssb data via api",
+    "text": "Get ssb data via api\n\nGet data registered on the municipality level from SSB\n\none trick to get a list of all these municipality tables is to search at SSB for (K) and then click on Statistikkbanken in the left column.\n\nWe will use the SSB api exposed through the PxWebApiData R package.\n\nThis API can also be used against most Nordic SSB sister organisations.\n\nSince we have a list of the relevant municipalities for 2017 (map_2017$knr) we can restrict our api request to just these.\nWe are just going to use some of these variables in the following example\n\nThe other variables serves as examples and some might be used in further analysis.\n\nThere is still plenty of relevant data at SSB\n\nQuite trivial to get access to these using the techniques shown below.\n\nOur new dataset use pm2 for 2017 to avoid the big changes in Trøndelag 1.1 2018."
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-2",
-    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-2",
-    "title": "Spatial Hedonic Model",
-    "section": "Dataset info (R help)",
-    "text": "Dataset info (R help)\n\nlotsize\n\na numeric vector\n\nsdate\n\na numeric vector\n\navalue\n\na numeric vector\n\ns1993 to s1998\n\na numeric vector\n\ns1994\n\na numeric vector\n\ns1995\n\na numeric vector\n\ns1996\n\na numeric vector\n\ns1997\n\na numeric vector\n\ns1998\n\na numeric vector\n\nsyear\n\na factor with levels 1993 1994 1995 1996 1997 1998\n\nage\n\na numeric vector"
+    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd",
+    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd",
+    "title": "Get ssb data",
+    "section": "Mean price per sqr. meter for SFD",
+    "text": "Mean price per sqr. meter for SFD\n\nmean price per square meter in single family dwellings in each municipality (426)\n\n\n\n\nCode\npm2_2017 <- ApiData(\n    urlToData = \"06035\",\n    Region = map_2017$knr,\n    Boligtype = \"01\",\n    Tid = \"2017\"\n)\n\n\n\nPick element 2, dataset, in list returned\n\n\n\n\n\nCode\npm2_2017 <- pm2_2017$dataset"
   },
   {
-    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-3",
-    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-3",
+    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.",
+    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.",
+    "title": "Get ssb data",
+    "section": "Mean price per sqr. meter for SFD cont.",
+    "text": "Mean price per sqr. meter for SFD cont.\n\nMake it tidy\n\n\n\n\nCode\n# Work on it to get it tidy\npm2_2017 <- pm2_2017 %>% \n  select(-Boligtype, -Tid) %>% \n  rename(\n    knr = Region\n  ) %>% \n  pivot_wider(\n    id_cols = knr, \n    names_from = \"ContentsCode\", \n    values_from = \"value\"\n    ) %>% \n  rename(\n    pm2 = KvPris,\n    num_dwelling_sales = Omsetninger \n  )\n\n\n\nWe are tidy!\n\n\n\n\n\nCode\ndim(pm2_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-1",
+    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-1",
+    "title": "Get ssb data",
+    "section": "Mean price per sqr. meter for SFD cont.",
+    "text": "Mean price per sqr. meter for SFD cont.\n\nFill in for missing 2017\nGet average price per sqr. meter for single family dwellings (SFD) in each municipality (426)\n\n\n\n\nCode\n# 139 missing values. \n# Try other years for these\npm2_missing <- pm2_2017 %>% \n  filter(is.na(pm2)) %>% \n  select(knr)\n\n# Get data for the years 2010:2016 and 2018\npm2_15to18 <- ApiData(\n    urlToData = \"06035\",\n    Region = pm2_missing$knr,\n    Boligtype = \"01\",\n    Tid = c(as.character(2010:2016), \"2018\")\n)"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-2",
+    "href": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd-cont.-2",
+    "title": "Get ssb data",
+    "section": "Mean price per sqr. meter for SFD cont.",
+    "text": "Mean price per sqr. meter for SFD cont.\n\n\n\n\nCode\n# Bad name, pm2_15to18 has data fram 2010 to 2016 and 2018\n# Note tmp is not tidy, 8 obs. per row\ntmp <- pm2_15to18$dataset %>% \n  select(-Boligtype) %>% \n  rename(knr = Region) %>% \n  pivot_wider(\n    id_cols = knr,\n    names_from = c(\"ContentsCode\", \"Tid\"),\n    values_from = \"value\"\n    ) %>% \n  mutate(\n    pm2 = rowMeans(\n      select(\n        .data = .,\n        KvPris_2010:KvPris_2018\n        ), \n# calculate mean of existing values\n      na.rm = TRUE\n      ),\n    num_dwelling_sales = rowMeans(\n      select(\n        .data = .,\n        Omsetninger_2010:Omsetninger_2018\n        ),\n      na.rm = TRUE\n      )\n    ) %>%\n  select(knr, pm2, num_dwelling_sales)\n\n\n\n\n\nCode\n    # Very crude, we just take the mean of existing values\n    pm2_2017 <- pm2_2017 %>% \n    # add new values from tmp to pm2_2017  \n      left_join(tmp, by = \"knr\") %>% \n      mutate(\n        pm2 = if_else(\n          is.na(pm2.x), \n          as.integer(pm2.y), \n          pm2.x),\n        num_dwelling_sales =  if_else(\n          is.na(pm2.x), \n          as.integer(num_dwelling_sales.y), \n          num_dwelling_sales.x\n          )\n        ) %>% \n      select(knr, pm2, num_dwelling_sales)\n\n\n\n\nCode\nsummary(pm2_2017$pm2)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n   5317   13213   16731   18177   21300   57525      95"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#population",
+    "href": "spatmetrics/data/index.html#population",
+    "title": "Get ssb data",
+    "section": "Population",
+    "text": "Population\n\nStart by getting metadata for the table 07459\n\n\n\n\n\n\nCode\nmetadata_07459 <- ApiData(\n  \"http://data.ssb.no/api/v0/en/table/07459\",\n  returnMetaFrames = TRUE\n  )\n\n\n\n\n\nCode\nprint(head(str(metadata_07459), n = 20))\n\n\nList of 5\n $ Region      :'data.frame':   856 obs. of  2 variables:\n  ..$ values    : chr [1:856] \"0\" \"30\" \"01\" \"3001\" ...\n  ..$ valueTexts: chr [1:856] \"The whole country\" \"Viken\" \"Østfold (-2019)\" \"Halden\" ...\n $ Kjonn       :'data.frame':   2 obs. of  2 variables:\n  ..$ values    : chr [1:2] \"1\" \"2\"\n  ..$ valueTexts: chr [1:2] \"Males\" \"Females\"\n $ Alder       :'data.frame':   106 obs. of  2 variables:\n  ..$ values    : chr [1:106] \"000\" \"001\" \"002\" \"003\" ...\n  ..$ valueTexts: chr [1:106] \"0 years\" \"1 year\" \"2 years\" \"3 years\" ...\n $ ContentsCode:'data.frame':   1 obs. of  2 variables:\n  ..$ values    : chr \"Personer1\"\n  ..$ valueTexts: chr \"Persons\"\n $ Tid         :'data.frame':   37 obs. of  2 variables:\n  ..$ values    : chr [1:37] \"1986\" \"1987\" \"1988\" \"1989\" ...\n  ..$ valueTexts: chr [1:37] \"1986\" \"1987\" \"1988\" \"1989\" ...\n - attr(*, \"text\")= Named chr [1:5] \"region\" \"sex\" \"age\" \"contents\" ...\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Kjonn\" \"Alder\" \"ContentsCode\" ...\n - attr(*, \"elimination\")= Named logi [1:5] TRUE TRUE TRUE FALSE FALSE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Kjonn\" \"Alder\" \"ContentsCode\" ...\n - attr(*, \"time\")= Named logi [1:5] FALSE FALSE FALSE FALSE TRUE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Kjonn\" \"Alder\" \"ContentsCode\" ...\nNULL"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#population-cont.",
+    "href": "spatmetrics/data/index.html#population-cont.",
+    "title": "Get ssb data",
+    "section": "Population cont.",
+    "text": "Population cont.\n\nAPI query\n\n\n\n\n\n\nCode\n#Get more info about table\napi_query <- ApiData(\n\"http://data.ssb.no/api/v0/en/table/07459\",\nreturnApiQuery = TRUE\n) \n\n\n\n\n\nCode\nprint(api_query)\n\n\n{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"0\", \"99\", \"9999\"]\n      }\n    },\n    {\n      \"code\": \"Kjonn\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"1\", \"2\"]\n      }\n    },\n    {\n      \"code\": \"Alder\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"000\", \"104\", \"105+\"]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"Personer1\"]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"1986\", \"2021\", \"2022\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat\"\n  }\n}"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#population-cont.-1",
+    "href": "spatmetrics/data/index.html#population-cont.-1",
+    "title": "Get ssb data",
+    "section": "Population cont.",
+    "text": "Population cont.\n\nPopulation, three categories 0-19, 20-64 and 65+\n\n\n\n\n\n\nCode\n# Kjonn = FALSE, aggregate F+M\n# The F in \"F0-19\" DOES NOT indicate Female\nbef_2017 <- ApiData(\n    urlToData = \"07459\",\n# Pick data for the municipallities we have in our map \n    Region = map_2017$knr,\n    Alder = list(\"agg:TredeltGrupperingB2\", \n                 c(\"F0-19\", \"F20-64\", \"F65+\")),\n    Kjonn = FALSE,\n    Tid = \"2017\"\n)\n\n\n\n\nCode\n# list with 2 elements, we want dataset\nbef_2017 <- bef_2017$dataset\n\n\n\n\n\nCode\n# print function used to get console \n# output in slides\nprint(head(bef_2017, n = 4))\n\n\n  Region  Alder ContentsCode  Tid value\n1   0101  F0-19    Personer1 2017  7033\n2   0101 F20-64    Personer1 2017 17828\n3   0101   F65+    Personer1 2017  5929\n4   0104  F0-19    Personer1 2017  7453\n\n\n\n\nCode\nbef_2017 <- bef_2017 %>% \n  select(Region, Alder, value) %>% \n  rename(\n    alder = Alder,\n    knr = Region,\n    bef = value,\n  )"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#population-cont.-2",
+    "href": "spatmetrics/data/index.html#population-cont.-2",
+    "title": "Get ssb data",
+    "section": "Population cont.",
+    "text": "Population cont.\n\n\n\n\nCode\nbef_2017 <- bef_2017 %>% \n  pivot_wider(id_cols = knr, names_from = \"alder\", values_from = \"bef\") %>% \n  # rename variables\n  rename(\n    pop_0_19 = `F0-19`,\n    pop_20_64 = `F20-64`,\n    pop_65p = `F65+`\n    ) %>% \n  # Calculate tot. pop.\n  mutate(tot_pop = pop_0_19 + pop_20_64 + pop_65p)\n\n\n\n\n\nCode\n# we are tidy\nprint(head(bef_2017, n = 5))\n\n\n# A tibble: 5 × 5\n  knr   pop_0_19 pop_20_64 pop_65p tot_pop\n  <chr>    <int>     <int>   <int>   <int>\n1 0101      7033     17828    5929   30790\n2 0104      7453     18688    6266   32407\n3 0105     13227     31829   10071   55127\n4 0106     18728     46969   14424   80121\n5 0111       882      2533    1102    4517\n\n\n\n\nCode\n# we are tidy\ndim(bef_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level",
+    "href": "spatmetrics/data/index.html#education-level-percentage-each-level",
+    "title": "Get ssb data",
+    "section": "Education level (percentage each level)",
+    "text": "Education level (percentage each level)\n\nMetadata\n\n\n\n\n\n\nCode\n#Get metadata\nmetadata_09429 <- ApiData(\n  urlToData = \"http://data.ssb.no/api/v0/no/table/09429\",  \n  returnMetaFrames = TRUE\n  )\nstr(metadata_09429)\n\n\n\n\n\nList of 5\n $ Region      :'data.frame':   857 obs. of  2 variables:\n  ..$ values    : chr [1:857] \"0\" \"30\" \"01\" \"3001\" ...\n  ..$ valueTexts: chr [1:857] \"Hele landet\" \"Viken\" \"Østfold (-2019)\" \"Halden\" ...\n $ Nivaa       :'data.frame':   7 obs. of  2 variables:\n  ..$ values    : chr [1:7] \"00\" \"01\" \"02a\" \"11\" ...\n  ..$ valueTexts: chr [1:7] \"Utdanningsnivå i alt\" \"Grunnskolenivå\" \"Videregående skolenivå\" \"Fagskolenivå\" ...\n $ Kjonn       :'data.frame':   3 obs. of  2 variables:\n  ..$ values    : chr [1:3] \"0\" \"1\" \"2\"\n  ..$ valueTexts: chr [1:3] \"Begge kjønn\" \"Menn\" \"Kvinner\"\n $ ContentsCode:'data.frame':   2 obs. of  2 variables:\n  ..$ values    : chr [1:2] \"Personer\" \"PersonerProsent\"\n  ..$ valueTexts: chr [1:2] \"Personer 16 år og over\" \"Personer 16 år og over (prosent)\"\n $ Tid         :'data.frame':   43 obs. of  2 variables:\n  ..$ values    : chr [1:43] \"1970\" \"1980\" \"1981\" \"1982\" ...\n  ..$ valueTexts: chr [1:43] \"1970\" \"1980\" \"1981\" \"1982\" ...\n - attr(*, \"text\")= Named chr [1:5] \"region\" \"nivå\" \"kjønn\" \"statistikkvariabel\" ...\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Nivaa\" \"Kjonn\" \"ContentsCode\" ...\n - attr(*, \"elimination\")= Named logi [1:5] TRUE TRUE TRUE FALSE FALSE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Nivaa\" \"Kjonn\" \"ContentsCode\" ...\n - attr(*, \"time\")= Named logi [1:5] FALSE FALSE FALSE FALSE TRUE\n  ..- attr(*, \"names\")= chr [1:5] \"Region\" \"Nivaa\" \"Kjonn\" \"ContentsCode\" ..."
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.",
+    "href": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.",
+    "title": "Get ssb data",
+    "section": "Education level (percentage each level) cont.",
+    "text": "Education level (percentage each level) cont.\n\nApi Query\n\n\n\n\n\n\nCode\n#Get more info about table\napi_query_09429 <- ApiData(\n\"http://data.ssb.no/api/v0/en/table/09429\",\nreturnApiQuery = TRUE)\n\nprint(api_query_09429)\n\n\n\n\n\n{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"0\", \"99\", \"9999\"]\n      }\n    },\n    {\n      \"code\": \"Nivaa\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"00\", \"04a\", \"09a\"]\n      }\n    },\n    {\n      \"code\": \"Kjonn\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"0\", \"1\", \"2\"]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"Personer\", \"PersonerProsent\"]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"1970\", \"2020\", \"2021\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat\"\n  }\n}"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-1",
+    "href": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-1",
+    "title": "Get ssb data",
+    "section": "Education level (percentage each level) cont.",
+    "text": "Education level (percentage each level) cont.\n\n\n\n\nCode\n# Get data from SSB\nedu_2017 <- ApiData(\n    urlToData = \"09429\",\n    # we want in percent\n    ContentsCode = \"PersonerProsent\",\n    Region = map_2017$knr,\n    # Drop \"00\" since total, \n    # 100%, also dro \"09a\" Uoppgit\n    Nivaa = c(\"01\", \"02a\", \n              \"11\", \"03a\", \"04a\"),\n    Kjonn = FALSE,\n    Tid = \"2017\"\n)\n\n\n\n\nCode\n# Pick the needed variables\nedu_2017 <- tibble(\n  # want knr\n  knr = edu_2017$dataset$Region , \n  # want level descriptions, not code\n  nivaa = edu_2017$`09429: Personer 16 år og over, etter region, nivå, statistikkvariabel og år`$nivå,\n  edu_lev_percent = edu_2017$dataset$value\n  )\n\n\n\n\n\nCode\n# Have a look at it\nprint(head(edu_2017, n=7))\n\n\n# A tibble: 7 × 3\n  knr   nivaa                               edu_lev_percent\n  <chr> <chr>                                         <dbl>\n1 0101  Grunnskolenivå                                 30.7\n2 0101  Videregående skolenivå                         39.8\n3 0101  Fagskolenivå                                    2.3\n4 0101  Universitets- og høgskolenivå, kort            21.6\n5 0101  Universitets- og høgskolenivå, lang             5.6\n6 0104  Grunnskolenivå                                 29.8\n7 0104  Videregående skolenivå                         37.6"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-2",
+    "href": "spatmetrics/data/index.html#education-level-percentage-each-level-cont.-2",
+    "title": "Get ssb data",
+    "section": "Education level (percentage each level) cont.",
+    "text": "Education level (percentage each level) cont.\n\n\n\n\nCode\n#make tidy\nedu_2017 <- edu_2017 %>% \n   pivot_wider(\n     id_cols = knr, \n     names_from = \"nivaa\", \n     values_from = \"edu_lev_percent\"\n     ) %>% \n  rename(\n    edu_prim = `Grunnskolenivå`,\n    edu_sec = `Videregående skolenivå`,\n    edu_voc = `Fagskolenivå`,\n    edu_uni_short = `Universitets- og høgskolenivå, kort`,\n    edu_uni_long = `Universitets- og høgskolenivå, lang`\n  )\n\n\n\n\n\nCode\n# Tidy OK\nprint(head(edu_2017, n = 5))\n\n\n# A tibble: 5 × 6\n  knr   edu_prim edu_sec edu_voc edu_uni_short edu_uni_long\n  <chr>    <dbl>   <dbl>   <dbl>         <dbl>        <dbl>\n1 0101      30.7    39.8     2.3          21.6          5.6\n2 0104      29.8    37.6     2.5          21.8          8.3\n3 0105      33.2    40.2     2.5          19.9          4.2\n4 0106      29.8    38.6     2.6          22.6          6.3\n5 0111      25.7    42       3.3          21.9          7.1\n\n\n\n\nCode\ndim(edu_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-income",
+    "href": "spatmetrics/data/index.html#household-income",
+    "title": "Get ssb data",
+    "section": "Household income",
+    "text": "Household income\n\n\n\n\nCode\n# Get metadata \nmetadata_07183 <- ApiData(\n  urlToData = \"http://data.ssb.no/api/v0/no/table/07183\",\n  returnMetaFrames = TRUE\n  )\n\nprint(str(metadata_07183))\n\n\n\n\n\nList of 3\n $ Region      :'data.frame':   822 obs. of  2 variables:\n  ..$ values    : chr [1:822] \"3001\" \"3002\" \"3003\" \"3004\" ...\n  ..$ valueTexts: chr [1:822] \"Halden\" \"Moss\" \"Sarpsborg\" \"Fredrikstad\" ...\n $ ContentsCode:'data.frame':   8 obs. of  2 variables:\n  ..$ values    : chr [1:8] \"Hushold\" \"Inntekt1\" \"Inntekt2\" \"Inntekt3\" ...\n  ..$ valueTexts: chr [1:8] \"Antall husholdninger\" \"Samlet inntekt under 150 000 kr, prosent\" \"Samlet inntekt 150 000 - 249 999 kr, prosent\" \"Samlet inntekt  250 000 - 349 999 kr, prosent\" ...\n $ Tid         :'data.frame':   15 obs. of  2 variables:\n  ..$ values    : chr [1:15] \"2006\" \"2007\" \"2008\" \"2009\" ...\n  ..$ valueTexts: chr [1:15] \"2006\" \"2007\" \"2008\" \"2009\" ...\n - attr(*, \"text\")= Named chr [1:3] \"region\" \"statistikkvariabel\" \"år\"\n  ..- attr(*, \"names\")= chr [1:3] \"Region\" \"ContentsCode\" \"Tid\"\n - attr(*, \"elimination\")= Named logi [1:3] FALSE FALSE FALSE\n  ..- attr(*, \"names\")= chr [1:3] \"Region\" \"ContentsCode\" \"Tid\"\n - attr(*, \"time\")= Named logi [1:3] FALSE FALSE TRUE\n  ..- attr(*, \"names\")= chr [1:3] \"Region\" \"ContentsCode\" \"Tid\"\nNULL"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-income-cont.",
+    "href": "spatmetrics/data/index.html#household-income-cont.",
+    "title": "Get ssb data",
+    "section": "Household income cont.",
+    "text": "Household income cont.\n\n\n\n\nCode\n#Get more info about table\napi_query_07183 <- ApiData(\n\"http://data.ssb.no/api/v0/en/table/07183\",\nreturnApiQuery = TRUE)\n\nprint(api_query_07183)\n\n\n\n\n\n{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"3001\", \"2599\", \"9999\"]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"Hushold\", \"Inntekt6\", \"Inntekt7\"]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\"2006\", \"2019\", \"2020\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat\"\n  }\n}"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-income-cont.-1",
+    "href": "spatmetrics/data/index.html#household-income-cont.-1",
+    "title": "Get ssb data",
+    "section": "Household income cont.",
+    "text": "Household income cont.\n\n\n\n\nCode\ninc_2017 <- ApiData(\n    urlToData = \"07183\",\n    # \"Hushold\" would \n    # also get us \n    # total number of\n    # households in muni\n    ContentsCode = c(\n      paste(\n        \"Inntekt\", \n        seq(\n          from = 1, \n          to = 7), \n        sep = \"\"\n        )\n      ),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\n\n\n\n\nCode\nprint(head(\n  inc_2017$`07183: Husholdninger, etter region, statistikkvariabel og år`, \n  n=9\n  ))\n\n\n          region                            statistikkvariabel   år value\n1 Halden (-2019)      Samlet inntekt under 150 000 kr, prosent 2017     3\n2 Halden (-2019)  Samlet inntekt 150 000 - 249 999 kr, prosent 2017     9\n3 Halden (-2019) Samlet inntekt  250 000 - 349 999 kr, prosent 2017    13\n4 Halden (-2019) Samlet inntekt  350 000 - 449 999 kr, prosent 2017    12\n5 Halden (-2019) Samlet inntekt  450 000 - 549 999 kr, prosent 2017    11\n6 Halden (-2019) Samlet inntekt  550 000 - 749 999 kr, prosent 2017    17\n7 Halden (-2019)    Samlet inntekt 750 000 kr og over, prosent 2017    37\n8   Moss (-2019)      Samlet inntekt under 150 000 kr, prosent 2017     3\n9   Moss (-2019)  Samlet inntekt 150 000 - 249 999 kr, prosent 2017     8\n  NAstatus\n1     <NA>\n2     <NA>\n3     <NA>\n4     <NA>\n5     <NA>\n6     <NA>\n7     <NA>\n8     <NA>\n9     <NA>"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-income-cont.-2",
+    "href": "spatmetrics/data/index.html#household-income-cont.-2",
+    "title": "Get ssb data",
+    "section": "Household income cont.",
+    "text": "Household income cont.\n\n\n\n\nCode\ninc_2017 <- tibble(\n  # want knr\n  knr = inc_2017$dataset$Region , \n  # want level descriptions, not code\n  inc_cat = inc_2017$`07183: Husholdninger, etter region, statistikkvariabel og år`$statistikkvariabel,\n  inc_lev_percent = inc_2017$dataset$value\n)\n\n\n\n\n\nCode\ninc_2017 <- inc_2017 %>% \n  pivot_wider(\n     id_cols = knr, \n     names_from = \"inc_cat\", \n     values_from = \"inc_lev_percent\"\n     ) %>% \n  rename(\n    # Some problem with names here, had to do names(inc_2017) above and \n    # then copy the text strings\n    inc_0_150 = `Samlet inntekt under 150 000 kr, prosent`,\n    inc_150_250 = `Samlet inntekt 150 000 - 249 999 kr, prosent`,\n    inc_250_350 = `Samlet inntekt  250 000 - 349 999 kr, prosent`,\n    inc_350_450 = `Samlet inntekt  350 000 - 449 999 kr, prosent`,\n    inc_450_550 = `Samlet inntekt  450 000 - 549 999 kr, prosent`,\n    inc_550_750 = `Samlet inntekt  550 000 - 749 999 kr, prosent`,\n    inc_750k_p = `Samlet inntekt 750 000 kr og over, prosent`\n  )\n\n\n\n\nCode\ndim(inc_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-income-cont.-3",
+    "href": "spatmetrics/data/index.html#household-income-cont.-3",
+    "title": "Get ssb data",
+    "section": "Household income cont.",
+    "text": "Household income cont.\n\n\nCode\n# we are tidy\nprint(head(inc_2017, n = 7))\n\n\n# A tibble: 7 × 8\n  knr   inc_0_150 inc_150_250 inc_250_350 inc_350_450 inc_450_…¹ inc_5…² inc_7…³\n  <chr>     <int>       <int>       <int>       <int>      <int>   <int>   <int>\n1 0101          3           9          13          12         11      17      37\n2 0104          3           8          13          12         11      17      36\n3 0105          2           9          13          11         11      17      37\n4 0106          2           9          12          10         11      16      39\n5 0111          1           6           9           9         10      18      46\n6 0118          3           7          13           9         11      17      40\n7 0119          2           9          14          12         10      17      36\n# … with abbreviated variable names ¹​inc_450_550, ²​inc_550_750, ³​inc_750k_p"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-net-capital-wealth",
+    "href": "spatmetrics/data/index.html#household-net-capital-wealth",
+    "title": "Get ssb data",
+    "section": "Household net capital (wealth)",
+    "text": "Household net capital (wealth)\n\n\n\n\nCode\nwealth_2017_ssb <- ApiData(\n    urlToData = \"10320\",\n    # \"Hushold\" would also get us \n    # total number of households in muni\n    ContentsCode = c(\"Hushald (prosent)\"),\n    Nettoform = c(\"12\", \"13\", \"10\", \n                  \"25\", \"31\", \"11\", \"32\"\n                  ),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\n\n\n\n\nCode\nwealth_2017 <- wealth_2017_ssb$dataset %>% \n  tibble() %>% \n  select(-ContentsCode, -Tid) %>% \n  rename(\n    knr = Region,\n    net_cap = Nettoform,\n    cap_lev_percent = value) %>% \n  pivot_wider(\n     id_cols = knr, \n     names_from = \"net_cap\", \n     values_from = \"cap_lev_percent\"\n     ) %>% \n  rename(\n    net_cap_0_250k = `12`,\n    net_cap_250k_500k = `13`,\n    net_cap_500k_1000k = `10`,\n    net_cap_1000k_2000k = `25`,\n    net_cap_2000k_3000k = `31`,\n    net_cap_3000k_4000k = `11`,\n    net_cap_4000k_p = `32`,\n  )"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-net-capital-wealth-1",
+    "href": "spatmetrics/data/index.html#household-net-capital-wealth-1",
+    "title": "Get ssb data",
+    "section": "Household net capital (wealth)",
+    "text": "Household net capital (wealth)\n\n\nCode\n# we are tidy\nprint(head(wealth_2017, n = 6))\n\n\n# A tibble: 6 × 8\n  knr   net_cap_0_250k net_cap_250k_500k net_c…¹ net_c…² net_c…³ net_c…⁴ net_c…⁵\n  <chr>          <dbl>             <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>\n1 0101            31.6               5.1    10.1    19.6    13.4     8.6    11.5\n2 0104            28.7               4.1     8      17.5    15       9.7    16.9\n3 0105            27.7               4.5     9.5    19.2    15.6    10.1    13.4\n4 0106            28.8               4.3     8.1    17.6    15.7    10.4    15  \n5 0111            18.4               3.1     5.3    12.7    14      14.7    31.9\n6 0118            30.7               5.6    12.2    19.1    14.3     7.4    10.6\n# … with abbreviated variable names ¹​net_cap_500k_1000k, ²​net_cap_1000k_2000k,\n#   ³​net_cap_2000k_3000k, ⁴​net_cap_3000k_4000k, ⁵​net_cap_4000k_p\n\n\n\n\nCode\ndim(wealth_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#employed-by-government",
+    "href": "spatmetrics/data/index.html#employed-by-government",
+    "title": "Get ssb data",
+    "section": "Employed by government",
+    "text": "Employed by government\n\n\n\n\nCode\n# Get vdata from SSB\ngov_emp_2017 <- ApiData(\n    urlToData = \"12628\",\n    # total num.of gov. emp. \n    # in each muni\n    StatligEnhet = \"0\",\n    # in yearly eq.\n    ContentsCode = \"AvtalteArsverk\",\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\n\n\n\n\nCode\n# Select wanted variables\ngov_emp_2017 <- gov_emp_2017$dataset %>% \n  select(Region, value) %>% \n  rename(\n    knr = Region,\n    gov_emp = value\n  )"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#employed-by-government-1",
+    "href": "spatmetrics/data/index.html#employed-by-government-1",
+    "title": "Get ssb data",
+    "section": "Employed by government",
+    "text": "Employed by government\n\n\nCode\n#we are tidy\nprint(head(gov_emp_2017, n = 15))\n\n\n    knr gov_emp\n1  0101     997\n2  0104     614\n3  0105    1102\n4  0106     740\n5  0111      18\n6  0118       3\n7  0119      67\n8  0121       1\n9  0122     142\n10 0123      12\n11 0124     102\n12 0125      48\n13 0127       4\n14 0128      16\n15 0135      56\n\n\n\n\nCode\ndim(gov_emp_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#wholesale-and-retail-trade-sales",
+    "href": "spatmetrics/data/index.html#wholesale-and-retail-trade-sales",
+    "title": "Get ssb data",
+    "section": "Wholesale and retail trade sales",
+    "text": "Wholesale and retail trade sales\n\n\n\n\nCode\nsales_per_capita_2017  <- ApiData(\n    urlToData = \"04776\",\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\nsales_per_capita_2017  <- \n  sales_per_capita_2017$dataset %>%  \n  select(Region, value) %>% \n  # spc sales per capita\n  rename(\n    knr = Region,\n    spc = value\n  )\n\n\n\n\n\nCode\n# we are tidy\nprint(head(sales_per_capita_2017))\n\n\n   knr   spc\n1 0101 65919\n2 0104 77498\n3 0105 69540\n4 0106 80019\n5 0111 96079\n6 0118 19794\n\n\n\n\nCode\ndim(sales_per_capita_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent",
+    "href": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent",
+    "title": "Get ssb data",
+    "section": "Household income before and after tax in decile (percent)",
+    "text": "Household income before and after tax in decile (percent)\n\nPercent relative to national decile.\n\n\n\n\n\n\nCode\ninc_dec_2017 <- ApiData(\n    urlToData = \"12558\",\n    ContentsCode = \"AndelHush\",\n    Desiler = c(paste(0, 1:9, sep = \"\"), \"10\"),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\ninc_dec_2017 <- tibble(\n  # want knr\n  knr = inc_dec_2017$dataset$Region , \n  # want level descriptions, not code\n  tax = inc_dec_2017$`12558: Husholdninger, etter region, inntekt før/etter skatt, desil, statistikkvariabel og år`$`inntekt før/etter skatt`,\n  decile = inc_dec_2017$dataset$Desiler,\n  percent = inc_dec_2017$dataset$value\n  )\n\n\n\n\n\nCode\ninc_dec_2017 <- inc_dec_2017 %>% \n  mutate(\n    tax = case_when(\n      # income before and after tax\n      tax == \"Samlet inntekt\" ~ \"inc_bt\",\n      tax == \"Inntekt etter skatt\" ~ \"inc_at\",\n      TRUE ~ as.character(tax)\n    )\n  ) %>%\n  pivot_wider(\n     id_cols = knr, \n     names_from = c(\"tax\", \"decile\"), \n     values_from = \"percent\"\n     )"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent-cont.",
+    "href": "spatmetrics/data/index.html#household-income-before-and-after-tax-in-decile-percent-cont.",
+    "title": "Get ssb data",
+    "section": "Household income before and after tax in decile (percent) cont.",
+    "text": "Household income before and after tax in decile (percent) cont.\n\n\nCode\n# we are tidy\nprint(head(inc_dec_2017))\n\n\n# A tibble: 6 × 21\n  knr   inc_bt…¹ inc_b…² inc_b…³ inc_b…⁴ inc_b…⁵ inc_b…⁶ inc_b…⁷ inc_b…⁸ inc_b…⁹\n  <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>\n1 0101      11.7    12      11.3    10.4    10.5    10.5    10       9.7     8.3\n2 0104      10.7    12.2    11.5    11.3    10.4    10.3     9.1     8.6     8.4\n3 0105      10.8    12      10.5    11      10.6    10.6    10.5    10.1     7.9\n4 0106      10.7    11.4    10.2    10.8    10.3    10.2    10.1     9.7     9.1\n5 0111       7.5     8.3     9.4     9.2    10.8    11.6    10.6    11.5    10.3\n6 0118       9.6    11.9     9      10.1    11.3    11.3    11.9    10.6     7.9\n# … with 11 more variables: inc_bt_10 <dbl>, inc_at_01 <dbl>, inc_at_02 <dbl>,\n#   inc_at_03 <dbl>, inc_at_04 <dbl>, inc_at_05 <dbl>, inc_at_06 <dbl>,\n#   inc_at_07 <dbl>, inc_at_08 <dbl>, inc_at_09 <dbl>, inc_at_10 <dbl>, and\n#   abbreviated variable names ¹​inc_bt_01, ²​inc_bt_02, ³​inc_bt_03, ⁴​inc_bt_04,\n#   ⁵​inc_bt_05, ⁶​inc_bt_06, ⁷​inc_bt_07, ⁸​inc_bt_08, ⁹​inc_bt_09\n\n\n\n\nCode\ndim(inc_dec_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#industries",
+    "href": "spatmetrics/data/index.html#industries",
+    "title": "Get ssb data",
+    "section": "Industries",
+    "text": "Industries\n\n\n\n\nCode\nnum_emp_2017_ssb <- ApiData(\n    urlToData = \"07196\",\n    OrgFormer = c(\"99\",\"02\",\"03\",\"04\",\"10\",\"24\"),\n    AntAnsatte = c(\"99\", \"00\", \"01\",\"02\",\"03\",\"04\",\"05\",\"15\",\"16\"),\n    NACE2007 = c(\"01-99\"),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n#so that we keep the ssb data\nnum_emp_2017 <- num_emp_2017_ssb$`07196: Foretak (1.1.) unntatt offentlig forvaltning og primærnæringene, etter region, organisasjonsform, næring (SN2007), antall ansatte, statistikkvariabel og år`\nnum_emp_2017$knr <- num_emp_2017_ssb$dataset$Region\n\n\n\n\n\nCode\nnum_emp_2017 <- num_emp_2017 %>% \n  # drop two variables\n  select(-region, -statistikkvariabel, -år, -`næring (SN2007)`) %>% \n  # want knr to the left, really not necessary \n  select(knr,everything()) %>% \n  # rename before pivot to names liked by R\n  rename(\n    org_form = organisasjonsform,\n    num_emp_group = `antall ansatte`,\n    firms = value\n  )\n\nnum_emp_2017 <-  num_emp_2017 %>% \n  pivot_wider(\n     id_cols = knr, \n     names_from = c(\"org_form\", \"num_emp_group\"), \n     values_from = \"firms\"\n     )"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#industries-cont.",
+    "href": "spatmetrics/data/index.html#industries-cont.",
+    "title": "Get ssb data",
+    "section": "Industries cont.",
+    "text": "Industries cont.\n\n\nCode\n# we are tidy\nprint(head(num_emp_2017))\n\n\n# A tibble: 6 × 55\n  knr   I alt_…¹ I alt…² I alt…³ I alt…⁴ I alt…⁵ I alt…⁶ I alt…⁷ I alt…⁸ I alt…⁹\n  <chr>    <int>   <int>   <int>   <int>   <int>   <int>   <int>   <int>   <int>\n1 0101      2098    1407     414     142      82      40       8       3       2\n2 0104      2550    1698     534     153      87      55      11      11       1\n3 0105      3564    2255     782     261     161      69      19      14       3\n4 0106      6035    3994    1251     384     231     119      32      19       5\n5 0111       429     306      87      25       8       3       0       0       0\n6 0118       114      88      18       5       3       0       0       0       0\n# … with 45 more variables: `Ansvarlig selskap_Alle størrelsesgrupper` <int>,\n#   `Ansvarlig selskap_Ingen ansatte` <int>,\n#   `Ansvarlig selskap_1-4 ansatte` <int>,\n#   `Ansvarlig selskap_5-9 ansatte` <int>,\n#   `Ansvarlig selskap_10-19 ansatte` <int>,\n#   `Ansvarlig selskap_20-49 ansatte` <int>,\n#   `Ansvarlig selskap_50-99 ansatte` <int>, …\n\n\n\n\nCode\ndim(num_emp_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd",
+    "href": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd",
+    "title": "Get ssb data",
+    "section": "Supply of single family dwellings (SFD)",
+    "text": "Supply of single family dwellings (SFD)\n\n\nCode\nsup_sfd_2017 <- ApiData(\n    urlToData = \"05940\",\n    Byggeareal = c(\"111\", \"112\"),\n    Region = map_2017$knr,\n    Tid = \"2017\"\n)\n\nsup_sfd_2017 <- sup_sfd_2017$`05940: Boligbygg, etter region, bygningstype, statistikkvariabel og år` %>% \n  as_tibble() %>% \n  mutate(region = sup_sfd_2017$dataset$Region) %>% \n  rename(knr = region) %>% \n  select(-år) %>% \n  unite(tmp, bygningstype, statistikkvariabel, sep = \"_\") %>% \n    pivot_wider(\n     id_cols = knr, \n     names_from = \"tmp\", \n     values_from = \"value\"\n     ) %>% \n  # sfd Single Family Dwelling\n  # We have to escape the old variable names because of the spaces \n  rename(\n    sfd_started = `Enebolig_Igangsatte boliger`,\n    sfd_ba_started = `Enebolig_Bruksareal igangsatte boliger (m²)`,\n    sfd_ba_completed = `Enebolig_Bruksareal fullførte boliger (m²)`,\n    # w2u with 2 units\n    sfd_w2u_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Igangsatte boliger`,\n    sfd_w2u_ba_started = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal igangsatte boliger (m²)`,\n    sfd_w2u_ba_completed = `Enebolig med hybelleilighet, sokkelleilighet o.l._Bruksareal fullførte boliger (m²)`  \n    )"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd-cont.",
+    "href": "spatmetrics/data/index.html#supply-of-single-family-dwellings-sfd-cont.",
+    "title": "Get ssb data",
+    "section": "Supply of single family dwellings (SFD) cont.",
+    "text": "Supply of single family dwellings (SFD) cont.\n\n\nCode\n# we are tidy\nprint(head(sup_sfd_2017, n = 8))\n\n\n# A tibble: 8 × 7\n  knr   sfd_started sfd_ba_started sfd_ba_completed sfd_w2u_st…¹ sfd_w…² sfd_w…³\n  <chr>       <int>          <int>            <int>        <int>   <int>   <int>\n1 0101           69          11933             9014           20    1998    1907\n2 0104           20           4401             2879            2     325     291\n3 0105           27           7744            10480           14    1740    2139\n4 0106           80          15658            15084           20    2500    2236\n5 0111           18           3223             4013            0       0     303\n6 0118            0              0              338            0       0       0\n7 0119           10           1942             1526            0       0       0\n8 0121            1            156              156            0       0       0\n# … with abbreviated variable names ¹​sfd_w2u_started, ²​sfd_w2u_ba_started,\n#   ³​sfd_w2u_ba_completed\n\n\n\n\nCode\ndim(sup_sfd_2017)[1]\n\n\n[1] 426"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#centrality-index",
+    "href": "spatmetrics/data/index.html#centrality-index",
+    "title": "Get ssb data",
+    "section": "Centrality index",
+    "text": "Centrality index\n\nFrom SSB, for the year 2018, but we use it for 2017. Probably very small changes from 2017 to 2018. Changed knr for Trøndelag to the old numbers. Split 5054 Indre Fosen into 1624 Rissa and 1718 Leksvik. The last two was given the same centrality as the combined entity.\n\n\n\n\nCode\ncentrality_2018_ed <- read_excel(\"Sentralitet 2018_ed.xlsx\")"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#centrality-index-cont.",
+    "href": "spatmetrics/data/index.html#centrality-index-cont.",
+    "title": "Get ssb data",
+    "section": "Centrality index cont.",
+    "text": "Centrality index cont.\n\n\nCode\nprint(head(centrality_2018_ed))\n\n\n# A tibble: 6 × 3\n  knr   sen_ind sen_kl\n  <chr>   <dbl>  <dbl>\n1 0101      843      3\n2 0104      932      1\n3 0105      887      2\n4 0106      884      2\n5 0111      725      4\n6 0118      660      4"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#put-it-all-together",
+    "href": "spatmetrics/data/index.html#put-it-all-together",
+    "title": "Get ssb data",
+    "section": "Put it all together",
+    "text": "Put it all together\n\n\nCode\nnames(pm2_2017)\n\n\n[1] \"knr\"                \"pm2\"                \"num_dwelling_sales\"\n\n\nCode\ndata_2017 <- knr_and_knavn %>% \n  left_join(pm2_2017) %>% \n  left_join(bef_2017) %>% \n  left_join(edu_2017) %>% \n  left_join(inc_2017) %>% \n  left_join(gov_emp_2017) %>%\n  left_join(sales_per_capita_2017) %>%\n  left_join(inc_dec_2017) %>%\n  left_join(wealth_2017) %>% \n  left_join(num_emp_2017) %>%\n  left_join(sup_sfd_2017) %>% \n  left_join(centrality_2018_ed ) %>% \n  mutate(\n    log_pm2 = log(pm2),\n    spc_100k = spc/100000,\n    gov_emp_1k = gov_emp/1000,\n    sen_ind_1k = sen_ind/1000\n  ) %>% \n  # rearrange \n  select(knr, kNavn, pm2, log_pm2, everything())"
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#put-it-all-together-cont.",
+    "href": "spatmetrics/data/index.html#put-it-all-together-cont.",
+    "title": "Get ssb data",
+    "section": "Put it all together cont.",
+    "text": "Put it all together cont.\n\n\nCode\ndim(data_2017)\n\n\n[1] 426 115\n\n\n\nWe have 115 variables and 426 observations."
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#add-data-to-our-map",
+    "href": "spatmetrics/data/index.html#add-data-to-our-map",
+    "title": "Get ssb data",
+    "section": "Add data to our map",
+    "text": "Add data to our map\n\n\nCode\n# join map and data\nmap_data_2017 <- map_2017 %>% \n  left_join(data_2017)\n# write out new map with data\n# if one add new variables it might \n# be necessary to delete the file \n# before writing new version\nst_write(\n  obj = map_data_2017, \n  dsn = \"map_data_2017.gpkg\", \n  driver = \"GPKG\", \n  append = FALSE\n  )\n\n\nDeleting layer `map_data_2017' using driver `GPKG'\nWriting layer `map_data_2017' to data source `map_data_2017.gpkg' using driver `GPKG'\nWriting 426 features with 115 fields and geometry type Multi Polygon."
+  },
+  {
+    "objectID": "spatmetrics/data/index.html#references",
+    "href": "spatmetrics/data/index.html#references",
+    "title": "Get ssb data",
+    "section": "References",
+    "text": "References\n\n\nMSB205\n\n\n\nBivand, Roger. 2022a. “R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.” Geographical Analysis 54 (3): 488–518. https://doi.org/10.1111/gean.12319.\n\n\n———. 2022b. Spdep: Spatial Dependence: Weighting Schemes, Statistics. https://CRAN.R-project.org/package=spdep.\n\n\nBivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\n———. 2013b. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\n———. 2013c. Applied Spatial Data Analysis with R, Second Edition. Springer, NY. https://asdar-book.org/.\n\n\nBivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. “Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.” Geographical Analysis 45 (2): 150–79. https://doi.org/10.1111/gean.12008.\n\n\nBivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. “A Review of Software for Spatial Econometrics in R.” Mathematics 9 (11). https://doi.org/10.3390/math9111276.\n\n\nBivand, Roger, and Gianfranco Piras. 2015. “Comparing Implementations of Estimation Methods for Spatial Econometrics.” Journal of Statistical Software 63 (18): 1–36. https://doi.org/10.18637/jss.v063.i18.\n\n\n———. 2022. Spatialreg: Spatial Regression Analysis. https://CRAN.R-project.org/package=spatialreg.\n\n\nBivand, Roger, and David W. S. Wong. 2018. “Comparing Implementations of Global and Local Indicators of Spatial Association.” TEST 27 (3): 716–48. https://doi.org/10.1007/s11749-018-0599-x.\n\n\nHugh-Jones, David. 2022. Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats. https://hughjonesd.github.io/huxtable/.\n\n\nImdad, M. U., M. Aslam, S. Altaf, and A. Munir. 2019. “Some New Diagnostics of Multicollinearity in Linear Regression Model.” Sains Malaysiana 48(9): 2051–60. http://dx.doi.org/10.17576/jsm-2019-4809-26.\n\n\nImdadullah, M., M. Aslam, and S. Altaf. 2016. “Mctest: An r Package for Deteection of Collinearity Among Regressors.” The R Journal 8(2): 499–509. https://journal.r-project.org/archive/2016/RJ-2016-062/index.html.\n\n\nLangsrud, Øyvind, and Jan Bruusgaard. 2021. PxWebApiData: PX-Web Data by API. https://github.com/statisticsnorway/PxWebApiData.\n\n\nMuhammad, Imdad Ullah, and Aslam Muhammad. 2020. Mctest: Multicollinearity Diagnostic Measures. https://CRAN.R-project.org/package=mctest.\n\n\nPebesma, Edzer. 2018. “Simple Features for R: Standardized Support for Spatial Vector Data.” The R Journal 10 (1): 439–46. https://doi.org/10.32614/RJ-2018-009.\n\n\n———. 2022. Sf: Simple Features for r. https://CRAN.R-project.org/package=sf.\n\n\nPebesma, Edzer J., and Roger S. Bivand. 2005. “Classes and Methods for Spatial Data in R.” R News 5 (2): 9–13. https://CRAN.R-project.org/doc/Rnews/.\n\n\nPebesma, Edzer, and Roger Bivand. 2022. Sp: Classes and Methods for Spatial Data. https://CRAN.R-project.org/package=sp.\n\n\nRobinson, David, Alex Hayes, and Simon Couch. 2022. Broom: Convert Statistical Objects into Tidy Tibbles. https://CRAN.R-project.org/package=broom.\n\n\nTennekes, Martijn. 2018. “tmap: Thematic Maps in R.” Journal of Statistical Software 84 (6): 1–39. https://doi.org/10.18637/jss.v084.i06.\n\n\n———. 2022. Tmap: Thematic Maps. https://github.com/r-tmap/tmap.\n\n\nWickham, Hadley. 2022. Tidyverse: Easily Install and Load the Tidyverse. https://CRAN.R-project.org/package=tidyverse.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, and Jennifer Bryan. 2022. Readxl: Read Excel Files. https://CRAN.R-project.org/package=readxl."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MSB205",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-4",
+    "href": "spatmetrics/LucasCounty/index.html#dataset-info-r-help-4",
     "title": "Spatial Hedonic Model",
     "section": "Dataset info (R help)",
     "text": "Dataset info (R help)\nIts projection is CRS(+init=epsg:2834), the Ohio North State Plane."

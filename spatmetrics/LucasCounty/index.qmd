@@ -148,6 +148,8 @@ depth
 
 :   a numeric vector
 
+## Dataset info (R help)
+
 garage
 
 :   a factor with levels no garage basement attached detached carport
@@ -159,8 +161,6 @@ garagesqft
 rooms
 
 :   a numeric vector
-
-## Dataset info (R help)
 
 lotsize
 
@@ -174,27 +174,9 @@ avalue
 
 :   a numeric vector
 
+## Dataset info (R help)
+
 s1993 to s1998
-
-:   a numeric vector
-
-s1994
-
-:   a numeric vector
-
-s1995
-
-:   a numeric vector
-
-s1996
-
-:   a numeric vector
-
-s1997
-
-:   a numeric vector
-
-s1998
 
 :   a numeric vector
 
