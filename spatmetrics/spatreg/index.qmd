@@ -46,7 +46,7 @@ Needs to do a touch ag_model_basics.bib in terminal before first run \# else sto
 options(scipen=5)
 ```
 
-# Models
+## Models
 
 Read in data via map.
 
@@ -149,6 +149,10 @@ We have 329 observations.
 We lack pm2 for 96 municipalities.
 One, Høyanger, no NA, but no neighbours.
 
+::: callout-note
+## Convert to definition list
+:::
+
 ### log_pm2
 
 We use the natural logarithms of price per square meter as our dependent variable.
@@ -183,7 +187,7 @@ md_2017 %>%
   summary()
 ```
 
-### Is multicollinearity a problem?
+## Is multicollinearity a problem?
 
 ```{r}
 # drop gov_emp_1k
@@ -234,7 +238,7 @@ moran.plot(residuals(lm2), listw = md_2017_w)
 We will use mod2 in the following.
 We have spatial autocorrelation in the residuals from OLS.
 
-# The Anselin approach
+## The Anselin approach
 
 ```{r}
 # From BurkeyAcademy
@@ -249,7 +253,7 @@ One might argue that since RLMlag are just marginally significant, SEM is probab
 
 For a more thorough discussion see @osland2010a and @chi2019spatial page 55.
 
-# The LeSage approach
+## The LeSage approach
 
 ## Local or global?
 
@@ -327,14 +331,14 @@ The last three models are all restricted versions of SDEM and we can use Likelih
 SDEM <- errorsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
 ```
 
-### Regression report
+## Regression report
 
 ```{r}
 # Take care
 summary(SDEM)
 ```
 
-### The impacts
+## The impacts
 
 ```{r}
 summary(impacts(SDEM), zstats = TRUE)
@@ -593,12 +597,12 @@ T-values reported.")
 
 What´s the big problem with this model?
 
-# Global DGP
+## Global DGP
 
 How we would have analysed this if we though it was a global phenomenon.
 You should have good arguments to select this track.
 
-### Nested models
+## Nested models
 
 Nested models:
 
@@ -622,7 +626,7 @@ $$ \lambda = 0, \theta = -\rho \beta:\quad {\bf y = X \beta  + u,\quad u = \lamb
 
 $$ \rho = 0, \theta = 0, \lambda = 0: \quad y = {\bf X \beta  + \epsilon} $$ \## Estimating the models
 
-#### SDM:
+## SDM:
 
 ```{r}
 # Old style (Burkey): lagsarlm(mod2, data = md_2017, listw = md_2017_w, type = "mixed")
@@ -639,7 +643,7 @@ summary(SDM)
 summary(impacts(SDM, listw = md_2017_w, R=1000), zstats = TRUE)
 ```
 
-#### SAR:
+## SAR:
 
 ```{r}
 SAR <- lagsarlm(mod2, data = md_2017, listw = md_2017_w)
@@ -682,7 +686,7 @@ SAR_red <- lagsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = ~sen_ind)
 summary(impacts(SAR_red, listw = md_2017_w, R=1000), zstats = TRUE)
 ```
 
-#### SLX:
+## SLX:
 
 Estimated above.
 
@@ -733,7 +737,7 @@ LR.Sarlm(SEM, lm2)
 
 Reject H0, we should not restrict to OLS.
 
-# Full Manski
+## Full Manski
 
 You should probably stay off this track.
 See [@lesageWhatRegionalScientists]
@@ -843,4 +847,4 @@ H0 can be discarded and we should *not* restrict SEM further to OLS.
 #siste
 ```
 
-# Bibliography
+## Bibliography

@@ -432,9 +432,8 @@
 
 </div>
 </section>
-<section>
-<section id="models" class="title-slide slide level1 center">
-<h1>Models</h1>
+<section id="models" class="slide level2">
+<h2>Models</h2>
 <p>Read in data via map.</p>
 <div class="cell">
 <details open="">
@@ -598,6 +597,19 @@ Moran I statistic       Expectation          Variance
 <section id="the-variables-we-use" class="slide level2">
 <h2>The variables we use</h2>
 <p>We have 329 observations. We lack pm2 for 96 municipalities. One, Høyanger, no NA, but no neighbours.</p>
+<div class="callout callout-note callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Convert to definition list</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
 <h3 id="log_pm2">log_pm2</h3>
 <p>We use the natural logarithms of price per square meter as our dependent variable.</p>
 <h3 id="prct_20_64">prct_20_64</h3>
@@ -635,7 +647,9 @@ Moran I statistic       Expectation          Variance
  Max.   :1000.0                      </code></pre>
 </div>
 </div>
-<h3 id="is-multicollinearity-a-problem">Is multicollinearity a problem?</h3>
+</section>
+<section id="is-multicollinearity-a-problem" class="slide level2">
+<h2>Is multicollinearity a problem?</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -830,9 +844,9 @@ Observed Moran I      Expectation         Variance
 </div>
 </div>
 <p>We will use mod2 in the following. We have spatial autocorrelation in the residuals from OLS.</p>
-</section></section>
-<section id="the-anselin-approach" class="title-slide slide level1 center">
-<h1>The Anselin approach</h1>
+</section>
+<section id="the-anselin-approach" class="slide level2">
+<h2>The Anselin approach</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -889,11 +903,8 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <p>Both LMerr and LMLag are significant. Proceed with RLMlerr and RLMlag. Again both are significant. So we don´t have a clear conclusion. One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.</p>
 <p>For a more thorough discussion see <span class="citation" data-cites="osland2010a">(<a href="#/ref-osland2010a" role="doc-biblioref" onclick="return false;"><strong>osland2010a?</strong></a>)</span> and <span class="citation" data-cites="chi2019spatial">(<a href="#/ref-chi2019spatial" role="doc-biblioref" onclick="return false;"><strong>chi2019spatial?</strong></a>)</span> page 55.</p>
 </section>
-
-<section>
-<section id="the-lesage-approach" class="title-slide slide level1 center">
-<h1>The LeSage approach</h1>
-
+<section id="the-lesage-approach" class="slide level2">
+<h2>The LeSage approach</h2>
 </section>
 <section id="local-or-global" class="slide level2">
 <h2>Local or global?</h2>
@@ -963,7 +974,9 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <span id="cb36-2"><a href="#cb36-2"></a>SDEM <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<h3 id="regression-report">Regression report</h3>
+</section>
+<section id="regression-report" class="slide level2">
+<h2>Regression report</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1004,7 +1017,9 @@ Number of parameters estimated: 11
 AIC: -263.71, (AIC for lm: -229.7)</code></pre>
 </div>
 </div>
-<h3 id="the-impacts">The impacts</h3>
+</section>
+<section id="the-impacts" class="slide level2">
+<h2>The impacts</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1648,13 +1663,13 @@ AIC: -358.52, (AIC for lm: -285.94)</code></pre>
 </div>
 <img data-src="index_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch"><p>huxreg(“OLS_mod3” = lm3, “SEM_mod3” = SEM_mod3, error_format = “({statistic})”, note = “{stars}. T-values reported.”)</p>
 <p>What´s the big problem with this model?</p>
-</section></section>
-<section>
-<section id="global-dgp" class="title-slide slide level1 center">
-<h1>Global DGP</h1>
+</section>
+<section id="global-dgp" class="slide level2">
+<h2>Global DGP</h2>
 <p>How we would have analysed this if we though it was a global phenomenon. You should have good arguments to select this track.</p>
 </section>
-<h3 id="nested-models">Nested models</h3>
+<section id="nested-models" class="slide level2">
+<h2>Nested models</h2>
 <p>Nested models:</p>
 <p>SDM:</p>
 <p><span class="math display">\[ \lambda = 0:\quad {\bf y = \rho Wy + X \beta + W X\theta + \epsilon} \]</span></p>
@@ -1666,7 +1681,9 @@ AIC: -358.52, (AIC for lm: -285.94)</code></pre>
 <p><span class="math display">\[ \lambda = 0, \theta = -\rho \beta:\quad {\bf y = X \beta  + u,\quad u = \lambda W u + \epsilon}\]</span></p>
 <h4 id="ols">OLS:</h4>
 <p><span class="math display">\[ \rho = 0, \theta = 0, \lambda = 0: \quad y = {\bf X \beta  + \epsilon} \]</span> ## Estimating the models</p>
-<h4 id="sdm">SDM:</h4>
+</section>
+<section id="sdm" class="slide level2">
+<h2>SDM:</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1827,7 +1844,9 @@ spc_k         0.015948     0.839216 0.6149387
 sen_ind       &lt; 2.22e-16   0.128190 9.2065e-07</code></pre>
 </div>
 </div>
-<h4 id="sar">SAR:</h4>
+</section>
+<section id="sar" class="slide level2">
+<h2>SAR:</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -2133,7 +2152,9 @@ spc_k         0.0032179    0.01479887    0.0045003
 sen_ind       &lt; 2.22e-16   0.15772482    6.8834e-15</code></pre>
 </div>
 </div>
-<h4 id="slx">SLX:</h4>
+</section>
+<section id="slx" class="slide level2">
+<h2>SLX:</h2>
 <p>Estimated above.</p>
 <div class="cell">
 <details open="">
@@ -2183,6 +2204,7 @@ spc_k         0.0008657653 -0.0003430118 0.0005227535
 sen_ind       0.0016787649 -0.0004632674 0.0012154975</code></pre>
 </div>
 </div>
+</section>
 <section id="selecting-model-1" class="slide level2">
 <h2>Selecting model</h2>
 <p>Should we restrict to <span class="math inline">\(\theta = 0\)</span>?</p>
@@ -2259,10 +2281,9 @@ Log likelihood of SEM Log likelihood of lm2
 </div>
 </div>
 <p>Reject H0, we should not restrict to OLS.</p>
-</section></section>
-<section>
-<section id="full-manski" class="title-slide slide level1 center">
-<h1>Full Manski</h1>
+</section>
+<section id="full-manski" class="slide level2">
+<h2>Full Manski</h2>
 <p>You should probably stay off this track. See <span class="citation" data-cites="lesageWhatRegionalScientists">(<a href="#/ref-lesageWhatRegionalScientists" role="doc-biblioref" onclick="return false;"><strong>lesageWhatRegionalScientists?</strong></a>)</span></p>
 <p>There is problems estimating this model (identification problems). The reason why one does not start with this model and then treat SAC, SDM and SDEM as nested models.</p>
 <div class="cell">
@@ -2637,9 +2658,9 @@ Log likelihood of SEM_mod4      Log likelihood of lm4
 <div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1"></a><span class="co">#siste</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section></section>
-<section id="bibliography" class="title-slide slide level1 smaller scrollable">
-<h1>Bibliography</h1>
+</section>
+<section id="bibliography" class="slide level2 smaller scrollable">
+<h2>Bibliography</h2>
 
 <div class="footer footer-default">
 <p><a href="../../index.html">MSB205</a></p>
