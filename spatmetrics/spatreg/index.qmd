@@ -776,14 +776,6 @@ For the time being the best we can do is probably to follow [@lesageWhatRegional
 -   Use `LR.Sarlm()` to decide which of the nested models to use
 -   Remember to report *impacts,* not coefficient estimates.
 
-# Forslag termpaper
-
-Samme analyse, men med rook, andel unge kvinner (18-30 år) av total befolkning, gjeld og event.
-tilbud av nye boliger.
-Forsøkt ny modell med nye boliger under, men gir ikke de store utslagene.
-Gjeldsdata på kommunenivå fra SSB er ikke så detaljerte.
-Eventuelt kan de gjøre tilsvarende analyse for et annet år.
-
 ```{r}
 # new dwellings
 mod4 <- "log_pm2 ~ prct_20_64 + inc_bt_9and10  +  sen_ind + I(sfd_ba_completed + sfd_w2u_ba_completed)"
