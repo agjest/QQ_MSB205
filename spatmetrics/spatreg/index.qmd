@@ -1,0 +1,854 @@
+---
+title: "Spatial regressions"
+author: "Arnstein Gjestland"
+institute: "HVL"
+date: "Spring 2021 (revised autumn 2022)"
+format:
+  revealjs:
+        theme: simple
+        footer: '[MSB205](/index.html)'
+        reveal_options:
+        code-fold: show
+        incremental: true
+        smaller: true
+        scrollable: true
+        slide-number: c/t
+editor: visual
+editor_options:
+  markdown:
+    wrap: sentence
+    canonical: true
+    chunk_output_type: console
+echo: true
+eval: true
+bibliography: [references.bib, spatreg-packages.bib]
+nocite: '@*'
+---
+
+```{r setup}
+library(PxWebApiData)
+library(tidyverse)
+library(readxl)
+library(sf)
+library(sp)
+library(spdep)
+library(spatialreg)
+library(broom)
+library(mctest)
+library(huxtable)
+library(tmap)
+```
+
+#\| include: false \# create a bib file for the R packages \# used in this document \# Note!
+Needs to do a touch ag_model_basics.bib in terminal before first run \# else stops when bibliography: "ag_model_basics.bib" not found in YAML knitr::write_bib( c( "PxWebApiData", "tidyverse", "readxl", "sf", "sp", "spdep", "spatialreg", "broom", "huxtable", "tmap" ), file = "spatreg-packages.bib" )
+
+```{r, echo = FALSE}
+options(scipen=5)
+```
+
+# Models
+
+Read in data via map.
+
+```{r}
+# run data/get_ssb_data.Rmd if data needs to be updated
+map_data_2017 <- st_read(dsn = "../data/map_data_2017.gpkg")
+```
+
+Filter out municipalities with no recorded pm2.
+
+```{r}
+map_data_2017_noNA <- map_data_2017 %>% 
+  filter(!is.na(log_pm2))
+# Drop obs. 14, 1416 Høyanger because of no neighbours. Makes life simpler
+map_data_2017_noNA <- map_data_2017_noNA[-14,]
+```
+
+Make new variables and strip down dataset to variables we will use
+
+```{r}
+md_2017 <- map_data_2017_noNA %>% 
+  mutate(
+    # percentage of pop. in a working age
+    prct_20_64 = 100*pop_20_64/tot_pop,
+    # log percentage of pop. of a working age
+    log_prct_20_64 = log(100*pop_20_64/tot_pop),
+    # log percentage of pop. with an univeristy education
+    log_prct_uni_edu = log(edu_uni_short + edu_uni_long),
+    # log percentage of households with an income above NOK 750.000
+    log_inc_750k_p = log(inc_750k_p),
+    # percentage of household wealth above 3.000.000
+    net_cap_3000k_p = net_cap_3000k_4000k + net_cap_4000k_p,
+    # log percentage of household wealth above 3.000.000
+    log_net_cap_3000k_p = log(net_cap_3000k_4000k + net_cap_4000k_p),
+    # gov emp relative to pop_20_64
+    gov_emp_rel = 100*gov_emp/pop_20_64,
+    # log (number of gov. emp. + 1)
+    log_gov_emp = log(100*(gov_emp+1)/pop_20_64),
+    # scale spc, to trane in NOK 1000
+    spc_k = spc/1000,
+    # log trade revenue per capita
+    log_spc = log(spc),
+    # log of centrality index (max index value 1000)
+    log_sen_ind = log(sen_ind),
+    # percentage in two top deciles of before tax income
+    inc_bt_9and10 = inc_bt_09 + inc_bt_10
+  ) %>% 
+  select(knr, kNavn, log_pm2, prct_20_64, gov_emp, gov_emp_rel, spc, spc_k, inc_750k_p, sen_ind, net_cap_3000k_p, inc_bt_9and10, log_prct_20_64, log_prct_uni_edu, 
+         log_inc_750k_p, log_net_cap_3000k_p, log_gov_emp, log_spc,log_sen_ind, sfd_ba_completed, sfd_w2u_ba_completed) %>% 
+  arrange(knr)
+# write out reduced dataset
+st_write(obj = md_2017, dsn = "../data/md_2017.gpkg", driver = "GPKG", append=FALSE)
+```
+
+Remove Høyanger, no neighbours.
+
+```{r}
+md_2017 <- md_2017 %>% 
+  filter(!kNavn == "Høyanger")
+```
+
+Making the weights matrix.
+
+```{r, cache=TRUE}
+# remove line 200 Høyanger, no neighbours
+md_2017_nb <- poly2nb(md_2017)
+md_2017_nb
+md_2017_w <- nb2listw(md_2017_nb, style = "W")
+print(md_2017_w)
+```
+
+## Global Morans I plot for log_pm2
+
+```{r}
+moran.plot(md_2017$log_pm2, listw = md_2017_w)
+```
+
+```{r}
+moran.test(md_2017$log_pm2, listw = md_2017_w)
+```
+
+Hardly any doubt that we have spatial autocorrelation in log_pm2 (not a big surprise).
+
+## EDA
+
+Open a new project in Geoda and read in the reduced dataset md_2017 and do EDA.
+
+## The model
+
+```{r}
+mod1 <- "log_pm2 ~ log_prct_20_64 + log_prct_uni_edu + log_inc_750k_p
+ + log_net_cap_3000k_p + log_gov_emp + log_spc + log_sen_ind"
+# mod2 <- "log_pm2 ~ log_prct_20_64 +  log_net_cap_3000k_p + log_sen_ind"
+mod2 <- "log_pm2 ~ prct_20_64 + inc_bt_9and10 + spc_k +  sen_ind"
+```
+
+## The variables we use
+
+We have 329 observations.
+We lack pm2 for 96 municipalities.
+One, Høyanger, no NA, but no neighbours.
+
+### log_pm2
+
+We use the natural logarithms of price per square meter as our dependent variable.
+
+### prct_20_64
+
+Percentage of population of a "working age".
+
+### inc_bt_9and10
+
+This variable is a little bit more involved.
+Imagine income for all income earners of the country ordered in a long list, from lowest to highest income.
+This list is then divided into 10 parts with an equal number of individuals in each part.
+Then we will have 9 income levels $I_{i,i+1}, i = 1\ldots 9$ representing the border between to groups (deciles).
+If an individual has an income above $I_{8,9}$, this individual will be in the top 20% earners in the country.
+Our variable `inc_bt_9and10` contains the percentage of income earners in each municipality that has an income above $I_{8,9}$.
+
+### spc_k
+
+Wholesale and retail trade sales per capita in each municipality in NOK 1000.
+
+### sen_ind
+
+The value of the SSB centrality index for 2018.
+The index value for Oslo (the most central place) is 1000.
+
+## Simple linear model
+
+```{r}
+md_2017 %>% 
+  select(log_pm2, prct_20_64, inc_bt_9and10, spc_k, sen_ind) %>% 
+  summary()
+```
+
+### Is multicollinearity a problem?
+
+```{r}
+# drop gov_emp_1k
+lm2 <- lm(mod2, data = md_2017)
+summary(lm2)
+```
+
+```{r}
+mctest(lm2)
+```
+
+```{r}
+imcdiag(lm2, all = TRUE)
+```
+
+Three out of nine tests indicate that multicollinearity might be a problem.
+
+```{r}
+# If we only want to do one test
+imcdiag(lm2, method="VIF")
+```
+
+```{r}
+# If we only want to do one test
+imcdiag(lm2, method="IND1")
+```
+
+The positive correlation between `sen_ind` and `prct_20_64`.
+
+```{r}
+plot(md_2017$sen_ind, md_2017$prct_20_64)
+```
+
+```{r}
+cor(md_2017$sen_ind, md_2017$prct_20_64)
+```
+
+We have seen worse.
+
+```{r}
+lm.morantest(lm2, listw = md_2017_w)
+```
+
+```{r}
+moran.plot(residuals(lm2), listw = md_2017_w)
+```
+
+We will use mod2 in the following.
+We have spatial autocorrelation in the residuals from OLS.
+
+# The Anselin approach
+
+```{r}
+# From BurkeyAcademy
+lm.LMtests(lm2, listw=md_2017_w, test="all")
+```
+
+Both LMerr and LMLag are significant.
+Proceed with RLMlerr and RLMlag.
+Again both are significant.
+So we don´t have a clear conclusion.
+One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.
+
+For a more thorough discussion see @osland2010a and @chi2019spatial page 55.
+
+# The LeSage approach
+
+## Local or global?
+
+To formally test this we have to use Bayesian modelling.
+Outside our scope.
+
+One might argue that a local perspective is best suited for this dataset.
+
+A change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).
+
+> If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate.
+> This specification subsumes the SLX and SEM specifications as special cases.[@lesage]
+
+Note that plain OLS is a special case of SDEM.
+(all spatial autocorrelation coefficients are zero ($\rho = 0, \theta = 0$ and $\lambda =0$))
+
+Manski ("includes everything"):
+
+$$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ \## LeSages (2014) 5 principles
+
+1.  Local versus global spillover
+
+-   "A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers."
+-   "Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: 'most spatial spillovers are local.'"
+-   "Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners."
+
+2.  Only two model specifications relevant for applied work
+
+-   SDEM
+-   SDM
+
+3.  Estimation procedures, not only point estimates
+
+-   Estimates of dispersion
+-   Calculate direct/indirect effects
+
+4.  "Avoid the temptation for observation-level inference"
+5.  "Keep the weight matrix simple"
+
+-   "Sparse connectivity structures work best"
+-   Parameterised decay can give identification problems
+-   Do not use multiple weight matrices
+-   Do not use non-spatial weight matrices
+
+## Local DGP (Data Generating Process)
+
+We decide that DGP is probably local in our data
+
+We start out with a Spatial Durban Error Model (SDEM) model, i.e. $\rho = 0$ (notation follows [Burkey](https://spatial.burkeyacademy.com/home):
+
+Nested models:
+
+SDEM:
+
+$$ \rho = 0:\quad y = {\bf X \beta + W X\theta + u\quad u = \lambda Wu + \epsilon} $$
+
+SEM:
+
+$$ \rho = 0, \theta = 0: \quad y = {\bf X \beta  + u\quad u = \lambda Wu + \epsilon} $$
+
+SLX:
+
+$$ \rho = 0, \lambda = 0: \quad y = {\bf X \beta  + W X\theta + \epsilon} $$
+
+OLS:
+
+$$ \rho = 0, \theta = 0, \lambda = 0: \quad y = {\bf X \beta  + \epsilon} $$
+
+The last three models are all restricted versions of SDEM and we can use Likelihood ratios (for spatial linear models) to decide which is the best model (`spatialreg::LR.Sarlm()` or `lmtest::lrtest()`, they will give the same answer) .
+
+## SDEM (Spatial Durban Error Model) model
+
+```{r}
+# Old (Burkey): errorsarlm(mod2, data = md_2017, listw = md_2017_w, etype = "emixed")
+SDEM <- errorsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+```
+
+### Regression report
+
+```{r}
+# Take care
+summary(SDEM)
+```
+
+### The impacts
+
+```{r}
+summary(impacts(SDEM), zstats = TRUE)
+```
+
+The impacts are reported to show how it is done.
+One might argue that the impacts could wait until the correct model is decided upon below.
+
+```{r}
+moran.plot(residuals(SDEM), listw = md_2017_w)
+```
+
+## SLX model
+
+```{r}
+SLX <- lmSLX(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+```
+
+```{r}
+summary(SLX)
+```
+
+```{r}
+summary(impacts(SLX), z.values = TRUE)
+```
+
+Perhaps spatial lag just for `prct_20_64`is more appropriate?
+
+```{r}
+SLX_red <- lmSLX(mod2, data = md_2017, listw = md_2017_w, Durbin =~prct_20_64 + sen_ind)
+```
+
+```{r}
+summary(SLX_red)
+```
+
+Testing for spatial autocorrelation in the residuals of the SLX model.
+
+```{r}
+lm.morantest(SLX, listw = md_2017_w, alternative = "greater", resfun=residuals, naSubset=TRUE)
+```
+
+The SLX model leaves lots of spatial autocorrelation in the residuals.
+
+```{r}
+moran.plot(residuals(SLX), listw = md_2017_w)
+```
+
+```{r}
+# Spatial error model
+# SDEM (Durbin = TRUE), no lagged y only lagged X and u
+# SEM Durbin = FALSE
+SEM <- errorsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = FALSE)
+summary(SEM)
+```
+
+```{r}
+moran.plot(residuals(SEM), listw = md_2017_w)
+```
+
+## Selecting model
+
+Testing nested models.
+Since the models we consider is nested we can use a Likelihood ratio test to decide which model to chose.
+
+Note: Above, in the Anselin approach, we used Lagrange multiplier tests.
+If H0 is true LR, LM and Walds test (a third alternative) will converge asymptotically.
+See
+
+We have used the LR test below (since its in the `spatialreg` package).
+
+```{r}
+# H0: model should be restricted to SEM,
+# p > 0,05, can not discard H0. Discard SDEM select SEM
+# Restrict lagged variables to zero. df is number of lagged variables (to be restricted)
+# LR.sarlm moved to spatialreg, now called LR.Sarlm()
+LR.Sarlm(SDEM, SEM)# used to be spdep::LR.sarlm() now spatialreg::LR.Sarlm()
+# Conclusion: Drop SDEM (theta = 0), but marginally since p = 0,064. 
+# Go with SEM, Drop spatial effects in X
+```
+
+We apparently need $\lambda > 0$ to handle spatial effects in the error terms.
+
+```{r lmtest-chunck}
+# lrtest from the lmtest packages gives the same result.
+#broom::tidy(lmtest::lrtest(SDEM, SEM))
+#lmtest::lrtest(SDEM, SEM)
+```
+
+Should we restrict SDEM to SLX?
+
+```{r}
+# p <0,05. Do not restrict. Keep SDEM
+LR.Sarlm(SDEM, SLX)
+# or broom::tidy(lmtest::lrtest(SLX, SDEM))
+```
+
+H0: restrict model to SLX, p \< 0,05 and we discard H0.
+We chose SDEM over SLX.
+
+Hence we end up with SEM as the best (given that DGP is local) spatial model for this dataset.
+
+$$ \rho = 0, \theta = 0: \quad y = {\bf X \beta  + u\quad u = \lambda Wu + \epsilon} $$
+
+## Should we restrict even more?
+
+Should we restrict it even more ($\rho = 0, \theta = 0, \lambda = 0$) to OLS?
+
+> We can use spatialreg::LR.sarlm() to apply a likelihood ratio test between nested models, but here choose lmtest::lrtest(), which gives the same results, preferring models including spatially lagged covariates.
+
+From R help `lmtest::lrtest`:
+
+> lrtest is a generic function for carrying out likelihood ratio tests.
+> The default method can be employed for comparing nested (generalized) linear models
+
+From R help `spatialreg::LR.sarlm`:
+
+> The LR.Sarlm() function provides a likelihood ratio test for objects for which a logLik() function exists for their class, or for objects of class logLik.
+
+The two tests give the same results.
+We go with `LR.Sarlm()`.
+Why [@bivand] use `lrtest()` was not clear.
+Probably because the broom package was not updated to support the `spatialreg` package (now updated) when chapter was written.
+
+Test the spatial models against OLS.
+
+```{r}
+# Likelihood ratio test
+# SDEM
+LR1.Sarlm(SDEM)
+```
+
+```{r}
+# Likelihood ratio test
+# SEM
+LR1.Sarlm(SEM)
+```
+
+No, we should not restrict SEM to OLS (H0).
+Hence we end up with SEM as the best model for the data, given that this a local phenomenon.
+
+## We go with SEM
+
+All good?
+
+We can use a Hausman-test to test for omitted variables.
+The test compares the coefficient estimates from the spatial model (SEM) and OLS model.
+If no omitted variables the estimates should be similar.
+
+```{r}
+# Spatial Hausman test
+Hausman.test(SEM)
+```
+
+Conclusion: There are marked difference between SEM and OLS coefficients.
+Hence, the Hausman test indicates that we have a problem with omitted variable(s).
+
+```{r}
+moran.plot(residuals(SEM), listw = md_2017_w)
+```
+
+Are there other problems like Heteroskedasticity?
+
+```{r}
+# test for Heteroskedasticity
+bptest.Sarlm(SEM, studentize = TRUE)
+```
+
+We do have heteroskedasticity!
+The estimates should be unbiased, but we might underestimate the standard error.
+Hence we risk accepting as significant variables that in reality are not.
+However, note that none of the t-values are marginal.
+
+## Are our residuals normal?
+
+```{r}
+library(DescTools)
+# H0: residuals normal
+JarqueBeraTest(residuals(SEM), robust = TRUE)
+# Conclusion: not normal
+```
+
+The residuals are far from normal!
+
+```{r}
+ md_2017 <- md_2017 %>% 
+  mutate(
+    SEM_residuals = residuals(SEM),
+    OLS_residuals = residuals(lm2)
+  )
+# write md_2017 with residuals
+st_write(obj = md_2017, dsn = "../data/md_2017.gpkg", driver = "GPKG", append=FALSE)
+```
+
+We update `data/md_2017.gkpkg` with the residuals from the SEM and OLS models.
+This file can then be opened in Geoda and we can do further EDA of the resisuals.
+
+```{r tmap_plot, cache=TRUE}
+tmap_mode("plot")
+t1 <-tm_shape(md_2017) +
+  tm_borders(alpha=0.1) +
+   tm_polygons("SEM_residuals")
+t2 <-tm_shape(md_2017) +
+    tm_borders(alpha=0.1) +
+   tm_polygons("OLS_residuals")
+tmap_arrange(t1, t2, nrow=1)
+```
+
+```{r}
+huxreg("OLS" = lm2, "SEM" = SEM,
+       error_format = "({statistic})",
+       note = "{stars}. T-values reported.")
+```
+
+## Do we have omitted variables?
+
+```{r}
+broom::tidy(Hausman.test(SEM))
+```
+
+Without doubt there is something more to this story.
+What might it be?
+
+## A "better" model?
+
+```{r}
+mod3 <- "log_pm2 ~ log_prct_20_64 + log_net_cap_3000k_p + log_sen_ind"
+```
+
+The variable `log_prct_20_64` is just the natural logarithm of the percentage op population of a working age.
+The variable `log_net_cap_3000k_p` the natural logarithm of the percentage of population with a net wealth exceeding NOK 3.000.000.
+
+```{r}
+lm3 <- lm(mod3, data = md_2017)
+summary(lm3)
+```
+
+```{r}
+mctest(lm3, type = "i", method="VIF")
+```
+
+```{r}
+SEM_mod3 <- errorsarlm(mod3, data = md_2017, listw = md_2017_w, Durbin = FALSE)
+```
+
+```{r}
+summary(SEM_mod3)
+```
+
+```{r}
+moran.plot(residuals(SEM_mod3), listw = md_2017_w)
+```
+
+huxreg("OLS_mod3" = lm3, "SEM_mod3" = SEM_mod3, error_format = "({statistic})", note = "{stars}.
+T-values reported.")
+
+What´s the big problem with this model?
+
+# Global DGP
+
+How we would have analysed this if we though it was a global phenomenon.
+You should have good arguments to select this track.
+
+### Nested models
+
+Nested models:
+
+SDM:
+
+$$ \lambda = 0:\quad {\bf y = \rho Wy + X \beta + W X\theta + \epsilon} $$
+
+SLX:
+
+$$ \lambda = 0, \rho = 0: \quad {\bf y = X \beta  + W X\theta + \epsilon} $$
+
+SAR (Spatial lag):
+
+$$ \lambda = 0, \theta = 0:\quad {\bf y = \rho Wy + X \beta + \epsilon} $$
+
+SEM ($\theta = - \rho \beta$)
+
+$$ \lambda = 0, \theta = -\rho \beta:\quad {\bf y = X \beta  + u,\quad u = \lambda W u + \epsilon}$$
+
+#### OLS:
+
+$$ \rho = 0, \theta = 0, \lambda = 0: \quad y = {\bf X \beta  + \epsilon} $$ \## Estimating the models
+
+#### SDM:
+
+```{r}
+# Old style (Burkey): lagsarlm(mod2, data = md_2017, listw = md_2017_w, type = "mixed")
+SDM <- lagsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+# Do not interpret coefficient estimates!!!!!
+```
+
+```{r}
+# be careful
+summary(SDM)
+```
+
+```{r}
+summary(impacts(SDM, listw = md_2017_w, R=1000), zstats = TRUE)
+```
+
+#### SAR:
+
+```{r}
+SAR <- lagsarlm(mod2, data = md_2017, listw = md_2017_w)
+# Do not interpret estimates and p values
+```
+
+```{r}
+# be careful
+summary(SAR)
+```
+
+```{r}
+# Look at the impacts
+impacts(SAR,  listw = md_2017_w)
+```
+
+Illustrations of constant ratio (direct/indirect) for the SAR model.
+Not a good feature of the model for applied work.
+
+```{r}
+impacts(SAR,  listw = md_2017_w)$direct/impacts(SAR,  listw = md_2017_w)$indirect
+```
+
+Impacts with z-values.
+
+```{r}
+summary(impacts(SAR, listw = md_2017_w, R=1000), zstats = TRUE)
+```
+
+Note that the simulated z-values and p-values differ somewhat between each run, so only an approximation.
+
+It´s also possible to specify that the spatial interaction is just for some variables.
+
+```{r}
+# Only lag sen_ind
+SAR_red <- lagsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = ~sen_ind)
+```
+
+```{r}
+summary(impacts(SAR_red, listw = md_2017_w, R=1000), zstats = TRUE)
+```
+
+#### SLX:
+
+Estimated above.
+
+```{r}
+summary(SLX)
+```
+
+```{r}
+impacts(SLX, listw = md_2017_w)
+```
+
+## Selecting model
+
+Should we restrict to $\theta = 0$?
+
+```{r}
+LR.Sarlm(SDM, SAR)
+```
+
+H0 restrict \$\theta\$ to 0.
+
+We reject H0, continue with SDM.
+
+Should we restrict with $\rho = 0$?
+
+```{r}
+LR.Sarlm(SDM, SLX)
+```
+
+H0 restrict \$\rho\$ to 0.
+
+We reject H0, continue with SDM.
+
+Should we restrict $\theta = - \rho \beta$.
+
+```{r}
+LR.Sarlm(SDM, SEM)
+```
+
+Choose SEM (and we know from local analyses that we should not restrict to OLS)
+
+If we skip restrict $\theta = - \rho \beta$.
+Should we restrict to OLS.
+
+```{r}
+LR.Sarlm(SEM, lm2)
+```
+
+Reject H0, we should not restrict to OLS.
+
+# Full Manski
+
+You should probably stay off this track.
+See [@lesageWhatRegionalScientists]
+
+There is problems estimating this model (identification problems).
+The reason why one does not start with this model and then treat SAC, SDM and SDEM as nested models.
+
+```{r}
+# Old style (Burkey): sacsarlm(mod2, data = md_2017, listw = md_2017_w, type = "sacmixed")
+MANSKI <- sacsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+summary(MANSKI)
+```
+
+```{r}
+# Old style (Burkey): sacsarlm(mod2, data = md_2017, listw = md_2017_w, type = "sac")
+# No lagged X, just lagged y and u
+KELEJIAN_PRUCA <- sacsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = FALSE)
+summary(KELEJIAN_PRUCA)
+```
+
+## Final question
+
+Why not start with the Manski (below called the GNS model) model and use a LR test to decide if SAC, SDM or SDEM is the best nested model?
+
+Good question ;-)
+
+The following quote might give the answer:
+
+> Even though taking the GNS model as point of departure to measure spillovers seems appealing since it contains all possible interaction effects, two major issues are that a formal proof under which conditions the parameters of this model are identified is not available yet (see Section 1) and the problem of overfitting.
+> Even though the parameters are not identified, they can still be estimated.
+> However, they have the tendency either to blow each other up or to become insignificant as a result of which this model does not help to choose among the SDM and SDEM models.[@halleckvegaSLXMODEL2015] p. 347.
+
+There are several problems with fitting the Manski (GNS) model.
+Should these be solved the Manski model might be a starting point in the future.
+For the time being the best we can do is probably to follow [@lesageWhatRegionalScientists] and
+
+-   Don't bother with SAC
+-   Decide if the phenomenon we study is of a local or global character
+-   If local start with SDEM, if global start with SDM
+-   Use `LR.Sarlm()` to decide which of the nested models to use
+-   Remember to report *impacts,* not coefficient estimates.
+
+# Forslag termpaper
+
+Samme analyse, men med rook, andel unge kvinner (18-30 år) av total befolkning, gjeld og event.
+tilbud av nye boliger.
+Forsøkt ny modell med nye boliger under, men gir ikke de store utslagene.
+Gjeldsdata på kommunenivå fra SSB er ikke så detaljerte.
+Eventuelt kan de gjøre tilsvarende analyse for et annet år.
+
+```{r}
+# new dwellings
+mod4 <- "log_pm2 ~ prct_20_64 + inc_bt_9and10  +  sen_ind + I(sfd_ba_completed + sfd_w2u_ba_completed)"
+lm4 <- lm(mod4, data = md_2017)
+```
+
+```{r}
+summary(lm4)
+```
+
+```{r}
+SDEM_mod4 <- errorsarlm(mod4, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+summary(impacts(SDEM_mod4), zstats = TRUE)
+```
+
+```{r}
+SEM_mod4 <- errorsarlm(mod4, data = md_2017, listw = md_2017_w, Durbin = FALSE)
+summary(SEM_mod4)
+```
+
+```{r}
+moran.plot(residuals(SEM_mod4), listw = md_2017_w)
+```
+
+```{r}
+moran(residuals(SEM_mod4), listw = md_2017_w, n = length(md_2017_nb), S0 = Szero(md_2017_w))
+```
+
+Morans I for the residuals are now slightly negative (-0.01434).
+The kurtosis of the residuals is 3.8, compared to 3.0 for a normal distribution, so the distribution of residuals are slightly leptokurtic.
+Hence more outliers that if they were normaly distributed.
+
+```{r}
+JarqueBeraTest(residuals(SEM_mod4), robust = TRUE)
+```
+
+```{r}
+SLX_mod4 <- lmSLX(mod4, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+summary(SLX_mod4)
+```
+
+```{r}
+LR.Sarlm(SDEM_mod4, SEM_mod4)
+```
+
+H0 can not be discarded and we should restrict SDEM to SEM, i.e. we should *not* restrict \$\lambda\$ to zero.
+
+```{r}
+LR.Sarlm(SDEM_mod4, SLX_mod4)
+```
+
+H0 can be discarded and we should *not* restrict SDEM to SLX, i.e. we should restrict \$\theta\$ to zero.
+
+Should we restrict further, i.e.
+SEM to OLS?
+
+```{r}
+# H0 restrict SEM to OLS
+LR.Sarlm(SEM_mod4, lm4)
+```
+
+H0 can be discarded and we should *not* restrict SEM further to OLS.
+
+```{r}
+#siste
+```
+
+# Bibliography

@@ -1,0 +1,3021 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.36">
+
+  <meta name="author" content="Arnstein Gjestland">
+  <title>MSB205 - Spatial regressions</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Spatial regressions</h1>
+  <p class="author">Arnstein Gjestland</p>
+  <p class="institute">HVL</p>
+  <p class="date">Spring 2021 (revised autumn 2022)</p>
+</section>
+
+<section class="slide level2">
+
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(PxWebApiData)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(sp)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(spatialreg)</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">library</span>(mctest)</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">library</span>(huxtable)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="fu">library</span>(tmap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>#| include: false # create a bib file for the R packages # used in this document # Note! Needs to do a touch ag_model_basics.bib in terminal before first run # else stops when bibliography: “ag_model_basics.bib” not found in YAML knitr::write_bib( c( “PxWebApiData”, “tidyverse”, “readxl”, “sf”, “sp”, “spdep”, “spatialreg”, “broom”, “huxtable”, “tmap” ), file = “spatreg-packages.bib” )</p>
+<div class="cell">
+
+</div>
+</section>
+<section>
+<section id="models" class="title-slide slide level1 center">
+<h1>Models</h1>
+<p>Read in data via map.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># run data/get_ssb_data.Rmd if data needs to be updated</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>map_data_2017 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="at">dsn =</span> <span class="st">"../data/map_data_2017.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `map_data_2017' from data source 
+  `/Users/ag/Dev/QQ_MSB205/spatmetrics/data/map_data_2017.gpkg' 
+  using driver `GPKG'
+Simple feature collection with 426 features and 115 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744
+Projected CRS: ETRS89 / UTM zone 33N + NN2000 height</code></pre>
+</div>
+</div>
+<p>Filter out municipalities with no recorded pm2.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>map_data_2017_noNA <span class="ot">&lt;-</span> map_data_2017 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(log_pm2))</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Drop obs. 14, 1416 Høyanger because of no neighbours. Makes life simpler</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>map_data_2017_noNA <span class="ot">&lt;-</span> map_data_2017_noNA[<span class="sc">-</span><span class="dv">14</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Make new variables and strip down dataset to variables we will use</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>md_2017 <span class="ot">&lt;-</span> map_data_2017_noNA <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="co"># percentage of pop. in a working age</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="at">prct_20_64 =</span> <span class="dv">100</span><span class="sc">*</span>pop_20_64<span class="sc">/</span>tot_pop,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="co"># log percentage of pop. of a working age</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="at">log_prct_20_64 =</span> <span class="fu">log</span>(<span class="dv">100</span><span class="sc">*</span>pop_20_64<span class="sc">/</span>tot_pop),</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="co"># log percentage of pop. with an univeristy education</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="at">log_prct_uni_edu =</span> <span class="fu">log</span>(edu_uni_short <span class="sc">+</span> edu_uni_long),</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="co"># log percentage of households with an income above NOK 750.000</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="at">log_inc_750k_p =</span> <span class="fu">log</span>(inc_750k_p),</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="co"># percentage of household wealth above 3.000.000</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>    <span class="at">net_cap_3000k_p =</span> net_cap_3000k_4000k <span class="sc">+</span> net_cap_4000k_p,</span>
+<span id="cb5-13"><a href="#cb5-13"></a>    <span class="co"># log percentage of household wealth above 3.000.000</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>    <span class="at">log_net_cap_3000k_p =</span> <span class="fu">log</span>(net_cap_3000k_4000k <span class="sc">+</span> net_cap_4000k_p),</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    <span class="co"># gov emp relative to pop_20_64</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>    <span class="at">gov_emp_rel =</span> <span class="dv">100</span><span class="sc">*</span>gov_emp<span class="sc">/</span>pop_20_64,</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    <span class="co"># log (number of gov. emp. + 1)</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>    <span class="at">log_gov_emp =</span> <span class="fu">log</span>(<span class="dv">100</span><span class="sc">*</span>(gov_emp<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span>pop_20_64),</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    <span class="co"># scale spc, to trane in NOK 1000</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>    <span class="at">spc_k =</span> spc<span class="sc">/</span><span class="dv">1000</span>,</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    <span class="co"># log trade revenue per capita</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>    <span class="at">log_spc =</span> <span class="fu">log</span>(spc),</span>
+<span id="cb5-23"><a href="#cb5-23"></a>    <span class="co"># log of centrality index (max index value 1000)</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>    <span class="at">log_sen_ind =</span> <span class="fu">log</span>(sen_ind),</span>
+<span id="cb5-25"><a href="#cb5-25"></a>    <span class="co"># percentage in two top deciles of before tax income</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a>    <span class="at">inc_bt_9and10 =</span> inc_bt_09 <span class="sc">+</span> inc_bt_10</span>
+<span id="cb5-27"><a href="#cb5-27"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-28"><a href="#cb5-28"></a>  <span class="fu">select</span>(knr, kNavn, log_pm2, prct_20_64, gov_emp, gov_emp_rel, spc, spc_k, inc_750k_p, sen_ind, net_cap_3000k_p, inc_bt_9and10, log_prct_20_64, log_prct_uni_edu, </span>
+<span id="cb5-29"><a href="#cb5-29"></a>         log_inc_750k_p, log_net_cap_3000k_p, log_gov_emp, log_spc,log_sen_ind, sfd_ba_completed, sfd_w2u_ba_completed) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-30"><a href="#cb5-30"></a>  <span class="fu">arrange</span>(knr)</span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co"># write out reduced dataset</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="fu">st_write</span>(<span class="at">obj =</span> md_2017, <span class="at">dsn =</span> <span class="st">"../data/md_2017.gpkg"</span>, <span class="at">driver =</span> <span class="st">"GPKG"</span>, <span class="at">append=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `md_2017' using driver `GPKG'
+Writing layer `md_2017' to data source `../data/md_2017.gpkg' using driver `GPKG'
+Writing 330 features with 21 fields and geometry type Multi Polygon.</code></pre>
+</div>
+</div>
+<p>Remove Høyanger, no neighbours.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>md_2017 <span class="ot">&lt;-</span> md_2017 <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span>kNavn <span class="sc">==</span> <span class="st">"Høyanger"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Making the weights matrix.</p>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-6_459b9a8471e703cd7a1e04da9aad533b">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># remove line 200 Høyanger, no neighbours</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>md_2017_nb <span class="ot">&lt;-</span> <span class="fu">poly2nb</span>(md_2017)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>md_2017_nb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Neighbour list object:
+Number of regions: 329 
+Number of nonzero links: 1556 
+Percentage nonzero weights: 1.437533 
+Average number of links: 4.729483 </code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>md_2017_w <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(md_2017_nb, <span class="at">style =</span> <span class="st">"W"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">print</span>(md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Characteristics of weights list object:
+Neighbour list object:
+Number of regions: 329 
+Number of nonzero links: 1556 
+Percentage nonzero weights: 1.437533 
+Average number of links: 4.729483 
+
+Weights style: W 
+Weights constants summary:
+    n     nn  S0       S1       S2
+W 329 108241 329 156.7205 1357.883</code></pre>
+</div>
+</div>
+</section>
+<section id="global-morans-i-plot-for-log_pm2" class="slide level2">
+<h2>Global Morans I plot for log_pm2</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">moran.plot</span>(md_2017<span class="sc">$</span>log_pm2, <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"><div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">moran.test</span>(md_2017<span class="sc">$</span>log_pm2, <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Moran I test under randomisation
+
+data:  md_2017$log_pm2  
+weights: md_2017_w    
+
+Moran I statistic standard deviate = 14.014, p-value &lt; 2.2e-16
+alternative hypothesis: greater
+sample estimates:
+Moran I statistic       Expectation          Variance 
+      0.526358833      -0.003048780       0.001427167 </code></pre>
+</div>
+</div>
+<p>Hardly any doubt that we have spatial autocorrelation in log_pm2 (not a big surprise).</p>
+</section>
+<section id="eda" class="slide level2">
+<h2>EDA</h2>
+<p>Open a new project in Geoda and read in the reduced dataset md_2017 and do EDA.</p>
+</section>
+<section id="the-model" class="slide level2">
+<h2>The model</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>mod1 <span class="ot">&lt;-</span> <span class="st">"log_pm2 ~ log_prct_20_64 + log_prct_uni_edu + log_inc_750k_p</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="st"> + log_net_cap_3000k_p + log_gov_emp + log_spc + log_sen_ind"</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># mod2 &lt;- "log_pm2 ~ log_prct_20_64 +  log_net_cap_3000k_p + log_sen_ind"</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>mod2 <span class="ot">&lt;-</span> <span class="st">"log_pm2 ~ prct_20_64 + inc_bt_9and10 + spc_k +  sen_ind"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="the-variables-we-use" class="slide level2">
+<h2>The variables we use</h2>
+<p>We have 329 observations. We lack pm2 for 96 municipalities. One, Høyanger, no NA, but no neighbours.</p>
+<h3 id="log_pm2">log_pm2</h3>
+<p>We use the natural logarithms of price per square meter as our dependent variable.</p>
+<h3 id="prct_20_64">prct_20_64</h3>
+<p>Percentage of population of a “working age”.</p>
+<h3 id="inc_bt_9and10">inc_bt_9and10</h3>
+<p>This variable is a little bit more involved. Imagine income for all income earners of the country ordered in a long list, from lowest to highest income. This list is then divided into 10 parts with an equal number of individuals in each part. Then we will have 9 income levels <span class="math inline">\(I_{i,i+1}, i = 1\ldots 9\)</span> representing the border between to groups (deciles). If an individual has an income above <span class="math inline">\(I_{8,9}\)</span>, this individual will be in the top 20% earners in the country. Our variable <code>inc_bt_9and10</code> contains the percentage of income earners in each municipality that has an income above <span class="math inline">\(I_{8,9}\)</span>.</p>
+<h3 id="spc_k">spc_k</h3>
+<p>Wholesale and retail trade sales per capita in each municipality in NOK 1000.</p>
+<h3 id="sen_ind">sen_ind</h3>
+<p>The value of the SSB centrality index for 2018. The index value for Oslo (the most central place) is 1000.</p>
+</section>
+<section id="simple-linear-model" class="slide level2">
+<h2>Simple linear model</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>md_2017 <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">select</span>(log_pm2, prct_20_64, inc_bt_9and10, spc_k, sen_ind) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    log_pm2         prct_20_64    inc_bt_9and10       spc_k       
+ Min.   : 8.579   Min.   :51.51   Min.   : 8.10   Min.   : 10.24  
+ 1st Qu.: 9.491   1st Qu.:55.23   1st Qu.:14.90   1st Qu.: 43.97  
+ Median : 9.725   Median :56.70   Median :17.60   Median : 65.24  
+ Mean   : 9.738   Mean   :56.75   Mean   :18.15   Mean   : 67.86  
+ 3rd Qu.: 9.970   3rd Qu.:58.04   3rd Qu.:20.60   3rd Qu.: 88.05  
+ Max.   :10.960   Max.   :66.14   Max.   :35.50   Max.   :228.10  
+    sen_ind                  geom    
+ Min.   : 368.0   MULTIPOLYGON :329  
+ 1st Qu.: 616.0   epsg:5973    :  0  
+ Median : 686.0   +proj=utm ...:  0  
+ Mean   : 700.3                      
+ 3rd Qu.: 793.0                      
+ Max.   :1000.0                      </code></pre>
+</div>
+</div>
+<h3 id="is-multicollinearity-a-problem">Is multicollinearity a problem?</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># drop gov_emp_1k</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mod2, <span class="at">data =</span> md_2017)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mod2, data = md_2017)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.46579 -0.09363  0.00813  0.09060  0.55811 
+
+Coefficients:
+               Estimate Std. Error t value    Pr(&gt;|t|)    
+(Intercept)   6.1907249  0.2926722  21.152     &lt; 2e-16 ***
+prct_20_64    0.0315756  0.0059235   5.331 0.000000184 ***
+inc_bt_9and10 0.0327213  0.0022935  14.267     &lt; 2e-16 ***
+spc_k         0.0009024  0.0003210   2.812     0.00523 ** 
+sen_ind       0.0015705  0.0001080  14.546     &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1706 on 324 degrees of freedom
+Multiple R-squared:  0.7941,    Adjusted R-squared:  0.7916 
+F-statistic: 312.4 on 4 and 324 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">mctest</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+omcdiag(mod = mod, Inter = TRUE, detr = detr, red = red, conf = conf, 
+    theil = theil, cn = cn)
+
+
+Overall Multicollinearity Diagnostics
+
+                       MC Results detection
+Determinant |X'X|:         0.4439         0
+Farrar Chi-Square:       264.6359         1
+Red Indicator:             0.3663         0
+Sum of Lambda Inverse:     5.9601         0
+Theil's Method:           -1.2117         0
+Condition Number:        103.8824         1
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">imcdiag</span>(lm2, <span class="at">all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+imcdiag(mod = lm2, all = TRUE)
+
+
+All Individual Multicollinearity Diagnostics in 0 or 1 
+
+              VIF TOL Wi Fi Leamer CVIF Klein IND1 IND2
+prct_20_64      0   0  1  1      0    0     0    1    0
+inc_bt_9and10   0   0  1  1      0    0     0    0    0
+spc_k           0   0  1  1      0    0     0    0    0
+sen_ind         0   0  1  1      0    0     0    1    0
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test
+
+* all coefficients have significant t-ratios
+
+R-square of y on all x: 0.7941 
+
+* use method argument to check which regressors may be the reason of collinearity
+===================================</code></pre>
+</div>
+</div>
+<p>Three out of nine tests indicate that multicollinearity might be a problem.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># If we only want to do one test</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">imcdiag</span>(lm2, <span class="at">method=</span><span class="st">"VIF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+imcdiag(mod = lm2, method = "VIF")
+
+
+ VIF Multicollinearity Diagnostics
+
+                 VIF detection
+prct_20_64    1.7674         0
+inc_bt_9and10 1.2125         0
+spc_k         1.1040         0
+sen_ind       1.8762         0
+
+NOTE:  VIF Method Failed to detect multicollinearity
+
+
+0 --&gt; COLLINEARITY is not detected by the test
+
+===================================</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># If we only want to do one test</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">imcdiag</span>(lm2, <span class="at">method=</span><span class="st">"IND1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+imcdiag(mod = lm2, method = "IND1")
+
+
+ IND1 Multicollinearity Diagnostics
+
+                IND1 detection
+prct_20_64    0.0052         1
+inc_bt_9and10 0.0076         0
+spc_k         0.0084         0
+sen_ind       0.0049         1
+
+Multicollinearity may be due to prct_20_64 sen_ind regressors
+
+1 --&gt; COLLINEARITY is detected by the test 
+0 --&gt; COLLINEARITY is not detected by the test
+
+===================================</code></pre>
+</div>
+</div>
+<p>The positive correlation between <code>sen_ind</code> and <code>prct_20_64</code>.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">plot</span>(md_2017<span class="sc">$</span>sen_ind, md_2017<span class="sc">$</span>prct_20_64)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">cor</span>(md_2017<span class="sc">$</span>sen_ind, md_2017<span class="sc">$</span>prct_20_64)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6390244</code></pre>
+</div>
+</div>
+<p>We have seen worse.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">lm.morantest</span>(lm2, <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Global Moran I for regression residuals
+
+data:  
+model: lm(formula = mod2, data = md_2017)
+weights: md_2017_w
+
+Moran I statistic standard deviate = 7.2984, p-value = 1.456e-13
+alternative hypothesis: greater
+sample estimates:
+Observed Moran I      Expectation         Variance 
+     0.267216998     -0.006847098      0.001410110 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(lm2), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</div>
+</div>
+<p>We will use mod2 in the following. We have spatial autocorrelation in the residuals from OLS.</p>
+</section></section>
+<section id="the-anselin-approach" class="title-slide slide level1 center">
+<h1>The Anselin approach</h1>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># From BurkeyAcademy</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">lm.LMtests</span>(lm2, <span class="at">listw=</span>md_2017_w, <span class="at">test=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Lagrange multiplier diagnostics for spatial dependence
+
+data:  
+model: lm(formula = mod2, data = md_2017)
+weights: md_2017_w
+
+LMerr = 49.317, df = 1, p-value = 2.178e-12
+
+
+    Lagrange multiplier diagnostics for spatial dependence
+
+data:  
+model: lm(formula = mod2, data = md_2017)
+weights: md_2017_w
+
+LMlag = 35.015, df = 1, p-value = 0.000000003273
+
+
+    Lagrange multiplier diagnostics for spatial dependence
+
+data:  
+model: lm(formula = mod2, data = md_2017)
+weights: md_2017_w
+
+RLMerr = 18.191, df = 1, p-value = 0.00001998
+
+
+    Lagrange multiplier diagnostics for spatial dependence
+
+data:  
+model: lm(formula = mod2, data = md_2017)
+weights: md_2017_w
+
+RLMlag = 3.8892, df = 1, p-value = 0.0486
+
+
+    Lagrange multiplier diagnostics for spatial dependence
+
+data:  
+model: lm(formula = mod2, data = md_2017)
+weights: md_2017_w
+
+SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
+</div>
+</div>
+<p>Both LMerr and LMLag are significant. Proceed with RLMlerr and RLMlag. Again both are significant. So we don´t have a clear conclusion. One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.</p>
+<p>For a more thorough discussion see <span class="citation" data-cites="osland2010a">(<a href="#/ref-osland2010a" role="doc-biblioref" onclick="return false;"><strong>osland2010a?</strong></a>)</span> and <span class="citation" data-cites="chi2019spatial">(<a href="#/ref-chi2019spatial" role="doc-biblioref" onclick="return false;"><strong>chi2019spatial?</strong></a>)</span> page 55.</p>
+</section>
+
+<section>
+<section id="the-lesage-approach" class="title-slide slide level1 center">
+<h1>The LeSage approach</h1>
+
+</section>
+<section id="local-or-global" class="slide level2">
+<h2>Local or global?</h2>
+<p>To formally test this we have to use Bayesian modelling. Outside our scope.</p>
+<p>One might argue that a local perspective is best suited for this dataset.</p>
+<p>A change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).</p>
+<blockquote>
+<p>If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate. This specification subsumes the SLX and SEM specifications as special cases.<span class="citation" data-cites="lesage">(<a href="#/ref-lesage" role="doc-biblioref" onclick="return false;"><strong>lesage?</strong></a>)</span></p>
+</blockquote>
+<p>Note that plain OLS is a special case of SDEM. (all spatial autocorrelation coefficients are zero (<span class="math inline">\(\rho = 0, \theta = 0\)</span> and <span class="math inline">\(\lambda =0\)</span>))</p>
+<p>Manski (“includes everything”):</p>
+<p><span class="math display">\[ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}\]</span> ## LeSages (2014) 5 principles</p>
+<ol type="1">
+<li class="fragment">Local versus global spillover</li>
+</ol>
+<ul>
+<li class="fragment">“A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers.”</li>
+<li class="fragment">“Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: ‘most spatial spillovers are local.’”</li>
+<li class="fragment">“Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners.”</li>
+</ul>
+<ol start="2" type="1">
+<li class="fragment">Only two model specifications relevant for applied work</li>
+</ol>
+<ul>
+<li class="fragment">SDEM</li>
+<li class="fragment">SDM</li>
+</ul>
+<ol start="3" type="1">
+<li class="fragment">Estimation procedures, not only point estimates</li>
+</ol>
+<ul>
+<li class="fragment">Estimates of dispersion</li>
+<li class="fragment">Calculate direct/indirect effects</li>
+</ul>
+<ol start="4" type="1">
+<li class="fragment">“Avoid the temptation for observation-level inference”</li>
+<li class="fragment">“Keep the weight matrix simple”</li>
+</ol>
+<ul>
+<li class="fragment">“Sparse connectivity structures work best”</li>
+<li class="fragment">Parameterised decay can give identification problems</li>
+<li class="fragment">Do not use multiple weight matrices</li>
+<li class="fragment">Do not use non-spatial weight matrices</li>
+</ul>
+</section>
+<section id="local-dgp-data-generating-process" class="slide level2">
+<h2>Local DGP (Data Generating Process)</h2>
+<p>We decide that DGP is probably local in our data</p>
+<p>We start out with a Spatial Durban Error Model (SDEM) model, i.e.&nbsp;<span class="math inline">\(\rho = 0\)</span> (notation follows <a href="https://spatial.burkeyacademy.com/home">Burkey</a>:</p>
+<p>Nested models:</p>
+<p>SDEM:</p>
+<p><span class="math display">\[ \rho = 0:\quad y = {\bf X \beta + W X\theta + u\quad u = \lambda Wu + \epsilon} \]</span></p>
+<p>SEM:</p>
+<p><span class="math display">\[ \rho = 0, \theta = 0: \quad y = {\bf X \beta  + u\quad u = \lambda Wu + \epsilon} \]</span></p>
+<p>SLX:</p>
+<p><span class="math display">\[ \rho = 0, \lambda = 0: \quad y = {\bf X \beta  + W X\theta + \epsilon} \]</span></p>
+<p>OLS:</p>
+<p><span class="math display">\[ \rho = 0, \theta = 0, \lambda = 0: \quad y = {\bf X \beta  + \epsilon} \]</span></p>
+<p>The last three models are all restricted versions of SDEM and we can use Likelihood ratios (for spatial linear models) to decide which is the best model (<code>spatialreg::LR.Sarlm()</code> or <code>lmtest::lrtest()</code>, they will give the same answer) .</p>
+</section>
+<section id="sdem-spatial-durban-error-model-model" class="slide level2">
+<h2>SDEM (Spatial Durban Error Model) model</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Old (Burkey): errorsarlm(mod2, data = md_2017, listw = md_2017_w, etype = "emixed")</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>SDEM <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<h3 id="regression-report">Regression report</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Take care</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">summary</span>(SDEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:errorsarlm(formula = mod2, data = md_2017, listw = md_2017_w, 
+    Durbin = TRUE)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.4571586 -0.0841577  0.0049056  0.0996526  0.5374538 
+
+Type: error 
+Coefficients: (asymptotic standard errors) 
+                      Estimate   Std. Error z value  Pr(&gt;|z|)
+(Intercept)        5.459962672  0.722236361  7.5598 4.041e-14
+prct_20_64         0.027171328  0.005813866  4.6735 2.961e-06
+inc_bt_9and10      0.026867040  0.002940012  9.1384 &lt; 2.2e-16
+spc_k              0.000949083  0.000345221  2.7492  0.005974
+sen_ind            0.001692672  0.000152011 11.1352 &lt; 2.2e-16
+lag.prct_20_64     0.017090668  0.011868677  1.4400  0.149873
+lag.inc_bt_9and10  0.007906567  0.004632381  1.7068  0.087858
+lag.spc_k          0.000078155  0.000791456  0.0987  0.921338
+lag.sen_ind       -0.000181715  0.000237360 -0.7656  0.443935
+
+Lambda: 0.42445, LR test value: 36.009, p-value: 0.0000000019636
+Asymptotic standard error: 0.062357
+    z-value: 6.8068, p-value: 9.9791e-12
+Wald statistic: 46.333, p-value: 9.9791e-12
+
+Log likelihood: 142.853 for error model
+ML residual variance (sigma squared): 0.023464, (sigma: 0.15318)
+Number of observations: 329 
+Number of parameters estimated: 11 
+AIC: -263.71, (AIC for lm: -229.7)</code></pre>
+</div>
+</div>
+<h3 id="the-impacts">The impacts</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDEM), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (SDEM, estimable, n):
+                    Direct       Indirect       Total
+prct_20_64    0.0271713282  0.01709066796 0.044261996
+inc_bt_9and10 0.0268670398  0.00790656673 0.034773607
+spc_k         0.0009490832  0.00007815519 0.001027238
+sen_ind       0.0016926717 -0.00018171458 0.001510957
+========================================================
+Standard errors:
+                    Direct     Indirect        Total
+prct_20_64    0.0058138661 0.0118686767 0.0149430539
+inc_bt_9and10 0.0029400122 0.0046323806 0.0042956559
+spc_k         0.0003452214 0.0007914562 0.0009861918
+sen_ind       0.0001520106 0.0002373598 0.0002194918
+========================================================
+Z-values:
+                 Direct    Indirect    Total
+prct_20_64     4.673539  1.43998092 2.962045
+inc_bt_9and10  9.138411  1.70680422 8.095063
+spc_k          2.749201  0.09874859 1.041621
+sen_ind       11.135220 -0.76556593 6.883890
+
+p-values:
+              Direct       Indirect Total     
+prct_20_64    0.0000029605 0.149873 0.003056  
+inc_bt_9and10 &lt; 2.22e-16   0.087858 6.6613e-16
+spc_k         0.0059741    0.921338 0.297587  
+sen_ind       &lt; 2.22e-16   0.443935 5.8240e-12</code></pre>
+</div>
+</div>
+<p>The impacts are reported to show how it is done. One might argue that the impacts could wait until the correct model is decided upon below.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SDEM), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<section id="slx-model" class="slide level2">
+<h2>SLX model</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>SLX <span class="ot">&lt;-</span> <span class="fu">lmSLX</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">summary</span>(SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = formula(paste("y ~ ", paste(colnames(x)[-1], collapse = "+"))), 
+    data = as.data.frame(x), weights = weights)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.41882 -0.08986  0.00751  0.09590  0.48144 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)        4.5243803  0.5740667   7.881 5.13e-14 ***
+prct_20_64         0.0293684  0.0060045   4.891 1.59e-06 ***
+inc_bt_9and10      0.0270304  0.0034650   7.801 8.76e-14 ***
+spc_k              0.0008658  0.0003574   2.422  0.01597 *  
+sen_ind            0.0016788  0.0001799   9.330  &lt; 2e-16 ***
+lag.prct_20_64     0.0357609  0.0107963   3.312  0.00103 ** 
+lag.inc_bt_9and10  0.0076629  0.0045320   1.691  0.09184 .  
+lag.spc_k         -0.0003430  0.0007303  -0.470  0.63891    
+lag.sen_ind       -0.0004633  0.0002367  -1.957  0.05117 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1679 on 320 degrees of freedom
+Multiple R-squared:  0.803, Adjusted R-squared:  0.7981 
+F-statistic: 163.1 on 8 and 320 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SLX), <span class="at">z.values =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (SlX, estimable, n-k):
+                    Direct      Indirect        Total
+prct_20_64    0.0293684472  0.0357608695 0.0651293167
+inc_bt_9and10 0.0270304048  0.0076629095 0.0346933144
+spc_k         0.0008657653 -0.0003430118 0.0005227535
+sen_ind       0.0016787649 -0.0004632674 0.0012154975
+========================================================
+Standard errors:
+                    Direct     Indirect        Total
+prct_20_64    0.0060045003 0.0107963186 0.0118891646
+inc_bt_9and10 0.0034649565 0.0045320133 0.0030025656
+spc_k         0.0003573903 0.0007303328 0.0008350451
+sen_ind       0.0001799356 0.0002366776 0.0001615114
+========================================================
+Z-values:
+                Direct   Indirect      Total
+prct_20_64    4.891073  3.3123207  5.4780398
+inc_bt_9and10 7.801081  1.6908401 11.5545568
+spc_k         2.422464 -0.4696651  0.6260184
+sen_ind       9.329811 -1.9573772  7.5257702
+
+p-values:
+              Direct     Indirect   Total     
+prct_20_64    1.0029e-06 0.00092525 4.3006e-08
+inc_bt_9and10 6.2172e-15 0.09086736 &lt; 2.22e-16
+spc_k         0.015416   0.63859433 0.5313    
+sen_ind       &lt; 2.22e-16 0.05030313 5.2403e-14</code></pre>
+</div>
+</div>
+<p>Perhaps spatial lag just for <code>prct_20_64</code>is more appropriate?</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>SLX_red <span class="ot">&lt;-</span> <span class="fu">lmSLX</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span><span class="sc">~</span>prct_20_64 <span class="sc">+</span> sen_ind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">summary</span>(SLX_red)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = formula(paste("y ~ ", paste(colnames(x)[-1], collapse = "+"))), 
+    data = as.data.frame(x), weights = weights)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.42200 -0.08543  0.00297  0.09024  0.48073 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     4.5543075  0.5672570   8.029 1.87e-14 ***
+prct_20_64      0.0299614  0.0059617   5.026 8.34e-07 ***
+inc_bt_9and10   0.0313854  0.0022985  13.655  &lt; 2e-16 ***
+spc_k           0.0008600  0.0003570   2.409  0.01657 *  
+sen_ind         0.0016553  0.0001726   9.590  &lt; 2e-16 ***
+lag.prct_20_64  0.0346104  0.0105264   3.288  0.00112 ** 
+lag.sen_ind    -0.0003859  0.0002325  -1.659  0.09804 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1682 on 322 degrees of freedom
+Multiple R-squared:  0.801, Adjusted R-squared:  0.7973 
+F-statistic: 216.1 on 6 and 322 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Testing for spatial autocorrelation in the residuals of the SLX model.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">lm.morantest</span>(SLX, <span class="at">listw =</span> md_2017_w, <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">resfun=</span>residuals, <span class="at">naSubset=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Global Moran I for regression residuals
+
+data:  
+model: lm(formula = formula(paste("y ~ ", paste(colnames(x)[-1],
+collapse = "+"))), data = as.data.frame(x), weights = weights)
+weights: md_2017_w
+
+Moran I statistic standard deviate = 6.5847, p-value = 2.279e-11
+alternative hypothesis: greater
+sample estimates:
+Observed Moran I      Expectation         Variance 
+     0.238535538     -0.008918982      0.001412270 </code></pre>
+</div>
+</div>
+<p>The SLX model leaves lots of spatial autocorrelation in the residuals.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SLX), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># Spatial error model</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="co"># SDEM (Durbin = TRUE), no lagged y only lagged X and u</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="co"># SEM Durbin = FALSE</span></span>
+<span id="cb53-4"><a href="#cb53-4"></a>SEM <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb53-5"><a href="#cb53-5"></a><span class="fu">summary</span>(SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:errorsarlm(formula = mod2, data = md_2017, listw = md_2017_w, 
+    Durbin = FALSE)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.460521 -0.087668  0.005035  0.090322  0.510908 
+
+Type: error 
+Coefficients: (asymptotic standard errors) 
+                Estimate Std. Error z value    Pr(&gt;|z|)
+(Intercept)   6.56625269 0.26173947 25.0870   &lt; 2.2e-16
+prct_20_64    0.02397394 0.00528907  4.5327 0.000005823
+inc_bt_9and10 0.02958639 0.00267133 11.0755   &lt; 2.2e-16
+spc_k         0.00087237 0.00028872  3.0215    0.002516
+sen_ind       0.00172460 0.00012859 13.4111   &lt; 2.2e-16
+
+Lambda: 0.45542, LR test value: 44.506, p-value: 2.5356e-11
+Asymptotic standard error: 0.060428
+    z-value: 7.5366, p-value: 4.8184e-14
+Wald statistic: 56.8, p-value: 4.8295e-14
+
+Log likelihood: 139.8287 for error model
+ML residual variance (sigma squared): 0.023715, (sigma: 0.154)
+Number of observations: 329 
+Number of parameters estimated: 7 
+AIC: -265.66, (AIC for lm: -223.15)</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SEM), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</div>
+</div>
+</section>
+<section id="selecting-model" class="slide level2">
+<h2>Selecting model</h2>
+<p>Testing nested models. Since the models we consider is nested we can use a Likelihood ratio test to decide which model to chose.</p>
+<p>Note: Above, in the Anselin approach, we used Lagrange multiplier tests. If H0 is true LR, LM and Walds test (a third alternative) will converge asymptotically. See</p>
+<p>We have used the LR test below (since its in the <code>spatialreg</code> package).</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># H0: model should be restricted to SEM,</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="co"># p &gt; 0,05, can not discard H0. Discard SDEM select SEM</span></span>
+<span id="cb56-3"><a href="#cb56-3"></a><span class="co"># Restrict lagged variables to zero. df is number of lagged variables (to be restricted)</span></span>
+<span id="cb56-4"><a href="#cb56-4"></a><span class="co"># LR.sarlm moved to spatialreg, now called LR.Sarlm()</span></span>
+<span id="cb56-5"><a href="#cb56-5"></a><span class="fu">LR.Sarlm</span>(SDEM, SEM)<span class="co"># used to be spdep::LR.sarlm() now spatialreg::LR.Sarlm()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 6.0486, df = 4, p-value = 0.1955
+sample estimates:
+Log likelihood of SDEM  Log likelihood of SEM 
+              142.8530               139.8287 </code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Conclusion: Drop SDEM (theta = 0), but marginally since p = 0,064. </span></span>
+<span id="cb58-2"><a href="#cb58-2"></a><span class="co"># Go with SEM, Drop spatial effects in X</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We apparently need <span class="math inline">\(\lambda &gt; 0\)</span> to handle spatial effects in the error terms.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># lrtest from the lmtest packages gives the same result.</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="co">#broom::tidy(lmtest::lrtest(SDEM, SEM))</span></span>
+<span id="cb59-3"><a href="#cb59-3"></a><span class="co">#lmtest::lrtest(SDEM, SEM)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Should we restrict SDEM to SLX?</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># p &lt;0,05. Do not restrict. Keep SDEM</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a><span class="fu">LR.Sarlm</span>(SDEM, SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 36.009, df = 1, p-value = 0.000000001964
+sample estimates:
+Log likelihood of SDEM  Log likelihood of SLX 
+              142.8530               124.8482 </code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># or broom::tidy(lmtest::lrtest(SLX, SDEM))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>H0: restrict model to SLX, p &lt; 0,05 and we discard H0. We chose SDEM over SLX.</p>
+<p>Hence we end up with SEM as the best (given that DGP is local) spatial model for this dataset.</p>
+<p><span class="math display">\[ \rho = 0, \theta = 0: \quad y = {\bf X \beta  + u\quad u = \lambda Wu + \epsilon} \]</span></p>
+</section>
+<section id="should-we-restrict-even-more" class="slide level2">
+<h2>Should we restrict even more?</h2>
+<p>Should we restrict it even more (<span class="math inline">\(\rho = 0, \theta = 0, \lambda = 0\)</span>) to OLS?</p>
+<blockquote>
+<p>We can use spatialreg::LR.sarlm() to apply a likelihood ratio test between nested models, but here choose lmtest::lrtest(), which gives the same results, preferring models including spatially lagged covariates.</p>
+</blockquote>
+<p>From R help <code>lmtest::lrtest</code>:</p>
+<blockquote>
+<p>lrtest is a generic function for carrying out likelihood ratio tests. The default method can be employed for comparing nested (generalized) linear models</p>
+</blockquote>
+<p>From R help <code>spatialreg::LR.sarlm</code>:</p>
+<blockquote>
+<p>The LR.Sarlm() function provides a likelihood ratio test for objects for which a logLik() function exists for their class, or for objects of class logLik.</p>
+</blockquote>
+<p>The two tests give the same results. We go with <code>LR.Sarlm()</code>. Why <span class="citation" data-cites="bivand">(<a href="#/ref-bivand" role="doc-biblioref" onclick="return false;"><strong>bivand?</strong></a>)</span> use <code>lrtest()</code> was not clear. Probably because the broom package was not updated to support the <code>spatialreg</code> package (now updated) when chapter was written.</p>
+<p>Test the spatial models against OLS.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Likelihood ratio test</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="co"># SDEM</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a><span class="fu">LR1.Sarlm</span>(SDEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood Ratio diagnostics for spatial dependence
+
+data:  
+Likelihood ratio = 36.009, df = 1, p-value = 0.000000001964
+sample estimates:
+Log likelihood of spatial error model           Log likelihood of OLS fit y 
+                             142.8530                              124.8482 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># Likelihood ratio test</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a><span class="co"># SEM</span></span>
+<span id="cb65-3"><a href="#cb65-3"></a><span class="fu">LR1.Sarlm</span>(SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood Ratio diagnostics for spatial dependence
+
+data:  
+Likelihood ratio = 44.506, df = 1, p-value = 2.536e-11
+sample estimates:
+Log likelihood of spatial error model           Log likelihood of OLS fit y 
+                             139.8287                              117.5756 </code></pre>
+</div>
+</div>
+<p>No, we should not restrict SEM to OLS (H0). Hence we end up with SEM as the best model for the data, given that this a local phenomenon.</p>
+</section>
+<section id="we-go-with-sem" class="slide level2">
+<h2>We go with SEM</h2>
+<p>All good?</p>
+<p>We can use a Hausman-test to test for omitted variables. The test compares the coefficient estimates from the spatial model (SEM) and OLS model. If no omitted variables the estimates should be similar.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># Spatial Hausman test</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">Hausman.test</span>(SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Spatial Hausman test (asymptotic)
+
+data:  NULL
+Hausman test = 52.496, df = 5, p-value = 4.268e-10</code></pre>
+</div>
+</div>
+<p>Conclusion: There are marked difference between SEM and OLS coefficients. Hence, the Hausman test indicates that we have a problem with omitted variable(s).</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SEM), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"><p>Are there other problems like Heteroskedasticity?</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># test for Heteroskedasticity</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="fu">bptest.Sarlm</span>(SEM, <span class="at">studentize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  
+BP = 35.423, df = 4, p-value = 0.0000003803</code></pre>
+</div>
+</div>
+<p>We do have heteroskedasticity! The estimates should be unbiased, but we might underestimate the standard error. Hence we risk accepting as significant variables that in reality are not. However, note that none of the t-values are marginal.</p>
+</section>
+<section id="are-our-residuals-normal" class="slide level2">
+<h2>Are our residuals normal?</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb72-2"><a href="#cb72-2"></a><span class="co"># H0: residuals normal</span></span>
+<span id="cb72-3"><a href="#cb72-3"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SEM), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Robust Jarque Bera Test
+
+data:  residuals(SEM)
+X-squared = 19.847, df = 2, p-value = 0.00004902</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># Conclusion: not normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The residuals are far from normal!</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a> md_2017 <span class="ot">&lt;-</span> md_2017 <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="#cb75-2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb75-3"><a href="#cb75-3"></a>    <span class="at">SEM_residuals =</span> <span class="fu">residuals</span>(SEM),</span>
+<span id="cb75-4"><a href="#cb75-4"></a>    <span class="at">OLS_residuals =</span> <span class="fu">residuals</span>(lm2)</span>
+<span id="cb75-5"><a href="#cb75-5"></a>  )</span>
+<span id="cb75-6"><a href="#cb75-6"></a><span class="co"># write md_2017 with residuals</span></span>
+<span id="cb75-7"><a href="#cb75-7"></a><span class="fu">st_write</span>(<span class="at">obj =</span> md_2017, <span class="at">dsn =</span> <span class="st">"../data/md_2017.gpkg"</span>, <span class="at">driver =</span> <span class="st">"GPKG"</span>, <span class="at">append=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `md_2017' using driver `GPKG'
+Writing layer `md_2017' to data source `../data/md_2017.gpkg' using driver `GPKG'
+Writing 329 features with 23 fields and geometry type Multi Polygon.</code></pre>
+</div>
+</div>
+<p>We update <code>data/md_2017.gkpkg</code> with the residuals from the SEM and OLS models. This file can then be opened in Geoda and we can do further EDA of the resisuals.</p>
+<div class="cell" data-hash="index_cache/revealjs/tmap_plot_f671ea5186bb6fa5fe108bf713bb89e1">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">tmap_mode</span>(<span class="st">"plot"</span>)</span>
+<span id="cb77-2"><a href="#cb77-2"></a>t1 <span class="ot">&lt;-</span><span class="fu">tm_shape</span>(md_2017) <span class="sc">+</span></span>
+<span id="cb77-3"><a href="#cb77-3"></a>  <span class="fu">tm_borders</span>(<span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb77-4"><a href="#cb77-4"></a>   <span class="fu">tm_polygons</span>(<span class="st">"SEM_residuals"</span>)</span>
+<span id="cb77-5"><a href="#cb77-5"></a>t2 <span class="ot">&lt;-</span><span class="fu">tm_shape</span>(md_2017) <span class="sc">+</span></span>
+<span id="cb77-6"><a href="#cb77-6"></a>    <span class="fu">tm_borders</span>(<span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb77-7"><a href="#cb77-7"></a>   <span class="fu">tm_polygons</span>(<span class="st">"OLS_residuals"</span>)</span>
+<span id="cb77-8"><a href="#cb77-8"></a><span class="fu">tmap_arrange</span>(t1, t2, <span class="at">nrow=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/tmap_plot-1.png" width="960" class="r-stretch"><div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">huxreg</span>(<span class="st">"OLS"</span> <span class="ot">=</span> lm2, <span class="st">"SEM"</span> <span class="ot">=</span> SEM,</span>
+<span id="cb78-2"><a href="#cb78-2"></a>       <span class="at">error_format =</span> <span class="st">"({statistic})"</span>,</span>
+<span id="cb78-3"><a href="#cb78-3"></a>       <span class="at">note =</span> <span class="st">"{stars}. T-values reported."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-43">
+<colgroup><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">OLS</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SEM</th></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(Intercept)</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6.191 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6.566 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(21.152)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(25.087)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">prct_20_64</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.032 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.024 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(5.331)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(4.533)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">inc_bt_9and10</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.033 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.030 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(14.267)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(11.076)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">spc_k</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.001 **&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.001 **&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(2.812)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(3.021)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">sen_ind</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.002 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.002 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(14.546)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(13.411)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">lambda</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.455 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(7.537)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">N</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">329&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">329&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">R2</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.794&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.830&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">logLik</th><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">117.576&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">139.829&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">AIC</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-223.151&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-265.657&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th colspan="3" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"> *** p &lt; 0.001;  ** p &lt; 0.01;  * p &lt; 0.05. T-values reported.</th></tr>
+</tbody></table>
+
+</div>
+</div>
+</section>
+<section id="do-we-have-omitted-variables" class="slide level2">
+<h2>Do we have omitted variables?</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(<span class="fu">Hausman.test</span>(SEM))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-44">
+<colgroup><col><col><col><col></colgroup><tbody><tr>
+<th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">statistic</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p.value</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">parameter</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">method</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">52.5</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">4.27e-10</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">5</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: normal;">Spatial Hausman test (asymptotic)</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<p>Without doubt there is something more to this story. What might it be?</p>
+</section>
+<section id="a-better-model" class="slide level2">
+<h2>A “better” model?</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>mod3 <span class="ot">&lt;-</span> <span class="st">"log_pm2 ~ log_prct_20_64 + log_net_cap_3000k_p + log_sen_ind"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The variable <code>log_prct_20_64</code> is just the natural logarithm of the percentage op population of a working age. The variable <code>log_net_cap_3000k_p</code> the natural logarithm of the percentage of population with a net wealth exceeding NOK 3.000.000.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mod3, <span class="at">data =</span> md_2017)</span>
+<span id="cb81-2"><a href="#cb81-2"></a><span class="fu">summary</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mod3, data = md_2017)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.41498 -0.08067 -0.00378  0.08628  0.68254 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         -4.24750    1.02765  -4.133 4.56e-05 ***
+log_prct_20_64       2.28497    0.29799   7.668 2.04e-13 ***
+log_net_cap_3000k_p  0.55823    0.02879  19.391  &lt; 2e-16 ***
+log_sen_ind          0.47109    0.07677   6.136 2.46e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1553 on 325 degrees of freedom
+Multiple R-squared:  0.8288,    Adjusted R-squared:  0.8273 
+F-statistic: 524.6 on 3 and 325 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">mctest</span>(lm3, <span class="at">type =</span> <span class="st">"i"</span>, <span class="at">method=</span><span class="st">"VIF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+imcdiag(mod = mod, method = method, corr = FALSE, vif = vif, 
+    tol = tol, conf = conf, cvif = cvif, ind1 = ind1, ind2 = ind2, 
+    leamer = leamer, all = all)
+
+
+ VIF Multicollinearity Diagnostics
+
+                       VIF detection
+log_prct_20_64      1.6559         0
+log_net_cap_3000k_p 1.8423         0
+log_sen_ind         2.4180         0
+
+NOTE:  VIF Method Failed to detect multicollinearity
+
+
+0 --&gt; COLLINEARITY is not detected by the test
+
+===================================</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>SEM_mod3 <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(mod3, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">summary</span>(SEM_mod3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:errorsarlm(formula = mod3, data = md_2017, listw = md_2017_w, 
+    Durbin = FALSE)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.3988746 -0.0659741  0.0024313  0.0654742  0.6800960 
+
+Type: error 
+Coefficients: (asymptotic standard errors) 
+                     Estimate Std. Error z value  Pr(&gt;|z|)
+(Intercept)         -2.687507   0.856437 -3.1380  0.001701
+log_prct_20_64       1.735017   0.254544  6.8162 9.349e-12
+log_net_cap_3000k_p  0.542116   0.031306 17.3167 &lt; 2.2e-16
+log_sen_ind          0.578234   0.086140  6.7128 1.910e-11
+
+Lambda: 0.54686, LR test value: 74.573, p-value: &lt; 2.22e-16
+Asymptotic standard error: 0.054144
+    z-value: 10.1, p-value: &lt; 2.22e-16
+Wald statistic: 102.01, p-value: &lt; 2.22e-16
+
+Log likelihood: 185.2578 for error model
+ML residual variance (sigma squared): 0.0175, (sigma: 0.13229)
+Number of observations: 329 
+Number of parameters estimated: 6 
+AIC: -358.52, (AIC for lm: -285.94)</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SEM_mod3), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch"><p>huxreg(“OLS_mod3” = lm3, “SEM_mod3” = SEM_mod3, error_format = “({statistic})”, note = “{stars}. T-values reported.”)</p>
+<p>What´s the big problem with this model?</p>
+</section></section>
+<section>
+<section id="global-dgp" class="title-slide slide level1 center">
+<h1>Global DGP</h1>
+<p>How we would have analysed this if we though it was a global phenomenon. You should have good arguments to select this track.</p>
+</section>
+<h3 id="nested-models">Nested models</h3>
+<p>Nested models:</p>
+<p>SDM:</p>
+<p><span class="math display">\[ \lambda = 0:\quad {\bf y = \rho Wy + X \beta + W X\theta + \epsilon} \]</span></p>
+<p>SLX:</p>
+<p><span class="math display">\[ \lambda = 0, \rho = 0: \quad {\bf y = X \beta  + W X\theta + \epsilon} \]</span></p>
+<p>SAR (Spatial lag):</p>
+<p><span class="math display">\[ \lambda = 0, \theta = 0:\quad {\bf y = \rho Wy + X \beta + \epsilon} \]</span></p>
+<p>SEM (<span class="math inline">\(\theta = - \rho \beta\)</span>)</p>
+<p><span class="math display">\[ \lambda = 0, \theta = -\rho \beta:\quad {\bf y = X \beta  + u,\quad u = \lambda W u + \epsilon}\]</span></p>
+<h4 id="ols">OLS:</h4>
+<p><span class="math display">\[ \rho = 0, \theta = 0, \lambda = 0: \quad y = {\bf X \beta  + \epsilon} \]</span> ## Estimating the models</p>
+<h4 id="sdm">SDM:</h4>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="co"># Old style (Burkey): lagsarlm(mod2, data = md_2017, listw = md_2017_w, type = "mixed")</span></span>
+<span id="cb89-2"><a href="#cb89-2"></a>SDM <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb89-3"><a href="#cb89-3"></a><span class="co"># Do not interpret coefficient estimates!!!!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="co"># be careful</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a><span class="fu">summary</span>(SDM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:lagsarlm(formula = mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.4583940 -0.0843224  0.0026429  0.0899973  0.5340799 
+
+Type: mixed 
+Coefficients: (asymptotic standard errors) 
+                     Estimate  Std. Error z value  Pr(&gt;|z|)
+(Intercept)        2.67809841  0.62210440  4.3049 1.671e-05
+prct_20_64         0.02568975  0.00548463  4.6839 2.814e-06
+inc_bt_9and10      0.02602639  0.00315629  8.2459 2.220e-16
+spc_k              0.00087101  0.00032547  2.6762  0.007447
+sen_ind            0.00173814  0.00016389 10.6053 &lt; 2.2e-16
+lag.prct_20_64     0.01048689  0.01013826  1.0344  0.300955
+lag.inc_bt_9and10 -0.00552064  0.00459166 -1.2023  0.229240
+lag.spc_k         -0.00052949  0.00066621 -0.7948  0.426738
+lag.sen_ind       -0.00098770  0.00023529 -4.1978 2.696e-05
+
+Rho: 0.41917, LR test value: 37.824, p-value: 7.7436e-10
+Asymptotic standard error: 0.062316
+    z-value: 6.7265, p-value: 1.7379e-11
+Wald statistic: 45.246, p-value: 1.7379e-11
+
+Log likelihood: 143.7601 for mixed model
+ML residual variance (sigma squared): 0.023364, (sigma: 0.15285)
+Number of observations: 329 
+Number of parameters estimated: 11 
+AIC: -265.52, (AIC for lm: -229.7)
+LM test for residual autocorrelation
+test value: 3.3921, p-value: 0.065508</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDM, <span class="at">listw =</span> md_2017_w, <span class="at">R=</span><span class="dv">1000</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (mixed, exact):
+                    Direct      Indirect        Total
+prct_20_64    0.0281782979  0.0341061297 0.0622844277
+inc_bt_9and10 0.0266573125  0.0086469222 0.0353042347
+spc_k         0.0008517659 -0.0002637761 0.0005879898
+sen_ind       0.0017078022 -0.0004157873 0.0012920150
+========================================================
+Simulation results ( variance matrix):
+Direct:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                   Mean        SD    Naive SE Time-series SE
+prct_20_64    0.0284309 0.0058514 0.000185037    0.000185037
+inc_bt_9and10 0.0266861 0.0030649 0.000096921    0.000096921
+spc_k         0.0008692 0.0003606 0.000011405    0.000010787
+sen_ind       0.0017118 0.0001620 0.000005121    0.000004825
+
+2. Quantiles for each variable:
+
+                   2.5%       25%       50%      75%    97.5%
+prct_20_64    0.0170892 0.0244570 0.0283698 0.032568 0.039880
+inc_bt_9and10 0.0207534 0.0246060 0.0265777 0.028773 0.032718
+spc_k         0.0001554 0.0006275 0.0008605 0.001112 0.001562
+sen_ind       0.0013935 0.0016014 0.0017137 0.001815 0.002040
+
+========================================================
+Indirect:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                    Mean        SD    Naive SE Time-series SE
+prct_20_64     0.0341758 0.0162590 0.000514153    0.000497700
+inc_bt_9and10  0.0088321 0.0052765 0.000166859    0.000159147
+spc_k         -0.0002209 0.0010886 0.000034423    0.000034423
+sen_ind       -0.0004297 0.0002825 0.000008933    0.000008421
+
+2. Quantiles for each variable:
+
+                    2.5%        25%        50%        75%     97.5%
+prct_20_64     0.0038329  0.0235098  0.0344587  0.0445773 0.0658033
+inc_bt_9and10 -0.0016088  0.0052518  0.0091076  0.0125895 0.0192073
+spc_k         -0.0023760 -0.0009668 -0.0002511  0.0005577 0.0018715
+sen_ind       -0.0009437 -0.0006257 -0.0004234 -0.0002278 0.0001241
+
+========================================================
+Total:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                   Mean        SD    Naive SE Time-series SE
+prct_20_64    0.0626068 0.0191096 0.000604297    0.000564255
+inc_bt_9and10 0.0355181 0.0048230 0.000152517    0.000145184
+spc_k         0.0006483 0.0012889 0.000040757    0.000040757
+sen_ind       0.0012821 0.0002612 0.000008261    0.000008038
+
+2. Quantiles for each variable:
+
+                    2.5%        25%       50%      75%    97.5%
+prct_20_64     0.0254361  0.0501719 0.0629513 0.074716 0.100307
+inc_bt_9and10  0.0260615  0.0322303 0.0355536 0.038733 0.044504
+spc_k         -0.0019121 -0.0001819 0.0006473 0.001567 0.003059
+sen_ind        0.0007878  0.0011106 0.0012777 0.001462 0.001771
+
+========================================================
+Simulated standard errors
+                   Direct     Indirect        Total
+prct_20_64    0.005851372 0.0162589592 0.0191095574
+inc_bt_9and10 0.003064925 0.0052765376 0.0048230165
+spc_k         0.000360650 0.0010885507 0.0012888542
+sen_ind       0.000161956 0.0002824761 0.0002612378
+
+Simulated z-values:
+                 Direct  Indirect     Total
+prct_20_64     4.858847  2.101970 3.2762016
+inc_bt_9and10  8.706926  1.673838 7.3643014
+spc_k          2.410101 -0.202896 0.5030363
+sen_ind       10.569846 -1.521279 4.9078825
+
+Simulated p-values:
+              Direct       Indirect Total     
+prct_20_64    0.0000011807 0.035556 0.0010521 
+inc_bt_9and10 &lt; 2.22e-16   0.094162 1.7808e-13
+spc_k         0.015948     0.839216 0.6149387 
+sen_ind       &lt; 2.22e-16   0.128190 9.2065e-07</code></pre>
+</div>
+</div>
+<h4 id="sar">SAR:</h4>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>SAR <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w)</span>
+<span id="cb94-2"><a href="#cb94-2"></a><span class="co"># Do not interpret estimates and p values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="co"># be careful</span></span>
+<span id="cb95-2"><a href="#cb95-2"></a><span class="fu">summary</span>(SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:lagsarlm(formula = mod2, data = md_2017, listw = md_2017_w)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.423991 -0.096486  0.004449  0.105846  0.505091 
+
+Type: lag 
+Coefficients: (asymptotic standard errors) 
+                Estimate Std. Error z value      Pr(&gt;|z|)
+(Intercept)   4.00984776 0.47937122  8.3648     &lt; 2.2e-16
+prct_20_64    0.03080525 0.00555618  5.5443 0.00000002951
+inc_bt_9and10 0.02628991 0.00240127 10.9483     &lt; 2.2e-16
+spc_k         0.00143368 0.00031659  4.5284 0.00000594185
+sen_ind       0.00128260 0.00012032 10.6594     &lt; 2.2e-16
+
+Rho: 0.25684, LR test value: 32.235, p-value: 0.000000013663
+Asymptotic standard error: 0.045279
+    z-value: 5.6725, p-value: 0.000000014076
+Wald statistic: 32.177, p-value: 0.000000014076
+
+Log likelihood: 133.693 for lag model
+ML residual variance (sigma squared): 0.025569, (sigma: 0.1599)
+Number of observations: 329 
+Number of parameters estimated: 7 
+AIC: -253.39, (AIC for lm: -223.15)
+LM test for residual autocorrelation
+test value: 12.684, p-value: 0.00036876</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="co"># Look at the impacts</span></span>
+<span id="cb97-2"><a href="#cb97-2"></a><span class="fu">impacts</span>(SAR,  <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (lag, exact):
+                   Direct     Indirect       Total
+prct_20_64    0.031311751 0.0101401184 0.041451869
+inc_bt_9and10 0.026722170 0.0086538109 0.035375981
+spc_k         0.001457256 0.0004719234 0.001929179
+sen_ind       0.001303683 0.0004221899 0.001725873</code></pre>
+</div>
+</div>
+<p>Illustrations of constant ratio (direct/indirect) for the SAR model. Not a good feature of the model for applied work.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a><span class="fu">impacts</span>(SAR,  <span class="at">listw =</span> md_2017_w)<span class="sc">$</span>direct<span class="sc">/</span><span class="fu">impacts</span>(SAR,  <span class="at">listw =</span> md_2017_w)<span class="sc">$</span>indirect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1]
+[1,] 3.087908
+[2,] 3.087908
+[3,] 3.087908
+[4,] 3.087908</code></pre>
+</div>
+</div>
+<p>Impacts with z-values.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SAR, <span class="at">listw =</span> md_2017_w, <span class="at">R=</span><span class="dv">1000</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (lag, exact):
+                   Direct     Indirect       Total
+prct_20_64    0.031311751 0.0101401184 0.041451869
+inc_bt_9and10 0.026722170 0.0086538109 0.035375981
+spc_k         0.001457256 0.0004719234 0.001929179
+sen_ind       0.001303683 0.0004221899 0.001725873
+========================================================
+Simulation results ( variance matrix):
+Direct:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                  Mean        SD    Naive SE Time-series SE
+prct_20_64    0.031383 0.0056828 0.000179706    0.000179706
+inc_bt_9and10 0.026886 0.0023074 0.000072967    0.000072967
+spc_k         0.001465 0.0003053 0.000009655    0.000009115
+sen_ind       0.001298 0.0001175 0.000003716    0.000003533
+
+2. Quantiles for each variable:
+
+                   2.5%      25%      50%      75%    97.5%
+prct_20_64    0.0200698 0.027530 0.031639 0.035337 0.041868
+inc_bt_9and10 0.0224954 0.025408 0.026924 0.028449 0.031594
+spc_k         0.0008599 0.001259 0.001462 0.001679 0.002086
+sen_ind       0.0010770 0.001222 0.001298 0.001375 0.001535
+
+========================================================
+Indirect:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                   Mean         SD    Naive SE Time-series SE
+prct_20_64    0.0104411 0.00313496 0.000099136    0.000099136
+inc_bt_9and10 0.0088468 0.00183458 0.000058014    0.000058014
+spc_k         0.0004937 0.00017562 0.000005554    0.000005554
+sen_ind       0.0004262 0.00008482 0.000002682    0.000002682
+
+2. Quantiles for each variable:
+
+                   2.5%       25%       50%       75%     97.5%
+prct_20_64    0.0050021 0.0082298 0.0101816 0.0123541 0.0170544
+inc_bt_9and10 0.0053552 0.0075994 0.0088554 0.0100002 0.0126825
+spc_k         0.0002112 0.0003712 0.0004736 0.0005997 0.0009244
+sen_ind       0.0002700 0.0003687 0.0004223 0.0004799 0.0006063
+
+========================================================
+Total:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                  Mean        SD    Naive SE Time-series SE
+prct_20_64    0.041824 0.0081004 0.000256158     0.00025616
+inc_bt_9and10 0.035732 0.0029259 0.000092526     0.00009253
+spc_k         0.001959 0.0004576 0.000014472     0.00001374
+sen_ind       0.001725 0.0001374 0.000004344     0.00000370
+
+2. Quantiles for each variable:
+
+                  2.5%      25%      50%      75%    97.5%
+prct_20_64    0.026410 0.036128 0.041860 0.047359 0.057863
+inc_bt_9and10 0.030073 0.033663 0.035702 0.037652 0.041654
+spc_k         0.001113 0.001631 0.001937 0.002260 0.002953
+sen_ind       0.001460 0.001637 0.001719 0.001815 0.001997
+
+========================================================
+Simulated standard errors
+                    Direct     Indirect        Total
+prct_20_64    0.0056828124 0.0031349648 0.0081004129
+inc_bt_9and10 0.0023074307 0.0018345783 0.0029259235
+spc_k         0.0003053070 0.0001756201 0.0004576462
+sen_ind       0.0001174959 0.0000848195 0.0001373668
+
+Simulated z-values:
+                 Direct Indirect     Total
+prct_20_64     5.522440 3.330541  5.163209
+inc_bt_9and10 11.651758 4.822264 12.212365
+spc_k          4.798889 2.811013  4.280173
+sen_ind       11.050309 5.025279 12.554763
+
+Simulated p-values:
+              Direct         Indirect     Total        
+prct_20_64    0.000000033432 0.00086677   0.00000024275
+inc_bt_9and10 &lt; 2.22e-16     0.0000014194 &lt; 2.22e-16   
+spc_k         0.000001595481 0.00493858   0.00001867479
+sen_ind       &lt; 2.22e-16     0.0000005027 &lt; 2.22e-16   </code></pre>
+</div>
+</div>
+<p>Note that the simulated z-values and p-values differ somewhat between each run, so only an approximation.</p>
+<p>It´s also possible to specify that the spatial interaction is just for some variables.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a><span class="co"># Only lag sen_ind</span></span>
+<span id="cb103-2"><a href="#cb103-2"></a>SAR_red <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="sc">~</span>sen_ind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SAR_red, <span class="at">listw =</span> md_2017_w, <span class="at">R=</span><span class="dv">1000</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (mixed, exact):
+                    Direct      Indirect       Total
+prct_20_64    0.0265861539  0.0161990337 0.042785188
+inc_bt_9and10 0.0245037707  0.0149302305 0.039434001
+spc_k         0.0009822063  0.0005984616 0.001580668
+sen_ind       0.0017309676 -0.0002764329 0.001454535
+========================================================
+Simulation results ( variance matrix):
+Direct:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                   Mean        SD    Naive SE Time-series SE
+prct_20_64    0.0263928 0.0058750 0.000185783    0.000205084
+inc_bt_9and10 0.0246624 0.0023788 0.000075224    0.000075224
+spc_k         0.0009756 0.0003312 0.000010472    0.000010472
+sen_ind       0.0017312 0.0001459 0.000004614    0.000004614
+
+2. Quantiles for each variable:
+
+                   2.5%       25%       50%      75%    97.5%
+prct_20_64    0.0148803 0.0223994 0.0263851 0.030322 0.038096
+inc_bt_9and10 0.0201291 0.0229376 0.0247417 0.026320 0.029397
+spc_k         0.0002777 0.0007671 0.0009728 0.001204 0.001589
+sen_ind       0.0014565 0.0016297 0.0017366 0.001832 0.002009
+
+========================================================
+Indirect:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                    Mean        SD    Naive SE Time-series SE
+prct_20_64     0.0162392 0.0048297 0.000152728    0.000152728
+inc_bt_9and10  0.0150961 0.0028416 0.000089860    0.000089860
+spc_k          0.0006031 0.0002475 0.000007825    0.000007825
+sen_ind       -0.0002811 0.0001990 0.000006293    0.000006293
+
+2. Quantiles for each variable:
+
+                    2.5%        25%        50%        75%      97.5%
+prct_20_64     0.0085952  0.0127376  0.0156827  0.0191644 0.02681997
+inc_bt_9and10  0.0101471  0.0131723  0.0149077  0.0167379 0.02153275
+spc_k          0.0001592  0.0004352  0.0005921  0.0007487 0.00113075
+sen_ind       -0.0006726 -0.0004063 -0.0002801 -0.0001495 0.00009539
+
+========================================================
+Total:
+
+Iterations = 1:1000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 1000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+                  Mean        SD   Naive SE Time-series SE
+prct_20_64    0.042632 0.0098662 0.00031200     0.00034051
+inc_bt_9and10 0.039759 0.0037389 0.00011823     0.00011823
+spc_k         0.001579 0.0005557 0.00001757     0.00001757
+sen_ind       0.001450 0.0001863 0.00000589     0.00000589
+
+2. Quantiles for each variable:
+
+                   2.5%      25%      50%      75%    97.5%
+prct_20_64    0.0240878 0.035828 0.042497 0.049170 0.063636
+inc_bt_9and10 0.0326358 0.037265 0.039672 0.042186 0.047886
+spc_k         0.0004345 0.001232 0.001584 0.001934 0.002681
+sen_ind       0.0010658 0.001325 0.001462 0.001578 0.001799
+
+========================================================
+Simulated standard errors
+                    Direct     Indirect        Total
+prct_20_64    0.0058749636 0.0048296860 0.0098661750
+inc_bt_9and10 0.0023787938 0.0028416206 0.0037388770
+spc_k         0.0003311597 0.0002474614 0.0005557496
+sen_ind       0.0001458989 0.0001989940 0.0001862548
+
+Simulated z-values:
+                 Direct  Indirect     Total
+prct_20_64     4.492411  3.362375  4.321023
+inc_bt_9and10 10.367619  5.312514 10.633828
+spc_k          2.946114  2.437264  2.840781
+sen_ind       11.865800 -1.412765  7.785435
+
+Simulated p-values:
+              Direct       Indirect      Total     
+prct_20_64    0.0000070421 0.00077275    1.5531e-05
+inc_bt_9and10 &lt; 2.22e-16   0.00000010812 &lt; 2.22e-16
+spc_k         0.0032179    0.01479887    0.0045003 
+sen_ind       &lt; 2.22e-16   0.15772482    6.8834e-15</code></pre>
+</div>
+</div>
+<h4 id="slx">SLX:</h4>
+<p>Estimated above.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="fu">summary</span>(SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = formula(paste("y ~ ", paste(colnames(x)[-1], collapse = "+"))), 
+    data = as.data.frame(x), weights = weights)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.41882 -0.08986  0.00751  0.09590  0.48144 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)        4.5243803  0.5740667   7.881 5.13e-14 ***
+prct_20_64         0.0293684  0.0060045   4.891 1.59e-06 ***
+inc_bt_9and10      0.0270304  0.0034650   7.801 8.76e-14 ***
+spc_k              0.0008658  0.0003574   2.422  0.01597 *  
+sen_ind            0.0016788  0.0001799   9.330  &lt; 2e-16 ***
+lag.prct_20_64     0.0357609  0.0107963   3.312  0.00103 ** 
+lag.inc_bt_9and10  0.0076629  0.0045320   1.691  0.09184 .  
+lag.spc_k         -0.0003430  0.0007303  -0.470  0.63891    
+lag.sen_ind       -0.0004633  0.0002367  -1.957  0.05117 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1679 on 320 degrees of freedom
+Multiple R-squared:  0.803, Adjusted R-squared:  0.7981 
+F-statistic: 163.1 on 8 and 320 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="fu">impacts</span>(SLX, <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (SlX, estimable):
+                    Direct      Indirect        Total
+prct_20_64    0.0293684472  0.0357608695 0.0651293167
+inc_bt_9and10 0.0270304048  0.0076629095 0.0346933144
+spc_k         0.0008657653 -0.0003430118 0.0005227535
+sen_ind       0.0016787649 -0.0004632674 0.0012154975</code></pre>
+</div>
+</div>
+<section id="selecting-model-1" class="slide level2">
+<h2>Selecting model</h2>
+<p>Should we restrict to <span class="math inline">\(\theta = 0\)</span>?</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="fu">LR.Sarlm</span>(SDM, SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 20.134, df = 4, p-value = 0.0004698
+sample estimates:
+Log likelihood of SDM Log likelihood of SAR 
+             143.7601              133.6930 </code></pre>
+</div>
+</div>
+<p>H0 restrict $$ to 0.</p>
+<p>We reject H0, continue with SDM.</p>
+<p>Should we restrict with <span class="math inline">\(\rho = 0\)</span>?</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="fu">LR.Sarlm</span>(SDM, SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 37.824, df = 1, p-value = 7.744e-10
+sample estimates:
+Log likelihood of SDM Log likelihood of SLX 
+             143.7601              124.8482 </code></pre>
+</div>
+</div>
+<p>H0 restrict $$ to 0.</p>
+<p>We reject H0, continue with SDM.</p>
+<p>Should we restrict <span class="math inline">\(\theta = - \rho \beta\)</span>.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="fu">LR.Sarlm</span>(SDM, SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 7.8628, df = 4, p-value = 0.09673
+sample estimates:
+Log likelihood of SDM Log likelihood of SEM 
+             143.7601              139.8287 </code></pre>
+</div>
+</div>
+<p>Choose SEM (and we know from local analyses that we should not restrict to OLS)</p>
+<p>If we skip restrict <span class="math inline">\(\theta = - \rho \beta\)</span>. Should we restrict to OLS.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="fu">LR.Sarlm</span>(SEM, lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 44.506, df = 1, p-value = 2.536e-11
+sample estimates:
+Log likelihood of SEM Log likelihood of lm2 
+             139.8287              117.5756 </code></pre>
+</div>
+</div>
+<p>Reject H0, we should not restrict to OLS.</p>
+</section></section>
+<section>
+<section id="full-manski" class="title-slide slide level1 center">
+<h1>Full Manski</h1>
+<p>You should probably stay off this track. See <span class="citation" data-cites="lesageWhatRegionalScientists">(<a href="#/ref-lesageWhatRegionalScientists" role="doc-biblioref" onclick="return false;"><strong>lesageWhatRegionalScientists?</strong></a>)</span></p>
+<p>There is problems estimating this model (identification problems). The reason why one does not start with this model and then treat SAC, SDM and SDEM as nested models.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a><span class="co"># Old style (Burkey): sacsarlm(mod2, data = md_2017, listw = md_2017_w, type = "sacmixed")</span></span>
+<span id="cb118-2"><a href="#cb118-2"></a>MANSKI <span class="ot">&lt;-</span> <span class="fu">sacsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb118-3"><a href="#cb118-3"></a><span class="fu">summary</span>(MANSKI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:sacsarlm(formula = mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.4198354 -0.0825496  0.0020849  0.0833636  0.4784596 
+
+Type: sacmixed 
+Coefficients: (asymptotic standard errors) 
+                     Estimate  Std. Error z value  Pr(&gt;|z|)
+(Intercept)        1.50425742  0.63914448  2.3535   0.01860
+prct_20_64         0.02293222  0.00548048  4.1843 2.860e-05
+inc_bt_9and10      0.02584618  0.00322845  8.0058 1.110e-15
+spc_k              0.00086502  0.00031586  2.7386   0.00617
+sen_ind            0.00180838  0.00016761 10.7891 &lt; 2.2e-16
+lag.prct_20_64     0.00485516  0.01002833  0.4841   0.62828
+lag.inc_bt_9and10 -0.01250273  0.00516204 -2.4221   0.01543
+lag.spc_k         -0.00075156  0.00058742 -1.2794   0.20074
+lag.sen_ind       -0.00137809  0.00024757 -5.5665 2.599e-08
+
+Rho: 0.62666
+Asymptotic standard error: 0.099265
+    z-value: 6.3131, p-value: 2.7355e-10
+Lambda: -0.33341
+Asymptotic standard error: 0.17285
+    z-value: -1.9289, p-value: 0.053748
+
+LR test value: 54.897, p-value: 4.8638e-10
+
+Log likelihood: 145.0239 for sacmixed model
+ML residual variance (sigma squared): 0.02115, (sigma: 0.14543)
+Number of observations: 329 
+Number of parameters estimated: 12 
+AIC: -266.05, (AIC for lm: -223.15)</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="co"># Old style (Burkey): sacsarlm(mod2, data = md_2017, listw = md_2017_w, type = "sac")</span></span>
+<span id="cb120-2"><a href="#cb120-2"></a><span class="co"># No lagged X, just lagged y and u</span></span>
+<span id="cb120-3"><a href="#cb120-3"></a>KELEJIAN_PRUCA <span class="ot">&lt;-</span> <span class="fu">sacsarlm</span>(mod2, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb120-4"><a href="#cb120-4"></a><span class="fu">summary</span>(KELEJIAN_PRUCA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+sacsarlm(formula = mod2, data = md_2017, listw = md_2017_w, Durbin = FALSE)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.4587765 -0.0935582  0.0026026  0.0963646  0.5289599 
+
+Type: sac 
+Coefficients: (asymptotic standard errors) 
+                Estimate Std. Error z value    Pr(&gt;|z|)
+(Intercept)   5.59638908 0.64606968  8.6622   &lt; 2.2e-16
+prct_20_64    0.02613147 0.00542404  4.8177 0.000001452
+inc_bt_9and10 0.02856009 0.00273856 10.4289   &lt; 2.2e-16
+spc_k         0.00105297 0.00031362  3.3574   0.0007868
+sen_ind       0.00161434 0.00013901 11.6127   &lt; 2.2e-16
+
+Rho: 0.095544
+Asymptotic standard error: 0.060718
+    z-value: 1.5736, p-value: 0.11559
+Lambda: 0.37353
+Asymptotic standard error: 0.082757
+    z-value: 4.5135, p-value: 0.0000063752
+
+LR test value: 46.779, p-value: 6.9525e-11
+
+Log likelihood: 140.9649 for sac model
+ML residual variance (sigma squared): 0.023951, (sigma: 0.15476)
+Number of observations: 329 
+Number of parameters estimated: 8 
+AIC: -265.93, (AIC for lm: -223.15)</code></pre>
+</div>
+</div>
+</section>
+<section id="final-question" class="slide level2">
+<h2>Final question</h2>
+<p>Why not start with the Manski (below called the GNS model) model and use a LR test to decide if SAC, SDM or SDEM is the best nested model?</p>
+<p>Good question ;-)</p>
+<p>The following quote might give the answer:</p>
+<blockquote>
+<p>Even though taking the GNS model as point of departure to measure spillovers seems appealing since it contains all possible interaction effects, two major issues are that a formal proof under which conditions the parameters of this model are identified is not available yet (see Section 1) and the problem of overfitting. Even though the parameters are not identified, they can still be estimated. However, they have the tendency either to blow each other up or to become insignificant as a result of which this model does not help to choose among the SDM and SDEM models.<span class="citation" data-cites="halleckvegaSLXMODEL2015">(<a href="#/ref-halleckvegaSLXMODEL2015" role="doc-biblioref" onclick="return false;"><strong>halleckvegaSLXMODEL2015?</strong></a>)</span> p.&nbsp;347.</p>
+</blockquote>
+<p>There are several problems with fitting the Manski (GNS) model. Should these be solved the Manski model might be a starting point in the future. For the time being the best we can do is probably to follow <span class="citation" data-cites="lesageWhatRegionalScientists">(<a href="#/ref-lesageWhatRegionalScientists" role="doc-biblioref" onclick="return false;"><strong>lesageWhatRegionalScientists?</strong></a>)</span> and</p>
+<ul>
+<li class="fragment">Don’t bother with SAC</li>
+<li class="fragment">Decide if the phenomenon we study is of a local or global character</li>
+<li class="fragment">If local start with SDEM, if global start with SDM</li>
+<li class="fragment">Use <code>LR.Sarlm()</code> to decide which of the nested models to use</li>
+<li class="fragment">Remember to report <em>impacts,</em> not coefficient estimates.</li>
+</ul>
+</section></section>
+<section id="forslag-termpaper" class="title-slide slide level1 center">
+<h1>Forslag termpaper</h1>
+<p>Samme analyse, men med rook, andel unge kvinner (18-30 år) av total befolkning, gjeld og event. tilbud av nye boliger. Forsøkt ny modell med nye boliger under, men gir ikke de store utslagene. Gjeldsdata på kommunenivå fra SSB er ikke så detaljerte. Eventuelt kan de gjøre tilsvarende analyse for et annet år.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a><span class="co"># new dwellings</span></span>
+<span id="cb122-2"><a href="#cb122-2"></a>mod4 <span class="ot">&lt;-</span> <span class="st">"log_pm2 ~ prct_20_64 + inc_bt_9and10  +  sen_ind + I(sfd_ba_completed + sfd_w2u_ba_completed)"</span></span>
+<span id="cb122-3"><a href="#cb122-3"></a>lm4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mod4, <span class="at">data =</span> md_2017)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">summary</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mod4, data = md_2017)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.48403 -0.10321  0.00623  0.10032  0.53345 
+
+Coefficients:
+                                              Estimate  Std. Error t value
+(Intercept)                                6.387177798 0.313421930  20.379
+prct_20_64                                 0.029999697 0.006078476   4.935
+inc_bt_9and10                              0.031585407 0.002304524  13.706
+sen_ind                                    0.001502981 0.000112447  13.366
+I(sfd_ba_completed + sfd_w2u_ba_completed) 0.000004981 0.000001812   2.749
+                                             Pr(&gt;|t|)    
+(Intercept)                                   &lt; 2e-16 ***
+prct_20_64                                 0.00000128 ***
+inc_bt_9and10                                 &lt; 2e-16 ***
+sen_ind                                       &lt; 2e-16 ***
+I(sfd_ba_completed + sfd_w2u_ba_completed)    0.00631 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1707 on 324 degrees of freedom
+Multiple R-squared:  0.7939,    Adjusted R-squared:  0.7913 
+F-statistic:   312 on 4 and 324 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>SDEM_mod4 <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(mod4, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb125-2"><a href="#cb125-2"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDEM_mod4), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Impact measures (SDEM, estimable, n):
+                                                   Direct        Indirect
+prct_20_64                                 0.024959397785  0.016643621634
+inc_bt_9and10                              0.026220603474  0.004875123116
+sen_ind                                    0.001750268724 -0.000471082348
+I(sfd_ba_completed + sfd_w2u_ba_completed) 0.000004612348  0.000005561148
+                                                  Total
+prct_20_64                                 0.0416030194
+inc_bt_9and10                              0.0310957266
+sen_ind                                    0.0012791864
+I(sfd_ba_completed + sfd_w2u_ba_completed) 0.0000101735
+========================================================
+Standard errors:
+                                                   Direct       Indirect
+prct_20_64                                 0.005918134102 0.011778249231
+inc_bt_9and10                              0.003011189510 0.004763498651
+sen_ind                                    0.000143362464 0.000231312783
+I(sfd_ba_completed + sfd_w2u_ba_completed) 0.000001747715 0.000003930684
+                                                    Total
+prct_20_64                                 0.014729222137
+inc_bt_9and10                              0.004549428099
+sen_ind                                    0.000223008497
+I(sfd_ba_completed + sfd_w2u_ba_completed) 0.000004845399
+========================================================
+Z-values:
+                                              Direct  Indirect    Total
+prct_20_64                                  4.217444  1.413081 2.824523
+inc_bt_9and10                               8.707723  1.023433 6.835085
+sen_ind                                    12.208696 -2.036560 5.736043
+I(sfd_ba_completed + sfd_w2u_ba_completed)  2.639073  1.414804 2.099620
+
+p-values:
+                                           Direct      Indirect Total     
+prct_20_64                                 0.000024709 0.157632 0.0047351 
+inc_bt_9and10                              &lt; 2.22e-16  0.306103 8.1957e-12
+sen_ind                                    &lt; 2.22e-16  0.041694 9.6914e-09
+I(sfd_ba_completed + sfd_w2u_ba_completed) 0.0083133   0.157126 0.0357623 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>SEM_mod4 <span class="ot">&lt;-</span> <span class="fu">errorsarlm</span>(mod4, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb127-2"><a href="#cb127-2"></a><span class="fu">summary</span>(SEM_mod4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:errorsarlm(formula = mod4, data = md_2017, listw = md_2017_w, 
+    Durbin = FALSE)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.4638081 -0.0921883  0.0038205  0.0919993  0.5023677 
+
+Type: error 
+Coefficients: (asymptotic standard errors) 
+                                               Estimate   Std. Error z value
+(Intercept)                                6.7015322967 0.2814504975 23.8107
+prct_20_64                                 0.0224038565 0.0054991334  4.0741
+inc_bt_9and10                              0.0292077896 0.0026677847 10.9483
+sen_ind                                    0.0017287275 0.0001295926 13.3397
+I(sfd_ba_completed + sfd_w2u_ba_completed) 0.0000040784 0.0000016145  2.5261
+                                            Pr(&gt;|z|)
+(Intercept)                                &lt; 2.2e-16
+prct_20_64                                 0.0000462
+inc_bt_9and10                              &lt; 2.2e-16
+sen_ind                                    &lt; 2.2e-16
+I(sfd_ba_completed + sfd_w2u_ba_completed)   0.01153
+
+Lambda: 0.44751, LR test value: 42.147, p-value: 8.4683e-11
+Asymptotic standard error: 0.06093
+    z-value: 7.3446, p-value: 2.065e-13
+Wald statistic: 53.943, p-value: 2.0639e-13
+
+Log likelihood: 138.4757 for error model
+ML residual variance (sigma squared): 0.02396, (sigma: 0.15479)
+Number of observations: 329 
+Number of parameters estimated: 7 
+AIC: -262.95, (AIC for lm: -222.8)</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SEM_mod4), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-73-1.png" width="960" class="r-stretch"><div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a><span class="fu">moran</span>(<span class="fu">residuals</span>(SEM_mod4), <span class="at">listw =</span> md_2017_w, <span class="at">n =</span> <span class="fu">length</span>(md_2017_nb), <span class="at">S0 =</span> <span class="fu">Szero</span>(md_2017_w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$I
+[1] -0.01430735
+
+$K
+[1] 3.788702</code></pre>
+</div>
+</div>
+<p>Morans I for the residuals are now slightly negative (-0.01434). The kurtosis of the residuals is 3.8, compared to 3.0 for a normal distribution, so the distribution of residuals are slightly leptokurtic. Hence more outliers that if they were normaly distributed.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SEM_mod4), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Robust Jarque Bera Test
+
+data:  residuals(SEM_mod4)
+X-squared = 13.335, df = 2, p-value = 0.001272</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1"></a>SLX_mod4 <span class="ot">&lt;-</span> <span class="fu">lmSLX</span>(mod4, <span class="at">data =</span> md_2017, <span class="at">listw =</span> md_2017_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb134-2"><a href="#cb134-2"></a><span class="fu">summary</span>(SLX_mod4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = formula(paste("y ~ ", paste(colnames(x)[-1], collapse = "+"))), 
+    data = as.data.frame(x), weights = weights)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.40527 -0.09317  0.00553  0.10366  0.48804 
+
+Coefficients:
+                                                   Estimate   Std. Error
+(Intercept)                                     4.940435659  0.603180867
+prct_20_64                                      0.027048664  0.006133710
+inc_bt_9and10                                   0.026259939  0.003506692
+sen_ind                                         0.001741089  0.000168758
+I.sfd_ba_completed...sfd_w2u_ba_completed.      0.000004501  0.000001817
+lag.prct_20_64                                  0.033881537  0.010768718
+lag.inc_bt_9and10                               0.004932595  0.004618570
+lag.sen_ind                                    -0.000698463  0.000226843
+lag.I.sfd_ba_completed...sfd_w2u_ba_completed.  0.000004644  0.000003633
+                                               t value Pr(&gt;|t|)    
+(Intercept)                                      8.191 6.28e-15 ***
+prct_20_64                                       4.410 1.41e-05 ***
+inc_bt_9and10                                    7.489 6.83e-13 ***
+sen_ind                                         10.317  &lt; 2e-16 ***
+I.sfd_ba_completed...sfd_w2u_ba_completed.       2.477  0.01376 *  
+lag.prct_20_64                                   3.146  0.00181 ** 
+lag.inc_bt_9and10                                1.068  0.28633    
+lag.sen_ind                                     -3.079  0.00226 ** 
+lag.I.sfd_ba_completed...sfd_w2u_ba_completed.   1.278  0.20215    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1675 on 320 degrees of freedom
+Multiple R-squared:  0.8039,    Adjusted R-squared:  0.799 
+F-statistic:   164 on 8 and 320 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1"></a><span class="fu">LR.Sarlm</span>(SDEM_mod4, SEM_mod4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 7.1726, df = 4, p-value = 0.127
+sample estimates:
+Log likelihood of SDEM_mod4  Log likelihood of SEM_mod4 
+                   142.0620                    138.4757 </code></pre>
+</div>
+</div>
+<p>H0 can not be discarded and we should restrict SDEM to SEM, i.e.&nbsp;we should <em>not</em> restrict $$ to zero.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1"></a><span class="fu">LR.Sarlm</span>(SDEM_mod4, SLX_mod4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 32.981, df = 1, p-value = 0.000000009308
+sample estimates:
+Log likelihood of SDEM_mod4  Log likelihood of SLX_mod4 
+                   142.0620                    125.5718 </code></pre>
+</div>
+</div>
+<p>H0 can be discarded and we should <em>not</em> restrict SDEM to SLX, i.e.&nbsp;we should restrict $$ to zero.</p>
+<p>Should we restrict further, i.e. SEM to OLS?</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1"></a><span class="co"># H0 restrict SEM to OLS</span></span>
+<span id="cb140-2"><a href="#cb140-2"></a><span class="fu">LR.Sarlm</span>(SEM_mod4, lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Likelihood ratio for spatial linear models
+
+data:  
+Likelihood ratio = 42.147, df = 1, p-value = 8.468e-11
+sample estimates:
+Log likelihood of SEM_mod4      Log likelihood of lm4 
+                  138.4757                   117.4025 </code></pre>
+</div>
+</div>
+<p>H0 can be discarded and we should <em>not</em> restrict SEM further to OLS.</p>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1"></a><span class="co">#siste</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+
+<section id="bibliography" class="title-slide slide level1 smaller scrollable">
+<h1>Bibliography</h1>
+
+<div class="footer footer-default">
+<p><a href="../../index.html">MSB205</a></p>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-zotero-1363" class="csl-entry" role="doc-biblioentry">
+<span>“0.1 <span>The Reproducible R Toolkit</span> (<span>RRT</span>).”</span> n.d. <a href="https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html" class="uri">https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html</a>.
+</div>
+<div id="ref-zotero-718" class="csl-entry" role="doc-biblioentry">
+<span>“16 <span>Product Fails That Defined The Decade</span>.”</span> n.d. <em>BuzzFeed News</em>. <a href="https://www.buzzfeednews.com/article/nicolenguyen/notable-tech-fails-of-2010s" class="uri">https://www.buzzfeednews.com/article/nicolenguyen/notable-tech-fails-of-2010s</a>.
+</div>
+<div id="ref-bechhofer2013" class="csl-entry" role="doc-biblioentry">
+Bechhofer, Sean, Iain Buchan, David De Roure, Paolo Missier, John Ainsworth, Jiten Bhagat, Philip Couch, et al. 2013. <span>“Why Linked Data Is Not Enough for Scientists.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+</div>
+<div id="ref-Grossenbacher2022" class="csl-entry" role="doc-biblioentry">
+Grossenbacher, Timo. n.d. <span>“A (Truly) Reproducible <span>R</span> Workflow.”</span> <a href="https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/" class="uri">https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/</a>.
+</div>
+<div id="ref-xie2020" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781003097471">https://doi.org/10.1201/9781003097471</a>.
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>

@@ -62,7 +62,8 @@ knitr::write_bib(
   c(
   "Jmisc",
   "sf",
-  "urbnmapr",
+# no date field in DESCRIPTION file of package 'urbnmapr'; so it fails
+#  "urbnmapr",
   "tidyverse",
   "ggplot2",
   "sp",
@@ -78,21 +79,25 @@ knitr::write_bib(
 
 ## Read in data
 
+We convert from SpatialPointsDataFrame to sf (simple feature, point).
+Sample 3000 "random" observations from the 25357 available.
+
 ```{r}
-data(house)
-#head(house, n=10)
-house_sf <- st_as_sf(house)
-#head(house_sf, n=10)
-dim(house_sf)
-set.seed(42)# What else could it be?
-red_house_sf <- house_sf[sample(1:dim(house_sf)[1], size = 3000), ]
+set.seed(42)
+red_house_sf <- house %>% 
+  st_as_sf() %>% 
+# pick 3000 numbers from 1:25357 without replacement
+# classic solution
+#.[sample(dim(.)[1], size = 3000),]
+# tidyverse 
+  slice_sample(n = 3000)
 ```
 
 ## Quick check of data
 
 ```{r}
 #| cache: true
-plot(house_sf["price"], cex = 0.01, pch = 20)
+plot(red_house_sf["price"], cex = 0.01, pch = 20)
 ```
 
 ```{r}
@@ -192,9 +197,7 @@ age
 
 Its projection is CRS(+init=epsg:2834), the Ohio North State Plane.
 
-## From SpatialPointsDataFrame to sf
-
-We convert from SpatialPointsDataFrame to sf (simple feature, point).
+## Histogram of age variabl
 
 ```{r}
 hist(100*house_sf$age, breaks = 30)
@@ -378,6 +381,10 @@ summary(impacts(SLX))
 
 ## Choosing a local model
 
+-   Since the models are nested we can test the models against each other with a likelihood ratio test
+
+## SEM versus SDEM
+
 ```{r}
 LR.Sarlm(SEM, SDEM)
 ```
@@ -385,11 +392,15 @@ LR.Sarlm(SEM, SDEM)
 Discard H0, do not restrict to SEM.
 We keep $\theta > 0$.
 
+## SDEM versus SLX
+
 ```{r}
 LR.Sarlm(SDEM, SLX)
 ```
 
 We discard H0 and will not restrict to SLX, continue with SDEM.
+
+## SDEM versus lm1
 
 ```{r}
 LR.Sarlm(SDEM, lm1)
@@ -397,7 +408,13 @@ LR.Sarlm(SDEM, lm1)
 
 Discard H0, we will not restrict to OLS.
 
-We end up with SDEM as the best local model (no endogeniety in the price variable).
+## Conclusion
+
+-   We end up with SDEM as the best local model.
+
+    -   No endogeniety in the price variable.
+
+. . .
 
 ```{r}
 # residuals are with attributes, hence as.vector()
@@ -433,12 +450,19 @@ names(i_SLX) <- paste("SLX", names(i_SLX), sep = "_")
 i_SDEM_SLX <- cbind(i_SDEM, i_SLX)
 i_SDEM_SLX <- cbind(variable = i_SDEM_SLX[, "variable"], 
                     round(i_SDEM_SLX[, -1], 6))
+```
+
+### Compare impacts from SDEM and SLX model cont.
+
+```{r}
 kable(i_SDEM_SLX[, c(1:2,5,3,6,4,7)])
 ```
 
 ## Global
 
-Spatial lag in y and X.
+-   Now spatial lag in **y** and **X**.
+
+## Global; SDM
 
 ```{r SDM}
 #| cache: true
@@ -447,6 +471,8 @@ Spatial lag in y and X.
 SDM <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRUE)
 ```
 
+## Global; SDM impacts
+
 ```{r SDMimpacts}
 #| cache: true
 #
@@ -454,13 +480,17 @@ SDM <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = TRU
 impacts(SDM, listw = red_house_sf_w)
 ```
 
+## Global; SDM impacts cont.
+
 ```{r SDMimpactsZ}
 #| cache: true
 #
 # Simulated, varies somewhat with each sample (note that seed is set above). Results might 
 # differ with another seed
-summary(impacts(SDM, listw = red_house_sf_w, R=500), zstats = TRUE)
+summary(impacts(SDM, listw = red_house_sf_w, R = 500), zstats = TRUE)
 ```
+
+## Global SAR
 
 ```{r SAR}
 #| cache: true
@@ -468,16 +498,26 @@ summary(impacts(SDM, listw = red_house_sf_w, R=500), zstats = TRUE)
 SAR <- lagsarlm(hmod1, data = red_house_sf, listw = red_house_sf_w, Durbin = FALSE)
 ```
 
+## Global SAR cont.
+
 ```{r}
 # NEW
 summary(SAR)
 ```
 
+## Global SAR impacts
+
 ```{r SARimpactsZ}
 #| cache: true
 #
-summary(impacts(SAR, listw = red_house_sf_w, R=500), zstats = TRUE)
+summary(impacts(SAR, listw = red_house_sf_w, R = 500), zstats = TRUE)
 ```
+
+## Choosing a global model
+
+-   Some of the models are estimated above so no reason to repeat a costly calculation.
+
+## SDM versus SAR
 
 ```{r}
 LR.Sarlm(SDM, SAR)
@@ -485,6 +525,8 @@ LR.Sarlm(SDM, SAR)
 
 We reject H0 and do not restrict to SAR.
 Keep SDM.
+
+## SDM versus SLX
 
 ```{r}
 # SLX estimated above
@@ -494,6 +536,8 @@ LR.Sarlm(SDM, SLX)
 We reject H0 and do not restrict to SLX.
 Keep SDM.
 
+## SDM versus SEM
+
 ```{r}
 # Common factor?
 LR.Sarlm(SDM, SEM)
@@ -501,6 +545,8 @@ LR.Sarlm(SDM, SEM)
 
 We reject H0 and do not restrict to SEM.
 Keep SDM.
+
+## SDM versus lm1
 
 ```{r}
 LR.Sarlm(SDM, lm1)
@@ -511,9 +557,13 @@ SDM seems to be the best global model.
 We have spatial effects both in price and the explanatory variables.
 There is a strong negative indirect effect regarding number of rooms that might be regarded as counter intuitive and should perhaps be looked further into.
 
+## Impacts SDM
+
 ```{r, cache=TRUE}
-summary(impacts(SDM, listw = red_house_sf_w, R=1000), zstats = TRUE)
+summary(impacts(SDM, listw = red_house_sf_w, R = 1000), zstats = TRUE)
 ```
+
+## Spatial autocorrelation left in SDM
 
 ```{r}
 # residuals are with attributes, hence as.vector()

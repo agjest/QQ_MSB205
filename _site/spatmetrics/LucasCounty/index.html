@@ -1104,6 +1104,12 @@ syear1998       &lt; 2.22e-16 0.84298854 0.00004470055406</code></pre>
 </section>
 <section id="choosing-a-local-model" class="slide level2">
 <h2>Choosing a local model</h2>
+<ul>
+<li class="fragment">Since the models are nested we can test the models against each other with a likelihood ratio test</li>
+</ul>
+</section>
+<section id="sem-versus-sdem" class="slide level2">
+<h2>SEM versus SDEM</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1121,6 +1127,9 @@ sample estimates:
 </div>
 </div>
 <p>Discard H0, do not restrict to SEM. We keep <span class="math inline">\(\theta &gt; 0\)</span>.</p>
+</section>
+<section id="sdem-versus-slx" class="slide level2">
+<h2>SDEM versus SLX</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1138,6 +1147,9 @@ Log likelihood of SDEM  Log likelihood of SLX
 </div>
 </div>
 <p>We discard H0 and will not restrict to SLX, continue with SDEM.</p>
+</section>
+<section id="sdem-versus-lm1" class="slide level2">
+<h2>SDEM versus lm1</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1155,16 +1167,28 @@ Log likelihood of SDEM  Log likelihood of lm1
 </div>
 </div>
 <p>Discard H0, we will not restrict to OLS.</p>
-<p>We end up with SDEM as the best local model (no endogeniety in the price variable).</p>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<ul>
+<li class="fragment"><p>We end up with SDEM as the best local model.</p>
+<ul>
+<li class="fragment">No endogeniety in the price variable.</li>
+</ul></li>
+</ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># residuals are with attributes, hence as.vector()</span></span>
 <span id="cb49-2"><a href="#cb49-2"></a><span class="fu">moran.plot</span>(SDEM<span class="sc">$</span>residuals, <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-
+<div class="cell-output-display">
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
+</div>
+</div>
+</section>
 <section id="results" class="slide level2">
 <h2>Results</h2>
 <div class="cell">
@@ -1270,8 +1294,14 @@ Log likelihood of SDEM  Log likelihood of lm1
 <span id="cb51-14"><a href="#cb51-14"></a><span class="fu">names</span>(i_SLX) <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"SLX"</span>, <span class="fu">names</span>(i_SLX), <span class="at">sep =</span> <span class="st">"_"</span>)</span>
 <span id="cb51-15"><a href="#cb51-15"></a>i_SDEM_SLX <span class="ot">&lt;-</span> <span class="fu">cbind</span>(i_SDEM, i_SLX)</span>
 <span id="cb51-16"><a href="#cb51-16"></a>i_SDEM_SLX <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">variable =</span> i_SDEM_SLX[, <span class="st">"variable"</span>], </span>
-<span id="cb51-17"><a href="#cb51-17"></a>                    <span class="fu">round</span>(i_SDEM_SLX[, <span class="sc">-</span><span class="dv">1</span>], <span class="dv">6</span>))</span>
-<span id="cb51-18"><a href="#cb51-18"></a><span class="fu">kable</span>(i_SDEM_SLX[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">7</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-17"><a href="#cb51-17"></a>                    <span class="fu">round</span>(i_SDEM_SLX[, <span class="sc">-</span><span class="dv">1</span>], <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<h3 id="compare-impacts-from-sdem-and-slx-model-cont.">Compare impacts from SDEM and SLX model cont.</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">kable</span>(i_SDEM_SLX[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">7</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table style="width:100%;">
@@ -1411,21 +1441,29 @@ Log likelihood of SDEM  Log likelihood of lm1
 </section>
 <section id="global" class="slide level2">
 <h2>Global</h2>
-<p>Spatial lag in y and X.</p>
+<ul>
+<li class="fragment">Now spatial lag in <strong>y</strong> and <strong>X</strong>.</li>
+</ul>
+</section>
+<section id="global-sdm" class="slide level2">
+<h2>Global; SDM</h2>
 <div class="cell" data-hash="index_cache/revealjs/SDM_32e5879eefae32a23a143e14486b3001">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co">#</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a><span class="co"># expensive to compute</span></span>
-<span id="cb52-3"><a href="#cb52-3"></a>SDM <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co">#</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="co"># expensive to compute</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a>SDM <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="global-sdm-impacts" class="slide level2">
+<h2>Global; SDM impacts</h2>
 <div class="cell" data-hash="index_cache/revealjs/SDMimpacts_e4f3c20d41448f37dd39b258eaa4530b">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co">#</span></span>
-<span id="cb53-2"><a href="#cb53-2"></a><span class="co"># Computing the impacts is expensive too</span></span>
-<span id="cb53-3"><a href="#cb53-3"></a><span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co">#</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="co"># Computing the impacts is expensive too</span></span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Impact measures (mixed, exact):
@@ -1444,13 +1482,16 @@ syear1997        0.14408151 -0.083271804  0.060809708
 syear1998        0.24456200  0.065133136  0.309695135</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/SDMimpactsZ_9c51065a9551ae0c8d2c2e42be08534a">
+</section>
+<section id="global-sdm-impacts-cont." class="slide level2">
+<h2>Global; SDM impacts cont.</h2>
+<div class="cell" data-hash="index_cache/revealjs/SDMimpactsZ_e2cb9d4d3e1f0cd755b47b7804e9d2df">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co">#</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a><span class="co"># Simulated, varies somewhat with each sample (note that seed is set above). Results might </span></span>
-<span id="cb55-3"><a href="#cb55-3"></a><span class="co"># differ with another seed</span></span>
-<span id="cb55-4"><a href="#cb55-4"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w, <span class="at">R=</span><span class="dv">500</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co">#</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a><span class="co"># Simulated, varies somewhat with each sample (note that seed is set above). Results might </span></span>
+<span id="cb56-3"><a href="#cb56-3"></a><span class="co"># differ with another seed</span></span>
+<span id="cb56-4"><a href="#cb56-4"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w, <span class="at">R =</span> <span class="dv">500</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Impact measures (mixed, exact):
@@ -1638,18 +1679,24 @@ syear1997       0.000000001157 0.46912608  0.5571201
 syear1998       &lt; 2.22e-16     0.50517759  0.0109570   </code></pre>
 </div>
 </div>
+</section>
+<section id="global-sar" class="slide level2">
+<h2>Global SAR</h2>
 <div class="cell" data-hash="index_cache/revealjs/SAR_502792c916ce872dfd9ef9c4bf6e67a2">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co">#</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a>SAR <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co">#</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>SAR <span class="ot">&lt;-</span> <span class="fu">lagsarlm</span>(hmod1, <span class="at">data =</span> red_house_sf, <span class="at">listw =</span> red_house_sf_w, <span class="at">Durbin =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
+<section id="global-sar-cont." class="slide level2">
+<h2>Global SAR cont.</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># NEW</span></span>
-<span id="cb58-2"><a href="#cb58-2"></a><span class="fu">summary</span>(SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># NEW</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="fu">summary</span>(SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1691,11 +1738,14 @@ LM test for residual autocorrelation
 test value: 16.821, p-value: 0.000041075</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="index_cache/revealjs/SARimpactsZ_149303e40e9073904469fd3b56661348">
+</section>
+<section id="global-sar-impacts" class="slide level2">
+<h2>Global SAR impacts</h2>
+<div class="cell" data-hash="index_cache/revealjs/SARimpactsZ_b33fba4823699378994a810d6e22911d">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co">#</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SAR, <span class="at">listw =</span> red_house_sf_w, <span class="at">R=</span><span class="dv">500</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co">#</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SAR, <span class="at">listw =</span> red_house_sf_w, <span class="at">R =</span> <span class="dv">500</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Impact measures (lag, exact):
@@ -1883,10 +1933,19 @@ syear1997       7.0892e-12 4.4431e-11 9.7438e-12
 syear1998       &lt; 2.22e-16 &lt; 2.22e-16 &lt; 2.22e-16</code></pre>
 </div>
 </div>
+</section>
+<section id="choosing-a-global-model" class="slide level2">
+<h2>Choosing a global model</h2>
+<ul>
+<li class="fragment">Some of the models are estimated above so no reason to repeat a costly calculation.</li>
+</ul>
+</section>
+<section id="sdm-versus-sar" class="slide level2">
+<h2>SDM versus SAR</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">LR.Sarlm</span>(SDM, SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">LR.Sarlm</span>(SDM, SAR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1900,11 +1959,14 @@ Log likelihood of SDM Log likelihood of SAR
 </div>
 </div>
 <p>We reject H0 and do not restrict to SAR. Keep SDM.</p>
+</section>
+<section id="sdm-versus-slx" class="slide level2">
+<h2>SDM versus SLX</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># SLX estimated above</span></span>
-<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">LR.Sarlm</span>(SDM, SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># SLX estimated above</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a><span class="fu">LR.Sarlm</span>(SDM, SLX)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1918,11 +1980,14 @@ Log likelihood of SDM Log likelihood of SLX
 </div>
 </div>
 <p>We reject H0 and do not restrict to SLX. Keep SDM.</p>
+</section>
+<section id="sdm-versus-sem" class="slide level2">
+<h2>SDM versus SEM</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># Common factor?</span></span>
-<span id="cb66-2"><a href="#cb66-2"></a><span class="fu">LR.Sarlm</span>(SDM, SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># Common factor?</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="fu">LR.Sarlm</span>(SDM, SEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1936,10 +2001,13 @@ Log likelihood of SDM Log likelihood of SEM
 </div>
 </div>
 <p>We reject H0 and do not restrict to SEM. Keep SDM.</p>
+</section>
+<section id="sdm-versus-lm1" class="slide level2">
+<h2>SDM versus lm1</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">LR.Sarlm</span>(SDM, lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">LR.Sarlm</span>(SDM, lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1953,10 +2021,13 @@ Log likelihood of SDM Log likelihood of lm1
 </div>
 </div>
 <p>We reject H0 and do not restrict to OLS. SDM seems to be the best global model. We have spatial effects both in price and the explanatory variables. There is a strong negative indirect effect regarding number of rooms that might be regarded as counter intuitive and should perhaps be looked further into.</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-37_4ed641757da316bc057530f7b52dbe03">
+</section>
+<section id="impacts-sdm" class="slide level2">
+<h2>Impacts SDM</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-38_f875ef0b66e3f1558048f663bf736f9b">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w, <span class="at">R=</span><span class="dv">1000</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDM, <span class="at">listw =</span> red_house_sf_w, <span class="at">R =</span> <span class="dv">1000</span>), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Impact measures (mixed, exact):
@@ -2144,15 +2215,18 @@ syear1997       0.0000000015567 0.39154419  0.6212209
 syear1998       &lt; 2.22e-16      0.55695973  0.0113020   </code></pre>
 </div>
 </div>
+</section>
+<section id="spatial-autocorrelation-left-in-sdm" class="slide level2">
+<h2>Spatial autocorrelation left in SDM</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># residuals are with attributes, hence as.vector()</span></span>
-<span id="cb72-2"><a href="#cb72-2"></a><span class="fu">moran.plot</span>(<span class="fu">as.vector</span>(SDM<span class="sc">$</span>residuals), <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># residuals are with attributes, hence as.vector()</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="fu">moran.plot</span>(<span class="fu">as.vector</span>(SDM<span class="sc">$</span>residuals), <span class="at">listw =</span> red_house_sf_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-38-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"></section>
 <section id="some-tests" class="slide level2">
 <h2>Some tests</h2>
 </section>
@@ -2162,9 +2236,9 @@ syear1998       &lt; 2.22e-16      0.55695973  0.0113020   </code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb73-2"><a href="#cb73-2"></a><span class="co"># H0: residuals normal</span></span>
-<span id="cb73-3"><a href="#cb73-3"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SDEM), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb74-2"><a href="#cb74-2"></a><span class="co"># H0: residuals normal</span></span>
+<span id="cb74-3"><a href="#cb74-3"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SDEM), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2175,7 +2249,7 @@ X-squared = 10280, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># Conclusion: not normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># Conclusion: not normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Far from normal.</p>
@@ -2183,8 +2257,8 @@ X-squared = 10280, df = 2, p-value &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># H0: residuals normal</span></span>
-<span id="cb76-2"><a href="#cb76-2"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SDM), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># H0: residuals normal</span></span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="fu">JarqueBeraTest</span>(<span class="fu">residuals</span>(SDM), <span class="at">robust =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2195,7 +2269,7 @@ X-squared = 10921, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="co"># Conclusion: not normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="co"># Conclusion: not normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Far from normal.</p>
@@ -2205,8 +2279,8 @@ X-squared = 10921, df = 2, p-value &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="co"># test for Heteroskedasticity</span></span>
-<span id="cb79-2"><a href="#cb79-2"></a><span class="fu">bptest.Sarlm</span>(SDEM, <span class="at">studentize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># test for Heteroskedasticity</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a><span class="fu">bptest.Sarlm</span>(SDEM, <span class="at">studentize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2219,8 +2293,8 @@ BP = 531.81, df = 24, p-value &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="co"># test for Heteroskedasticity</span></span>
-<span id="cb81-2"><a href="#cb81-2"></a><span class="fu">bptest.Sarlm</span>(SDM, <span class="at">studentize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="co"># test for Heteroskedasticity</span></span>
+<span id="cb82-2"><a href="#cb82-2"></a><span class="fu">bptest.Sarlm</span>(SDM, <span class="at">studentize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2236,48 +2310,48 @@ BP = 550.1, df = 24, p-value &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="co">#  Start of code to draw a map of Lucas County</span></span>
-<span id="cb83-2"><a href="#cb83-2"></a><span class="co">#</span></span>
-<span id="cb83-3"><a href="#cb83-3"></a><span class="co">#</span></span>
-<span id="cb83-4"><a href="#cb83-4"></a><span class="co"># counties %&gt;% </span></span>
-<span id="cb83-5"><a href="#cb83-5"></a><span class="co">#   filter(county_name == "Lucas County")</span></span>
-<span id="cb83-6"><a href="#cb83-6"></a><span class="co"># </span></span>
-<span id="cb83-7"><a href="#cb83-7"></a><span class="co"># </span></span>
-<span id="cb83-8"><a href="#cb83-8"></a><span class="co"># tmp &lt;- countydata %&gt;% </span></span>
-<span id="cb83-9"><a href="#cb83-9"></a><span class="co">#   left_join(counties, by = "county_fips") %&gt;% </span></span>
-<span id="cb83-10"><a href="#cb83-10"></a><span class="co">#   filter(state_name =="Ohio") %&gt;% </span></span>
-<span id="cb83-11"><a href="#cb83-11"></a><span class="co">#   filter(county_name == "Lucas County") %&gt;% </span></span>
-<span id="cb83-12"><a href="#cb83-12"></a><span class="co">#   ggplot(mapping = aes(long, lat, group = group, fill = horate)) +</span></span>
-<span id="cb83-13"><a href="#cb83-13"></a><span class="co">#   geom_polygon(color = "#ffffff", size = .25)</span></span>
-<span id="cb83-14"><a href="#cb83-14"></a><span class="co"># </span></span>
-<span id="cb83-15"><a href="#cb83-15"></a><span class="co"># class(countydata)</span></span>
-<span id="cb83-16"><a href="#cb83-16"></a><span class="co"># names(countydata)</span></span>
-<span id="cb83-17"><a href="#cb83-17"></a><span class="co"># class(counties)</span></span>
-<span id="cb83-18"><a href="#cb83-18"></a><span class="co"># names(counties)</span></span>
-<span id="cb83-19"><a href="#cb83-19"></a><span class="co"># </span></span>
-<span id="cb83-20"><a href="#cb83-20"></a><span class="co"># tmp_sf &lt;- st_as_sf(counties, coords = c("long", "lat"), </span></span>
-<span id="cb83-21"><a href="#cb83-21"></a><span class="co">#     crs = 2834)</span></span>
-<span id="cb83-22"><a href="#cb83-22"></a><span class="co"># </span></span>
-<span id="cb83-23"><a href="#cb83-23"></a><span class="co"># names(tmp_sf)</span></span>
-<span id="cb83-24"><a href="#cb83-24"></a><span class="co"># </span></span>
-<span id="cb83-25"><a href="#cb83-25"></a><span class="co"># tmp_sf %&gt;% </span></span>
-<span id="cb83-26"><a href="#cb83-26"></a><span class="co">#   filter(state_name == "Ohio") %&gt;% </span></span>
-<span id="cb83-27"><a href="#cb83-27"></a><span class="co">#   filter(county_name == "Lucas County") </span></span>
-<span id="cb83-28"><a href="#cb83-28"></a><span class="co"># </span></span>
-<span id="cb83-29"><a href="#cb83-29"></a><span class="co"># test &lt;- st_cast(tmp_sf, "MULTIPOINT")</span></span>
-<span id="cb83-30"><a href="#cb83-30"></a><span class="co"># test1 &lt;- st_cast(test, "POLYGON")</span></span>
-<span id="cb83-31"><a href="#cb83-31"></a><span class="co"># </span></span>
-<span id="cb83-32"><a href="#cb83-32"></a><span class="co"># names(tmp_sf)</span></span>
-<span id="cb83-33"><a href="#cb83-33"></a><span class="co"># </span></span>
-<span id="cb83-34"><a href="#cb83-34"></a><span class="co"># tmp &lt;- st_transform(tmp, 2834)</span></span>
-<span id="cb83-35"><a href="#cb83-35"></a><span class="co"># tmp</span></span>
-<span id="cb83-36"><a href="#cb83-36"></a><span class="co"># head(countydata)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co">#  Start of code to draw a map of Lucas County</span></span>
+<span id="cb84-2"><a href="#cb84-2"></a><span class="co">#</span></span>
+<span id="cb84-3"><a href="#cb84-3"></a><span class="co">#</span></span>
+<span id="cb84-4"><a href="#cb84-4"></a><span class="co"># counties %&gt;% </span></span>
+<span id="cb84-5"><a href="#cb84-5"></a><span class="co">#   filter(county_name == "Lucas County")</span></span>
+<span id="cb84-6"><a href="#cb84-6"></a><span class="co"># </span></span>
+<span id="cb84-7"><a href="#cb84-7"></a><span class="co"># </span></span>
+<span id="cb84-8"><a href="#cb84-8"></a><span class="co"># tmp &lt;- countydata %&gt;% </span></span>
+<span id="cb84-9"><a href="#cb84-9"></a><span class="co">#   left_join(counties, by = "county_fips") %&gt;% </span></span>
+<span id="cb84-10"><a href="#cb84-10"></a><span class="co">#   filter(state_name =="Ohio") %&gt;% </span></span>
+<span id="cb84-11"><a href="#cb84-11"></a><span class="co">#   filter(county_name == "Lucas County") %&gt;% </span></span>
+<span id="cb84-12"><a href="#cb84-12"></a><span class="co">#   ggplot(mapping = aes(long, lat, group = group, fill = horate)) +</span></span>
+<span id="cb84-13"><a href="#cb84-13"></a><span class="co">#   geom_polygon(color = "#ffffff", size = .25)</span></span>
+<span id="cb84-14"><a href="#cb84-14"></a><span class="co"># </span></span>
+<span id="cb84-15"><a href="#cb84-15"></a><span class="co"># class(countydata)</span></span>
+<span id="cb84-16"><a href="#cb84-16"></a><span class="co"># names(countydata)</span></span>
+<span id="cb84-17"><a href="#cb84-17"></a><span class="co"># class(counties)</span></span>
+<span id="cb84-18"><a href="#cb84-18"></a><span class="co"># names(counties)</span></span>
+<span id="cb84-19"><a href="#cb84-19"></a><span class="co"># </span></span>
+<span id="cb84-20"><a href="#cb84-20"></a><span class="co"># tmp_sf &lt;- st_as_sf(counties, coords = c("long", "lat"), </span></span>
+<span id="cb84-21"><a href="#cb84-21"></a><span class="co">#     crs = 2834)</span></span>
+<span id="cb84-22"><a href="#cb84-22"></a><span class="co"># </span></span>
+<span id="cb84-23"><a href="#cb84-23"></a><span class="co"># names(tmp_sf)</span></span>
+<span id="cb84-24"><a href="#cb84-24"></a><span class="co"># </span></span>
+<span id="cb84-25"><a href="#cb84-25"></a><span class="co"># tmp_sf %&gt;% </span></span>
+<span id="cb84-26"><a href="#cb84-26"></a><span class="co">#   filter(state_name == "Ohio") %&gt;% </span></span>
+<span id="cb84-27"><a href="#cb84-27"></a><span class="co">#   filter(county_name == "Lucas County") </span></span>
+<span id="cb84-28"><a href="#cb84-28"></a><span class="co"># </span></span>
+<span id="cb84-29"><a href="#cb84-29"></a><span class="co"># test &lt;- st_cast(tmp_sf, "MULTIPOINT")</span></span>
+<span id="cb84-30"><a href="#cb84-30"></a><span class="co"># test1 &lt;- st_cast(test, "POLYGON")</span></span>
+<span id="cb84-31"><a href="#cb84-31"></a><span class="co"># </span></span>
+<span id="cb84-32"><a href="#cb84-32"></a><span class="co"># names(tmp_sf)</span></span>
+<span id="cb84-33"><a href="#cb84-33"></a><span class="co"># </span></span>
+<span id="cb84-34"><a href="#cb84-34"></a><span class="co"># tmp &lt;- st_transform(tmp, 2834)</span></span>
+<span id="cb84-35"><a href="#cb84-35"></a><span class="co"># tmp</span></span>
+<span id="cb84-36"><a href="#cb84-36"></a><span class="co"># head(countydata)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co">#siste</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="co">#siste</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 

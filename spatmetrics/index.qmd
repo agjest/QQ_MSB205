@@ -5,3 +5,4 @@ editor: visual
 
 -   [Getting Data](data/index.qmd)
 -   [Lucas County Houseing Data](LucasCounty/index.qmd)
+-   [Spatial regressions polygons](spatreg/index.qmd)
