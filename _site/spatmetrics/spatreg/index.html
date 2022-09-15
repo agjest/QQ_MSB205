@@ -433,7 +433,9 @@
 </section>
 <section id="models" class="slide level2">
 <h2>Models</h2>
-<p>Read in data via map.</p>
+</section>
+<section id="read-in-data-via-map." class="slide level2">
+<h2>Read in data via map.</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -451,7 +453,10 @@ Bounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744
 Projected CRS: ETRS89 / UTM zone 33N + NN2000 height</code></pre>
 </div>
 </div>
-<p>Filter out municipalities with no recorded pm2.</p>
+<ul>
+<li class="fragment">Filter out municipalities with no recorded pm2.</li>
+</ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -461,7 +466,14 @@ Projected CRS: ETRS89 / UTM zone 33N + NN2000 height</code></pre>
 <span id="cb4-4"><a href="#cb4-4"></a>map_data_2017_noNA <span class="ot">&lt;-</span> map_data_2017_noNA[<span class="sc">-</span><span class="dv">14</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Make new variables and strip down dataset to variables we will use</p>
+</div>
+</section>
+<section id="make-new-variables" class="slide level2">
+<h2>Make new variables</h2>
+<ul>
+<li class="fragment">Make new variables and strip down dataset to variables we will use</li>
+</ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -504,7 +516,14 @@ Writing layer `md_2017' to data source `../data/md_2017.gpkg' using driver `GPKG
 Writing 330 features with 21 fields and geometry type Multi Polygon.</code></pre>
 </div>
 </div>
-<p>Remove Høyanger, no neighbours.</p>
+</div>
+</section>
+<section id="remove-høyanger-no-neighbours." class="slide level2">
+<h2>Remove Høyanger, no neighbours.</h2>
+<ul>
+<li class="fragment">We have to remove the municipality “Høyanger” since it has no neighbour with data (only NAs).</li>
+</ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -512,7 +531,11 @@ Writing 330 features with 21 fields and geometry type Multi Polygon.</code></pre
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span>kNavn <span class="sc">==</span> <span class="st">"Høyanger"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Making the weights matrix.</p>
+<ul>
+<li class="fragment">Making the weights matrix.</li>
+</ul>
+</div>
+<div class="fragment">
 <div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_54bf2ad6ea5ff8646aebc8505fc8c105">
 <details open="">
 <summary>Code</summary>
@@ -546,6 +569,7 @@ Weights constants summary:
 W 329 108241 329 156.7205 1357.883</code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="global-morans-i-plot-for-log_pm2" class="slide level2">
 <h2>Global Morans I plot for log_pm2</h2>
@@ -556,7 +580,10 @@ W 329 108241 329 156.7205 1357.883</code></pre>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><div class="cell">
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="moran-test-on-dependant-variable" class="slide level2">
+<h2>Moran test on dependant variable</h2>
+<div class="cell">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">moran.test</span>(md_2017<span class="sc">$</span>log_pm2, <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -595,30 +622,29 @@ Moran I statistic       Expectation          Variance
 </section>
 <section id="the-variables-we-use" class="slide level2">
 <h2>The variables we use</h2>
-<p>We have 329 observations. We lack pm2 for 96 municipalities. One, Høyanger, no NA, but no neighbours.</p>
-<div class="callout callout-note callout-captioned callout-style-default">
-<div class="callout-body">
-<div class="callout-caption">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Convert to definition list</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-<h3 id="log_pm2">log_pm2</h3>
+<p>We have 329 observations. We lack pm2 for 96 municipalities. One, Høyanger, no NA, but no neighbours which have registered data (only NAs).</p>
+<dl>
+<dt class="fragment">log_pm2</dt>
+<dd class="fragment">
 <p>We use the natural logarithms of price per square meter as our dependent variable.</p>
-<h3 id="prct_20_64">prct_20_64</h3>
+</dd>
+<dt class="fragment">prct_20_64</dt>
+<dd class="fragment">
 <p>Percentage of population of a “working age”.</p>
-<h3 id="inc_bt_9and10">inc_bt_9and10</h3>
+</dd>
+<dt class="fragment">inc_bt_9and10</dt>
+<dd class="fragment">
 <p>This variable is a little bit more involved. Imagine income for all income earners of the country ordered in a long list, from lowest to highest income. This list is then divided into 10 parts with an equal number of individuals in each part. Then we will have 9 income levels <span class="math inline">\(I_{i,i+1}, i = 1\ldots 9\)</span> representing the border between to groups (deciles). If an individual has an income above <span class="math inline">\(I_{8,9}\)</span>, this individual will be in the top 20% earners in the country. Our variable <code>inc_bt_9and10</code> contains the percentage of income earners in each municipality that has an income above <span class="math inline">\(I_{8,9}\)</span>.</p>
-<h3 id="spc_k">spc_k</h3>
+</dd>
+<dt class="fragment">spc_k</dt>
+<dd class="fragment">
 <p>Wholesale and retail trade sales per capita in each municipality in NOK 1000.</p>
-<h3 id="sen_ind">sen_ind</h3>
+</dd>
+<dt class="fragment">sen_ind</dt>
+<dd class="fragment">
 <p>The value of the SSB centrality index for 2018. The index value for Oslo (the most central place) is 1000.</p>
+</dd>
+</dl>
 </section>
 <section id="simple-linear-model" class="slide level2">
 <h2>Simple linear model</h2>

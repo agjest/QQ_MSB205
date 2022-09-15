@@ -68,14 +68,16 @@ options(scipen = 5)
 
 ## Models
 
-Read in data via map.
+## Read in data via map.
 
 ```{r}
 # run data/get_ssb_data.Rmd if data needs to be updated
 map_data_2017 <- st_read(dsn = "../data/map_data_2017.gpkg")
 ```
 
-Filter out municipalities with no recorded pm2.
+-   Filter out municipalities with no recorded pm2.
+
+. . .
 
 ```{r}
 map_data_2017_noNA <- map_data_2017 %>% 
@@ -84,7 +86,11 @@ map_data_2017_noNA <- map_data_2017 %>%
 map_data_2017_noNA <- map_data_2017_noNA[-14,]
 ```
 
-Make new variables and strip down dataset to variables we will use
+## Make new variables
+
+-   Make new variables and strip down dataset to variables we will use
+
+. . .
 
 ```{r}
 md_2017 <- map_data_2017_noNA %>% 
@@ -121,14 +127,20 @@ md_2017 <- map_data_2017_noNA %>%
 st_write(obj = md_2017, dsn = "../data/md_2017.gpkg", driver = "GPKG", append=FALSE)
 ```
 
-Remove Høyanger, no neighbours.
+## Remove Høyanger, no neighbours.
+
+-   We have to remove the municipality "Høyanger" since it has no neighbour with data (only NAs).
+
+. . .
 
 ```{r}
 md_2017 <- md_2017 %>% 
   filter(!kNavn == "Høyanger")
 ```
 
-Making the weights matrix.
+-   Making the weights matrix.
+
+. . .
 
 ```{r, cache=TRUE}
 # remove line 200 Høyanger, no neighbours
@@ -143,6 +155,8 @@ print(md_2017_w)
 ```{r}
 moran.plot(md_2017$log_pm2, listw = md_2017_w)
 ```
+
+## Moran test on dependant variable
 
 ```{r}
 moran.test(md_2017$log_pm2, listw = md_2017_w)
@@ -167,37 +181,33 @@ mod2 <- "log_pm2 ~ prct_20_64 + inc_bt_9and10 + spc_k +  sen_ind"
 
 We have 329 observations.
 We lack pm2 for 96 municipalities.
-One, Høyanger, no NA, but no neighbours.
+One, Høyanger, no NA, but no neighbours which have registered data (only NAs).
 
-::: callout-note
-## Convert to definition list
-:::
+log_pm2
 
-### log_pm2
+:   We use the natural logarithms of price per square meter as our dependent variable.
 
-We use the natural logarithms of price per square meter as our dependent variable.
+prct_20_64
 
-### prct_20_64
+:   Percentage of population of a "working age".
 
-Percentage of population of a "working age".
+inc_bt_9and10
 
-### inc_bt_9and10
+:   This variable is a little bit more involved.
+    Imagine income for all income earners of the country ordered in a long list, from lowest to highest income.
+    This list is then divided into 10 parts with an equal number of individuals in each part.
+    Then we will have 9 income levels $I_{i,i+1}, i = 1\ldots 9$ representing the border between to groups (deciles).
+    If an individual has an income above $I_{8,9}$, this individual will be in the top 20% earners in the country.
+    Our variable `inc_bt_9and10` contains the percentage of income earners in each municipality that has an income above $I_{8,9}$.
 
-This variable is a little bit more involved.
-Imagine income for all income earners of the country ordered in a long list, from lowest to highest income.
-This list is then divided into 10 parts with an equal number of individuals in each part.
-Then we will have 9 income levels $I_{i,i+1}, i = 1\ldots 9$ representing the border between to groups (deciles).
-If an individual has an income above $I_{8,9}$, this individual will be in the top 20% earners in the country.
-Our variable `inc_bt_9and10` contains the percentage of income earners in each municipality that has an income above $I_{8,9}$.
+spc_k
 
-### spc_k
+:   Wholesale and retail trade sales per capita in each municipality in NOK 1000.
 
-Wholesale and retail trade sales per capita in each municipality in NOK 1000.
+sen_ind
 
-### sen_ind
-
-The value of the SSB centrality index for 2018.
-The index value for Oslo (the most central place) is 1000.
+:   The value of the SSB centrality index for 2018.
+    The index value for Oslo (the most central place) is 1000.
 
 ## Simple linear model
 
