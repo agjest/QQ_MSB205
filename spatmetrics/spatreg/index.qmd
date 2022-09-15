@@ -39,11 +39,31 @@ library(huxtable)
 library(tmap)
 ```
 
-#\| include: false \# create a bib file for the R packages \# used in this document \# Note!
-Needs to do a touch ag_model_basics.bib in terminal before first run \# else stops when bibliography: "ag_model_basics.bib" not found in YAML knitr::write_bib( c( "PxWebApiData", "tidyverse", "readxl", "sf", "sp", "spdep", "spatialreg", "broom", "huxtable", "tmap" ), file = "spatreg-packages.bib" )
+```{r}
+#| include: false 
+# create a bib file for the R packages
+# used in this document
+# Note! Needs to do a touch file_name.bib in terminal 
+# before first run
+# else stops when bibliography: "file_name.bib" not found in YAML
+knitr::write_bib(
+  c(
+    "PxWebApiData", 
+    "tidyverse", 
+    "readxl", 
+    "sf", 
+    "sp", 
+    "spdep", 
+    "spatialreg", 
+    "broom", 
+    "huxtable", 
+    "tmap" ), 
+  file = "spatreg-packages.bib"
+  )
+```
 
 ```{r, echo = FALSE}
-options(scipen=5)
+options(scipen = 5)
 ```
 
 ## Models

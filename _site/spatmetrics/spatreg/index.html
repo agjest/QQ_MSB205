@@ -427,7 +427,6 @@
 <span id="cb1-11"><a href="#cb1-11"></a><span class="fu">library</span>(tmap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>#| include: false # create a bib file for the R packages # used in this document # Note! Needs to do a touch ag_model_basics.bib in terminal before first run # else stops when bibliography: “ag_model_basics.bib” not found in YAML knitr::write_bib( c( “PxWebApiData”, “tidyverse”, “readxl”, “sf”, “sp”, “spdep”, “spatialreg”, “broom”, “huxtable”, “tmap” ), file = “spatreg-packages.bib” )</p>
 <div class="cell">
 
 </div>
@@ -514,7 +513,7 @@ Writing 330 features with 21 fields and geometry type Multi Polygon.</code></pre
 </details>
 </div>
 <p>Making the weights matrix.</p>
-<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-6_459b9a8471e703cd7a1e04da9aad533b">
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-7_54bf2ad6ea5ff8646aebc8505fc8c105">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># remove line 200 Høyanger, no neighbours</span></span>
@@ -557,7 +556,7 @@ W 329 108241 329 156.7205 1357.883</code></pre>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"><div class="cell">
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"><div class="cell">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">moran.test</span>(md_2017<span class="sc">$</span>log_pm2, <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -801,7 +800,7 @@ Multicollinearity may be due to prct_20_64 sen_ind regressors
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">plot</span>(md_2017<span class="sc">$</span>sen_ind, md_2017<span class="sc">$</span>prct_20_64)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </div>
 </div>
 <div class="cell">
@@ -840,7 +839,7 @@ Observed Moran I      Expectation         Variance
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(lm2), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
 </div>
 </div>
 <p>We will use mod2 in the following. We have spatial autocorrelation in the residuals from OLS.</p>
@@ -1063,7 +1062,7 @@ sen_ind       &lt; 2.22e-16   0.443935 5.8240e-12</code></pre>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-25-1.png" width="960" class="r-stretch"></section>
 <section id="slx-model" class="slide level2">
 <h2>SLX model</h2>
 <div class="cell">
@@ -1209,7 +1208,7 @@ Observed Moran I      Expectation         Variance
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SLX), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
 </div>
 </div>
 <div class="cell">
@@ -1257,7 +1256,7 @@ AIC: -265.66, (AIC for lm: -223.15)</code></pre>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">moran.plot</span>(<span class="fu">residuals</span>(SEM), <span class="at">listw =</span> md_2017_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
 </div>
 </div>
 </section>
@@ -1406,7 +1405,7 @@ Hausman test = 52.496, df = 5, p-value = 4.268e-10</code></pre>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"><p>Are there other problems like Heteroskedasticity?</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-40-1.png" width="960" class="r-stretch"><p>Are there other problems like Heteroskedasticity?</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1486,7 +1485,7 @@ Writing 329 features with 23 fields and geometry type Multi Polygon.</code></pre
 </details>
 <div class="cell-output-display">
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-43">
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-44">
 <colgroup><col><col><col></colgroup><tbody><tr>
 <th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">OLS</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">SEM</th></tr>
 <tr>
@@ -1537,7 +1536,7 @@ Writing 329 features with 23 fields and geometry type Multi Polygon.</code></pre
 </details>
 <div class="cell-output-display">
 
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-44">
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:unnamed-chunk-45">
 <colgroup><col><col><col><col></colgroup><tbody><tr>
 <th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0.4pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">statistic</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">p.value</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">parameter</th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0.4pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold;">method</th></tr>
 <tr>
@@ -1661,7 +1660,7 @@ AIC: -358.52, (AIC for lm: -285.94)</code></pre>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch"><p>huxreg(“OLS_mod3” = lm3, “SEM_mod3” = SEM_mod3, error_format = “({statistic})”, note = “{stars}. T-values reported.”)</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-51-1.png" width="960" class="r-stretch"><p>huxreg(“OLS_mod3” = lm3, “SEM_mod3” = SEM_mod3, error_format = “({statistic})”, note = “{stars}. T-values reported.”)</p>
 <p>What´s the big problem with this model?</p>
 </section>
 <section id="global-dgp" class="slide level2">
@@ -2527,7 +2526,7 @@ AIC: -262.95, (AIC for lm: -222.8)</code></pre>
 </details>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-73-1.png" width="960" class="r-stretch"><div class="cell">
+<img data-src="index_files/figure-revealjs/unnamed-chunk-74-1.png" width="960" class="r-stretch"><div class="cell">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb130"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1"></a><span class="fu">moran</span>(<span class="fu">residuals</span>(SEM_mod4), <span class="at">listw =</span> md_2017_w, <span class="at">n =</span> <span class="fu">length</span>(md_2017_nb), <span class="at">S0 =</span> <span class="fu">Szero</span>(md_2017_w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2675,8 +2674,74 @@ Log likelihood of SEM_mod4      Log likelihood of lm4
 <div id="ref-bechhofer2013" class="csl-entry" role="doc-biblioentry">
 Bechhofer, Sean, Iain Buchan, David De Roure, Paolo Missier, John Ainsworth, Jiten Bhagat, Philip Couch, et al. 2013. <span>“Why Linked Data Is Not Enough for Scientists.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
 </div>
+<div id="ref-spdep2022" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger. 2022a. <span>“R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.”</span> <em>Geographical Analysis</em> 54 (3): 488–518. <a href="https://doi.org/10.1111/gean.12319">https://doi.org/10.1111/gean.12319</a>.
+</div>
+<div id="ref-R-spdep" class="csl-entry" role="doc-biblioentry">
+———. 2022b. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.
+</div>
+<div id="ref-sp2013" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spatialreg2013b" class="csl-entry" role="doc-biblioentry">
+———. 2013b. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spdep2013" class="csl-entry" role="doc-biblioentry">
+———. 2013c. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spatialreg2013a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. <span>“Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.”</span> <em>Geographical Analysis</em> 45 (2): 150–79. <a href="https://doi.org/10.1111/gean.12008">https://doi.org/10.1111/gean.12008</a>.
+</div>
+<div id="ref-spatialreg2021a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. <span>“A Review of Software for Spatial Econometrics in <span>R</span>.”</span> <em>Mathematics</em> 9 (11). <a href="https://doi.org/10.3390/math9111276">https://doi.org/10.3390/math9111276</a>.
+</div>
+<div id="ref-spatialreg2015a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, and Gianfranco Piras. 2015. <span>“Comparing Implementations of Estimation Methods for Spatial Econometrics.”</span> <em>Journal of Statistical Software</em> 63 (18): 1–36. <a href="https://doi.org/10.18637/jss.v063.i18">https://doi.org/10.18637/jss.v063.i18</a>.
+</div>
+<div id="ref-R-spatialreg" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Spatialreg: Spatial Regression Analysis</em>. <a href="https://CRAN.R-project.org/package=spatialreg">https://CRAN.R-project.org/package=spatialreg</a>.
+</div>
+<div id="ref-spdep2018" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, and David W. S. Wong. 2018. <span>“Comparing Implementations of Global and Local Indicators of Spatial Association.”</span> <em>TEST</em> 27 (3): 716–48. <a href="https://doi.org/10.1007/s11749-018-0599-x">https://doi.org/10.1007/s11749-018-0599-x</a>.
+</div>
 <div id="ref-Grossenbacher2022" class="csl-entry" role="doc-biblioentry">
 Grossenbacher, Timo. n.d. <span>“A (Truly) Reproducible <span>R</span> Workflow.”</span> <a href="https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/" class="uri">https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/</a>.
+</div>
+<div id="ref-R-huxtable" class="csl-entry" role="doc-biblioentry">
+Hugh-Jones, David. 2022. <em>Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats</em>. <a href="https://hughjonesd.github.io/huxtable/">https://hughjonesd.github.io/huxtable/</a>.
+</div>
+<div id="ref-R-PxWebApiData" class="csl-entry" role="doc-biblioentry">
+Langsrud, Øyvind, and Jan Bruusgaard. 2021. <em>PxWebApiData: PX-Web Data by API</em>. <a href="https://github.com/statisticsnorway/PxWebApiData">https://github.com/statisticsnorway/PxWebApiData</a>.
+</div>
+<div id="ref-sf2018" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
+</div>
+<div id="ref-R-sf" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
+</div>
+<div id="ref-sp2005" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer J., and Roger S. Bivand. 2005. <span>“Classes and Methods for Spatial Data in <span>R</span>.”</span> <em>R News</em> 5 (2): 9–13. <a href="https://CRAN.R-project.org/doc/Rnews/">https://CRAN.R-project.org/doc/Rnews/</a>.
+</div>
+<div id="ref-R-sp" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer, and Roger Bivand. 2022. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp">https://CRAN.R-project.org/package=sp</a>.
+</div>
+<div id="ref-R-broom" class="csl-entry" role="doc-biblioentry">
+Robinson, David, Alex Hayes, and Simon Couch. 2022. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.
+</div>
+<div id="ref-tmap2018" class="csl-entry" role="doc-biblioentry">
+Tennekes, Martijn. 2018. <span>“<span class="nocase">tmap</span>: Thematic Maps in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 84 (6): 1–39. <a href="https://doi.org/10.18637/jss.v084.i06">https://doi.org/10.18637/jss.v084.i06</a>.
+</div>
+<div id="ref-R-tmap" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2022. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-tidyverse2019" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-R-readxl" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, and Jennifer Bryan. 2022. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
 </div>
 <div id="ref-xie2020" class="csl-entry" role="doc-biblioentry">
 Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781003097471">https://doi.org/10.1201/9781003097471</a>.
