@@ -162,7 +162,7 @@ moran.plot(md_2017$log_pm2, listw = md_2017_w)
 moran.test(md_2017$log_pm2, listw = md_2017_w)
 ```
 
-Hardly any doubt that we have spatial autocorrelation in log_pm2 (not a big surprise).
+-   Hardly any doubt that we have spatial autocorrelation in log_pm2 (not a big surprise).
 
 ## EDA
 
@@ -233,23 +233,29 @@ mctest(lm2)
 imcdiag(lm2, all = TRUE)
 ```
 
+## Is multicollinearity a problem? cont.
+
 Three out of nine tests indicate that multicollinearity might be a problem.
 
 ```{r}
 # If we only want to do one test
-imcdiag(lm2, method="VIF")
+imcdiag(lm2, method = "VIF")
 ```
 
 ```{r}
 # If we only want to do one test
-imcdiag(lm2, method="IND1")
+imcdiag(lm2, method = "IND1")
 ```
 
-The positive correlation between `sen_ind` and `prct_20_64`.
+## Correlation
+
+-   The positive correlation between `sen_ind` and `prct_20_64`.
 
 ```{r}
-plot(md_2017$sen_ind, md_2017$prct_20_64)
+plot(md_2017$sen_ind, md_2017$prct_20_64) 
 ```
+
+## Correlation cont.
 
 ```{r}
 cor(md_2017$sen_ind, md_2017$prct_20_64)
@@ -257,52 +263,69 @@ cor(md_2017$sen_ind, md_2017$prct_20_64)
 
 We have seen worse.
 
+## Moran test on residuals
+
 ```{r}
 lm.morantest(lm2, listw = md_2017_w)
 ```
+
+## Moran plot residuals
 
 ```{r}
 moran.plot(residuals(lm2), listw = md_2017_w)
 ```
 
-We will use mod2 in the following.
-We have spatial autocorrelation in the residuals from OLS.
+-   We will use mod2 in the following.
+    We have spatial autocorrelation in the residuals from OLS.
 
 ## The Anselin approach
 
+::: columns
+::: {.column width="50%"}
 ```{r}
 # From BurkeyAcademy
-lm.LMtests(lm2, listw=md_2017_w, test="all")
+lm.LMtests(lm2, listw = md_2017_w, test = "all")
 ```
+:::
 
-Both LMerr and LMLag are significant.
-Proceed with RLMlerr and RLMlag.
-Again both are significant.
+::: {.column width="50%"}
+-   Both LMerr and LMLag are significant.
+
+-   Proceed with RLMlerr and RLMlag.
+
+-   Again both are significant.
+
 So we don´t have a clear conclusion.
 One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.
+:::
+:::
 
 For a more thorough discussion see @osland2010a and @chi2019spatial page 55.
 
-## The LeSage approach
+# The LeSage approach
 
 ## Local or global?
 
-To formally test this we have to use Bayesian modelling.
-Outside our scope.
+-   To formally test this we have to use Bayesian modelling.
+    Outside our scope.
 
-One might argue that a local perspective is best suited for this dataset.
+-   One might argue that a local perspective is best suited for this dataset.
 
-A change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).
+-   A change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).
 
-> If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate.
-> This specification subsumes the SLX and SEM specifications as special cases.[@lesage]
+    > If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate.
+    > This specification subsumes the SLX and SEM specifications as special cases.[@lesage]
+
+## Local or global? cont.
 
 Note that plain OLS is a special case of SDEM.
 (all spatial autocorrelation coefficients are zero ($\rho = 0, \theta = 0$ and $\lambda =0$))
 
 Manski ("includes everything"):
 
-$$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ \## LeSages (2014) 5 principles
+## $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ 
+
+## LeSages (2014) 5 principles
 
 1.  Local versus global spillover
 
@@ -315,6 +338,8 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ 
 -   SDEM
 -   SDM
 
+## LeSages (2014) 5 principles
+
 3.  Estimation procedures, not only point estimates
 
 -   Estimates of dispersion
@@ -323,6 +348,8 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ 
 4.  "Avoid the temptation for observation-level inference"
 5.  "Keep the weight matrix simple"
 
+## LeSages (2014) recommendations 
+
 -   "Sparse connectivity structures work best"
 -   Parameterised decay can give identification problems
 -   Do not use multiple weight matrices
@@ -330,7 +357,7 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ 
 
 ## Local DGP (Data Generating Process)
 
-We decide that DGP is probably local in our data
+We decide that the DGP is probably local in our data
 
 We start out with a Spatial Durban Error Model (SDEM) model, i.e. $\rho = 0$ (notation follows [Burkey](https://spatial.burkeyacademy.com/home):
 
@@ -391,9 +418,13 @@ SLX <- lmSLX(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
 summary(SLX)
 ```
 
+## SLX model cont.
+
 ```{r}
 summary(impacts(SLX), z.values = TRUE)
 ```
+
+## Spatial lag only `prct_20_64?`
 
 Perhaps spatial lag just for `prct_20_64`is more appropriate?
 
@@ -405,28 +436,56 @@ SLX_red <- lmSLX(mod2, data = md_2017, listw = md_2017_w, Durbin =~prct_20_64 + 
 summary(SLX_red)
 ```
 
-Testing for spatial autocorrelation in the residuals of the SLX model.
+## SLX residuals?
+
+-   Testing for spatial autocorrelation in the residuals of the SLX model.
 
 ```{r}
-lm.morantest(SLX, listw = md_2017_w, alternative = "greater", resfun=residuals, naSubset=TRUE)
+lm.morantest(
+  SLX, 
+  listw = md_2017_w, 
+  alternative = "greater", 
+  resfun = residuals, 
+  naSubset = TRUE
+  )
 ```
 
-The SLX model leaves lots of spatial autocorrelation in the residuals.
+-   Plenty of spatial effects in residuals.
+
+## SLX residuals plot
+
+-   The SLX model leaves lots of spatial autocorrelation in the residuals, as seen in plot below.
+
+. . .
 
 ```{r}
 moran.plot(residuals(SLX), listw = md_2017_w)
 ```
+
+## SEM model
+
+-   **S**patail **E**rror **M**odel
+
+. . .
 
 ```{r}
 # Spatial error model
 # SDEM (Durbin = TRUE), no lagged y only lagged X and u
 # SEM Durbin = FALSE
 SEM <- errorsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = FALSE)
-summary(SEM)
 ```
 
 ```{r}
-moran.plot(residuals(SEM), listw = md_2017_w)
+summary(SEM)
+```
+
+## Moran plot residuals SEM
+
+```{r}
+moran.plot(
+  x = residuals(SEM), 
+  listw = md_2017_w
+  )
 ```
 
 ## Selecting model
