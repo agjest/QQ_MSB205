@@ -303,6 +303,8 @@ lm.LMtests(lm2, listw = md_2017_w, test = "all")
 
 -   Again both are significant.
 
+. . .
+
 So we don´t have a clear conclusion.
 One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.
 :::
