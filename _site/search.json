@@ -1495,14 +1495,14 @@
     "href": "spatmetrics/spatreg/index.html#local-or-global",
     "title": "Spatial regressions",
     "section": "Local or global?",
-    "text": "Local or global?\n\nTo formally test this we have to use Bayesian modelling. Outside our scope.\nOne might argue that a local perspective is best suited for this dataset.\nA change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).\n\nIf one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate. This specification subsumes the SLX and SEM specifications as special cases.\n\n(LeSage 2014)"
+    "text": "Local or global?\n\nTo formally test this we have to use Bayesian modelling. Outside our scope.\nOne might argue that a local perspective is best suited for this dataset.\nA change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).\n\nIf one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate. This specification subsumes the SLX and SEM specifications as special cases.(LeSage 2014)"
   },
   {
     "objectID": "spatmetrics/spatreg/index.html#local-dgp-data-generating-process",
     "href": "spatmetrics/spatreg/index.html#local-dgp-data-generating-process",
     "title": "Spatial regressions",
     "section": "Local DGP (Data Generating Process)",
-    "text": "Local DGP (Data Generating Process)\nWe decide that the DGP is probably local in our data\nWe start out with a Spatial Durban Error Model (SDEM) model, i.e. \\(\\rho = 0\\) (notation follows Burkey:\nNested models:\nSDEM:\n\\[ \\rho = 0:\\quad y = {\\bf X \\beta + W X\\theta + u\\quad u = \\lambda Wu + \\epsilon} \\]\nSEM:\n\\[ \\rho = 0, \\theta = 0: \\quad y = {\\bf X \\beta  + u\\quad u = \\lambda Wu + \\epsilon} \\]\nSLX:\n\\[ \\rho = 0, \\lambda = 0: \\quad y = {\\bf X \\beta  + W X\\theta + \\epsilon} \\]\nOLS:\n\\[ \\rho = 0, \\theta = 0, \\lambda = 0: \\quad y = {\\bf X \\beta  + \\epsilon} \\]\nThe last three models are all restricted versions of SDEM and we can use Likelihood ratios (for spatial linear models) to decide which is the best model (spatialreg::LR.Sarlm() or lmtest::lrtest(), they will give the same answer) ."
+    "text": "Local DGP (Data Generating Process)\nWe decide that the DGP is probably local in our data\nWe start out with a Spatial Durban Error Model (SDEM) model, i.e. \\(\\rho = 0\\) (notation follows Burkey:\nNested models:\nManskin:\n\\[{\\bf y = \\rho W y + X \\beta +W X\\theta + u\\quad u = \\lambda Wu + \\epsilon}\\] SDEM:\n\\[ \\rho = 0:\\quad y = {\\bf X \\beta + W X\\theta + u\\quad u = \\lambda Wu + \\epsilon} \\]\nSEM:\n\\[ \\rho = 0, \\theta = 0: \\quad y = {\\bf X \\beta  + u\\quad u = \\lambda Wu + \\epsilon} \\]\nSLX:\n\\[ \\rho = 0, \\lambda = 0: \\quad y = {\\bf X \\beta  + W X\\theta + \\epsilon} \\]\nOLS:\n\\[ \\rho = 0, \\theta = 0, \\lambda = 0: \\quad y = {\\bf X \\beta  + \\epsilon} \\]\nThe last three models are all restricted versions of SDEM and we can use Likelihood ratios (for spatial linear models) to decide which is the best model (spatialreg::LR.Sarlm() or lmtest::lrtest(), they will give the same answer) ."
   },
   {
     "objectID": "spatmetrics/spatreg/index.html#sdem-spatial-durban-error-model-model",
@@ -1747,14 +1747,14 @@
     "href": "spatmetrics/spatreg/index.html#lesages-2014-5-principles",
     "title": "Spatial regressions",
     "section": "LeSages (2014) 5 principles",
-    "text": "LeSages (2014) 5 principles\n\nLocal versus global spillover\n\n\n“A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers.”\n“Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: ‘most spatial spillovers are local.’”\n“Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners.”\n\n\nOnly two model specifications relevant for applied work\n\n\nSDEM\nSDM"
+    "text": "LeSages (2014) 5 principles\n\nLocal versus global spillover\n\n“A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers.”\n“Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: ‘most spatial spillovers are local.’”\n“Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners.”\n\n\n\n\nOnly two model specifications relevant for applied work\n\nSDEM\nSDM"
   },
   {
     "objectID": "spatmetrics/spatreg/index.html#lesages-2014-5-principles-1",
     "href": "spatmetrics/spatreg/index.html#lesages-2014-5-principles-1",
     "title": "Spatial regressions",
     "section": "LeSages (2014) 5 principles",
-    "text": "LeSages (2014) 5 principles\n\nEstimation procedures, not only point estimates\n\n\nEstimates of dispersion\nCalculate direct/indirect effects\n\n\n“Avoid the temptation for observation-level inference”\n“Keep the weight matrix simple”"
+    "text": "LeSages (2014) 5 principles\n\nEstimation procedures, not only point estimates\n\nEstimates of dispersion\nCalculate direct/indirect effects\n\n“Avoid the temptation for observation-level inference”\n“Keep the weight matrix simple”"
   },
   {
     "objectID": "spatmetrics/spatreg/index.html#lesages-2014-recommendations",

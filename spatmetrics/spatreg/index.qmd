@@ -323,9 +323,7 @@ For a more thorough discussion see @osland2010 and @chi2019spatial page 55.
 -   A change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).
 
     > If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate.
-    > This specification subsumes the SLX and SEM specifications as special cases.
-
-    [@lesage2014]
+    > This specification subsumes the SLX and SEM specifications as special cases.[@lesage2014]
 
 ## Local or global? cont.
 
@@ -339,23 +337,25 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$
 ## LeSages (2014) 5 principles
 
 1.  Local versus global spillover
+    i.  "A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers."
 
--   "A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers."
--   "Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: 'most spatial spillovers are local.'"
--   "Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners."
+    ii. "Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: 'most spatial spillovers are local.'"
+
+    iii. "Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners."
+
+<!-- -->
 
 2.  Only two model specifications relevant for applied work
+    i.  SDEM
 
--   SDEM
--   SDM
+    ii. SDM
 
 ## LeSages (2014) 5 principles
 
 3.  Estimation procedures, not only point estimates
+    i.  Estimates of dispersion
 
--   Estimates of dispersion
--   Calculate direct/indirect effects
-
+    ii. Calculate direct/indirect effects
 4.  "Avoid the temptation for observation-level inference"
 5.  "Keep the weight matrix simple"
 
@@ -374,7 +374,9 @@ We start out with a Spatial Durban Error Model (SDEM) model, i.e. $\rho = 0$ (no
 
 Nested models:
 
-SDEM:
+Manskin:
+
+$${\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ SDEM:
 
 $$ \rho = 0:\quad y = {\bf X \beta + W X\theta + u\quad u = \lambda Wu + \epsilon} $$
 

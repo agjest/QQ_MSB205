@@ -987,9 +987,8 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <li class="fragment"><p>One might argue that a local perspective is best suited for this dataset.</p></li>
 <li class="fragment"><p>A change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).</p>
 <blockquote>
-<p>If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate. This specification subsumes the SLX and SEM specifications as special cases.</p>
-</blockquote>
-<p><span class="citation" data-cites="lesage2014">(<a href="#/ref-lesage2014" role="doc-biblioref" onclick="return false;">LeSage 2014</a>)</span></p></li>
+<p>If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate. This specification subsumes the SLX and SEM specifications as special cases.<span class="citation" data-cites="lesage2014">(<a href="#/ref-lesage2014" role="doc-biblioref" onclick="return false;">LeSage 2014</a>)</span></p>
+</blockquote></li>
 </ul>
 </section>
 <section id="local-or-global-cont." class="slide level2">
@@ -1001,31 +1000,30 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <section id="lesages-2014-5-principles" class="slide level2">
 <h2>LeSages (2014) 5 principles</h2>
 <ol type="1">
-<li class="fragment">Local versus global spillover</li>
+<li class="fragment">Local versus global spillover
+<ol type="i">
+<li class="fragment"><p>“A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers.”</p></li>
+<li class="fragment"><p>“Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: ‘most spatial spillovers are local.’”</p></li>
+<li class="fragment"><p>“Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners.”</p></li>
+</ol></li>
 </ol>
-<ul>
-<li class="fragment">“A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers.”</li>
-<li class="fragment">“Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: ‘most spatial spillovers are local.’”</li>
-<li class="fragment">“Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners.”</li>
-</ul>
+<!-- -->
 <ol start="2" type="1">
-<li class="fragment">Only two model specifications relevant for applied work</li>
+<li class="fragment">Only two model specifications relevant for applied work
+<ol type="i">
+<li class="fragment"><p>SDEM</p></li>
+<li class="fragment"><p>SDM</p></li>
+</ol></li>
 </ol>
-<ul>
-<li class="fragment">SDEM</li>
-<li class="fragment">SDM</li>
-</ul>
 </section>
 <section id="lesages-2014-5-principles-1" class="slide level2">
 <h2>LeSages (2014) 5 principles</h2>
 <ol start="3" type="1">
-<li class="fragment">Estimation procedures, not only point estimates</li>
-</ol>
-<ul>
-<li class="fragment">Estimates of dispersion</li>
-<li class="fragment">Calculate direct/indirect effects</li>
-</ul>
-<ol start="4" type="1">
+<li class="fragment">Estimation procedures, not only point estimates
+<ol type="i">
+<li class="fragment"><p>Estimates of dispersion</p></li>
+<li class="fragment"><p>Calculate direct/indirect effects</p></li>
+</ol></li>
 <li class="fragment">“Avoid the temptation for observation-level inference”</li>
 <li class="fragment">“Keep the weight matrix simple”</li>
 </ol>
@@ -1044,7 +1042,8 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <p>We decide that the DGP is probably local in our data</p>
 <p>We start out with a Spatial Durban Error Model (SDEM) model, i.e.&nbsp;<span class="math inline">\(\rho = 0\)</span> (notation follows <a href="https://spatial.burkeyacademy.com/home">Burkey</a>:</p>
 <p>Nested models:</p>
-<p>SDEM:</p>
+<p>Manskin:</p>
+<p><span class="math display">\[{\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}\]</span> SDEM:</p>
 <p><span class="math display">\[ \rho = 0:\quad y = {\bf X \beta + W X\theta + u\quad u = \lambda Wu + \epsilon} \]</span></p>
 <p>SEM:</p>
 <p><span class="math display">\[ \rho = 0, \theta = 0: \quad y = {\bf X \beta  + u\quad u = \lambda Wu + \epsilon} \]</span></p>
