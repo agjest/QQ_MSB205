@@ -1473,7 +1473,7 @@ Log likelihood of SDEM  Log likelihood of SLX
 <blockquote>
 <p>The LR.Sarlm() function provides a likelihood ratio test for objects for which a logLik() function exists for their class, or for objects of class logLik.</p>
 </blockquote>
-<p>The two tests give the same results. We go with <code>LR.Sarlm()</code>. Why <span class="citation" data-cites="bivand">(<a href="#/ref-bivand" role="doc-biblioref" onclick="return false;"><strong>bivand?</strong></a>)</span> use <code>lrtest()</code> was not clear. Probably because the broom package was not updated to support the <code>spatialreg</code> package (now updated) when chapter was written.</p>
+<p>The two tests give the same results. We go with <code>LR.Sarlm()</code>. Why <span class="citation" data-cites="bivand">(<a href="#/ref-bivand" role="doc-biblioref" onclick="return false;">E. P. Bivand Roger n.d.</a>)</span> use <code>lrtest()</code> was not clear. Probably because the broom package was not updated to support the <code>spatialreg</code> package (now updated) when chapter was written.</p>
 <p>Test the spatial models against OLS.</p>
 <div class="cell">
 <details open="">
@@ -2417,7 +2417,7 @@ Log likelihood of SEM Log likelihood of lm2
 </section>
 <section id="full-manski" class="slide level2">
 <h2>Full Manski</h2>
-<p>You should probably stay off this track. See <span class="citation" data-cites="lesageWhatRegionalScientists">(<a href="#/ref-lesageWhatRegionalScientists" role="doc-biblioref" onclick="return false;"><strong>lesageWhatRegionalScientists?</strong></a>)</span></p>
+<p>You should probably stay off this track. See <span class="citation" data-cites="lesage2014">(<a href="#/ref-lesage2014" role="doc-biblioref" onclick="return false;">LeSage 2014</a>)</span></p>
 <p>There is problems estimating this model (identification problems). The reason why one does not start with this model and then treat SAC, SDM and SDEM as nested models.</p>
 <div class="cell">
 <details open="">
@@ -2512,9 +2512,9 @@ AIC: -265.93, (AIC for lm: -223.15)</code></pre>
 <p>Good question ;-)</p>
 <p>The following quote might give the answer:</p>
 <blockquote>
-<p>Even though taking the GNS model as point of departure to measure spillovers seems appealing since it contains all possible interaction effects, two major issues are that a formal proof under which conditions the parameters of this model are identified is not available yet (see Section 1) and the problem of overfitting. Even though the parameters are not identified, they can still be estimated. However, they have the tendency either to blow each other up or to become insignificant as a result of which this model does not help to choose among the SDM and SDEM models.<span class="citation" data-cites="halleckvegaSLXMODEL2015">(<a href="#/ref-halleckvegaSLXMODEL2015" role="doc-biblioref" onclick="return false;"><strong>halleckvegaSLXMODEL2015?</strong></a>)</span> p.&nbsp;347.</p>
+<p>Even though taking the GNS model as point of departure to measure spillovers seems appealing since it contains all possible interaction effects, two major issues are that a formal proof under which conditions the parameters of this model are identified is not available yet (see Section 1) and the problem of overfitting. Even though the parameters are not identified, they can still be estimated. However, they have the tendency either to blow each other up or to become insignificant as a result of which this model does not help to choose among the SDM and SDEM models.<span class="citation" data-cites="halleckvega2015">(<a href="#/ref-halleckvega2015" role="doc-biblioref" onclick="return false;">Halleck Vega and Elhorst 2015</a>)</span> p.&nbsp;347.</p>
 </blockquote>
-<p>There are several problems with fitting the Manski (GNS) model. Should these be solved the Manski model might be a starting point in the future. For the time being the best we can do is probably to follow <span class="citation" data-cites="lesageWhatRegionalScientists">(<a href="#/ref-lesageWhatRegionalScientists" role="doc-biblioref" onclick="return false;"><strong>lesageWhatRegionalScientists?</strong></a>)</span> and</p>
+<p>There are several problems with fitting the Manski (GNS) model. Should these be solved the Manski model might be a starting point in the future. For the time being the best we can do is probably to follow <span class="citation" data-cites="lesage2014">(<a href="#/ref-lesage2014" role="doc-biblioref" onclick="return false;">LeSage 2014</a>)</span> and</p>
 <ul>
 <li class="fragment">Don’t bother with SAC</li>
 <li class="fragment">Decide if the phenomenon we study is of a local or global character</li>
@@ -2801,6 +2801,9 @@ Log likelihood of SEM_mod4      Log likelihood of lm4
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-allaire2022" class="csl-entry" role="doc-biblioentry">
 Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2022. <em>Rmarkdown: <span>Dynamic</span> Documents for <span>R</span></em>. Manual. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
+</div>
+<div id="ref-bivand" class="csl-entry" role="doc-biblioentry">
+Bivand, Edzer Pebesma, Roger. n.d. <em>Spatial <span>Data Science</span></em>. Accessed May 12, 2021. <a href="https://keen-swartz-3146c4.netlify.app/index.html">https://keen-swartz-3146c4.netlify.app/index.html</a>.
 </div>
 <div id="ref-spdep2022" class="csl-entry" role="doc-biblioentry">
 Bivand, Roger. 2022a. <span>“R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.”</span> <em>Geographical Analysis</em> 54 (3): 488–518. <a href="https://doi.org/10.1111/gean.12319">https://doi.org/10.1111/gean.12319</a>.

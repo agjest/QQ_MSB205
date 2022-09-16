@@ -840,7 +840,7 @@ Reject H0, we should not restrict to OLS.
 ## Full Manski
 
 You should probably stay off this track.
-See [@lesageWhatRegionalScientists]
+See [@lesage2014]
 
 There is problems estimating this model (identification problems).
 The reason why one does not start with this model and then treat SAC, SDM and SDEM as nested models.
@@ -868,11 +868,11 @@ The following quote might give the answer:
 
 > Even though taking the GNS model as point of departure to measure spillovers seems appealing since it contains all possible interaction effects, two major issues are that a formal proof under which conditions the parameters of this model are identified is not available yet (see Section 1) and the problem of overfitting.
 > Even though the parameters are not identified, they can still be estimated.
-> However, they have the tendency either to blow each other up or to become insignificant as a result of which this model does not help to choose among the SDM and SDEM models.[@halleckvegaSLXMODEL2015] p. 347.
+> However, they have the tendency either to blow each other up or to become insignificant as a result of which this model does not help to choose among the SDM and SDEM models.[@halleckvega2015] p. 347.
 
 There are several problems with fitting the Manski (GNS) model.
 Should these be solved the Manski model might be a starting point in the future.
-For the time being the best we can do is probably to follow [@lesageWhatRegionalScientists] and
+For the time being the best we can do is probably to follow [@lesage2014] and
 
 -   Don't bother with SAC
 -   Decide if the phenomenon we study is of a local or global character
