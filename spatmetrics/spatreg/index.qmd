@@ -309,7 +309,7 @@ lm.LMtests(lm2, listw = md_2017_w, test = "all")
 :::
 :::
 
-For a more thorough discussion see @osland2010a and @chi2019spatial page 55.
+For a more thorough discussion see @osland2010 and @chi2019spatial page 55.
 
 # The LeSage approach
 
