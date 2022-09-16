@@ -479,7 +479,7 @@ Projected CRS: ETRS89 / UTM zone 33N + NN2000 height</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="2:3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>md_2017 <span class="ot">&lt;-</span> map_data_2017_noNA <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>md_2017 <span class="ot">&lt;-</span> map_data_2017_noNA <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb5-3"><a href="#cb5-3"></a>    <span class="co"># percentage of pop. in a working age</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>    <span class="at">prct_20_64 =</span> <span class="dv">100</span><span class="sc">*</span>pop_20_64<span class="sc">/</span>tot_pop,</span>

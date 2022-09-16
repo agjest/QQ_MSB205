@@ -93,7 +93,7 @@ map_data_2017_noNA <- map_data_2017_noNA[-14,]
 . . .
 
 ```{r}
-#| code-line-numbers: 2:3
+#| code-line-numbers: "4"
 md_2017 <- map_data_2017_noNA %>% 
   mutate(
     # percentage of pop. in a working age
