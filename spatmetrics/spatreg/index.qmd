@@ -286,6 +286,8 @@ moran.plot(residuals(lm2), listw = md_2017_w)
 -   We will use mod2 in the following.
     We have spatial autocorrelation in the residuals from OLS.
 
+# The Anselin approach
+
 ## The Anselin approach
 
 ::: columns
@@ -303,10 +305,8 @@ lm.LMtests(lm2, listw = md_2017_w, test = "all")
 
 -   Again both are significant.
 
-. . .
-
-So we don´t have a clear conclusion.
-One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.
+-   So we don´t have a clear conclusion.
+    One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.
 :::
 :::
 

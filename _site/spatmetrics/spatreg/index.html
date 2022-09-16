@@ -901,8 +901,13 @@ Observed Moran I      Expectation         Variance
 <img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"><ul>
 <li class="fragment">We will use mod2 in the following. We have spatial autocorrelation in the residuals from OLS.</li>
 </ul>
+</section></section>
+<section>
+<section id="the-anselin-approach" class="title-slide slide level1 center">
+<h1>The Anselin approach</h1>
+
 </section>
-<section id="the-anselin-approach" class="slide level2">
+<section id="the-anselin-approach-1" class="slide level2">
 <h2>The Anselin approach</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -964,12 +969,11 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <li class="fragment"><p>Both LMerr and LMLag are significant.</p></li>
 <li class="fragment"><p>Proceed with RLMlerr and RLMlag.</p></li>
 <li class="fragment"><p>Again both are significant.</p></li>
+<li class="fragment"><p>So we don´t have a clear conclusion. One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.</p></li>
 </ul>
-<p>. . .</p>
-<p>So we don´t have a clear conclusion. One might argue that since RLMlag are just marginally significant, SEM is probably the best choice.</p>
 </div>
 </div>
-<p>For a more thorough discussion see <span class="citation" data-cites="osland2010a">(<a href="#/ref-osland2010a" role="doc-biblioref" onclick="return false;"><strong>osland2010a?</strong></a>)</span> and <span class="citation" data-cites="chi2019spatial">(<a href="#/ref-chi2019spatial" role="doc-biblioref" onclick="return false;"><strong>chi2019spatial?</strong></a>)</span> page 55.</p>
+<p>For a more thorough discussion see <span class="citation" data-cites="osland2010a">Liv Osland (<a href="#/ref-osland2010a" role="doc-biblioref" onclick="return false;">2010</a>)</span> and <span class="citation" data-cites="chi2019spatial">Chi and Zhu (<a href="#/ref-chi2019spatial" role="doc-biblioref" onclick="return false;">2019</a>)</span> page 55.</p>
 </section></section>
 <section>
 <section id="the-lesage-approach" class="title-slide slide level1 center">
@@ -1470,7 +1474,7 @@ Log likelihood of SDEM  Log likelihood of SLX
 <blockquote>
 <p>The LR.Sarlm() function provides a likelihood ratio test for objects for which a logLik() function exists for their class, or for objects of class logLik.</p>
 </blockquote>
-<p>The two tests give the same results. We go with <code>LR.Sarlm()</code>. Why <span class="citation" data-cites="bivand">(<a href="#/ref-bivand" role="doc-biblioref" onclick="return false;"><strong>bivand?</strong></a>)</span> use <code>lrtest()</code> was not clear. Probably because the broom package was not updated to support the <code>spatialreg</code> package (now updated) when chapter was written.</p>
+<p>The two tests give the same results. We go with <code>LR.Sarlm()</code>. Why <span class="citation" data-cites="bivand">(<a href="#/ref-bivand" role="doc-biblioref" onclick="return false;">E. P. Bivand Roger n.d.</a>)</span> use <code>lrtest()</code> was not clear. Probably because the broom package was not updated to support the <code>spatialreg</code> package (now updated) when chapter was written.</p>
 <p>Test the spatial models against OLS.</p>
 <div class="cell">
 <details open="">
@@ -2796,20 +2800,164 @@ Log likelihood of SEM_mod4      Log likelihood of lm4
 <p><a href="../../index.html">MSB205</a></p>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-zotero-1363" class="csl-entry" role="doc-biblioentry">
-<span>“0.1 <span>The Reproducible R Toolkit</span> (<span>RRT</span>).”</span> n.d. <a href="https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html" class="uri">https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html</a>.
+<div id="ref-zotero-206" class="csl-entry" role="doc-biblioentry">
+n.d.a. Accessed March 27, 2020. <a href="https://bibsys-almaprimo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=BIBSYS_ILS71542116430002201&amp;context=L&amp;vid=HIB&amp;lang=nn_NO&amp;search_scope=all_blended&amp;adaptor=Local%20Search%20Engine&amp;isFrbr=true&amp;tab=default_tab&amp;query=any,contains,r%20for%20data%20science&amp;sortby=date&amp;facet=frbrgroupid,include,257567799&amp;offset=0">https://bibsys-almaprimo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=BIBSYS_ILS71542116430002201&amp;context=L&amp;vid=HIB&amp;lang=nn_NO&amp;search_scope=all_blended&amp;adaptor=Local%20Search%20Engine&amp;isFrbr=true&amp;tab=default_tab&amp;query=any,contains,r%20for%20data%20science&amp;sortby=date&amp;facet=frbrgroupid,include,257567799&amp;offset=0</a>.
 </div>
-<div id="ref-zotero-718" class="csl-entry" role="doc-biblioentry">
-<span>“16 <span>Product Fails That Defined The Decade</span>.”</span> n.d. <em>BuzzFeed News</em>. <a href="https://www.buzzfeednews.com/article/nicolenguyen/notable-tech-fails-of-2010s" class="uri">https://www.buzzfeednews.com/article/nicolenguyen/notable-tech-fails-of-2010s</a>.
+<div id="ref-zotero-364" class="csl-entry" role="doc-biblioentry">
+n.d.b. Accessed June 22, 2021. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jors.12188">https://onlinelibrary.wiley.com/doi/abs/10.1111/jors.12188</a>.
+</div>
+<div id="ref-2015" class="csl-entry" role="doc-biblioentry">
+<em>Access to and Preservation of Scientific Information in <span>Europe</span>: Report on the Implementation of <span>Commission Recommendation C</span>(2012) 4890 Final.</em> 2015. <span>LU</span>: <span>Publications Office</span>. <a href="https://data.europa.eu/doi/10.2777/975917">https://data.europa.eu/doi/10.2777/975917</a>.
+</div>
+<div id="ref-2015a" class="csl-entry" role="doc-biblioentry">
+<em>Access to and <span>Preservation</span> of <span>Scientific Information</span> in <span>Europe</span>: <span>Report</span> on the <span>Implementation</span> of <span>Commission Recommendation C</span>(2012) 4890 <span>Final</span>.</em> 2015a. <span>LU</span>: <span>Publications Office</span>.
+</div>
+<div id="ref-2015b" class="csl-entry" role="doc-biblioentry">
+———. 2015b. <span>LU</span>: <span>Publications Office</span>.
+</div>
+<div id="ref-AccessPreservationScientific2015" class="csl-entry" role="doc-biblioentry">
+———. 2015c. <span>LU</span>: <span>Publications Office</span>.
+</div>
+<div id="ref-AccessPreservationScientific2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015d. <span>LU</span>: <span>Publications Office</span>.
+</div>
+<div id="ref-adair2000" class="csl-entry" role="doc-biblioentry">
+Adair, A, S McGreal, A Smyth, J Cooper, and T Ryley. 2000. <span>“House Prices and Accessibility: The Testing of <span>Relationships</span> Within the <span>Belfast</span> Urban Area.”</span> <em>Housing Studies</em> 15: 699–716.
+</div>
+<div id="ref-adam2018" class="csl-entry" role="doc-biblioentry">
+Adam. 2018a. <span>“My Favourite <span>R</span> Package for: Summarising Data.”</span> <span>Dabbling with Data</span>. January 2, 2018. <a href="https://dabblingwithdata.wordpress.com/2018/01/02/my-favourite-r-package-for-summarising-data/">https://dabblingwithdata.wordpress.com/2018/01/02/my-favourite-r-package-for-summarising-data/</a>.
+</div>
+<div id="ref-adam2018a" class="csl-entry" role="doc-biblioentry">
+———. 2018b. <span>“My Favourite <span>R</span> Package for: Summarising Data.”</span> <span>Dabbling with Data</span>. January 2, 2018. <a href="https://dabblingwithdata.wordpress.com/2018/01/02/my-favourite-r-package-for-summarising-data/">https://dabblingwithdata.wordpress.com/2018/01/02/my-favourite-r-package-for-summarising-data/</a>.
+</div>
+<div id="ref-ahlfeldt2011" class="csl-entry" role="doc-biblioentry">
+Ahlfeldt, G. 2011. <span>“If Alonso Was Right: Modelling Accessibility and Explaining the Residential Land Gradient.”</span> <em>Journal of Regional Science</em> 51 (2).
+</div>
+<div id="ref-alexanas1998" class="csl-entry" role="doc-biblioentry">
+Alex Anas, Richard Arnott, and Kenneth A. Small. 1998. <span>“Urban Spatial Structure.”</span> <em>Journal of Economic Literature</em> 36 (3): 1416–64.
+</div>
+<div id="ref-allaire2020" class="csl-entry" role="doc-biblioentry">
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2020a. <em>Rmarkdown: <span>Dynamic Documents</span> for r</em>.
+</div>
+<div id="ref-allaire2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <em>Rmarkdown: <span>Dynamic Documents</span> for r</em>.
+</div>
+<div id="ref-allaire2020b" class="csl-entry" role="doc-biblioentry">
+———. 2020c. <em>Rmarkdown: <span>Dynamic</span> Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
+</div>
+<div id="ref-allaireRmarkdownDynamicDocuments2020" class="csl-entry" role="doc-biblioentry">
+———. 2020d. <em>Rmarkdown: <span>Dynamic Documents</span> for r</em>.
+</div>
+<div id="ref-allaireRmarkdownDynamicDocuments2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020e. <em>Rmarkdown: <span>Dynamic Documents</span> for r</em>.
+</div>
+<div id="ref-almas2012" class="csl-entry" role="doc-biblioentry">
+Almås, Pål Jonas Brandåstrø, and Kristian Peder Mørtvedt Andersen. 2012. <span>“Norske børshandlede fond : en kvantitativ analyse av fondenes egenskaper.”</span> <a href="https://openaccess.nhh.no/nhh-xmlui/handle/11250/169733">https://openaccess.nhh.no/nhh-xmlui/handle/11250/169733</a>.
+</div>
+<div id="ref-AmericanEconomicAssociation" class="csl-entry" role="doc-biblioentry">
+<em>American <span>Economic Association</span></em>. n.d.a.
+</div>
+<div id="ref-AmericanEconomicAssociationa" class="csl-entry" role="doc-biblioentry">
+———. n.d.b.
+</div>
+<div id="ref-zotero-321" class="csl-entry" role="doc-biblioentry">
+<span>“American <span>Economic Association</span>.”</span> n.d.c. Accessed September 11, 2020. <a href="https://www.aeaweb.org/journals/data">https://www.aeaweb.org/journals/data</a>.
+</div>
+<div id="ref-zotero-406" class="csl-entry" role="doc-biblioentry">
+<em>American <span>Economic Association</span></em>. n.d.d.
+</div>
+<div id="ref-zotero-409" class="csl-entry" role="doc-biblioentry">
+———. n.d.e.
+</div>
+<div id="ref-anas1998" class="csl-entry" role="doc-biblioentry">
+Anas, A, RA Arnott, and K Small. 1998. <span>“Urban Spatial Structure.”</span> <em>Journal of Economic Literature</em> 36: 1426–64.
+</div>
+<div id="ref-anselin1988" class="csl-entry" role="doc-biblioentry">
+Anselin, L. 1988. <em>Spatial Econometrics: Methods and Models</em>. <span>London</span>: <span>Kluwer</span>.
+</div>
+<div id="ref-anselin2002" class="csl-entry" role="doc-biblioentry">
+———. 2002. <span>“Under the Hood. <span>Issues</span> in the Specification and Interpretation of Spatial Regression Models.”</span> <em>Agricultural Economics</em> 27: 247–67.
+</div>
+<div id="ref-anselin2009" class="csl-entry" role="doc-biblioentry">
+Anselin, L, and N Lozano-Gracia. 2009. <span>“Spatial Hedonic Models.”</span> In <em>Ch. 26 in Palgrave Handbook of Econometrics Vol 2</em>, edited by Mills TC and K Patterson (eds). <span>Palgrave Macmillan</span>.
+</div>
+<div id="ref-arrow1964" class="csl-entry" role="doc-biblioentry">
+Arrow, K. J. 1964. <span>“The <span>Role</span> of <span>Securities</span> in the <span>Optimal Allocation</span> of <span class="nocase">Risk-bearing1</span>.”</span> <em>The Review of Economic Studies</em> 31 (2): 91–96. <a href="https://doi.org/10.2307/2296188">https://doi.org/10.2307/2296188</a>.
+</div>
+<div id="ref-aust2019" class="csl-entry" role="doc-biblioentry">
+Aust, Frederik. 2019. <em>Citr: ’<span>RStudio</span>’ Add-in to Insert Markdown Citations</em>. Manual. <a href="https://CRAN.R-project.org/package=citr">https://CRAN.R-project.org/package=citr</a>.
+</div>
+<div id="ref-ball1977" class="csl-entry" role="doc-biblioentry">
+Ball, MJ, and RM Kirwan. 1977. <span>“Accessibility and Supply Constraints in the Urban Housing Market.”</span> <em>Urban Studies</em> 14: 11–32.
+</div>
+<div id="ref-bao2004" class="csl-entry" role="doc-biblioentry">
+Bao, HXH, and ATK Wan. 2004. <span>“On the Use of Spline Smoothing in Estimating Hedonic Housing Price Models: Empirical Evidence Using <span>Hong Kong</span> Data.”</span> <em>Real Estate Economics</em> 32: 487–507.
+</div>
+<div id="ref-barnes2010" class="csl-entry" role="doc-biblioentry">
+Barnes, Nick. 2010a. <span>“Publish <span>Your Computer Code</span>: <span>It Is Good Enough</span>.”</span> <em>Nature</em> 467 (7317): 753–53. <a href="https://doi.org/10.1038/467753a">https://doi.org/10.1038/467753a</a>.
+</div>
+<div id="ref-barnes2010a" class="csl-entry" role="doc-biblioentry">
+———. 2010b. <span>“Publish <span>Your Computer Code</span>: <span>It Is Good Enough</span>.”</span> <em>Nature</em> 467 (7317): 753–53. <a href="https://doi.org/10.1038/467753a">https://doi.org/10.1038/467753a</a>.
+</div>
+<div id="ref-barnes2010b" class="csl-entry" role="doc-biblioentry">
+———. 2010c. <span>“Publish Your Computer Code: It Is Good Enough.”</span> <em>Nature</em> 467 (7317): 753–53. <a href="https://doi.org/10.1038/467753a">https://doi.org/10.1038/467753a</a>.
+</div>
+<div id="ref-barnesPublishYourComputer2010" class="csl-entry" role="doc-biblioentry">
+———. 2010d. <span>“Publish <span>Your Computer Code</span>: <span>It Is Good Enough</span>.”</span> <em>Nature</em> 467 (7317): 753–53. <a href="https://doi.org/10.1038/467753a">https://doi.org/10.1038/467753a</a>.
+</div>
+<div id="ref-barnesPublishYourComputer2010a" class="csl-entry" role="doc-biblioentry">
+———. 2010e. <span>“Publish <span>Your Computer Code</span>: <span>It Is Good Enough</span>.”</span> <em>Nature</em> 467 (7317): 753–53. <a href="https://doi.org/10.1038/467753a">https://doi.org/10.1038/467753a</a>.
+</div>
+<div id="ref-baum2007" class="csl-entry" role="doc-biblioentry">
+Baum, C. F., M. E. Schaffer, and S. Stillman. 2007. <span>“Enhanced Routines for Instrumental Variables/Generalized Method of Moments Estimation and Testing.”</span> <em>Stata Journal</em> 7 (4): 465–506. <a href="http://www.stata-journal.com/article.html?article=st0030_3">http://www.stata-journal.com/article.html?article=st0030_3</a>.
 </div>
 <div id="ref-bechhofer2013" class="csl-entry" role="doc-biblioentry">
-Bechhofer, Sean, Iain Buchan, David De Roure, Paolo Missier, John Ainsworth, Jiten Bhagat, Philip Couch, et al. 2013. <span>“Why Linked Data Is Not Enough for Scientists.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+Bechhofer, Sean, Iain Buchan, David De Roure, Paolo Missier, John Ainsworth, Jiten Bhagat, Philip Couch, et al. 2013a. <span>“Why <span>Linked Data Is Not Enough</span> for <span>Scientists</span>.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599–611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+</div>
+<div id="ref-bechhofer2013a" class="csl-entry" role="doc-biblioentry">
+———, et al. 2013b. <span>“Why <span>Linked Data Is Not Enough</span> for <span>Scientists</span>.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599–611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+</div>
+<div id="ref-bechhofer2013b" class="csl-entry" role="doc-biblioentry">
+———, et al. 2013c. <span>“Why Linked Data Is Not Enough for Scientists.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599–611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+</div>
+<div id="ref-bechhoferWhyLinkedData2013" class="csl-entry" role="doc-biblioentry">
+———, et al. 2013d. <span>“Why <span>Linked Data Is Not Enough</span> for <span>Scientists</span>.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599–611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+</div>
+<div id="ref-bechhoferWhyLinkedData2013a" class="csl-entry" role="doc-biblioentry">
+———, et al. 2013e. <span>“Why <span>Linked Data Is Not Enough</span> for <span>Scientists</span>.”</span> <em>Future Generation Computer Systems</em> 29 (2): 599–611. <a href="https://doi.org/10.1016/j.future.2011.08.004">https://doi.org/10.1016/j.future.2011.08.004</a>.
+</div>
+<div id="ref-bianco2019" class="csl-entry" role="doc-biblioentry">
+Bianco, Vincenzo, Furio Cascetta, Alfonso Marino, and Sergio Nardini. 2019. <span>“Understanding Energy Consumption and Carbon Emissions in <span>Europe</span>: <span>A</span> Focus on Inequality Issues.”</span> <em>Energy</em> 170 (March): 120–30. <a href="https://doi.org/10.1016/j.energy.2018.12.120">https://doi.org/10.1016/j.energy.2018.12.120</a>.
+</div>
+<div id="ref-bie1980" class="csl-entry" role="doc-biblioentry">
+Bie, Stein W. 1943-, and Einar Stormark. 1980. <em>Forslag Til Utvekslingsformat for Digitale Geodata (<span class="nocase">SOSI-formatet</span>, Versjon 1.0)</em>. <span>Oslo</span>: <span>Norsk regnesentral</span>.
+</div>
+<div id="ref-bishop2020" class="csl-entry" role="doc-biblioentry">
+Bishop, Kelly C., Nicolai V. Kuminoff, H. Spencer Banzhaf, Kevin J. Boyle, Kathrine von Gravenitz, Jaren C. Pope, V. Kerry Smith, and Christopher D. Timmins. 2020. <span>“Best Practices for Using Hedonic Property Value Models to Measure Willingness to Pay for Environmental Quality.”</span> <em>Review of Environmental Economics and Policy</em> 14 (2): 260–81. <a href="https://doi.org/10.1093/reep/reaa001">https://doi.org/10.1093/reep/reaa001</a>.
+</div>
+<div id="ref-bishop" class="csl-entry" role="doc-biblioentry">
+Bishop, Kelly C, Nicolai V Kuminoff, H Spencer Banzhaf, and Kevin J Boyle. n.d. <span>“Best <span>Practices</span> in <span>Using Hedonic Property Value Models</span> for <span>Welfare Measurement</span>,”</span> 29.
+</div>
+<div id="ref-bivand" class="csl-entry" role="doc-biblioentry">
+Bivand, Edzer Pebesma, Roger. n.d. <em>Spatial <span>Data Science</span></em>. Accessed May 12, 2021. <a href="https://keen-swartz-3146c4.netlify.app/index.html">https://keen-swartz-3146c4.netlify.app/index.html</a>.
+</div>
+<div id="ref-bivand1984" class="csl-entry" role="doc-biblioentry">
+Bivand, R. 1984. <span>“Regression Modelling with Spatial Dependence: <span>An</span> Application of Some Class Selection and Estimation Methods.”</span> <em>Geographical Analysis</em> 16 (1).
+</div>
+<div id="ref-bivand2011" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger. 2011a. <span>“After ’<span>Raising</span> the <span>Bar</span>’: <span>Applied Maximum Likelihood Estimation</span> of <span>Families</span> of <span>Models</span> in <span>Spatial Econometrics</span>.”</span> <em>SSRN Electronic Journal</em>. <a href="https://doi.org/10.2139/ssrn.1972278">https://doi.org/10.2139/ssrn.1972278</a>.
+</div>
+<div id="ref-bivand2011a" class="csl-entry" role="doc-biblioentry">
+———. 2011b. <span>“After ’<span>Raising</span> the <span>Bar</span>’: <span>Applied Maximum Likelihood Estimation</span> of <span>Families</span> of <span>Models</span> in <span>Spatial Econometrics</span>.”</span> <em>SSRN Electronic Journal</em>. <a href="https://doi.org/10.2139/ssrn.1972278">https://doi.org/10.2139/ssrn.1972278</a>.
 </div>
 <div id="ref-spdep2022" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger. 2022a. <span>“R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.”</span> <em>Geographical Analysis</em> 54 (3): 488–518. <a href="https://doi.org/10.1111/gean.12319">https://doi.org/10.1111/gean.12319</a>.
+———. 2022a. <span>“R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.”</span> <em>Geographical Analysis</em> 54 (3): 488–518. <a href="https://doi.org/10.1111/gean.12319">https://doi.org/10.1111/gean.12319</a>.
 </div>
 <div id="ref-R-spdep" class="csl-entry" role="doc-biblioentry">
 ———. 2022b. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.
+</div>
+<div id="ref-bivand2021a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger S. 2021. <span>“Progress in the <span>R</span> Ecosystem for Representing and Handling Spatial Data.”</span> <em>Journal of Geographical Systems</em> 23 (4): 515–46. <a href="https://doi.org/10.1007/s10109-020-00336-0">https://doi.org/10.1007/s10109-020-00336-0</a>.
 </div>
 <div id="ref-sp2013" class="csl-entry" role="doc-biblioentry">
 Bivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
@@ -2824,7 +2972,10 @@ Bivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. <em>Applied Sp
 Bivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. <span>“Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.”</span> <em>Geographical Analysis</em> 45 (2): 150–79. <a href="https://doi.org/10.1111/gean.12008">https://doi.org/10.1111/gean.12008</a>.
 </div>
 <div id="ref-spatialreg2021a" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. <span>“A Review of Software for Spatial Econometrics in <span>R</span>.”</span> <em>Mathematics</em> 9 (11). <a href="https://doi.org/10.3390/math9111276">https://doi.org/10.3390/math9111276</a>.
+Bivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021a. <span>“A Review of Software for Spatial Econometrics in <span>R</span>.”</span> <em>Mathematics</em> 9 (11). <a href="https://doi.org/10.3390/math9111276">https://doi.org/10.3390/math9111276</a>.
+</div>
+<div id="ref-bivand2021" class="csl-entry" role="doc-biblioentry">
+———. 2021b. <span>“A <span>Review</span> of <span>Software</span> for <span>Spatial Econometrics</span> in <span>R</span>.”</span> <em>Mathematics</em> 9 (11, 11): 1276. <a href="https://doi.org/10.3390/math9111276">https://doi.org/10.3390/math9111276</a>.
 </div>
 <div id="ref-spatialreg2015a" class="csl-entry" role="doc-biblioentry">
 Bivand, Roger, and Gianfranco Piras. 2015. <span>“Comparing Implementations of Estimation Methods for Spatial Econometrics.”</span> <em>Journal of Statistical Software</em> 63 (18): 1–36. <a href="https://doi.org/10.18637/jss.v063.i18">https://doi.org/10.18637/jss.v063.i18</a>.
@@ -2835,14 +2986,803 @@ Bivand, Roger, and Gianfranco Piras. 2015. <span>“Comparing Implementations of
 <div id="ref-spdep2018" class="csl-entry" role="doc-biblioentry">
 Bivand, Roger, and David W. S. Wong. 2018. <span>“Comparing Implementations of Global and Local Indicators of Spatial Association.”</span> <em>TEST</em> 27 (3): 716–48. <a href="https://doi.org/10.1007/s11749-018-0599-x">https://doi.org/10.1007/s11749-018-0599-x</a>.
 </div>
-<div id="ref-Grossenbacher2022" class="csl-entry" role="doc-biblioentry">
-Grossenbacher, Timo. n.d. <span>“A (Truly) Reproducible <span>R</span> Workflow.”</span> <a href="https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/" class="uri">https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/</a>.
+<div id="ref-bivand2017" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Danlin Yu, Tomoki Nakaya, and Miquel-Angel Garcia-Lopez. 2017. <em>Spgwr: <span>Geographically Weighted Regression</span></em> (version 0.6-32). <a href="https://CRAN.R-project.org/package=spgwr">https://CRAN.R-project.org/package=spgwr</a>.
+</div>
+<div id="ref-bivand2008" class="csl-entry" role="doc-biblioentry">
+Bivand, RS, EJ Pebesma, and V Gόmez-Rubio. 2008. <em>Applied Spatial Data Analysis with <span>R</span></em>. <span>Springer</span>.
+</div>
+<div id="ref-bodie2014" class="csl-entry" role="doc-biblioentry">
+Bodie, Zvi. 2014. <em>Investments</em>. 10th global ed. <span>Berkshire</span>: <span>McGraw-Hill Education</span>.
+</div>
+<div id="ref-bollen2015" class="csl-entry" role="doc-biblioentry">
+Bollen, Kenneth, John T. Cacioppo, Jon A. Krosnick, James L. Olds, and Robert M. Kaplan. 2015a. <span>“Social, <span>Behavioral</span>, and <span>Economic Sciences Perspectives</span> on <span>Robust</span> and <span>Reliable Science</span>.”</span> Report of the Subcommittee on Replicability in Science Advisory Committee to the National Science Foundation Directorate for Social, Behavioral, and Economic Sciences. <span>NSF</span>.
+</div>
+<div id="ref-bollen2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015b. <span>“Social, <span>Behavioral</span>, and <span>Economic Sciences Perspectives</span> on <span>Robust</span> and <span>Reliable Science</span>.”</span> Report of the Subcommittee on Replicability in Science Advisory Committee to the National Science Foundation Directorate for Social, Behavioral, and Economic Sciences. <span>NSF</span>.
+</div>
+<div id="ref-bollenSocialBehavioralEconomic2015" class="csl-entry" role="doc-biblioentry">
+———. 2015c. <span>“Social, <span>Behavioral</span>, and <span>Economic Sciences Perspectives</span> on <span>Robust</span> and <span>Reliable Science</span>.”</span> Report of the Subcommittee on Replicability in Science Advisory Committee to the National Science Foundation Directorate for Social, Behavioral, and Economic Sciences. <span>NSF</span>.
+</div>
+<div id="ref-bollenSocialBehavioralEconomic2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015d. <span>“Social, <span>Behavioral</span>, and <span>Economic Sciences Perspectives</span> on <span>Robust</span> and <span>Reliable Science</span>.”</span> Report of the Subcommittee on Replicability in Science Advisory Committee to the National Science Foundation Directorate for Social, Behavioral, and Economic Sciences. <span>NSF</span>.
+</div>
+<div id="ref-brase2009" class="csl-entry" role="doc-biblioentry">
+Brase, Jan. 2009a. <span>“<span>DataCite</span> - <span>A Global Registration Agency</span> for <span>Research Data</span>.”</span> In <em>2009 <span>Fourth International Conference</span> on <span>Cooperation</span> and <span>Promotion</span> of <span>Information Resources</span> in <span>Science</span> and <span>Technology</span></em>, 257–61. <span>Beijing, China</span>: <span>IEEE</span>. <a href="https://doi.org/10.1109/COINFO.2009.66">https://doi.org/10.1109/COINFO.2009.66</a>.
+</div>
+<div id="ref-brase2009a" class="csl-entry" role="doc-biblioentry">
+———. 2009b. <span>“<span>DataCite</span> - <span>A Global Registration Agency</span> for <span>Research Data</span>.”</span> In <em>2009 <span>Fourth International Conference</span> on <span>Cooperation</span> and <span>Promotion</span> of <span>Information Resources</span> in <span>Science</span> and <span>Technology</span></em>, 257–61. <span>Beijing, China</span>: <span>IEEE</span>. <a href="https://doi.org/10.1109/COINFO.2009.66">https://doi.org/10.1109/COINFO.2009.66</a>.
+</div>
+<div id="ref-brase2009b" class="csl-entry" role="doc-biblioentry">
+———. 2009c. <span>“<span>DataCite</span> - <span>A Global Registration Agency</span> for <span>Research Data</span>.”</span> In <em>2009 <span>Fourth International Conference</span> on <span>Cooperation</span> and <span>Promotion</span> of <span>Information Resources</span> in <span>Science</span> and <span>Technology</span></em>, 257–61. <span>Beijing, China</span>: <span>IEEE</span>. <a href="https://doi.org/10.1109/COINFO.2009.66">https://doi.org/10.1109/COINFO.2009.66</a>.
+</div>
+<div id="ref-braseDataCiteGlobalRegistration2009" class="csl-entry" role="doc-biblioentry">
+———. 2009d. <span>“<span>DataCite</span> - <span>A Global Registration Agency</span> for <span>Research Data</span>.”</span> In <em>2009 <span>Fourth International Conference</span> on <span>Cooperation</span> and <span>Promotion</span> of <span>Information Resources</span> in <span>Science</span> and <span>Technology</span></em>, 257–61. <span>Beijing, China</span>: <span>IEEE</span>. <a href="https://doi.org/10.1109/COINFO.2009.66">https://doi.org/10.1109/COINFO.2009.66</a>.
+</div>
+<div id="ref-braseDataCiteGlobalRegistration2009a" class="csl-entry" role="doc-biblioentry">
+———. 2009e. <span>“<span>DataCite</span> - <span>A Global Registration Agency</span> for <span>Research Data</span>.”</span> In <em>2009 <span>Fourth International Conference</span> on <span>Cooperation</span> and <span>Promotion</span> of <span>Information Resources</span> in <span>Science</span> and <span>Technology</span></em>, 257–61. <span>Beijing, China</span>: <span>IEEE</span>. <a href="https://doi.org/10.1109/COINFO.2009.66">https://doi.org/10.1109/COINFO.2009.66</a>.
+</div>
+<div id="ref-breian" class="csl-entry" role="doc-biblioentry">
+Breian, Åshild. n.d. <span>“Eksperter bekymret: To bekreftede tilfeller av mystisk soppsykdom i Norge.”</span> <span>Aftenposten</span>. Accessed April 10, 2019. <a href="https://www.aftenposten.no/article/ap-zGOK8b.html">https://www.aftenposten.no/article/ap-zGOK8b.html</a>.
+</div>
+<div id="ref-broman2018" class="csl-entry" role="doc-biblioentry">
+Broman, Karl W., and Kara H. Woo. 2018. <span>“Data Organization in Spreadsheets.”</span> e3183v2. <span>PeerJ Inc.</span> <a href="https://doi.org/10.7287/peerj.preprints.3183v2">https://doi.org/10.7287/peerj.preprints.3183v2</a>.
+</div>
+<div id="ref-buckheit1995" class="csl-entry" role="doc-biblioentry">
+Buckheit, Jonathan B., and David L. Donoho. 1995a. <span>“<span>WaveLab</span> and <span>Reproducible Research</span>.”</span> In <em>Wavelets and <span>Statistics</span></em>, edited by P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, S. Zeger, Anestis Antoniadis, and Georges Oppenheim, 103:55–81. <span>New York, NY</span>: <span>Springer New York</span>. <a href="https://doi.org/10.1007/978-1-4612-2544-7_5">https://doi.org/10.1007/978-1-4612-2544-7_5</a>.
+</div>
+<div id="ref-buckheit1995a" class="csl-entry" role="doc-biblioentry">
+———. 1995b. <span>“<span>WaveLab</span> and <span>Reproducible Research</span>.”</span> In <em>Wavelets and <span>Statistics</span></em>, edited by P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, S. Zeger, Anestis Antoniadis, and Georges Oppenheim, 103:55–81. <span>New York, NY</span>: <span>Springer New York</span>. <a href="https://doi.org/10.1007/978-1-4612-2544-7_5">https://doi.org/10.1007/978-1-4612-2544-7_5</a>.
+</div>
+<div id="ref-buckheitWaveLabReproducibleResearch1995" class="csl-entry" role="doc-biblioentry">
+———. 1995c. <span>“<span>WaveLab</span> and <span>Reproducible Research</span>.”</span> In <em>Wavelets and <span>Statistics</span></em>, edited by P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, S. Zeger, Anestis Antoniadis, and Georges Oppenheim, 103:55–81. <span>New York, NY</span>: <span>Springer New York</span>. <a href="https://doi.org/10.1007/978-1-4612-2544-7_5">https://doi.org/10.1007/978-1-4612-2544-7_5</a>.
+</div>
+<div id="ref-buckheitWaveLabReproducibleResearch1995a" class="csl-entry" role="doc-biblioentry">
+———. 1995d. <span>“<span>WaveLab</span> and <span>Reproducible Research</span>.”</span> In <em>Wavelets and <span>Statistics</span></em>, edited by P. Bickel, P. Diggle, S. Fienberg, K. Krickeberg, I. Olkin, N. Wermuth, S. Zeger, Anestis Antoniadis, and Georges Oppenheim, 103:55–81. <span>New York, NY</span>: <span>Springer New York</span>. <a href="https://doi.org/10.1007/978-1-4612-2544-7_5">https://doi.org/10.1007/978-1-4612-2544-7_5</a>.
+</div>
+<div id="ref-celebi2020" class="csl-entry" role="doc-biblioentry">
+Celebi, Remzi, Joao Rebelo Moreira, Ahmed A. Hassan, Sandeep Ayyar, Lars Ridder, Tobias Kuhn, and Michel Dumontier. 2020. <span>“Towards <span>FAIR</span> Protocols and Workflows: The <span>OpenPREDICT</span> Use Case.”</span> <em>PeerJ Computer Science</em> 6 (September): e281. <a href="https://doi.org/10.7717/peerj-cs.281">https://doi.org/10.7717/peerj-cs.281</a>.
+</div>
+<div id="ref-centerforhistoryandnewmedia" class="csl-entry" role="doc-biblioentry">
+Center for History and New Media. n.d. <span>“Rask Innføring.”</span> <a href="http://zotero.org/support/quick_start_guide">http://zotero.org/support/quick_start_guide</a>.
+</div>
+<div id="ref-chakravarty2019" class="csl-entry" role="doc-biblioentry">
+Chakravarty, Satya R., Nachiketa Chattopadhyay, and Liu Qingbin. 2019. <span>“Inequality and Welfare: <span>Some</span> Axiomatic Characterizations.”</span> <em>International Journal of Economic Theory</em> 15 (2): 153–68. <a href="https://doi.org/10.1111/ijet.12169">https://doi.org/10.1111/ijet.12169</a>.
+</div>
+<div id="ref-chelley-steeley2011" class="csl-entry" role="doc-biblioentry">
+Chelley-Steeley, Patricia, and Keebong Park. 2011. <span>“Intraday Patterns in <span>London</span> Listed <span>Exchange Traded Funds</span>.”</span> <em>International Review of Financial Analysis</em> 20 (5): 244–51. <a href="https://doi.org/10.1016/j.irfa.2011.05.001">https://doi.org/10.1016/j.irfa.2011.05.001</a>.
+</div>
+<div id="ref-chi2019spatial" class="csl-entry" role="doc-biblioentry">
+Chi, G., and J. Zhu. 2019. <em>Spatial Regression Models for the Social Sciences</em>. Advanced Quantitative Techniques in the Social Sciences. <span>SAGE Publications</span>. <a href="https://books.google.no/books?id=zHGkvwEACAAJ">https://books.google.no/books?id=zHGkvwEACAAJ</a>.
+</div>
+<div id="ref-chin2003" class="csl-entry" role="doc-biblioentry">
+Chin, TL, and KW Chau. 2003. <span>“A Critical Review of Literature on the Hedonic Price Model.”</span> <em>International Journal for Housing Science and Its Applications</em> 27 (2): 145–65.
+</div>
+<div id="ref-cliffordj.mugnier2017" class="csl-entry" role="doc-biblioentry">
+Clifford J. Mugnier. 2017. <span>“The <span>Kingdom</span> of <span>Norway</span>.”</span> <em>Photogrammetric Engineering &amp; Remote Sensing</em> Vol. 83 (July): pp. 471–473. <a href="https://doi.org/10.14358/PERS.83.7.471">https://doi.org/10.14358/PERS.83.7.471</a>.
+</div>
+<div id="ref-collaboration2015" class="csl-entry" role="doc-biblioentry">
+Collaboration, Open Science. 2015a. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-collaboration2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015b. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-collaborationEstimatingReproducibilityPsychological2015" class="csl-entry" role="doc-biblioentry">
+———. 2015c. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-collaborationEstimatingReproducibilityPsychological2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015d. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-opensciencecollaboration2015" class="csl-entry" role="doc-biblioentry">
+———. 2015e. <span>“Estimating the Reproducibility of Psychological Science.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-conyers" class="csl-entry" role="doc-biblioentry">
+Conyers, Ross. n.d.a. <em>Learn <span>Git</span> in 3 <span>Hours</span></em>.
+</div>
+<div id="ref-conyersa" class="csl-entry" role="doc-biblioentry">
+———. n.d.d. <em>Learn <span>Git</span> in 3 <span>Hours</span></em>.
+</div>
+<div id="ref-conyersb" class="csl-entry" role="doc-biblioentry">
+———. n.d.e. <span>“Learn <span>Git</span> in 3 <span>Hours</span>.”</span> <span>O’Reilly | Safari</span>. Accessed March 30, 2020. <a href="https://www.safaribooksonline.com/videos/learn-git-in/9781789348231/9781789348231-video1_2">https://www.safaribooksonline.com/videos/learn-git-in/9781789348231/9781789348231-video1_2</a>.
+</div>
+<div id="ref-conyersLearnGitHours" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <em>Learn <span>Git</span> in 3 <span>Hours</span></em>.
+</div>
+<div id="ref-conyersLearnGitHoursa" class="csl-entry" role="doc-biblioentry">
+———. n.d.c. <em>Learn <span>Git</span> in 3 <span>Hours</span></em>.
+</div>
+<div id="ref-coulson1992" class="csl-entry" role="doc-biblioentry">
+Coulson, NE. 1992. <span>“Semiparametric Estimates of the Marginal Price of Floorspace.”</span> <em>Journal of Real Estate Finance and Economics</em> 5 (1): 73–83.
+</div>
+<div id="ref-cowell2003" class="csl-entry" role="doc-biblioentry">
+Cowell, Frank A. 2003. <span>“Theil, <span>Inequality</span> and the <span>Structure</span> of <span>Income Distribution</span>.”</span> 67. <span>STICERD</span> - <span>Distributional Analysis Research Programme Papers</span>. <span>Suntory and Toyota International Centres for Economics and Related Disciplines, LSE</span>. <a href="https://ideas.repec.org/p/cep/stidar/67.html">https://ideas.repec.org/p/cep/stidar/67.html</a>.
+</div>
+<div id="ref-donofrio2019" class="csl-entry" role="doc-biblioentry">
+D’Onofrio, Alexandra, and Paolo E. Giordani. 2019. <span>“Infrastructures and <span>Income Inequality</span>: <span>The Case</span> of <span>Italian Provinces</span>.”</span> <em>Politica Economica</em> 35 (1): 27–54. <a href="https://doi.org/10.1429/93306">https://doi.org/10.1429/93306</a>.
+</div>
+<div id="ref-DearColleagueLetter" class="csl-entry" role="doc-biblioentry">
+<em>Dear <span>Colleague Letter</span>: <span>Robust</span> and <span>Reliable Research</span> in the <span>Social</span>, <span>Behavioral</span>, and <span>Economic Sciences</span> (<span>Nsf16137</span>) | <span>NSF</span> - <span>National Science Foundation</span></em>. n.d.a.
+</div>
+<div id="ref-DearColleagueLettera" class="csl-entry" role="doc-biblioentry">
+———. n.d.b.
+</div>
+<div id="ref-DearColleagueLetterb" class="csl-entry" role="doc-biblioentry">
+———. n.d.c.
+</div>
+<div id="ref-DearColleagueLetterc" class="csl-entry" role="doc-biblioentry">
+———. n.d.d.
+</div>
+<div id="ref-zotero-336" class="csl-entry" role="doc-biblioentry">
+<span>“Dear <span>Colleague Letter</span>: <span>Robust</span> and <span>Reliable Research</span> in the <span>Social</span>, <span>Behavioral</span>, and <span>Economic Sciences</span> (Nsf16137) | <span>NSF</span> - <span>National Science Foundation</span>.”</span> n.d.e. Accessed September 10, 2020. <a href="https://www.nsf.gov/pubs/2016/nsf16137/nsf16137.jsp">https://www.nsf.gov/pubs/2016/nsf16137/nsf16137.jsp</a>.
+</div>
+<div id="ref-zotero-393" class="csl-entry" role="doc-biblioentry">
+<em>Dear <span>Colleague Letter</span>: <span>Robust</span> and <span>Reliable Research</span> in the <span>Social</span>, <span>Behavioral</span>, and <span>Economic Sciences</span> (<span>Nsf16137</span>) | <span>NSF</span> - <span>National Science Foundation</span></em>. n.d.f.
+</div>
+<div id="ref-zotero-394" class="csl-entry" role="doc-biblioentry">
+———. n.d.g.
+</div>
+<div id="ref-zotero-395" class="csl-entry" role="doc-biblioentry">
+———. n.d.h.
+</div>
+<div id="ref-zotero-396" class="csl-entry" role="doc-biblioentry">
+———. n.d.i.
+</div>
+<div id="ref-dewald1986" class="csl-entry" role="doc-biblioentry">
+Dewald, William G., Jerry G. Thursby, and Richard G. Anderson. 1986a. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>.”</span> <em>The American Economic Review</em> 76 (4): 587–603.
+</div>
+<div id="ref-dewald1986a" class="csl-entry" role="doc-biblioentry">
+———. 1986b. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>.”</span> <em>The American Economic Review</em> 76 (4): 587–603.
+</div>
+<div id="ref-dewald1986b" class="csl-entry" role="doc-biblioentry">
+———. 1986c. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>.”</span> <em>The American Economic Review</em> 76 (4): 587–603. <a href="https://www.jstor.org/stable/1806061">https://www.jstor.org/stable/1806061</a>.
+</div>
+<div id="ref-dewaldReplicationEmpiricalEconomics1986" class="csl-entry" role="doc-biblioentry">
+———. 1986d. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>.”</span> <em>The American Economic Review</em> 76 (4): 587–603.
+</div>
+<div id="ref-dewaldReplicationEmpiricalEconomics1986a" class="csl-entry" role="doc-biblioentry">
+———. 1986e. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>.”</span> <em>The American Economic Review</em> 76 (4): 587–603.
+</div>
+<div id="ref-dewald2020" class="csl-entry" role="doc-biblioentry">
+Dewald, William G, Jerry G Thursby, and Richard G Anderson. 2020a. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>,”</span> 18.
+</div>
+<div id="ref-dewald2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>,”</span> 18.
+</div>
+<div id="ref-dewald2020b" class="csl-entry" role="doc-biblioentry">
+———. 2020c. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>,”</span> 18.
+</div>
+<div id="ref-dewaldReplicationEmpiricalEconomics2020" class="csl-entry" role="doc-biblioentry">
+———. 2020d. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>,”</span> 18.
+</div>
+<div id="ref-dewaldReplicationEmpiricalEconomics2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020e. <span>“Replication in <span>Empirical Economics</span>: <span>The Journal</span> of <span>Money</span>, <span>Credit</span> and <span>Banking Project</span>,”</span> 18.
+</div>
+<div id="ref-dubin1992" class="csl-entry" role="doc-biblioentry">
+Dubin, RA. 1992. <span>“Spatial Autocorrelation and Neighbourhood Quality.”</span> <em>Regional Science and Urban Economics, Vol</em> 22 (3): 433–52.
+</div>
+<div id="ref-durand2011" class="csl-entry" role="doc-biblioentry">
+Durand, Robert B., Dominic Lim, and J. Kenton Zumwalt. 2011. <span>“Fear and the <span>Fama-French Factors</span>.”</span> <em>Financial Management</em> 40 (2): 409–26. <a href="https://www.jstor.org/stable/41237910">https://www.jstor.org/stable/41237910</a>.
+</div>
+<div id="ref-eliasson2001" class="csl-entry" role="doc-biblioentry">
+Eliasson, Jonas, and Lars-Göran Mattsson. 2001. <span>“Transport and <span>Location Effects</span> of <span>Road Pricing</span>: <span>A Simulation Approach</span>.”</span> <em>Journal of Transport Economics and Policy</em> 35 (3): 417–56. <a href="https://www.jstor.org/stable/20053883">https://www.jstor.org/stable/20053883</a>.
+</div>
+<div id="ref-ellis2017" class="csl-entry" role="doc-biblioentry">
+Ellis, Shannon E., and Jeffrey T. Leek. 2017. <span>“How to Share Data for Collaboration.”</span> e3139v5. <span>PeerJ Inc.</span> <a href="https://doi.org/10.7287/peerj.preprints.3139v5">https://doi.org/10.7287/peerj.preprints.3139v5</a>.
+</div>
+<div id="ref-elmenreich2019" class="csl-entry" role="doc-biblioentry">
+Elmenreich, Wilfried, Philipp Moll, Sebastian Theuermann, and Mathias Lux. 2019. <span>“Making Simulation Results Reproducible—<span>Survey</span>, Guidelines, and Examples Based on <span>Gradle</span> and <span>Docker</span>.”</span> <em>PeerJ Computer Science</em> 5 (December): e240. <a href="https://doi.org/10.7717/peerj-cs.240">https://doi.org/10.7717/peerj-cs.240</a>.
+</div>
+<div id="ref-ezekiel1933" class="csl-entry" role="doc-biblioentry">
+Ezekiel, Mordecai. 1933a. <span>“Some <span>Considerations</span> on the <span>Analysis</span> of the <span>Prices</span> of <span>Competing</span> or <span>Substitute Commodities</span>.”</span> <em>Econometrica</em> 1 (2): 172–80.
+</div>
+<div id="ref-ezekiel1933a" class="csl-entry" role="doc-biblioentry">
+———. 1933b. <span>“Some <span>Considerations</span> on the <span>Analysis</span> of the <span>Prices</span> of <span>Competing</span> or <span>Substitute Commodities</span>.”</span> <em>Econometrica</em> 1 (2): 172–80.
+</div>
+<div id="ref-ezekiel1933b" class="csl-entry" role="doc-biblioentry">
+———. 1933c. <span>“Some Considerations on the Analysis of the Prices of Competing or Substitute Commodities.”</span> <em>Econometrica</em> 1 (2): 172–80. <a href="https://www.jstor.org/stable/1907091">https://www.jstor.org/stable/1907091</a>.
+</div>
+<div id="ref-ezekielConsiderationsAnalysisPrices1933" class="csl-entry" role="doc-biblioentry">
+———. 1933d. <span>“Some <span>Considerations</span> on the <span>Analysis</span> of the <span>Prices</span> of <span>Competing</span> or <span>Substitute Commodities</span>.”</span> <em>Econometrica</em> 1 (2): 172–80.
+</div>
+<div id="ref-ezekielConsiderationsAnalysisPrices1933a" class="csl-entry" role="doc-biblioentry">
+———. 1933e. <span>“Some <span>Considerations</span> on the <span>Analysis</span> of the <span>Prices</span> of <span>Competing</span> or <span>Substitute Commodities</span>.”</span> <em>Econometrica</em> 1 (2): 172–80.
+</div>
+<div id="ref-fama1991" class="csl-entry" role="doc-biblioentry">
+Fama, Eugene F. 1991. <span>“Efficient <span>Capital Markets</span>: <span>II</span>.”</span> <em>The Journal of Finance</em> 46 (5): 1575–1617. <a href="https://doi.org/10.2307/2328565">https://doi.org/10.2307/2328565</a>.
+</div>
+<div id="ref-farber2013" class="csl-entry" role="doc-biblioentry">
+Farber, S, T Neutens, H J Miller, and X Li. 2013. <span>“The Social Interaction Potential of Metropolitan Regions: A Time-Geographic Measurement Approach Using Joint Accessibility.”</span> <em>Annals of the Association of Americam Geographers</em>, 483–504.
+</div>
+<div id="ref-florax2003" class="csl-entry" role="doc-biblioentry">
+Florax, RJGM, and P Nijkamp. 2003. <span>“Misspecification in Linear Spatial Regression Models.”</span> <span>Tinbergen Institute Discussion Paper, (TI 2003-081/3)</span>.
+</div>
+<div id="ref-fomel2009" class="csl-entry" role="doc-biblioentry">
+Fomel, S., and J. F. Claerbout. 2009a. <span>“Guest <span>Editors</span>’ <span>Introduction</span>: <span>Reproducible Research</span>.”</span> <em>Computing in Science Engineering</em> 11 (1): 5–7.
+</div>
+<div id="ref-fomel2009a" class="csl-entry" role="doc-biblioentry">
+———. 2009b. <span>“Guest <span>Editors</span>’ <span>Introduction</span>: <span>Reproducible Research</span>.”</span> <em>Computing in Science Engineering</em> 11 (1): 5–7.
+</div>
+<div id="ref-fomelGuestEditorsIntroduction2009" class="csl-entry" role="doc-biblioentry">
+———. 2009c. <span>“Guest <span>Editors</span>’ <span>Introduction</span>: <span>Reproducible Research</span>.”</span> <em>Computing in Science Engineering</em> 11 (1): 5–7.
+</div>
+<div id="ref-fomelGuestEditorsIntroduction2009a" class="csl-entry" role="doc-biblioentry">
+———. 2009d. <span>“Guest <span>Editors</span>’ <span>Introduction</span>: <span>Reproducible Research</span>.”</span> <em>Computing in Science Engineering</em> 11 (1): 5–7.
+</div>
+<div id="ref-zotero-379" class="csl-entry" role="doc-biblioentry">
+<span>“Forslag Til Utvekslingsformat for Digitale Geodata (<span class="nocase">SOSI-formatet</span>, Versjon 1.0) - <span>Nasjonalbiblioteket</span>.”</span> n.d.a. Accessed December 14, 2020. <a href="https://www.nb.no/nbsok/nb/62d23fb9bb9c18f9c57f88f8945e30ef.nbdigital?lang=no#5">https://www.nb.no/nbsok/nb/62d23fb9bb9c18f9c57f88f8945e30ef.nbdigital?lang=no#5</a>.
+</div>
+<div id="ref-zotero-380" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. Accessed December 14, 2020. <a href="https://www.nb.no/nbsok/nb/62d23fb9bb9c18f9c57f88f8945e30ef.nbdigital?lang=no#5">https://www.nb.no/nbsok/nb/62d23fb9bb9c18f9c57f88f8945e30ef.nbdigital?lang=no#5</a>.
+</div>
+<div id="ref-foster1983" class="csl-entry" role="doc-biblioentry">
+Foster, James E. 1983. <span>“An Axiomatic Characterization of the <span>Theil</span> Measure of Income Inequality.”</span> <em>Journal of Economic Theory</em> 31 (1): 105–21. <a href="https://doi.org/10.1016/0022-0531(83)90023-6">https://doi.org/10.1016/0022-0531(83)90023-6</a>.
+</div>
+<div id="ref-fotheringham1983" class="csl-entry" role="doc-biblioentry">
+Fotheringham, A S. 1983. <span>“A New Set of Spatial Interaction Models: The Theory of Competing Destinations.”</span> <em>Environment and Planning A</em> 15: 1121–32.
+</div>
+<div id="ref-frankel2011" class="csl-entry" role="doc-biblioentry">
+Frankel, David M., and Oscar Volij. 2011. <span>“Measuring School Segregation.”</span> <em>Journal of Economic Theory</em> 146 (1): 1–38. <a href="https://doi.org/10.1016/j.jet.2010.10.008">https://doi.org/10.1016/j.jet.2010.10.008</a>.
+</div>
+<div id="ref-frisch1933" class="csl-entry" role="doc-biblioentry">
+Frisch, Ragnar. 1933a. <span>“Editor’s <span>Note</span>.”</span> <em>Econometrica</em> 1 (1): 1–4.
+</div>
+<div id="ref-frisch1933a" class="csl-entry" role="doc-biblioentry">
+———. 1933b. <span>“Editor’s <span>Note</span>.”</span> <em>Econometrica</em> 1 (1): 1–4.
+</div>
+<div id="ref-frischEditorNote1933" class="csl-entry" role="doc-biblioentry">
+———. 1933c. <span>“Editor’s <span>Note</span>.”</span> <em>Econometrica</em> 1 (1): 1–4.
+</div>
+<div id="ref-frischEditorNote1933a" class="csl-entry" role="doc-biblioentry">
+———. 1933d. <span>“Editor’s <span>Note</span>.”</span> <em>Econometrica</em> 1 (1): 1–4.
+</div>
+<div id="ref-gastineau2002" class="csl-entry" role="doc-biblioentry">
+Gastineau, Gary L. 2002. <em>The <span>Exchange-Traded Funds Manual</span></em>. <span>John Wiley &amp; Sons</span>. <a href="https://books.google.com?id=CIYoyIrP6cIC">https://books.google.com?id=CIYoyIrP6cIC</a>.
+</div>
+<div id="ref-gentleman2005" class="csl-entry" role="doc-biblioentry">
+Gentleman, Robert. 2005a. <span>“Reproducible <span>Research</span>: <span>A Bioinformatics Case Study</span>.”</span> <em>Statistical Applications in Genetics and Molecular Biology</em> 4 (1). <a href="https://doi.org/10.2202/1544-6115.1034">https://doi.org/10.2202/1544-6115.1034</a>.
+</div>
+<div id="ref-gentleman2005a" class="csl-entry" role="doc-biblioentry">
+———. 2005b. <span>“Reproducible <span>Research</span>: <span>A Bioinformatics Case Study</span>.”</span> <em>Statistical Applications in Genetics and Molecular Biology</em> 4 (1). <a href="https://doi.org/10.2202/1544-6115.1034">https://doi.org/10.2202/1544-6115.1034</a>.
+</div>
+<div id="ref-gentlemanReproducibleResearchBioinformatics2005" class="csl-entry" role="doc-biblioentry">
+———. 2005c. <span>“Reproducible <span>Research</span>: <span>A Bioinformatics Case Study</span>.”</span> <em>Statistical Applications in Genetics and Molecular Biology</em> 4 (1). <a href="https://doi.org/10.2202/1544-6115.1034">https://doi.org/10.2202/1544-6115.1034</a>.
+</div>
+<div id="ref-gentlemanReproducibleResearchBioinformatics2005a" class="csl-entry" role="doc-biblioentry">
+———. 2005d. <span>“Reproducible <span>Research</span>: <span>A Bioinformatics Case Study</span>.”</span> <em>Statistical Applications in Genetics and Molecular Biology</em> 4 (1). <a href="https://doi.org/10.2202/1544-6115.1034">https://doi.org/10.2202/1544-6115.1034</a>.
+</div>
+<div id="ref-gentleman2005b" class="csl-entry" role="doc-biblioentry">
+———. 2005e. <span>“Reproducible <span>Research</span>: <span>A Bioinformatics Case Study</span>.”</span> <em>Statistical Applications in Genetics and Molecular Biology</em> 4 (1). <a href="https://doi.org/10.2202/1544-6115.1034">https://doi.org/10.2202/1544-6115.1034</a>.
+</div>
+<div id="ref-gentleman2004" class="csl-entry" role="doc-biblioentry">
+Gentleman, Robert, and Duncan Temple Lang. 2004. <span>“Statistical <span>Analyses</span> and <span>Reproducible Research</span>.”</span> <em>Bioconductor Project Working Papers</em>, May. <a href="https://biostats.bepress.com/bioconductor/paper2">https://biostats.bepress.com/bioconductor/paper2</a>.
+</div>
+<div id="ref-gentleman2007" class="csl-entry" role="doc-biblioentry">
+———. 2007a. <span>“Statistical <span>Analyses</span> and <span>Reproducible Research</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 16 (1): 1–23. <a href="https://doi.org/10.1198/106186007X178663">https://doi.org/10.1198/106186007X178663</a>.
+</div>
+<div id="ref-gentleman2007a" class="csl-entry" role="doc-biblioentry">
+———. 2007b. <span>“Statistical <span>Analyses</span> and <span>Reproducible Research</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 16 (1): 1–23. <a href="https://doi.org/10.1198/106186007X178663">https://doi.org/10.1198/106186007X178663</a>.
+</div>
+<div id="ref-gentlemanStatisticalAnalysesReproducible2007" class="csl-entry" role="doc-biblioentry">
+———. 2007c. <span>“Statistical <span>Analyses</span> and <span>Reproducible Research</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 16 (1): 1–23. <a href="https://doi.org/10.1198/106186007X178663">https://doi.org/10.1198/106186007X178663</a>.
+</div>
+<div id="ref-gentlemanStatisticalAnalysesReproducible2007a" class="csl-entry" role="doc-biblioentry">
+———. 2007d. <span>“Statistical <span>Analyses</span> and <span>Reproducible Research</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 16 (1): 1–23. <a href="https://doi.org/10.1198/106186007X178663">https://doi.org/10.1198/106186007X178663</a>.
+</div>
+<div id="ref-gentleman2003" class="csl-entry" role="doc-biblioentry">
+Gentleman, Robert, and Duncan Temple Lang. 2003. <span>“Statistical <span>Analyses</span> and <span>Reproducible Research</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 16 (1): 1–23. <a href="https://doi.org/10.1198/106186007X178663">https://doi.org/10.1198/106186007X178663</a>.
+</div>
+<div id="ref-gentleman2007b" class="csl-entry" role="doc-biblioentry">
+———. 2007. <span>“Statistical <span>Analyses</span> and <span>Reproducible Research</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 16 (1): 1–23. <a href="https://doi.org/10.1198/106186007X178663">https://doi.org/10.1198/106186007X178663</a>.
+</div>
+<div id="ref-zotero-1360" class="csl-entry" role="doc-biblioentry">
+<span>“<span>GeoDa</span> on <span>Github</span>.”</span> n.d. Accessed August 30, 2022. <a href="http://geodacenter.github.io/">http://geodacenter.github.io/</a>.
+</div>
+<div id="ref-gitlesen2000" class="csl-entry" role="doc-biblioentry">
+Gitlesen, J P, and I Thorsen. 2000. <span>“A Competing Destinations Approach to Modeling Commuting Flows: <span>A</span> Theoretical Interpretation and an Empirical Application of the Model.”</span> <em>Environment and Planning A</em> 32: 2057–74.
+</div>
+<div id="ref-gjerde2014" class="csl-entry" role="doc-biblioentry">
+Gjerde, Øystein, and Frode Sættem. 2014. <span>“Børshandlede produkter: ETP, ETF og ETN.”</span> <em>Praktisk økonomi &amp; finans</em> 30 (04): 367–80. <a href="https://www.idunn.no/pof/2014/04/boershandlede_produkter_etp_etf_og_etn">https://www.idunn.no/pof/2014/04/boershandlede_produkter_etp_etf_og_etn</a>.
+</div>
+<div id="ref-gjestland2014" class="csl-entry" role="doc-biblioentry">
+Gjestland, A, D McArthur, L Osland, and I Thorsen. 2014. <span>“The Suitability of Hedonic Models for Cost-Benefit Analysis: <span>Evidence</span> from Commuting Flows.”</span> <em>Transportation Research Part A: Policy and Practice</em> 61: 136–51.
+</div>
+<div id="ref-golub1999b" class="csl-entry" role="doc-biblioentry">
+Golub, T. R., D. K. Slonim, Pablo Tamayo, C Huard, M Gaasenbeek, J. P. Mesirov, Hilary Coller, et al. 1999a. <span>“Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Monitoring.”</span> <em>Science (New York, N.Y.)</em> 286 (November): 531–37.
+</div>
+<div id="ref-golub1999" class="csl-entry" role="doc-biblioentry">
+Golub, T. R., D. K. Slonim, P. Tamayo, C. Huard, M. Gaasenbeek, J. P. Mesirov, H. Coller, et al. 1999b. <span>“Molecular <span>Classification</span> of <span>Cancer</span>: <span>Class Discovery</span> and <span>Class Prediction</span> by <span>Gene Expression Monitoring</span>.”</span> <em>Science (New York, N.Y.)</em> 286 (5439): 531–37. <a href="https://doi.org/10.1126/science.286.5439.531">https://doi.org/10.1126/science.286.5439.531</a>.
+</div>
+<div id="ref-golub1999a" class="csl-entry" role="doc-biblioentry">
+———, et al. 1999c. <span>“Molecular <span>Classification</span> of <span>Cancer</span>: <span>Class Discovery</span> and <span>Class Prediction</span> by <span>Gene Expression Monitoring</span>.”</span> <em>Science (New York, N.Y.)</em> 286 (5439): 531–37. <a href="https://doi.org/10.1126/science.286.5439.531">https://doi.org/10.1126/science.286.5439.531</a>.
+</div>
+<div id="ref-golubMolecularClassificationCancer1999" class="csl-entry" role="doc-biblioentry">
+———, et al. 1999d. <span>“Molecular <span>Classification</span> of <span>Cancer</span>: <span>Class Discovery</span> and <span>Class Prediction</span> by <span>Gene Expression Monitoring</span>.”</span> <em>Science (New York, N.Y.)</em> 286 (5439): 531–37. <a href="https://doi.org/10.1126/science.286.5439.531">https://doi.org/10.1126/science.286.5439.531</a>.
+</div>
+<div id="ref-golubMolecularClassificationCancer1999a" class="csl-entry" role="doc-biblioentry">
+———, et al. 1999e. <span>“Molecular <span>Classification</span> of <span>Cancer</span>: <span>Class Discovery</span> and <span>Class Prediction</span> by <span>Gene Expression Monitoring</span>.”</span> <em>Science (New York, N.Y.)</em> 286 (5439): 531–37. <a href="https://doi.org/10.1126/science.286.5439.531">https://doi.org/10.1126/science.286.5439.531</a>.
+</div>
+<div id="ref-golub1999c" class="csl-entry" role="doc-biblioentry">
+———, et al. 1999f. <span>“Molecular Classification of Cancer: Class Discovery and Class Prediction by Gene Expression Monitoring.”</span> <em>Science (New York, N.Y.)</em> 286 (5439): 531–37. <a href="https://doi.org/10.1126/science.286.5439.531">https://doi.org/10.1126/science.286.5439.531</a>.
+</div>
+<div id="ref-goodman2016" class="csl-entry" role="doc-biblioentry">
+Goodman, Steven N., Daniele Fanelli, and John P. A. Ioannidis. 2016a. <span>“What <span>Does Research Reproducibility Mean</span>?”</span> <em>Science Translational Medicine</em> 8 (341): 341ps12–12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>.
+</div>
+<div id="ref-goodman2016a" class="csl-entry" role="doc-biblioentry">
+———. 2016b. <span>“What <span>Does Research Reproducibility Mean</span>?”</span> <em>Science Translational Medicine</em> 8 (341): 341ps12–12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>.
+</div>
+<div id="ref-goodmanWhatDoesResearch2016" class="csl-entry" role="doc-biblioentry">
+———. 2016c. <span>“What <span>Does Research Reproducibility Mean</span>?”</span> <em>Science Translational Medicine</em> 8 (341): 341ps12–12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>.
+</div>
+<div id="ref-goodmanWhatDoesResearch2016a" class="csl-entry" role="doc-biblioentry">
+———. 2016d. <span>“What <span>Does Research Reproducibility Mean</span>?”</span> <em>Science Translational Medicine</em> 8 (341): 341ps12–12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>.
+</div>
+<div id="ref-goodman2016b" class="csl-entry" role="doc-biblioentry">
+———. 2016e. <span>“What Does Research Reproducibility Mean?”</span> <em>Science Translational Medicine</em> 8 (341): 341ps12–12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>.
+</div>
+<div id="ref-greene2003" class="csl-entry" role="doc-biblioentry">
+Greene, WH. 2003. <em>Econometric Analysis</em>. <span>New Jersey</span>: <span>Prentice Hall</span>.
+</div>
+<div id="ref-grolemundc" class="csl-entry" role="doc-biblioentry">
+Grolemund, Garrett, J. J. Allaire. n.d. <em>R <span>Markdown</span>: <span>The Definitive Guide</span></em>. Accessed April 25, 2019. <a href="https://bookdown.org/yihui/rmarkdown/">https://bookdown.org/yihui/rmarkdown/</a>.
+</div>
+<div id="ref-grolemund" class="csl-entry" role="doc-biblioentry">
+Grolemund, Garrett, and Hadley Wickham. n.d.a. <em>R for <span>Data Science</span></em>.
+</div>
+<div id="ref-grolemunda" class="csl-entry" role="doc-biblioentry">
+———. n.d.d. <em>R for <span>Data Science</span></em>.
+</div>
+<div id="ref-grolemundb" class="csl-entry" role="doc-biblioentry">
+———. n.d.e. <em>R for <span>Data Science</span></em>. Accessed August 19, 2020. <a href="https://r4ds.had.co.nz/">https://r4ds.had.co.nz/</a>.
+</div>
+<div id="ref-grolemundDataScience" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <em>R for <span>Data Science</span></em>.
+</div>
+<div id="ref-grolemundDataSciencea" class="csl-entry" role="doc-biblioentry">
+———. n.d.c. <em>R for <span>Data Science</span></em>.
+</div>
+<div id="ref-grosjean2018" class="csl-entry" role="doc-biblioentry">
+Grosjean, Philippe, and Frederic Ibanez. 2018. <em>Pastecs: <span>Package</span> for Analysis of Space-Time Ecological Series</em>. Manual. <a href="https://CRAN.R-project.org/package=pastecs">https://CRAN.R-project.org/package=pastecs</a>.
+</div>
+<div id="ref-gruber" class="csl-entry" role="doc-biblioentry">
+Gruber, John, and Aron Swartz. n.d.a. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-grubera" class="csl-entry" role="doc-biblioentry">
+———. n.d.f. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-gruberb" class="csl-entry" role="doc-biblioentry">
+———. n.d.g. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-gruberc" class="csl-entry" role="doc-biblioentry">
+———. n.d.h. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-gruberDaringFireballMarkdown" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-gruberDaringFireballMarkdowna" class="csl-entry" role="doc-biblioentry">
+———. n.d.c. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-gruberDaringFireballMarkdownb" class="csl-entry" role="doc-biblioentry">
+———. n.d.d. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-gruberDaringFireballMarkdownc" class="csl-entry" role="doc-biblioentry">
+———. n.d.e. <em>Daring <span>Fireball</span>: <span>Markdown</span></em>.
+</div>
+<div id="ref-grytten2016" class="csl-entry" role="doc-biblioentry">
+Grytten, Linn. 2016. <span>“Norske Børshandlede Produkter: En Analyse Av <span>ETN</span> Og <span>ETF</span>.”</span> <a href="https://core.ac.uk/display/52138349">https://core.ac.uk/display/52138349</a>.
+</div>
+<div id="ref-halleckvega2015" class="csl-entry" role="doc-biblioentry">
+Halleck Vega, Solmaria, and J. Paul Elhorst. 2015. <span>“<span>THE SLX MODEL</span>.”</span> <em>Journal of Regional Science</em> 55 (3): 339–63. <a href="https://doi.org/10.1111/jors.12188">https://doi.org/10.1111/jors.12188</a>.
+</div>
+<div id="ref-hamilton1982" class="csl-entry" role="doc-biblioentry">
+Hamilton, BW. 1982. <span>“Wasteful Commuting.”</span> <em>Journal of Political Economy</em> 90: 1497–1504.
+</div>
+<div id="ref-handy1997" class="csl-entry" role="doc-biblioentry">
+Handy, SL, and DA Niemeier. 1997. <span>“Measuring Accessibility: An Exploration of Issues and Alternatives.”</span> <em>Environment and Planning A</em> 29: 1175–94.
+</div>
+<div id="ref-hansen1959" class="csl-entry" role="doc-biblioentry">
+Hansen, WG. 1959. <span>“How Accessibility Shapes Land Use.”</span> <em>Journal of the American Institute of Planners</em> 25: 73–76.
+</div>
+<div id="ref-harrelljr2020" class="csl-entry" role="doc-biblioentry">
+Harrell Jr, Frank E, with contributions from Charles Dupont, and many others. 2020. <em>Hmisc: <span>Harrell</span> Miscellaneous</em>. Manual. <a href="https://CRAN.R-project.org/package=Hmisc">https://CRAN.R-project.org/package=Hmisc</a>.
+</div>
+<div id="ref-harrisona.a.1977" class="csl-entry" role="doc-biblioentry">
+Harrison, A. A., and Saeed, L. 1977. <span>“Let’s Make a Deal: <span>An</span> Analysis of Revelations and Stipulations in Lonely Hearts Advertisements.”</span> <em>Journal of Personality and Social Psychology</em> 35 (4): 257–64. <a href="https://doi.org/10.1037/0022-3514.35.4.257">https://doi.org/10.1037/0022-3514.35.4.257</a>.
+</div>
+<div id="ref-hastie1990" class="csl-entry" role="doc-biblioentry">
+Hastie, T, and RJ Tibshirani. 1990. <em>Generalized Additive Models</em>. <span>London</span>: <span>Chapman and Hall</span>.
+</div>
+<div id="ref-healy2019" class="csl-entry" role="doc-biblioentry">
+Healy, Kieran. 2019. <em>Data <span>Visualization</span> (<span>A Practical Introduction</span>)</em>. 1. ed. <span>Princeton University Press</span>. <a href="https://socviz.co/index.html">https://socviz.co/index.html</a>.
+</div>
+<div id="ref-heikkila1989" class="csl-entry" role="doc-biblioentry">
+Heikkila, E, P Gordon, JI Kim, RB Peiser, and HW Richardson. 1989. <span>“What Happened to the <span class="nocase">CBD-distance</span> Gradient?: Land Values in a Polycentric City.”</span> <em>Environment and Planning A</em> 21: 221–32.
+</div>
+<div id="ref-holt1996" class="csl-entry" role="doc-biblioentry">
+Holt, D, D Steel, M Tranmer, and N Wrigley. 1996. <span>“Aggregation and Ecological Effects in Geographically Based Data.”</span> <em>Geographical Analysis</em> 28: 244–61.
+</div>
+<div id="ref-hoogstra2017" class="csl-entry" role="doc-biblioentry">
+Hoogstra, Gerke J., Jouke van Dijk, and Raymond J. G. M. Florax. 2017. <span>“Do Jobs Follow People or People Follow Jobs? <span>A</span> Meta-Analysis of <span>Carlino</span>–<span>Mills</span> Studies.”</span> <em>Spatial Economic Analysis</em> 12 (4): 357–78. <a href="https://doi.org/10.1080/17421772.2017.1340663">https://doi.org/10.1080/17421772.2017.1340663</a>.
+</div>
+<div id="ref-hughes1992" class="csl-entry" role="doc-biblioentry">
+Hughes, JWT, and CF Sirmans. 1992. <span>“Traffic Externalities and Single-Family House Prices.”</span> <em>Journal of Regional Science</em> 32 (4): 487–500.
 </div>
 <div id="ref-R-huxtable" class="csl-entry" role="doc-biblioentry">
 Hugh-Jones, David. 2022. <em>Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats</em>. <a href="https://hughjonesd.github.io/huxtable/">https://hughjonesd.github.io/huxtable/</a>.
 </div>
+<div id="ref-hull2012" class="csl-entry" role="doc-biblioentry">
+Hull, John. 2012. <span>“Options, Futures, and Other Derivatives.”</span>
+</div>
+<div id="ref-hull2015" class="csl-entry" role="doc-biblioentry">
+———. 2015. <em>Risk Management and Financial Institutions</em>. Fourth edition. Wiley Finance Series. <span>Hoboken, New Jersey</span>: <span>Wiley</span>.
+</div>
+<div id="ref-hull2018" class="csl-entry" role="doc-biblioentry">
+———. 2018. <em>Options, Futures, and Other Derivatives</em>. 9th ed., global ed. <span>Harlow</span>: <span>Pearson</span>.
+</div>
+<div id="ref-hull2014" class="csl-entry" role="doc-biblioentry">
+Hull, John, and John Hull. 2014. <em>Students Solutions Manual &amp; Study Guide for <span>Fundamentals</span> of Futures and Options Markets, Eighth Edition</em>.
+</div>
+<div id="ref-zotero-166" class="csl-entry" role="doc-biblioentry">
+<span>“Hva er nytt i Firefox.”</span> n.d. <span>Mozilla</span>. Accessed August 28, 2020. <a href="https://www.mozilla.org/nb-NO/firefox/80.0/whatsnew/all/">https://www.mozilla.org/nb-NO/firefox/80.0/whatsnew/all/</a>.
+</div>
+<div id="ref-ihaka1996" class="csl-entry" role="doc-biblioentry">
+Ihaka, Ross. 1996. <span>“Gentleman <span>R</span>: <span>R</span>: <span>A</span> Language for Data Analysis and Graphics.”</span> In.
+</div>
+<div id="ref-zotero-105" class="csl-entry" role="doc-biblioentry">
+<span>“Introduction to Tableone.”</span> n.d. Accessed September 2, 2020. <a href="https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html">https://cran.r-project.org/web/packages/tableone/vignettes/introduction.html</a>.
+</div>
+<div id="ref-ioannidis2005" class="csl-entry" role="doc-biblioentry">
+Ioannidis, John P. A. 2005a. <span>“Why <span>Most Published Research Findings Are False</span>.”</span> <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div>
+<div id="ref-ioannidis2005a" class="csl-entry" role="doc-biblioentry">
+———. 2005b. <span>“Why <span>Most Published Research Findings Are False</span>.”</span> <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div>
+<div id="ref-ioannidisWhyMostPublished2005" class="csl-entry" role="doc-biblioentry">
+———. 2005c. <span>“Why <span>Most Published Research Findings Are False</span>.”</span> <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div>
+<div id="ref-ioannidisWhyMostPublished2005a" class="csl-entry" role="doc-biblioentry">
+———. 2005d. <span>“Why <span>Most Published Research Findings Are False</span>.”</span> <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div>
+<div id="ref-ioannidis2005b" class="csl-entry" role="doc-biblioentry">
+———. 2005e. <span>“Why <span>Most Published Research Findings Are False</span>.”</span> <em>PLOS Medicine</em> 2 (8): e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>.
+</div>
+<div id="ref-iyengar1988" class="csl-entry" role="doc-biblioentry">
+Iyengar, Satish, and Joel B. Greenhouse. 1988a. <span>“Selection <span>Models</span> and the <span>File Drawer Problem</span>.”</span> <em>Statistical Science</em> 3 (1): 109–17.
+</div>
+<div id="ref-iyengar1988a" class="csl-entry" role="doc-biblioentry">
+———. 1988b. <span>“Selection <span>Models</span> and the <span>File Drawer Problem</span>.”</span> <em>Statistical Science</em> 3 (1): 109–17.
+</div>
+<div id="ref-iyengar1988b" class="csl-entry" role="doc-biblioentry">
+———. 1988c. <span>“Selection Models and the File Drawer Problem.”</span> <em>Statistical Science</em> 3 (1): 109–17. <a href="https://www.jstor.org/stable/2245925">https://www.jstor.org/stable/2245925</a>.
+</div>
+<div id="ref-iyengarSelectionModelsFile1988" class="csl-entry" role="doc-biblioentry">
+———. 1988d. <span>“Selection <span>Models</span> and the <span>File Drawer Problem</span>.”</span> <em>Statistical Science</em> 3 (1): 109–17.
+</div>
+<div id="ref-iyengarSelectionModelsFile1988a" class="csl-entry" role="doc-biblioentry">
+———. 1988e. <span>“Selection <span>Models</span> and the <span>File Drawer Problem</span>.”</span> <em>Statistical Science</em> 3 (1): 109–17.
+</div>
+<div id="ref-jackson1979" class="csl-entry" role="doc-biblioentry">
+Jackson, JR. 1979. <span>“Intraurban Variation in the Price of Housing.”</span> <em>Journal of Urban Economics</em> 6: 464–79.
+</div>
+<div id="ref-jasny2011" class="csl-entry" role="doc-biblioentry">
+Jasny, Barbara R., Gilbert Chin, Lisa Chong, and Sacha Vignieri. 2011a. <span>“Again, and <span>Again</span>, and <span>Again</span>.”</span> <em>Science</em> 334 (6060): 1225–25. <a href="https://doi.org/10.1126/science.334.6060.1225">https://doi.org/10.1126/science.334.6060.1225</a>.
+</div>
+<div id="ref-jasny2011a" class="csl-entry" role="doc-biblioentry">
+———. 2011b. <span>“Again, and <span>Again</span>, and <span>Again</span>.”</span> <em>Science</em> 334 (6060): 1225–25. <a href="https://doi.org/10.1126/science.334.6060.1225">https://doi.org/10.1126/science.334.6060.1225</a>.
+</div>
+<div id="ref-jasny2011b" class="csl-entry" role="doc-biblioentry">
+———. 2011c. <span>“Again, and Again, and Again.”</span> <em>Science</em> 334 (6060): 1225–25. <a href="https://doi.org/10.1126/science.334.6060.1225">https://doi.org/10.1126/science.334.6060.1225</a>.
+</div>
+<div id="ref-jasnyAgainAgainAgain2011" class="csl-entry" role="doc-biblioentry">
+———. 2011d. <span>“Again, and <span>Again</span>, and <span>Again</span>.”</span> <em>Science</em> 334 (6060): 1225–25. <a href="https://doi.org/10.1126/science.334.6060.1225">https://doi.org/10.1126/science.334.6060.1225</a>.
+</div>
+<div id="ref-jasnyAgainAgainAgain2011a" class="csl-entry" role="doc-biblioentry">
+———. 2011e. <span>“Again, and <span>Again</span>, and <span>Again</span>.”</span> <em>Science</em> 334 (6060): 1225–25. <a href="https://doi.org/10.1126/science.334.6060.1225">https://doi.org/10.1126/science.334.6060.1225</a>.
+</div>
+<div id="ref-judge2004" class="csl-entry" role="doc-biblioentry">
+Judge, Timothy A., and Daniel M. Cable. 2004a. <span>“The <span>Effect</span> of <span>Physical Height</span> on <span>Workplace Success</span> and <span>Income</span>: <span>Preliminary Test</span> of a <span>Theoretical Model</span>.”</span> <em>Journal of Applied Psychology</em> 89 (3): 428–41. <a href="https://doi.org/10.1037/0021-9010.89.3.428">https://doi.org/10.1037/0021-9010.89.3.428</a>.
+</div>
+<div id="ref-judge2004a" class="csl-entry" role="doc-biblioentry">
+———. 2004b. <span>“The <span>Effect</span> of <span>Physical Height</span> on <span>Workplace Success</span> and <span>Income</span>: <span>Preliminary Test</span> of a <span>Theoretical Model</span>.”</span> <em>Journal of Applied Psychology</em> 89 (3): 428–41. <a href="https://doi.org/10.1037/0021-9010.89.3.428">https://doi.org/10.1037/0021-9010.89.3.428</a>.
+</div>
+<div id="ref-juhl2021" class="csl-entry" role="doc-biblioentry">
+Juhl, Sebastian. 2021a. <span>“The <span>Wald Test</span> of <span>Common Factors</span> in <span>Spatial Model Specification Search Strategies</span>.”</span> <em>Political Analysis</em> 29 (2): 193–211. <a href="https://doi.org/10.1017/pan.2020.23">https://doi.org/10.1017/pan.2020.23</a>.
+</div>
+<div id="ref-juhl2021a" class="csl-entry" role="doc-biblioentry">
+———. 2021b. <span>“The <span>Wald Test</span> of <span>Common Factors</span> in <span>Spatial Model Specification Search Strategies</span>.”</span> <em>Political Analysis</em> 29 (2): 193–211. <a href="https://doi.org/10.1017/pan.2020.23">https://doi.org/10.1017/pan.2020.23</a>.
+</div>
+<div id="ref-kanbur2019" class="csl-entry" role="doc-biblioentry">
+Kanbur, Ravi, and Andy Snell. 2019. <span>“Inequality <span>Indices</span> as <span>Tests</span> of <span>Fairness</span>.”</span> <em>Economic Journal</em> 129 (621): 2216–39. <a href="https://doi.org/10.1111/ecoj.12637">https://doi.org/10.1111/ecoj.12637</a>.
+</div>
+<div id="ref-kirby2009" class="csl-entry" role="doc-biblioentry">
+Kirby, DK, and J LeSage. 2009. <span>“Changes in Commuting to Work Times over the 1990 to 2000 Period.”</span> <em>Regional Science and Urban Economics</em> 39: 460–71.
+</div>
+<div id="ref-klein2018" class="csl-entry" role="doc-biblioentry">
+Klein, Richard A., Michelangelo Vianello, Fred Hasselman, Byron G. Adams, Jr. Reginald B. Adams, Sinan Alper, Mark Aveyard, Jordan R. Axt, Mayowa T. Babalola, Štěpán Bahník, Rishtee Batra, Mihály Berkics, Michael J. Bernstein, Daniel R. Berry, Olga Bialobrzeska, Evans Dami Binan, Konrad Bocian, Mark J. Brandt, Robert Busching, Anna Cabak Rédei, Huajian Cai, Fanny Cambier, Katarzyna Cantarero, Cheryl L. Carmichael, Francisco Ceric, Jesse Chandler, Jen-Ho Chang, Armand Chatard, Eva E. Chen, Winnee Cheong, David C. Cicero, Sharon Coen, Jennifer A. Coleman, Brian Collisson, Morgan A. Conway, Katherine S. Corker, Paul G. Curran, Fiery Cushman, Zubairu K. Dagona, Ilker Dalgar, Anna Dalla Rosa, William E. Davis, Maaike de Bruijn, Leander De Schutter, Thierry Devos, Marieke de Vries, Canay Doğulu, Nerisa Dozo, Kristin Nicole Dukes, Yarrow Dunham, Kevin Durrheim, Charles R. Ebersole, John E. Edlund, Anja Eller, Alexander Scott English, Carolyn Finck, Natalia Frankowska, Miguel-Ángel Freyre, Mike Friedman, Elisa Maria Galliani, Joshua C. Gandi, Tanuka Ghoshal, Steffen R. Giessner, Tripat Gill, Timo Gnambs, Ángel Gómez, Roberto González, Jesse Graham, Jon E. Grahe, Ivan Grahek, Eva G. T. Green, Kakul Hai, Matthew Haigh, Elizabeth L. Haines, Michael P. Hall, Marie E. Heffernan, Joshua A. Hicks, Petr Houdek, Jeffrey R. Huntsinger, Ho Phi Huynh, Hans IJzerman, Yoel Inbar, \AAse H. Innes-Ker, William Jiménez-Leal, Melissa-Sue John, Jennifer A. Joy-Gaba, Roza G. Kamiloğlu, Heather Barry Kappes, Serdar Karabati, Haruna Karick, Victor N. Keller, Anna Kende, Nicolas Kervyn, Goran Knežević, Carrie Kovacs, Lacy E. Krueger, German Kurapov, Jamie Kurtz, Daniël Lakens, Ljiljana B. Lazarević, Carmel A. Levitan, Jr. Neil A. Lewis, Samuel Lins, Nikolette P. Lipsey, Joy E. Losee, Esther Maassen, Angela T. Maitner, Winfrida Malingumu, Robyn K. Mallett, Satia A. Marotta, Janko Me\djedović, et al. 2018a. <span>“Many <span>Labs</span> 2: <span>Investigating Variation</span> in <span>Replicability</span> Across <span>Samples</span> and <span>Settings</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 1 (4): 443–90. <a href="https://doi.org/10.1177/2515245918810225">https://doi.org/10.1177/2515245918810225</a>.
+</div>
+<div id="ref-klein2018a" class="csl-entry" role="doc-biblioentry">
+———, et al. 2018b. <span>“Many <span>Labs</span> 2: <span>Investigating Variation</span> in <span>Replicability</span> Across <span>Samples</span> and <span>Settings</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 1 (4): 443–90. <a href="https://doi.org/10.1177/2515245918810225">https://doi.org/10.1177/2515245918810225</a>.
+</div>
+<div id="ref-klein2018b" class="csl-entry" role="doc-biblioentry">
+Klein, Richard A., Michelangelo Vianello, Fred Hasselman, Byron G. Adams, Jr. Reginald B. Adams, Sinan Alper, Mark Aveyard, Jordan R. Axt, Mayowa T. Babalola, Štěpán Bahník, Rishtee Batra, Mihály Berkics, Michael J. Bernstein, Daniel R. Berry, Olga Bialobrzeska, Evans Dami Binan, Konrad Bocian, Mark J. Brandt, Robert Busching, Anna Cabak Rédei, Huajian Cai, Fanny Cambier, Katarzyna Cantarero, Cheryl L. Carmichael, Francisco Ceric, Jesse Chandler, Jen-Ho Chang, Armand Chatard, Eva E. Chen, Winnee Cheong, David C. Cicero, Sharon Coen, Jennifer A. Coleman, Brian Collisson, Morgan A. Conway, Katherine S. Corker, Paul G. Curran, Fiery Cushman, Zubairu K. Dagona, Ilker Dalgar, Anna Dalla Rosa, William E. Davis, Maaike de Bruijn, Leander De Schutter, Thierry Devos, Marieke de Vries, Canay Doğulu, Nerisa Dozo, Kristin Nicole Dukes, Yarrow Dunham, Kevin Durrheim, Charles R. Ebersole, John E. Edlund, Anja Eller, Alexander Scott English, Carolyn Finck, Natalia Frankowska, Miguel-Ángel Freyre, Mike Friedman, Elisa Maria Galliani, Joshua C. Gandi, Tanuka Ghoshal, Steffen R. Giessner, Tripat Gill, Timo Gnambs, Ángel Gómez, Roberto González, Jesse Graham, Jon E. Grahe, Ivan Grahek, Eva G. T. Green, Kakul Hai, Matthew Haigh, Elizabeth L. Haines, Michael P. Hall, Marie E. Heffernan, Joshua A. Hicks, Petr Houdek, Jeffrey R. Huntsinger, Ho Phi Huynh, Hans IJzerman, Yoel Inbar, Åse H. Innes-Ker, William Jiménez-Leal, Melissa-Sue John, Jennifer A. Joy-Gaba, Roza G. Kamiloğlu, Heather Barry Kappes, Serdar Karabati, Haruna Karick, Victor N. Keller, Anna Kende, Nicolas Kervyn, Goran Knežević, Carrie Kovacs, Lacy E. Krueger, German Kurapov, Jamie Kurtz, Daniël Lakens, Ljiljana B. Lazarević, Carmel A. Levitan, Jr. Neil A. Lewis, Samuel Lins, Nikolette P. Lipsey, Joy E. Losee, Esther Maassen, Angela T. Maitner, Winfrida Malingumu, Robyn K. Mallett, Satia A. Marotta, Janko Međedović, et al. 2018. <span>“Many Labs 2: <span>Investigating</span> Variation in Replicability Across Samples and Settings.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 1 (4): 443–90. <a href="https://doi.org/10.1177/2515245918810225">https://doi.org/10.1177/2515245918810225</a>.
+</div>
+<div id="ref-kleinManyLabsInvestigating2018" class="csl-entry" role="doc-biblioentry">
+Klein, Richard A., Michelangelo Vianello, Fred Hasselman, Byron G. Adams, Jr. Reginald B. Adams, Sinan Alper, Mark Aveyard, Jordan R. Axt, Mayowa T. Babalola, Štěpán Bahník, Rishtee Batra, Mihály Berkics, Michael J. Bernstein, Daniel R. Berry, Olga Bialobrzeska, Evans Dami Binan, Konrad Bocian, Mark J. Brandt, Robert Busching, Anna Cabak Rédei, Huajian Cai, Fanny Cambier, Katarzyna Cantarero, Cheryl L. Carmichael, Francisco Ceric, Jesse Chandler, Jen-Ho Chang, Armand Chatard, Eva E. Chen, Winnee Cheong, David C. Cicero, Sharon Coen, Jennifer A. Coleman, Brian Collisson, Morgan A. Conway, Katherine S. Corker, Paul G. Curran, Fiery Cushman, Zubairu K. Dagona, Ilker Dalgar, Anna Dalla Rosa, William E. Davis, Maaike de Bruijn, Leander De Schutter, Thierry Devos, Marieke de Vries, Canay Doğulu, Nerisa Dozo, Kristin Nicole Dukes, Yarrow Dunham, Kevin Durrheim, Charles R. Ebersole, John E. Edlund, Anja Eller, Alexander Scott English, Carolyn Finck, Natalia Frankowska, Miguel-Ángel Freyre, Mike Friedman, Elisa Maria Galliani, Joshua C. Gandi, Tanuka Ghoshal, Steffen R. Giessner, Tripat Gill, Timo Gnambs, Ángel Gómez, Roberto González, Jesse Graham, Jon E. Grahe, Ivan Grahek, Eva G. T. Green, Kakul Hai, Matthew Haigh, Elizabeth L. Haines, Michael P. Hall, Marie E. Heffernan, Joshua A. Hicks, Petr Houdek, Jeffrey R. Huntsinger, Ho Phi Huynh, Hans IJzerman, Yoel Inbar, \AAse H. Innes-Ker, William Jiménez-Leal, Melissa-Sue John, Jennifer A. Joy-Gaba, Roza G. Kamiloğlu, Heather Barry Kappes, Serdar Karabati, Haruna Karick, Victor N. Keller, Anna Kende, Nicolas Kervyn, Goran Knežević, Carrie Kovacs, Lacy E. Krueger, German Kurapov, Jamie Kurtz, Daniël Lakens, Ljiljana B. Lazarević, Carmel A. Levitan, Jr. Neil A. Lewis, Samuel Lins, Nikolette P. Lipsey, Joy E. Losee, Esther Maassen, Angela T. Maitner, Winfrida Malingumu, Robyn K. Mallett, Satia A. Marotta, Janko Me\djedović, et al. 2018c. <span>“Many <span>Labs</span> 2: <span>Investigating Variation</span> in <span>Replicability</span> Across <span>Samples</span> and <span>Settings</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 1 (4): 443–90. <a href="https://doi.org/10.1177/2515245918810225">https://doi.org/10.1177/2515245918810225</a>.
+</div>
+<div id="ref-kleinManyLabsInvestigating2018a" class="csl-entry" role="doc-biblioentry">
+———, et al. 2018d. <span>“Many <span>Labs</span> 2: <span>Investigating Variation</span> in <span>Replicability</span> Across <span>Samples</span> and <span>Settings</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 1 (4): 443–90. <a href="https://doi.org/10.1177/2515245918810225">https://doi.org/10.1177/2515245918810225</a>.
+</div>
+<div id="ref-knuth1984" class="csl-entry" role="doc-biblioentry">
+Knuth, D. E. 1984a. <span>“Literate <span>Programming</span>.”</span> <em>The Computer Journal</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+<div id="ref-knuth1984a" class="csl-entry" role="doc-biblioentry">
+———. 1984b. <span>“Literate <span>Programming</span>.”</span> <em>The Computer Journal</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+<div id="ref-knuthLiterateProgramming1984" class="csl-entry" role="doc-biblioentry">
+———. 1984c. <span>“Literate <span>Programming</span>.”</span> <em>The Computer Journal</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+<div id="ref-knuthLiterateProgramming1984a" class="csl-entry" role="doc-biblioentry">
+———. 1984d. <span>“Literate <span>Programming</span>.”</span> <em>The Computer Journal</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+<div id="ref-knuth1986" class="csl-entry" role="doc-biblioentry">
+———. 1986a. <em>The <span>TeXbook</span></em>. Computers &amp; <span>Typesetting</span>. <span>Addison-Wesley</span>.
+</div>
+<div id="ref-knuth1986a" class="csl-entry" role="doc-biblioentry">
+———. 1986b. <em>The <span>TeXbook</span></em>. Computers &amp; <span>Typesetting</span>. <span>Addison-Wesley</span>.
+</div>
+<div id="ref-knuth1986b" class="csl-entry" role="doc-biblioentry">
+———. 1986c. <em>The <span>TeXbook</span></em>. Computers &amp; Typesetting. <span>Addison-Wesley</span>. <a href="https://books.google.no/books?id=zqgQAQAAMAAJ">https://books.google.no/books?id=zqgQAQAAMAAJ</a>.
+</div>
+<div id="ref-knuthTeXbook1986" class="csl-entry" role="doc-biblioentry">
+———. 1986d. <em>The <span>TeXbook</span></em>. Computers &amp; <span>Typesetting</span>. <span>Addison-Wesley</span>.
+</div>
+<div id="ref-knuthTeXbook1986a" class="csl-entry" role="doc-biblioentry">
+———. 1986e. <em>The <span>TeXbook</span></em>. Computers &amp; <span>Typesetting</span>. <span>Addison-Wesley</span>.
+</div>
+<div id="ref-knuth1992" class="csl-entry" role="doc-biblioentry">
+Knuth, Donald E. 1992a. <em>Literate <span>Programming</span></em>. <span>Cambridge University Press</span>.
+</div>
+<div id="ref-knuth1992a" class="csl-entry" role="doc-biblioentry">
+———. 1992b. <em>Literate <span>Programming</span></em>. <span>Cambridge University Press</span>.
+</div>
+<div id="ref-knuthLiterateProgramming1992" class="csl-entry" role="doc-biblioentry">
+———. 1992c. <em>Literate <span>Programming</span></em>. <span>Cambridge University Press</span>.
+</div>
+<div id="ref-knuthLiterateProgramming1992a" class="csl-entry" role="doc-biblioentry">
+———. 1992d. <em>Literate <span>Programming</span></em>. <span>Cambridge University Press</span>.
+</div>
+<div id="ref-knuth1992b" class="csl-entry" role="doc-biblioentry">
+———. 1992e. <em>Literate <span>Programming</span></em>. <span>Cambridge University Press</span>. <a href="https://books.google.com?id=vovpQgAACAAJ">https://books.google.com?id=vovpQgAACAAJ</a>.
+</div>
+<div id="ref-knuth1992c" class="csl-entry" role="doc-biblioentry">
+———. 1992f. <em>Literate <span>Programming</span></em>. 1st edition. <span>Stanford, Calif.</span>: <span>Center for the Study of Language and Inf</span>.
+</div>
+<div id="ref-kommentator" class="csl-entry" role="doc-biblioentry">
+Kommentator, Frank Rossavik. n.d. <span>“Europas sikkerhet er i spill. USA kan havne på et sidespor, og hva skjer i Tyskland? | Frank Rossavik.”</span> <span>Aftenposten</span>. Accessed April 10, 2019. <a href="https://www.aftenposten.no/article/ap-6jqabW.html">https://www.aftenposten.no/article/ap-6jqabW.html</a>.
+</div>
+<div id="ref-kunnskapsdepartementet2018" class="csl-entry" role="doc-biblioentry">
+Kunnskapsdepartementet. 2018. <span>“NOU 2018: 15.”</span> NOU. <span>Regjeringen.no</span>. December 10, 2018. <a href="https://www.regjeringen.no/no/dokumenter/nou-2018-15/id2621801/">https://www.regjeringen.no/no/dokumenter/nou-2018-15/id2621801/</a>.
+</div>
+<div id="ref-kwan2013" class="csl-entry" role="doc-biblioentry">
+Kwan, M-P, A T Murray, M E O’Kelly, and M Tiefelsdorf. 2013. <span>“Recent Advances in Accessibility Research: Representation, Methodology, and Applications.”</span> <em>Journal of Geographical Systems</em> 5 (1): 129–38.
+</div>
+<div id="ref-lacombe2015" class="csl-entry" role="doc-biblioentry">
+Lacombe, Donald J., and James P. LeSage. 2015a. <span>“Using Bayesian posterior model probabilities to identify omitted variables in spatial regression models.”</span> <em>Papers in Regional Science</em> 94 (2): 365–83. <a href="https://doi.org/10.1111/pirs.12070">https://doi.org/10.1111/pirs.12070</a>.
+</div>
+<div id="ref-lacombe2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015b. <span>“Using Bayesian posterior model probabilities to identify omitted variables in spatial regression models.”</span> <em>Papers in Regional Science</em> 94 (2): 365–83. <a href="https://doi.org/10.1111/pirs.12070">https://doi.org/10.1111/pirs.12070</a>.
+</div>
+<div id="ref-lamport1986" class="csl-entry" role="doc-biblioentry">
+Lamport, Leslie. 1986. <em><span>LATEX</span>: A Document Preparation System</em>. <span>Reading, Mass</span>: <span>Addison-Wesley</span>.
+</div>
+<div id="ref-lander2017" class="csl-entry" role="doc-biblioentry">
+Lander, Jared P. 2017a. <em>R for <span>Everyone</span>: <span>Advanced Analytics</span> and <span>Graphics</span></em>. 2nd Edition. <span>Boston</span>: <span>Addison-Wesley Professional</span>.
+</div>
+<div id="ref-lander2017a" class="csl-entry" role="doc-biblioentry">
+———. 2017b. <em>R for <span>Everyone</span>: <span>Advanced Analytics</span> and <span>Graphics</span></em>. 2nd Edition. <span>Boston</span>: <span>Addison-Wesley Professional</span>.
+</div>
+<div id="ref-landerEveryoneAdvancedAnalytics2017" class="csl-entry" role="doc-biblioentry">
+———. 2017c. <em>R for <span>Everyone</span>: <span>Advanced Analytics</span> and <span>Graphics</span></em>. 2nd Edition. <span>Boston</span>: <span>Addison-Wesley Professional</span>.
+</div>
+<div id="ref-landerEveryoneAdvancedAnalytics2017a" class="csl-entry" role="doc-biblioentry">
+———. 2017d. <em>R for <span>Everyone</span>: <span>Advanced Analytics</span> and <span>Graphics</span></em>. 2nd Edition. <span>Boston</span>: <span>Addison-Wesley Professional</span>.
+</div>
 <div id="ref-R-PxWebApiData" class="csl-entry" role="doc-biblioentry">
 Langsrud, Øyvind, and Jan Bruusgaard. 2021. <em>PxWebApiData: PX-Web Data by API</em>. <a href="https://github.com/statisticsnorway/PxWebApiData">https://github.com/statisticsnorway/PxWebApiData</a>.
+</div>
+<div id="ref-leisch2002" class="csl-entry" role="doc-biblioentry">
+Leisch, Friedrich. 2002a. <span>“Sweave: <span>Dynamic Generation</span> of <span>Statistical Reports Using Literate Data Analysis</span>.”</span> In <em>Compstat</em>, edited by Wolfgang Härdle and Bernd Rönz, 575–80. <span>Heidelberg</span>: <span>Physica-Verlag HD</span>. <a href="https://doi.org/10.1007/978-3-642-57489-4_89">https://doi.org/10.1007/978-3-642-57489-4_89</a>.
+</div>
+<div id="ref-leisch2002a" class="csl-entry" role="doc-biblioentry">
+———. 2002b. <span>“Sweave: <span>Dynamic Generation</span> of <span>Statistical Reports Using Literate Data Analysis</span>.”</span> In <em>Compstat</em>, edited by Wolfgang Härdle and Bernd Rönz, 575–80. <span>Heidelberg</span>: <span>Physica-Verlag HD</span>. <a href="https://doi.org/10.1007/978-3-642-57489-4_89">https://doi.org/10.1007/978-3-642-57489-4_89</a>.
+</div>
+<div id="ref-leischSweaveDynamicGeneration2002" class="csl-entry" role="doc-biblioentry">
+———. 2002c. <span>“Sweave: <span>Dynamic Generation</span> of <span>Statistical Reports Using Literate Data Analysis</span>.”</span> In <em>Compstat</em>, edited by Wolfgang Härdle and Bernd Rönz, 575–80. <span>Heidelberg</span>: <span>Physica-Verlag HD</span>. <a href="https://doi.org/10.1007/978-3-642-57489-4_89">https://doi.org/10.1007/978-3-642-57489-4_89</a>.
+</div>
+<div id="ref-leischSweaveDynamicGeneration2002a" class="csl-entry" role="doc-biblioentry">
+———. 2002d. <span>“Sweave: <span>Dynamic Generation</span> of <span>Statistical Reports Using Literate Data Analysis</span>.”</span> In <em>Compstat</em>, edited by Wolfgang Härdle and Bernd Rönz, 575–80. <span>Heidelberg</span>: <span>Physica-Verlag HD</span>. <a href="https://doi.org/10.1007/978-3-642-57489-4_89">https://doi.org/10.1007/978-3-642-57489-4_89</a>.
+</div>
+<div id="ref-lesage2014" class="csl-entry" role="doc-biblioentry">
+LeSage, James P. 2014. <span>“What <span>Regional Scientists Need</span> to <span>Know About Spatial Econometrics</span>.”</span> SSRN scholarly paper ID 2420725. <span>Rochester, NY</span>: <span>Social Science Research Network</span>. <a href="https://doi.org/10.2139/ssrn.2420725">https://doi.org/10.2139/ssrn.2420725</a>.
+</div>
+<div id="ref-lesage2008" class="csl-entry" role="doc-biblioentry">
+LeSage, J, and MM Fischer. 2008. <span>“Spatial Growth Regressions: Model Specification, Estimation and Interpretation.”</span> <em>Spatial Economic Analysis</em> 3 (3).
+</div>
+<div id="ref-lesage2009" class="csl-entry" role="doc-biblioentry">
+LeSage, J, and RK Pace. 2009. <em>Introduction to Spatial Econometrics</em>. <span>Boca Raton</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-li1980" class="csl-entry" role="doc-biblioentry">
+Li, MM, and HJ Brown. 1980. <span>“Micro-Neighbourhood Externalities and Hedonic Prices.”</span> <em>Land Economics</em> 56: 125–40.
+</div>
+<div id="ref-lovik2018" class="csl-entry" role="doc-biblioentry">
+Løvik, Martinus. 2018. <span>“pollenallergi.”</span> In <em>Store medisinske leksikon</em>. <a href="http://sml.snl.no/pollenallergi">http://sml.snl.no/pollenallergi</a>.
+</div>
+<div id="ref-lowndes2017" class="csl-entry" role="doc-biblioentry">
+Lowndes, Julia S. Stewart, Benjamin D. Best, Courtney Scarborough, Jamie C. Afflerbach, Melanie R. Frazier, Casey C. O’Hara, Ning Jiang, and Benjamin S. Halpern. 2017. <span>“Our Path to Better Science in Less Time Using Open Data Science Tools.”</span> <em>Nature Ecology &amp; Evolution</em> 1 (6): 0160. <a href="https://doi.org/10.1038/s41559-017-0160">https://doi.org/10.1038/s41559-017-0160</a>.
+</div>
+<div id="ref-ma2006" class="csl-entry" role="doc-biblioentry">
+Ma, K, and D Banister. 2006. <span>“Excess Commuting: <span>A</span> Critical Review.”</span> <em>Transport Reviews</em> 26: 749–67.
+</div>
+<div id="ref-zotero-15" class="csl-entry" role="doc-biblioentry">
+<span>“Map Projections and Distortion.”</span> n.d. Accessed April 5, 2021. <a href="http://www.geography.hunter.cuny.edu/~jochen/GTECH361/lectures/lecture04/concepts/Map%20coordinate%20systems/Map%20projections%20and%20distortion.htm">http://www.geography.hunter.cuny.edu/~jochen/GTECH361/lectures/lecture04/concepts/Map%20coordinate%20systems/Map%20projections%20and%20distortion.htm</a>.
+</div>
+<div id="ref-markowetz2015" class="csl-entry" role="doc-biblioentry">
+Markowetz, Florian. 2015a. <span>“Five <span>Selfish Reasons</span> to <span>Work Reproducibly</span>.”</span> <em>Genome Biology</em> 16 (1): 274. <a href="https://doi.org/10.1186/s13059-015-0850-7">https://doi.org/10.1186/s13059-015-0850-7</a>.
+</div>
+<div id="ref-markowetz2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015b. <span>“Five Selfish Reasons to Work Reproducibly.”</span> <em>Genome Biology</em> 16 (1): 274. <a href="https://doi.org/10.1186/s13059-015-0850-7">https://doi.org/10.1186/s13059-015-0850-7</a>.
+</div>
+<div id="ref-markowetz2015b" class="csl-entry" role="doc-biblioentry">
+———. 2015c. <span>“Five <span>Selfish Reasons</span> to <span>Work Reproducibly</span>.”</span> <em>Genome Biology</em> 16 (1): 274. <a href="https://doi.org/10.1186/s13059-015-0850-7">https://doi.org/10.1186/s13059-015-0850-7</a>.
+</div>
+<div id="ref-markowetzFiveSelfishReasons2015" class="csl-entry" role="doc-biblioentry">
+———. 2015d. <span>“Five <span>Selfish Reasons</span> to <span>Work Reproducibly</span>.”</span> <em>Genome Biology</em> 16 (1): 274. <a href="https://doi.org/10.1186/s13059-015-0850-7">https://doi.org/10.1186/s13059-015-0850-7</a>.
+</div>
+<div id="ref-markowetzFiveSelfishReasons2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015e. <span>“Five <span>Selfish Reasons</span> to <span>Work Reproducibly</span>.”</span> <em>Genome Biology</em> 16 (1): 274. <a href="https://doi.org/10.1186/s13059-015-0850-7">https://doi.org/10.1186/s13059-015-0850-7</a>.
+</div>
+<div id="ref-mccullough2008" class="csl-entry" role="doc-biblioentry">
+McCullough, B. D., Kerry Anne McGeary, and Teresa D. Harrison. 2008a. <span>“Do <span>Economics Journal Archives Promote Replicable Research</span>?”</span> <em>Canadian Journal of Economics/Revue Canadienne d’économique</em> 41 (4): 1406–20. <a href="https://doi.org/10.1111/j.1540-5982.2008.00509.x">https://doi.org/10.1111/j.1540-5982.2008.00509.x</a>.
+</div>
+<div id="ref-mccullough2008a" class="csl-entry" role="doc-biblioentry">
+———. 2008b. <span>“Do Economics Journal Archives Promote Replicable Research?”</span> <em>Canadian Journal of Economics/Revue Canadienne d’économique</em> 41 (4): 1406–20. <a href="https://doi.org/10.1111/j.1540-5982.2008.00509.x">https://doi.org/10.1111/j.1540-5982.2008.00509.x</a>.
+</div>
+<div id="ref-mccullough2008b" class="csl-entry" role="doc-biblioentry">
+———. 2008c. <span>“Do <span>Economics Journal Archives Promote Replicable Research</span>?”</span> <em>Canadian Journal of Economics/Revue Canadienne d’économique</em> 41 (4): 1406–20. <a href="https://doi.org/10.1111/j.1540-5982.2008.00509.x">https://doi.org/10.1111/j.1540-5982.2008.00509.x</a>.
+</div>
+<div id="ref-mcculloughEconomicsJournalArchives2008" class="csl-entry" role="doc-biblioentry">
+———. 2008d. <span>“Do <span>Economics Journal Archives Promote Replicable Research</span>?”</span> <em>Canadian Journal of Economics/Revue Canadienne d’économique</em> 41 (4): 1406–20. <a href="https://doi.org/10.1111/j.1540-5982.2008.00509.x">https://doi.org/10.1111/j.1540-5982.2008.00509.x</a>.
+</div>
+<div id="ref-mcculloughEconomicsJournalArchives2008a" class="csl-entry" role="doc-biblioentry">
+———. 2008e. <span>“Do <span>Economics Journal Archives Promote Replicable Research</span>?”</span> <em>Canadian Journal of Economics/Revue Canadienne d’économique</em> 41 (4): 1406–20. <a href="https://doi.org/10.1111/j.1540-5982.2008.00509.x">https://doi.org/10.1111/j.1540-5982.2008.00509.x</a>.
+</div>
+<div id="ref-mcmillen2003" class="csl-entry" role="doc-biblioentry">
+McMillen, DP. 2003. <span>“Spatial <span>Autocorrelation</span> or Model Misspecification?”</span> <em>International Regional Science Review</em> 26 (2): 208–17.
+</div>
+<div id="ref-mcnutt2014" class="csl-entry" role="doc-biblioentry">
+McNutt, Marcia. 2014b. <span>“Reproducibility.”</span> <em>Science</em> 343 (6168): 229–29. <a href="https://doi.org/10.1126/science.1250475">https://doi.org/10.1126/science.1250475</a>.
+</div>
+<div id="ref-mcnutt2014a" class="csl-entry" role="doc-biblioentry">
+———. 2014c. <span>“Reproducibility.”</span> <em>Science</em> 343 (6168): 229–29. <a href="https://doi.org/10.1126/science.1250475">https://doi.org/10.1126/science.1250475</a>.
+</div>
+<div id="ref-mcnutt2014b" class="csl-entry" role="doc-biblioentry">
+———. 2014d. <span>“Reproducibility.”</span> <em>Science</em> 343 (6168): 229–29. <a href="https://doi.org/10.1126/science.1250475">https://doi.org/10.1126/science.1250475</a>.
+</div>
+<div id="ref-McNutt229" class="csl-entry" role="doc-biblioentry">
+———. 2014a. <span>“Reproducibility.”</span> <em>Science</em> 343 (6168): 229–29. <a href="https://doi.org/10.1126/science.1250475">https://doi.org/10.1126/science.1250475</a>.
+</div>
+<div id="ref-mcnuttReproducibility2014" class="csl-entry" role="doc-biblioentry">
+———. 2014e. <span>“Reproducibility.”</span> <em>Science</em> 343 (6168): 229–29. <a href="https://doi.org/10.1126/science.1250475">https://doi.org/10.1126/science.1250475</a>.
+</div>
+<div id="ref-mcnuttReproducibility2014a" class="csl-entry" role="doc-biblioentry">
+———. 2014f. <span>“Reproducibility.”</span> <em>Science</em> 343 (6168): 229–29. <a href="https://doi.org/10.1126/science.1250475">https://doi.org/10.1126/science.1250475</a>.
+</div>
+<div id="ref-mora2010" class="csl-entry" role="doc-biblioentry">
+Mora, Ricardo, and Javier Ruiz-Castillo. 2010. <span>“Entropy-Based Segregation Indices.”</span> we1012. <span>Uc3m Working</span> Papers. <span>Economics</span>. <span>Universidad Carlos III de Madrid. Departamento de Economía</span>. <a href="https://ideas.repec.org/p/cte/werepe/we1012.html">https://ideas.repec.org/p/cte/werepe/we1012.html</a>.
+</div>
+<div id="ref-2014" class="csl-entry" role="doc-biblioentry">
+<span>“Morgan <span>Stanley</span>: <span>ETF Tracking Error Dropping</span>.”</span> 2014. <span>ETF.com</span>. December 20, 2014. <a href="https://www.etf.com/sections/features/11269-morgan-stanley-etf-tracking-error-dropping-morgan-stanley-etf-tracking-error-dropping-.html">https://www.etf.com/sections/features/11269-morgan-stanley-etf-tracking-error-dropping-morgan-stanley-etf-tracking-error-dropping-.html</a>.
+</div>
+<div id="ref-muenchow" class="csl-entry" role="doc-biblioentry">
+Muenchow, Jannes, Jakub Nowosad. n.d. <em>Geocomputation with <span>R</span></em>. Accessed May 12, 2021. <a href="https://geocompr.robinlovelace.net/">https://geocompr.robinlovelace.net/</a>.
+</div>
+<div id="ref-nordvik2019" class="csl-entry" role="doc-biblioentry">
+Nordvik, Viggo, Liv Osland, Inge Thorsen, and Ingrid Sandvig Thorsen. 2019. <span>“Capitalization of Neighbourhood Diversity and Segregation.”</span> <em>Environment and Planning A: Economy and Space</em> 51 (8): 1775–99. <a href="https://doi.org/10.1177/0308518X19861108">https://doi.org/10.1177/0308518X19861108</a>.
+</div>
+<div id="ref-zotero-199" class="csl-entry" role="doc-biblioentry">
+<span>“Norske Børshandlede Fond : En Kvantitativ Analyse Av Fondenes Egenskaper - <span>CORE</span>.”</span> n.d. Accessed May 7, 2020. <a href="https://core.ac.uk/display/52072194">https://core.ac.uk/display/52072194</a>.
+</div>
+<div id="ref-nosek2015a" class="csl-entry" role="doc-biblioentry">
+Nosek, B. A., G. Alter, G. C. Banks, D. Borsboom, S. D. Bowman, S. J. Breckler, S. Buck, et al. 2015a. <span>“Promoting an <span>Open Research Culture</span>.”</span> <em>Science</em> 348 (6242): 1422–25. <a href="https://doi.org/10.1126/science.aab2374">https://doi.org/10.1126/science.aab2374</a>.
+</div>
+<div id="ref-nosek2015b" class="csl-entry" role="doc-biblioentry">
+———, et al. 2015b. <span>“Promoting an <span>Open Research Culture</span>.”</span> <em>Science</em> 348 (6242): 1422–25. <a href="https://doi.org/10.1126/science.aab2374">https://doi.org/10.1126/science.aab2374</a>.
+</div>
+<div id="ref-nosekPromotingOpenResearch2015" class="csl-entry" role="doc-biblioentry">
+———, et al. 2015c. <span>“Promoting an <span>Open Research Culture</span>.”</span> <em>Science</em> 348 (6242): 1422–25. <a href="https://doi.org/10.1126/science.aab2374">https://doi.org/10.1126/science.aab2374</a>.
+</div>
+<div id="ref-nosekPromotingOpenResearch2015a" class="csl-entry" role="doc-biblioentry">
+———, et al. 2015d. <span>“Promoting an <span>Open Research Culture</span>.”</span> <em>Science</em> 348 (6242): 1422–25. <a href="https://doi.org/10.1126/science.aab2374">https://doi.org/10.1126/science.aab2374</a>.
+</div>
+<div id="ref-nosek2015" class="csl-entry" role="doc-biblioentry">
+———, et al. 2015e. <span>“Promoting an Open Research Culture.”</span> <em>Science</em> 348 (6242): 1422–25. <a href="https://doi.org/10.1126/science.aab2374">https://doi.org/10.1126/science.aab2374</a>.
+</div>
+<div id="ref-nosek2015c" class="csl-entry" role="doc-biblioentry">
+Nosek, Brian A., and et al. 2015a. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-nosek2015d" class="csl-entry" role="doc-biblioentry">
+———. 2015b. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-nosekEstimatingReproducibilityPsychological2015" class="csl-entry" role="doc-biblioentry">
+———. 2015c. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-nosekEstimatingReproducibilityPsychological2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015d. <span>“Estimating the <span>Reproducibility</span> of <span>Psychological Science</span>.”</span> <em>Science</em> 349 (6251). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>.
+</div>
+<div id="ref-nust2017" class="csl-entry" role="doc-biblioentry">
+Nüst, Daniel, Markus Konkol, Edzer Pebesma, Christian Kray, Marc Schutzeichel, Holger Przibytzin, and Jörg Lorenz. 2017a. <span>“Opening the <span>Publication Process</span> with <span>Executable Research Compendia</span>.”</span> <em>D-Lib Magazine</em> 23 (1/2). <a href="https://doi.org/10.1045/january2017-nuest">https://doi.org/10.1045/january2017-nuest</a>.
+</div>
+<div id="ref-nust2017a" class="csl-entry" role="doc-biblioentry">
+———. 2017b. <span>“Opening the <span>Publication Process</span> with <span>Executable Research Compendia</span>.”</span> <em>D-Lib Magazine</em> 23 (1/2). <a href="https://doi.org/10.1045/january2017-nuest">https://doi.org/10.1045/january2017-nuest</a>.
+</div>
+<div id="ref-nust2017b" class="csl-entry" role="doc-biblioentry">
+———. 2017c. <span>“Opening the <span>Publication Process</span> with <span>Executable Research Compendia</span>.”</span> <em>D-Lib Magazine</em> 23 (1/2). <a href="https://doi.org/10.1045/january2017-nuest">https://doi.org/10.1045/january2017-nuest</a>.
+</div>
+<div id="ref-nustOpeningPublicationProcess2017" class="csl-entry" role="doc-biblioentry">
+———. 2017d. <span>“Opening the <span>Publication Process</span> with <span>Executable Research Compendia</span>.”</span> <em>D-Lib Magazine</em> 23 (1/2). <a href="https://doi.org/10.1045/january2017-nuest">https://doi.org/10.1045/january2017-nuest</a>.
+</div>
+<div id="ref-nustOpeningPublicationProcess2017a" class="csl-entry" role="doc-biblioentry">
+———. 2017e. <span>“Opening the <span>Publication Process</span> with <span>Executable Research Compendia</span>.”</span> <em>D-Lib Magazine</em> 23 (1/2). <a href="https://doi.org/10.1045/january2017-nuest">https://doi.org/10.1045/january2017-nuest</a>.
+</div>
+<div id="ref-oetiker" class="csl-entry" role="doc-biblioentry">
+Oetiker, Tobias, Hubert Partl, Irene Hyna, and Elisabeth Schlegl. n.d. <span>“The <span>Not So Short Introduction</span> to <span>LATEX</span> 2ε,”</span> 153.
+</div>
+<div id="ref-zotero-362" class="csl-entry" role="doc-biblioentry">
+<span>“One-Step Estimation of Spatial Dependence Parameters: <span>Properties</span> and Extensions of the <span>APLE</span> Statistic | <span>Elsevier Enhanced Reader</span>.”</span> n.d. Accessed June 25, 2021. <a href="https://doi.org/10.1016/j.jmva.2011.08.006">https://doi.org/10.1016/j.jmva.2011.08.006</a>.
+</div>
+<div id="ref-zotero-236" class="csl-entry" role="doc-biblioentry">
+<span>“Online <span>Data</span> - <span>Robert Shiller</span>.”</span> n.d. Accessed September 20, 2018. <a href="http://www.econ.yale.edu/~shiller/data.htm">http://www.econ.yale.edu/~shiller/data.htm</a>.
+</div>
+<div id="ref-zotero-222" class="csl-entry" role="doc-biblioentry">
+<span>“Opinion | <span>I</span> Like <span>Elizabeth Warren</span>. <span>Too</span> Bad She’s a Hypocrite.”</span> n.d. <span>Washington Post</span>. Accessed September 12, 2019. <a href="https://www.washingtonpost.com/opinions/i-like-elizabeth-warren-too-bad-shes-a-hypocrite/2019/09/11/409d5ed0-d4d3-11e9-86ac-0f250cc91758_story.html">https://www.washingtonpost.com/opinions/i-like-elizabeth-warren-too-bad-shes-a-hypocrite/2019/09/11/409d5ed0-d4d3-11e9-86ac-0f250cc91758_story.html</a>.
+</div>
+<div id="ref-zotero-239" class="csl-entry" role="doc-biblioentry">
+<span>“Options <span>Symbology Initiative</span> (<span>OSI</span>).”</span> n.d. Accessed January 18, 2018. <a href="http://optionsymbologyinitiative.blogspot.com/">http://optionsymbologyinitiative.blogspot.com/</a>.
+</div>
+<div id="ref-osland2010" class="csl-entry" role="doc-biblioentry">
+Osland, L. 2010. <span>“An Application of Spatial Econometrics in Relation to Hedonic House Price Modelling.”</span> <em>Journal of Real Estate Research</em> 32: 289–320.
+</div>
+<div id="ref-osland2010a" class="csl-entry" role="doc-biblioentry">
+Osland, Liv. 2010. <span>“An Application of Spatial Econometrics in Relation to Hedonic House Price Modeling.”</span> <em>Journal of Real Estate Research</em> 32 (July): 289–320.
+</div>
+<div id="ref-osland2012" class="csl-entry" role="doc-biblioentry">
+Osland, L, and G Pryce. 2012. <span>“Housing Prices and Multiple Employment Nodes: <span>Is</span> the Relationship Nonmonotonic?”</span> <em>Housing Studies</em> 27: 1182–1208.
+</div>
+<div id="ref-osland2008" class="csl-entry" role="doc-biblioentry">
+Osland, L, and I Thorsen. 2008. <span>“Effects on Housing Prices of Urban Attraction and Labor Market Accessibility.”</span> <em>Environment and Planning A</em> 40 (10): 2490–2509.
+</div>
+<div id="ref-osland2013" class="csl-entry" role="doc-biblioentry">
+———. 2013. <span>“Spatial Impacts, Local Labour Market Characteristics and Housing Prices.”</span> <em>Urban Studies</em> 10 (50): 2063–83.
+</div>
+<div id="ref-osland2007" class="csl-entry" role="doc-biblioentry">
+Osland, L, I Thorsen, and JP Gitlesen. 2007. <span>“Housing Price Gradients in a Geography with One Dominating Center.”</span> <em>Journal of Real Estate Research</em> 29 (3): 321–46.
+</div>
+<div id="ref-pace1998" class="csl-entry" role="doc-biblioentry">
+Pace, RK. 1998. <span>“Appraisal Using Generalized Additive Models.”</span> <em>Journal of Real Estate Research</em> 15: 77–99.
+</div>
+<div id="ref-PandocPandocUser" class="csl-entry" role="doc-biblioentry">
+<em>Pandoc - <span>Pandoc User</span>’s <span>Guide</span></em>. n.d.a.
+</div>
+<div id="ref-PandocPandocUsera" class="csl-entry" role="doc-biblioentry">
+———. n.d.b.
+</div>
+<div id="ref-zotero-207" class="csl-entry" role="doc-biblioentry">
+<span>“Pandoc - <span>Pandoc User</span>’s <span>Guide</span>.”</span> n.d.c. Accessed March 10, 2020. <a href="https://pandoc.org/MANUAL.html">https://pandoc.org/MANUAL.html</a>.
+</div>
+<div id="ref-zotero-391" class="csl-entry" role="doc-biblioentry">
+<em>Pandoc - <span>Pandoc User</span>’s <span>Guide</span></em>. n.d.d.
+</div>
+<div id="ref-zotero-392" class="csl-entry" role="doc-biblioentry">
+———. n.d.e.
 </div>
 <div id="ref-sf2018" class="csl-entry" role="doc-biblioentry">
 Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
@@ -2850,14 +3790,194 @@ Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Stand
 <div id="ref-R-sf" class="csl-entry" role="doc-biblioentry">
 ———. 2022. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
 </div>
+<div id="ref-pebesma" class="csl-entry" role="doc-biblioentry">
+———. n.d. <span>“2. <span>Reading</span>, <span>Writing</span> and <span>Converting Simple Features</span>.”</span> Sf documentasjon. <span>2. Reading, Writing and Converting Simple Features</span>. Accessed March 30, 2021. <a href="https://r-spatial.github.io/sf/articles/sf2.html">https://r-spatial.github.io/sf/articles/sf2.html</a>.
+</div>
 <div id="ref-sp2005" class="csl-entry" role="doc-biblioentry">
 Pebesma, Edzer J., and Roger S. Bivand. 2005. <span>“Classes and Methods for Spatial Data in <span>R</span>.”</span> <em>R News</em> 5 (2): 9–13. <a href="https://CRAN.R-project.org/doc/Rnews/">https://CRAN.R-project.org/doc/Rnews/</a>.
 </div>
 <div id="ref-R-sp" class="csl-entry" role="doc-biblioentry">
 Pebesma, Edzer, and Roger Bivand. 2022. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp">https://CRAN.R-project.org/package=sp</a>.
 </div>
+<div id="ref-peng2011a" class="csl-entry" role="doc-biblioentry">
+Peng, Roger D. 2011a. <span>“Reproducible <span>Research</span> in <span>Computational Science</span>.”</span> <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div>
+<div id="ref-peng2011b" class="csl-entry" role="doc-biblioentry">
+———. 2011b. <span>“Reproducible <span>Research</span> in <span>Computational Science</span>.”</span> <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div>
+<div id="ref-pengReproducibleResearchComputational2011" class="csl-entry" role="doc-biblioentry">
+———. 2011c. <span>“Reproducible <span>Research</span> in <span>Computational Science</span>.”</span> <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div>
+<div id="ref-pengReproducibleResearchComputational2011a" class="csl-entry" role="doc-biblioentry">
+———. 2011d. <span>“Reproducible <span>Research</span> in <span>Computational Science</span>.”</span> <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div>
+<div id="ref-peng2011" class="csl-entry" role="doc-biblioentry">
+———. 2011e. <span>“Reproducible <span>Research</span> in <span>Computational Science</span>.”</span> <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div>
+<div id="ref-piwowar2018" class="csl-entry" role="doc-biblioentry">
+Piwowar, Heather, Jason Priem, Vincent Larivière, Juan Pablo Alperin, Lisa Matthias, Bree Norlander, Ashley Farley, Jevin West, and Stefanie Haustein. 2018. <span>“The State of <span>OA</span>: A Large-Scale Analysis of the Prevalence and Impact of <span>Open Access</span> Articles.”</span> <em>PeerJ</em> 6 (February): e4375. <a href="https://doi.org/10.7717/peerj.4375">https://doi.org/10.7717/peerj.4375</a>.
+</div>
+<div id="ref-plaut1998" class="csl-entry" role="doc-biblioentry">
+Plaut, PO, and SE Plaut. 1998. <span>“Endogenous Identification of Multiple Housing Price Centers in Metropolitan Areas.”</span> <em>Journal of Housing Economics</em> 7: 193–217.
+</div>
+<div id="ref-portnov2010" class="csl-entry" role="doc-biblioentry">
+Portnov, Boris A., and Daniel Felsenstein. 2010. <span>“On the Suitability of Income Inequality Measures for Regional Analysis: <span>Some</span> Evidence from Simulation Analysis and Bootstrapping Tests.”</span> <em>Socio-Economic Planning Sciences</em> 44 (4): 212–19. <a href="https://doi.org/10.1016/j.seps.2010.04.002">https://doi.org/10.1016/j.seps.2010.04.002</a>.
+</div>
+<div id="ref-zotero-243" class="csl-entry" role="doc-biblioentry">
+<span>“Quick_start_guide [<span>Zotero Documentation</span>].”</span> n.d. Accessed January 16, 2018. <a href="https://www.zotero.org/support/quick_start_guide">https://www.zotero.org/support/quick_start_guide</a>.
+</div>
+<div id="ref-rcoreteam2020" class="csl-entry" role="doc-biblioentry">
+R Core Team. 2020a. <em>R: <span>A</span> Language and Environment for Statistical Computing</em>. Manual. <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-rcoreteam2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <em>R: <span>A</span> Language and Environment for Statistical Computing</em>. <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-rcoreteam2020b" class="csl-entry" role="doc-biblioentry">
+———. 2020c. <em>R: <span>A Language</span> and <span>Environment</span> for <span>Statistical Computing</span></em>. <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>.
+</div>
+<div id="ref-rcoreteam2020c" class="csl-entry" role="doc-biblioentry">
+———. 2020d. <em>R: <span>A Language</span> and <span>Environment</span> for <span>Statistical Computing</span></em>. <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>.
+</div>
+<div id="ref-rcoreteamLanguageEnvironmentStatistical2020" class="csl-entry" role="doc-biblioentry">
+———. 2020e. <em>R: <span>A Language</span> and <span>Environment</span> for <span>Statistical Computing</span></em>. <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>.
+</div>
+<div id="ref-rcoreteamLanguageEnvironmentStatistical2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020f. <em>R: <span>A Language</span> and <span>Environment</span> for <span>Statistical Computing</span></em>. <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>.
+</div>
+<div id="ref-ram2013a" class="csl-entry" role="doc-biblioentry">
+Ram, Karthik. 2013a. <span>“Git <span>Can Facilitate Greater Reproducibility</span> and <span>Increased Transparency</span> in <span>Science</span>.”</span> <em>Source Code for Biology and Medicine</em> 8 (1): 7. <a href="https://doi.org/10.1186/1751-0473-8-7">https://doi.org/10.1186/1751-0473-8-7</a>.
+</div>
+<div id="ref-ram2013b" class="csl-entry" role="doc-biblioentry">
+———. 2013b. <span>“Git <span>Can Facilitate Greater Reproducibility</span> and <span>Increased Transparency</span> in <span>Science</span>.”</span> <em>Source Code for Biology and Medicine</em> 8 (1): 7. <a href="https://doi.org/10.1186/1751-0473-8-7">https://doi.org/10.1186/1751-0473-8-7</a>.
+</div>
+<div id="ref-ramGitCanFacilitate2013" class="csl-entry" role="doc-biblioentry">
+———. 2013c. <span>“Git <span>Can Facilitate Greater Reproducibility</span> and <span>Increased Transparency</span> in <span>Science</span>.”</span> <em>Source Code for Biology and Medicine</em> 8 (1): 7. <a href="https://doi.org/10.1186/1751-0473-8-7">https://doi.org/10.1186/1751-0473-8-7</a>.
+</div>
+<div id="ref-ramGitCanFacilitate2013a" class="csl-entry" role="doc-biblioentry">
+———. 2013d. <span>“Git <span>Can Facilitate Greater Reproducibility</span> and <span>Increased Transparency</span> in <span>Science</span>.”</span> <em>Source Code for Biology and Medicine</em> 8 (1): 7. <a href="https://doi.org/10.1186/1751-0473-8-7">https://doi.org/10.1186/1751-0473-8-7</a>.
+</div>
+<div id="ref-ram2013" class="csl-entry" role="doc-biblioentry">
+———. 2013e. <span>“Git Can Facilitate Greater Reproducibility and Increased Transparency in Science.”</span> <em>Source Code for Biology and Medicine</em> 8 (1): 7. <a href="https://doi.org/10.1186/1751-0473-8-7">https://doi.org/10.1186/1751-0473-8-7</a>.
+</div>
+<div id="ref-ramsey1969" class="csl-entry" role="doc-biblioentry">
+Ramsey, JB. 1969. <span>“Tests for Specification Errors in Classical Linear Least Squares Regression Analysis.”</span> <em>Journal of Royal Statistical Society B</em> 31 (2): 350–71.
+</div>
+<div id="ref-ramsey" class="csl-entry" role="doc-biblioentry">
+Ramsey, Norman. n.d.a. <em>Noweb <span>Home Page</span></em>.
+</div>
+<div id="ref-ramseya" class="csl-entry" role="doc-biblioentry">
+———. n.d.d. <em>Noweb <span>Home Page</span></em>.
+</div>
+<div id="ref-ramseyNowebHomePage" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <em>Noweb <span>Home Page</span></em>.
+</div>
+<div id="ref-ramseyNowebHomePagea" class="csl-entry" role="doc-biblioentry">
+———. n.d.c. <em>Noweb <span>Home Page</span></em>.
+</div>
+<div id="ref-rendell2019" class="csl-entry" role="doc-biblioentry">
+Rendell, Ed. 2019-09-11T06:53-500. <span>“Opinion | <span>I</span> Like <span>Elizabeth Warren</span>. <span>Too</span> Bad She’s a Hypocrite.”</span> <em>Washington Post: Opinions</em>, 2019-09-11T06:53-500. <a href="https://www.washingtonpost.com/opinions/i-like-elizabeth-warren-too-bad-shes-a-hypocrite/2019/09/11/409d5ed0-d4d3-11e9-86ac-0f250cc91758_story.html">https://www.washingtonpost.com/opinions/i-like-elizabeth-warren-too-bad-shes-a-hypocrite/2019/09/11/409d5ed0-d4d3-11e9-86ac-0f250cc91758_story.html</a>.
+</div>
+<div id="ref-revelle2020" class="csl-entry" role="doc-biblioentry">
+Revelle, William. 2020. <em>Psych: <span>Procedures</span> for Psychological, Psychometric, and Personality Research</em>. Manual. <span>Evanston, Illinois</span>: <span>Northwestern University</span>. <a href="https://CRAN.R-project.org/package=psych">https://CRAN.R-project.org/package=psych</a>.
+</div>
+<div id="ref-riederer" class="csl-entry" role="doc-biblioentry">
+Riederer, Emily, Christophe Dervieux. n.d. <em>R <span>Markdown Cookbook</span></em>. Accessed August 31, 2020. <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">https://bookdown.org/yihui/rmarkdown-cookbook/</a>.
+</div>
+<div id="ref-riedererMarkdownCookbook" class="csl-entry" role="doc-biblioentry">
+Riederer, Yihui Xie, Christophe Dervieux. n.d.a. <em>R <span>Markdown Cookbook</span></em>.
+</div>
+<div id="ref-riedererMarkdownCookbooka" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <em>R <span>Markdown Cookbook</span></em>.
+</div>
 <div id="ref-R-broom" class="csl-entry" role="doc-biblioentry">
 Robinson, David, Alex Hayes, and Simon Couch. 2022. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.
+</div>
+<div id="ref-rognsvag2019" class="csl-entry" role="doc-biblioentry">
+Rognsvåg, Silje. 2019. <span>“Revisorforeininga: – Veldig alvorleg sak.”</span> <span>NRK</span>. April 10, 2019. <a href="https://www.nrk.no/norge/revisorforeininga_-_-veldig-alvorleg-sak-1.14510594">https://www.nrk.no/norge/revisorforeininga_-_-veldig-alvorleg-sak-1.14510594</a>.
+</div>
+<div id="ref-rosenthal1979" class="csl-entry" role="doc-biblioentry">
+Rosenthal, R. 1979a. <span>“The File Drawer Problem and Tolerance for Null Results.”</span> In.
+</div>
+<div id="ref-rosenthal1979a" class="csl-entry" role="doc-biblioentry">
+———. 1979b. <span>“The <span>File Drawer Problem</span> and <span>Tolerance</span> for <span>Null Results</span>.”</span> In, 86:638–41. <span>Psychological Bulletin</span>.
+</div>
+<div id="ref-rosenthal1979b" class="csl-entry" role="doc-biblioentry">
+———. 1979c. <span>“The <span>File Drawer Problem</span> and <span>Tolerance</span> for <span>Null Results</span>.”</span> In, 86:638–41. <span>Psychological Bulletin</span>.
+</div>
+<div id="ref-rosenthalFileDrawerProblem1979" class="csl-entry" role="doc-biblioentry">
+———. 1979d. <span>“The <span>File Drawer Problem</span> and <span>Tolerance</span> for <span>Null Results</span>.”</span> In, 86:638–41. <span>Psychological Bulletin</span>.
+</div>
+<div id="ref-rosenthalFileDrawerProblem1979a" class="csl-entry" role="doc-biblioentry">
+———. 1979e. <span>“The <span>File Drawer Problem</span> and <span>Tolerance</span> for <span>Null Results</span>.”</span> In, 86:638–41. <span>Psychological Bulletin</span>.
+</div>
+<div id="ref-rossi" class="csl-entry" role="doc-biblioentry">
+Rossi, Giuliano De. n.d. <span>“Measuring the Tracking Error of Exchange Traded Funds: An Unobserved Components Approach,”</span> 36.
+</div>
+<div id="ref-rstudioteam2020" class="csl-entry" role="doc-biblioentry">
+RStudio Team. 2020a. <em><span>RStudio</span>: <span>Integrated</span> Development Environment for r</em>. <span>Boston, MA</span>: <span>RStudio, PBC.</span> <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.
+</div>
+<div id="ref-rstudioteam2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <em><span>RStudio</span>: <span>Integrated Development Environment</span> for r</em>. <span>Boston, MA</span>: <span>RStudio, PBC.</span>
+</div>
+<div id="ref-rstudioteam2020b" class="csl-entry" role="doc-biblioentry">
+———. 2020c. <em><span>RStudio</span>: <span>Integrated Development Environment</span> for r</em>. <span>Boston, MA</span>: <span>RStudio, PBC.</span>
+</div>
+<div id="ref-rstudioteamRStudioIntegratedDevelopment2020" class="csl-entry" role="doc-biblioentry">
+———. 2020d. <em><span>RStudio</span>: <span>Integrated Development Environment</span> for r</em>. <span>Boston, MA</span>: <span>RStudio, PBC.</span>
+</div>
+<div id="ref-rstudioteamRStudioIntegratedDevelopment2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020e. <em><span>RStudio</span>: <span>Integrated Development Environment</span> for r</em>. <span>Boston, MA</span>: <span>RStudio, PBC.</span>
+</div>
+<div id="ref-schwab1995" class="csl-entry" role="doc-biblioentry">
+Schwab, Matthias, Martin Karrenbach, and Jon Claerbout. 1995a. <span>“Reproducible <span>Electronic Documents</span>,”</span> 14.
+</div>
+<div id="ref-schwab1995a" class="csl-entry" role="doc-biblioentry">
+———. 1995b. <span>“Reproducible <span>Electronic Documents</span>,”</span> 14.
+</div>
+<div id="ref-schwabReproducibleElectronicDocuments1995" class="csl-entry" role="doc-biblioentry">
+———. 1995c. <span>“Reproducible <span>Electronic Documents</span>,”</span> 14.
+</div>
+<div id="ref-schwabReproducibleElectronicDocuments1995a" class="csl-entry" role="doc-biblioentry">
+———. 1995d. <span>“Reproducible <span>Electronic Documents</span>,”</span> 14.
+</div>
+<div id="ref-ShapefileMust" class="csl-entry" role="doc-biblioentry">
+<span>“Shapefile Must Die!”</span> n.d.a. Accessed August 29, 2022. <a href="http://switchfromshapefile.org/">http://switchfromshapefile.org/</a>.
+</div>
+<div id="ref-zotero-1356" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. Accessed August 29, 2022. <a href="http://switchfromshapefile.org/">http://switchfromshapefile.org/</a>.
+</div>
+<div id="ref-simmons2011" class="csl-entry" role="doc-biblioentry">
+Simmons, Joseph P., Leif D. Nelson, and Uri Simonsohn. 2011a. <span>“False-Positive Psychology: <span>Undisclosed</span> Flexibility in Data Collection and Analysis Allows Presenting Anything as Significant.”</span> <em>Psychological Science</em> 22 (11): 1359–66. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>.
+</div>
+<div id="ref-simmons2011a" class="csl-entry" role="doc-biblioentry">
+———. 2011b. <span>“False-<span>Positive Psychology</span>: <span>Undisclosed Flexibility</span> in <span>Data Collection</span> and <span>Analysis Allows Presenting Anything</span> as <span>Significant</span>.”</span> <em>Psychological Science</em> 22 (11): 1359–66. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>.
+</div>
+<div id="ref-simmons2011b" class="csl-entry" role="doc-biblioentry">
+———. 2011c. <span>“False-<span>Positive Psychology</span>: <span>Undisclosed Flexibility</span> in <span>Data Collection</span> and <span>Analysis Allows Presenting Anything</span> as <span>Significant</span>.”</span> <em>Psychological Science</em> 22 (11): 1359–66. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>.
+</div>
+<div id="ref-simmonsFalsePositivePsychologyUndisclosed2011" class="csl-entry" role="doc-biblioentry">
+———. 2011d. <span>“False-<span>Positive Psychology</span>: <span>Undisclosed Flexibility</span> in <span>Data Collection</span> and <span>Analysis Allows Presenting Anything</span> as <span>Significant</span>.”</span> <em>Psychological Science</em> 22 (11): 1359–66. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>.
+</div>
+<div id="ref-simmonsFalsePositivePsychologyUndisclosed2011a" class="csl-entry" role="doc-biblioentry">
+———. 2011e. <span>“False-<span>Positive Psychology</span>: <span>Undisclosed Flexibility</span> in <span>Data Collection</span> and <span>Analysis Allows Presenting Anything</span> as <span>Significant</span>.”</span> <em>Psychological Science</em> 22 (11): 1359–66. <a href="https://doi.org/10.1177/0956797611417632">https://doi.org/10.1177/0956797611417632</a>.
+</div>
+<div id="ref-smith2008" class="csl-entry" role="doc-biblioentry">
+Smith, Donald J. 2008. <span>“Moving from an <span>Efficient</span> to a <span>Behavioral Market Hypothesis</span>.”</span> <em>Journal of Behavioral Finance</em> 9 (2): 51–52. <a href="https://doi.org/10.1080/15427560802093589">https://doi.org/10.1080/15427560802093589</a>.
+</div>
+<div id="ref-zotero-233" class="csl-entry" role="doc-biblioentry">
+<span>“<span class="nocase">spData</span> Package | <span>R Documentation</span>.”</span> n.d. Accessed April 10, 2019. <a href="https://www.rdocumentation.org/packages/spData/versions/0.3.0">https://www.rdocumentation.org/packages/spData/versions/0.3.0</a>.
+</div>
+<div id="ref-zotero-232" class="csl-entry" role="doc-biblioentry">
+<span>“Spgwr.pdf.”</span> n.d. Accessed April 10, 2019. <a href="https://docs.google.com/viewer?url=https%3A%2F%2Fcran.microsoft.com%2Fweb%2Fpackages%2Fspgwr%2Fspgwr.pdf&amp;pdf=true">https://docs.google.com/viewer?url=https%3A%2F%2Fcran.microsoft.com%2Fweb%2Fpackages%2Fspgwr%2Fspgwr.pdf&amp;pdf=true</a>.
+</div>
+<div id="ref-starr2015" class="csl-entry" role="doc-biblioentry">
+Starr, Joan, Eleni Castro, Mercè Crosas, Michel Dumontier, Robert R. Downs, Ruth Duerr, Laurel L. Haak, et al. 2015. <span>“Achieving Human and Machine Accessibility of Cited Data in Scholarly Publications.”</span> <em>PeerJ Computer Science</em> 1 (May): e1. <a href="https://doi.org/10.7717/peerj-cs.1">https://doi.org/10.7717/peerj-cs.1</a>.
+</div>
+<div id="ref-zotero-223" class="csl-entry" role="doc-biblioentry">
+<span>“Statistical <span>Rethinking</span>: <span>A Bayesian Course</span> with <span>Examples</span> in <span>R</span> and <span>Stan</span>.”</span> n.d. <span>CRC Press</span>. Accessed April 30, 2019. <a href="https://www.crcpress.com/Statistical-Rethinking-A-Bayesian-Course-with-Examples-in-R-and-Stan/McElreath/p/book/9781482253443">https://www.crcpress.com/Statistical-Rethinking-A-Bayesian-Course-with-Examples-in-R-and-Stan/McElreath/p/book/9781482253443</a>.
+</div>
+<div id="ref-steiniger2013" class="csl-entry" role="doc-biblioentry">
+Steiniger, Stefan, and Andrew J. S. Hunter. 2013. <span>“The 2012 Free and Open Source <span>GIS</span> Software Map – <span>A</span> Guide to Facilitate Research, Development, and Adoption.”</span> <em>Computers, Environment and Urban Systems</em> 39 (May): 136–50. <a href="https://doi.org/10.1016/j.compenvurbsys.2012.10.003">https://doi.org/10.1016/j.compenvurbsys.2012.10.003</a>.
 </div>
 <div id="ref-tmap2018" class="csl-entry" role="doc-biblioentry">
 Tennekes, Martijn. 2018. <span>“<span class="nocase">tmap</span>: Thematic Maps in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 84 (6): 1–39. <a href="https://doi.org/10.18637/jss.v084.i06">https://doi.org/10.18637/jss.v084.i06</a>.
@@ -2865,8 +3985,53 @@ Tennekes, Martijn. 2018. <span>“<span class="nocase">tmap</span>: Thematic Map
 <div id="ref-R-tmap" class="csl-entry" role="doc-biblioentry">
 ———. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
 </div>
+<div id="ref-zotero-381" class="csl-entry" role="doc-biblioentry">
+<span>“Tidying the <span>Australian Same Sex Marriage Postal Survey Data</span> with <span>R</span> | by <span>Miles McBain</span> | <span>Medium</span>.”</span> n.d. Accessed December 4, 2020. <a href="https://medium.com/@miles.mcbain/tidying-the-australian-same-sex-marriage-postal-survey-data-with-r-5d35cea07962">https://medium.com/@miles.mcbain/tidying-the-australian-same-sex-marriage-postal-survey-data-with-r-5d35cea07962</a>.
+</div>
+<div id="ref-tierneya" class="csl-entry" role="doc-biblioentry">
+Tierney, Nicholas. n.d.a. <em>13 <span>Citing Articles</span> &amp; <span>Bibliography Styles</span> | <span>RMarkdown</span> for <span>Scientists</span></em>. Accessed August 23, 2020. <a href="https://rmd4sci.njtierney.com/">https://rmd4sci.njtierney.com/</a>.
+</div>
+<div id="ref-tierney" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <em><span>RMarkdown</span> for <span>Scientists</span></em>. Accessed August 23, 2020. <a href="https://rmd4sci.njtierney.com/">https://rmd4sci.njtierney.com/</a>.
+</div>
+<div id="ref-tierneyb" class="csl-entry" role="doc-biblioentry">
+———. n.d.e. <em><span>RMarkdown</span> for <span>Scientists</span></em>.
+</div>
+<div id="ref-tierneyc" class="csl-entry" role="doc-biblioentry">
+———. n.d.f. <em><span>RMarkdown</span> for <span>Scientists</span></em>.
+</div>
+<div id="ref-tierneyRMarkdownScientists" class="csl-entry" role="doc-biblioentry">
+———. n.d.c. <em><span>RMarkdown</span> for <span>Scientists</span></em>.
+</div>
+<div id="ref-tierneyRMarkdownScientistsa" class="csl-entry" role="doc-biblioentry">
+———. n.d.d. <em><span>RMarkdown</span> for <span>Scientists</span></em>.
+</div>
+<div id="ref-2019" class="csl-entry" role="doc-biblioentry">
+<span>“Tracking <span>Error Formula</span> | <span>Step</span> by <span>Step Calculation</span> (with <span>Examples</span>).”</span> 2019. <span>WallStreetMojo</span>. March 21, 2019. <a href="https://www.wallstreetmojo.com/tracking-error-formula/">https://www.wallstreetmojo.com/tracking-error-formula/</a>.
+</div>
+<div id="ref-vagane2011" class="csl-entry" role="doc-biblioentry">
+Vågane, L, I Brechan, and R Hjorthol. 2011. <em>Den Nasjonale Reisevaneundersøkelsen - 2009</em>. <span>TØI Report 1130</span>: <span>The Institute for Transport Economics</span>.
+</div>
+<div id="ref-vaona2009" class="csl-entry" role="doc-biblioentry">
+Vaona, A. 2009. <span>“Spatial Autocorrelation or Model Misspecification? <span>The</span> Help from <span>RESET</span> and the Curse of Small Samples.”</span> <em>Letters of Spatial Resource Sciences</em> 2: 53–59.
+</div>
+<div id="ref-waddell1993" class="csl-entry" role="doc-biblioentry">
+Waddell, P, BJL Berry, and I Hoch. 1993. <span>“Residential Property Values in a Multinodal Urban Area: <span>New</span> Evidence on the Implicit Price of Location.”</span> <em>Journal of Real Estate Finance and Economics</em> 7: 117–41.
+</div>
+<div id="ref-waring2020" class="csl-entry" role="doc-biblioentry">
+Waring, Elin, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu, and Shannon Ellis. 2020. <em>Skimr: <span>Compact</span> and Flexible Summaries of Data</em>. Manual. <a href="https://CRAN.R-project.org/package=skimr">https://CRAN.R-project.org/package=skimr</a>.
+</div>
+<div id="ref-wickham2014" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>The American Statistician</em> 14 (September). <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
+</div>
+<div id="ref-wickham2020" class="csl-entry" role="doc-biblioentry">
+———. 2020. <em>Modelr: <span>Modelling</span> Functions That Work with the Pipe</em>. Manual. <a href="https://CRAN.R-project.org/package=modelr">https://CRAN.R-project.org/package=modelr</a>.
+</div>
 <div id="ref-R-tidyverse" class="csl-entry" role="doc-biblioentry">
-Wickham, Hadley. 2022. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+———. 2022. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-wickham" class="csl-entry" role="doc-biblioentry">
+———. n.d. <em>The Tidyverse Style Guide</em>. Accessed August 27, 2020. <a href="https://style.tidyverse.org/">https://style.tidyverse.org/</a>.
 </div>
 <div id="ref-tidyverse2019" class="csl-entry" role="doc-biblioentry">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
@@ -2874,8 +4039,140 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <div id="ref-R-readxl" class="csl-entry" role="doc-biblioentry">
 Wickham, Hadley, and Jennifer Bryan. 2022. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
 </div>
+<div id="ref-wickham2016" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, and Garrett Grolemund. 2016a. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. <span>Beijing</span>: <span>O’Reilly</span>.
+</div>
+<div id="ref-wickham2016a" class="csl-entry" role="doc-biblioentry">
+———. 2016b. <em>R for <span>Data Science</span>: <span>Import</span>, <span>Tidy</span>, <span>Transform</span>, <span>Visualize</span>, and <span>Model Data</span></em>. <span>Beijing</span>: <span>O’Reilly</span>.
+</div>
+<div id="ref-wickham2016b" class="csl-entry" role="doc-biblioentry">
+———. 2016c. <em>R for <span>Data Science</span>: <span>Import</span>, <span>Tidy</span>, <span>Transform</span>, <span>Visualize</span>, and <span>Model Data</span></em>. <span>Beijing</span>: <span>O’Reilly</span>.
+</div>
+<div id="ref-wickhamDataScienceImport2016" class="csl-entry" role="doc-biblioentry">
+———. 2016d. <em>R for <span>Data Science</span>: <span>Import</span>, <span>Tidy</span>, <span>Transform</span>, <span>Visualize</span>, and <span>Model Data</span></em>. <span>Beijing</span>: <span>O’Reilly</span>.
+</div>
+<div id="ref-wickhamDataScienceImport2016a" class="csl-entry" role="doc-biblioentry">
+———. 2016e. <em>R for <span>Data Science</span>: <span>Import</span>, <span>Tidy</span>, <span>Transform</span>, <span>Visualize</span>, and <span>Model Data</span></em>. <span>Beijing</span>: <span>O’Reilly</span>.
+</div>
+<div id="ref-wikipedia2020" class="csl-entry" role="doc-biblioentry">
+wikipedia. 2020a. <span>“Meta-<span>Analysis</span>.”</span> <em>Wikipedia</em>, August.
+</div>
+<div id="ref-wikipedia2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <span>“Meta-<span>Analysis</span>.”</span> <em>Wikipedia</em>, August.
+</div>
+<div id="ref-wikipediaMetaAnalysis2020" class="csl-entry" role="doc-biblioentry">
+———. 2020c. <span>“Meta-<span>Analysis</span>.”</span> <em>Wikipedia</em>, August.
+</div>
+<div id="ref-wikipediaMetaAnalysis2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020d. <span>“Meta-<span>Analysis</span>.”</span> <em>Wikipedia</em>, August.
+</div>
+<div id="ref-wilhelmsson2000" class="csl-entry" role="doc-biblioentry">
+Wilhelmsson, M. 2000. <span>“The Impact of Traffic Noise on the Values of Single-Family Houses.”</span> <em>Journal of Environmental Planning and Management</em> 43 (6): 799–815.
+</div>
+<div id="ref-wilke" class="csl-entry" role="doc-biblioentry">
+Wilke, Claus O. n.d. <em>Fundamentals of <span>Data Visualization</span></em>. Accessed May 12, 2021. <a href="https://clauswilke.com/dataviz/">https://clauswilke.com/dataviz/</a>.
+</div>
+<div id="ref-wood2006" class="csl-entry" role="doc-biblioentry">
+Wood, SN. 2006. <span>“Generalized Additive Models.”</span> In <em>An Introduction with <span>R</span></em>. <span>Chapman &amp; Hall/CRC, New YorkTexts in Statistical Science, Chapman &amp; Hall/CRC, New York</span>: <span>Texts in Statistical Science</span>.
+</div>
+<div id="ref-wooldridge2003" class="csl-entry" role="doc-biblioentry">
+Wooldridge, JM. 2003. <em>Introductory Econometrics. <span>A</span> Modern Approach.</em> <span>USA</span>: <span>Thomson. South Western</span>.
+</div>
+<div id="ref-xiao2016" class="csl-entry" role="doc-biblioentry">
+Xiao, Y, S Orford, and C J Webster. 2016. <span>“Urban Configuration, Accessibility, and Property Prices: A Case Study of <span>Cardiff</span>, <span>Wales</span>.”</span> <em>Environment and Planning B: Planning and Design</em> 43: 108–29.
+</div>
+<div id="ref-xie2014" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui. 2014a. <span>“Knitr: <span>A</span> Comprehensive Tool for Reproducible Research in <span>R</span>.”</span> In <em>Implementing Reproducible Computational Research</em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>. <a href="http://www.crcpress.com/product/isbn/9781466561595">http://www.crcpress.com/product/isbn/9781466561595</a>.
+</div>
+<div id="ref-xie2014a" class="csl-entry" role="doc-biblioentry">
+———. 2014b. <span>“Knitr: <span>A</span> Comprehensive Tool for Reproducible Research in <span>R</span>.”</span> In <em>Implementing Reproducible Computational Research</em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>. <a href="http://www.crcpress.com/product/isbn/9781466561595">http://www.crcpress.com/product/isbn/9781466561595</a>.
+</div>
+<div id="ref-xie2014b" class="csl-entry" role="doc-biblioentry">
+———. 2014c. <span>“Knitr: <span>A Comprehensive Tool</span> for <span>Reproducible Research</span> in <span>R</span>.”</span> In <em>Implementing <span>Reproducible Computational Research</span></em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xie2014c" class="csl-entry" role="doc-biblioentry">
+———. 2014d. <span>“Knitr: <span>A Comprehensive Tool</span> for <span>Reproducible Research</span> in <span>R</span>.”</span> In <em>Implementing <span>Reproducible Computational Research</span></em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xieKnitrComprehensiveTool2014" class="csl-entry" role="doc-biblioentry">
+———. 2014e. <span>“Knitr: <span>A Comprehensive Tool</span> for <span>Reproducible Research</span> in <span>R</span>.”</span> In <em>Implementing <span>Reproducible Computational Research</span></em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xieKnitrComprehensiveTool2014a" class="csl-entry" role="doc-biblioentry">
+———. 2014f. <span>“Knitr: <span>A Comprehensive Tool</span> for <span>Reproducible Research</span> in <span>R</span>.”</span> In <em>Implementing <span>Reproducible Computational Research</span></em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xie2015" class="csl-entry" role="doc-biblioentry">
+———. 2015a. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-xie2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015b. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-xie2015b" class="csl-entry" role="doc-biblioentry">
+———. 2015c. <em>Dynamic <span>Documents</span> with <span>R</span> and <span>Knitr</span></em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xie2015c" class="csl-entry" role="doc-biblioentry">
+———. 2015d. <em>Dynamic <span>Documents</span> with <span>R</span> and <span>Knitr</span></em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xieDynamicDocumentsKnitr2015" class="csl-entry" role="doc-biblioentry">
+———. 2015e. <em>Dynamic <span>Documents</span> with <span>R</span> and <span>Knitr</span></em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xieDynamicDocumentsKnitr2015a" class="csl-entry" role="doc-biblioentry">
+———. 2015f. <em>Dynamic <span>Documents</span> with <span>R</span> and <span>Knitr</span></em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
 <div id="ref-xie2020" class="csl-entry" role="doc-biblioentry">
-Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781003097471">https://doi.org/10.1201/9781003097471</a>.
+———. 2020a. <em>Knitr: <span>A</span> General-Purpose Package for Dynamic Report Generation in r</em>. Manual. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-xie2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <em>Knitr: <span>A</span> General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-xie2020b" class="csl-entry" role="doc-biblioentry">
+———. 2020c. <em>Knitr: <span>A General-Purpose Package</span> for <span>Dynamic Report Generation</span> in r</em>. Manual.
+</div>
+<div id="ref-xie2020c" class="csl-entry" role="doc-biblioentry">
+———. 2020d. <em>Knitr: <span>A General-Purpose Package</span> for <span>Dynamic Report Generation</span> in r</em>. Manual.
+</div>
+<div id="ref-xieKnitrGeneralPurposePackage2020" class="csl-entry" role="doc-biblioentry">
+———. 2020e. <em>Knitr: <span>A General-Purpose Package</span> for <span>Dynamic Report Generation</span> in r</em>. Manual.
+</div>
+<div id="ref-xieKnitrGeneralPurposePackage2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020f. <em>Knitr: <span>A General-Purpose Package</span> for <span>Dynamic Report Generation</span> in r</em>. Manual.
+</div>
+<div id="ref-xie2018" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018a. <em>R Markdown: <span>The</span> Definitive Guide</em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
+</div>
+<div id="ref-xie2018a" class="csl-entry" role="doc-biblioentry">
+———. 2018b. <em>R <span>Markdown</span>: <span>The Definitive Guide</span></em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xie2018b" class="csl-entry" role="doc-biblioentry">
+———. 2018c. <em>R <span>Markdown</span>: <span>The Definitive Guide</span></em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xieMarkdownDefinitiveGuide2018" class="csl-entry" role="doc-biblioentry">
+———. 2018d. <em>R <span>Markdown</span>: <span>The Definitive Guide</span></em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xieMarkdownDefinitiveGuide2018a" class="csl-entry" role="doc-biblioentry">
+———. 2018e. <em>R <span>Markdown</span>: <span>The Definitive Guide</span></em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-xie" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. n.d. <em>R <span>Markdown Cookbook</span></em>. Accessed September 25, 2020. <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">https://bookdown.org/yihui/rmarkdown-cookbook/</a>.
+</div>
+<div id="ref-yoshida2020" class="csl-entry" role="doc-biblioentry">
+Yoshida, Kazuki, and Alexander Bartel. 2020. <em>Tableone: <span>Create</span> ’Table 1’ to Describe Baseline Characteristics with or Without Propensity Score Weights</em>. Manual. <a href="https://CRAN.R-project.org/package=tableone">https://CRAN.R-project.org/package=tableone</a>.
+</div>
+<div id="ref-young2008a" class="csl-entry" role="doc-biblioentry">
+Young, Neal S, John P. A Ioannidis, and Omar Al-Ubaydli. 2008a. <span>“Why <span>Current Publication Practices May Distort Science</span>.”</span> <em>PLoS Medicine</em> 5 (10): e201. <a href="https://doi.org/10.1371/journal.pmed.0050201">https://doi.org/10.1371/journal.pmed.0050201</a>.
+</div>
+<div id="ref-young2008b" class="csl-entry" role="doc-biblioentry">
+———. 2008b. <span>“Why <span>Current Publication Practices May Distort Science</span>.”</span> <em>PLoS Medicine</em> 5 (10): e201. <a href="https://doi.org/10.1371/journal.pmed.0050201">https://doi.org/10.1371/journal.pmed.0050201</a>.
+</div>
+<div id="ref-youngWhyCurrentPublication2008" class="csl-entry" role="doc-biblioentry">
+———. 2008c. <span>“Why <span>Current Publication Practices May Distort Science</span>.”</span> <em>PLoS Medicine</em> 5 (10): e201. <a href="https://doi.org/10.1371/journal.pmed.0050201">https://doi.org/10.1371/journal.pmed.0050201</a>.
+</div>
+<div id="ref-youngWhyCurrentPublication2008a" class="csl-entry" role="doc-biblioentry">
+———. 2008d. <span>“Why <span>Current Publication Practices May Distort Science</span>.”</span> <em>PLoS Medicine</em> 5 (10): e201. <a href="https://doi.org/10.1371/journal.pmed.0050201">https://doi.org/10.1371/journal.pmed.0050201</a>.
+</div>
+<div id="ref-young2008" class="csl-entry" role="doc-biblioentry">
+———. 2008e. <span>“Why <span>Current Publication Practices May Distort Science</span>.”</span> <em>PLoS Medicine</em> 5 (10): e201. <a href="https://doi.org/10.1371/journal.pmed.0050201">https://doi.org/10.1371/journal.pmed.0050201</a>.
+</div>
+<div id="ref-doi:10.2466/pms.1996.83.1.153" class="csl-entry" role="doc-biblioentry">
+Young, Thomas J., and Laurence A. French. 1996. <span>“Perceived Competence of <span>U</span>.<span>S</span>. Presidents, 1933–1989: <span>Presidential</span> News Conferences and the Mere-Exposure Effect.”</span> <em>Perceptual and Motor Skills</em> 83 (1): 153–54. <a href="https://doi.org/10.2466/pms.1996.83.1.153">https://doi.org/10.2466/pms.1996.83.1.153</a>.
 </div>
 </div>
 </section></section>
