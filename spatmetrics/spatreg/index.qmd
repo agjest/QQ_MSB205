@@ -1,5 +1,5 @@
 ---
-title: "Spatial regressions"
+title: "Spatial regressions area data"
 author: "Arnstein Gjestland"
 institute: "HVL"
 date: "Spring 2021 (revised autumn 2022)"
@@ -69,6 +69,8 @@ options(scipen = 5)
 # Models
 
 ## Read in data via map.
+
+This is tha map with data generated under [Getting Data](../data/).
 
 ```{r}
 # run data/get_ssb_data.Rmd if data needs to be updated
@@ -337,29 +339,28 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$
 
 ## LeSages (2014) 5 principles
 
-::: incremental
-A.  Local versus global spillover
+1.  Local versus global spillover
+
     i.  "A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers."
 
     ii. "Global spillover phenomena should be rarer than local spillovers in applied regional science modeling situations, hence the statement: 'most spatial spillovers are local.'"
 
     iii. "Global spillover specifications are more difficult to estimate and correct interpretation of estimates from these specifications is more difficult. Because of the interesting theoretical econometric aspects of these specifications, they represent those most studied in the spatial econometrics literature. Still, this does not mean they should be those most frequently used by regional science practitioners."
-B.  Only two model specifications relevant for applied work
+
+2.  Only two model specifications relevant for applied work
+
     i.  SDEM
 
     ii. SDM
-:::
 
 ## LeSages (2014) 5 principles
 
-::: incremental
-C.  Estimation procedures, not only point estimates
+3.  Estimation procedures, not only point estimates
     i.  Estimates of dispersion
 
     ii. Calculate direct/indirect effects
-D.  "Avoid the temptation for observation-level inference"
-E.  "Keep the weight matrix simple"
-:::
+4.  "Avoid the temptation for observation-level inference"
+5.  "Keep the weight matrix simple"
 
 ## LeSages (2014) recommendations
 

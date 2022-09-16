@@ -197,26 +197,26 @@ age
 
 Its projection is CRS(+init=epsg:2834), the Ohio North State Plane.
 
-## Histogram of age variabl
+## Histogram of age variable
 
 ```{r}
-hist(100*house_sf$age, breaks = 30)
+hist(100*red_house_sf$age, breaks = 30)
 ```
 
 ## From SpatialPointsDataFrame to sf cont.
 
 ```{r}
-summary(100*house_sf$age)
+summary(100*red_house_sf$age)
 ```
 
 ```{r}
-my_age <- as.numeric(levels(house_sf$syear))[as.integer(house_sf$syear)] - house_sf$yrbuilt
+my_age <- as.numeric(levels(red_house_sf$syear))[as.integer(red_house_sf$syear)] - red_house_sf$yrbuilt
 my_age <- my_age + 3
-my_age1 <- 1999 - house_sf$yrbuilt
+my_age1 <- 1999 - red_house_sf$yrbuilt
 ```
 
 ```{r}
-summary(100*house_sf$age - my_age)
+summary(100*red_house_sf$age - my_age)
 ```
 
 ## From SpatialPointsDataFrame to sf cont.
@@ -229,7 +229,7 @@ hist(my_age1, breaks = 30)
 
 ```{r}
 summary(my_age1)
-table(round(my_age1, 3) == round(100*house_sf$age, 3))
+table(round(my_age1, 3) == round(100*red_house_sf$age, 3))
 ```
 
 ## Changing the age variable
