@@ -283,8 +283,7 @@ lm.morantest(lm2, listw = md_2017_w)
 moran.plot(residuals(lm2), listw = md_2017_w)
 ```
 
--   We will use mod2 in the following.
-    We have spatial autocorrelation in the residuals from OLS.
+-   We will use mod2 in the following. We have spatial autocorrelation in the residuals from OLS.
 
 # The Anselin approach
 
@@ -324,7 +323,9 @@ For a more thorough discussion see @osland2010a and @chi2019spatial page 55.
 -   A change in one of the explanatory variables for one municipality (haugesund) might effect pm2 in this municipality and potentially also change pm2 in neighbouring municipalities (Sveio, Karmøy, Bømlo, Tysvær), but there are scarce reasons to think that these changes will ripple through the whole country (and eventually change pm2 in Hammerfest).
 
     > If one can narrow down the relationship being investigated as reflecting a local spillover situation, then the SDEM model is the only model one needs to estimate.
-    > This specification subsumes the SLX and SEM specifications as special cases.[@lesage]
+    > This specification subsumes the SLX and SEM specifications as special cases.
+
+    [@lesage2014]
 
 ## Local or global? cont.
 
@@ -333,7 +334,7 @@ Note that plain OLS is a special case of SDEM.
 
 Manski ("includes everything"):
 
-## $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$ 
+$$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$
 
 ## LeSages (2014) 5 principles
 
@@ -358,7 +359,7 @@ Manski ("includes everything"):
 4.  "Avoid the temptation for observation-level inference"
 5.  "Keep the weight matrix simple"
 
-## LeSages (2014) recommendations 
+## LeSages (2014) recommendations
 
 -   "Sparse connectivity structures work best"
 -   Parameterised decay can give identification problems
