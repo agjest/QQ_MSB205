@@ -1705,7 +1705,7 @@
     "href": "spatmetrics/spatreg/index.html#correlation",
     "title": "Spatial regressions",
     "section": "Correlation",
-    "text": "Correlation\n\nThe positive correlation between sen_ind and prct_20_64.\n\n\n\nCode\nplot(md_2017$sen_ind, md_2017$prct_20_64)"
+    "text": "Correlation\n\nThe positive correlation between sen_ind and prct_20_64.\n\n\n\n\nCode\nplot(md_2017$sen_ind, md_2017$prct_20_64)"
   },
   {
     "objectID": "spatmetrics/spatreg/index.html#correlation-cont.",
