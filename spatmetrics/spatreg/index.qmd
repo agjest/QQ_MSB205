@@ -225,6 +225,8 @@ lm2 <- lm(mod2, data = md_2017)
 summary(lm2)
 ```
 
+## Is multicollinearity a problem?
+
 ```{r}
 mctest(lm2)
 ```
