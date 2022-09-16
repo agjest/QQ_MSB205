@@ -229,6 +229,8 @@ summary(lm2)
 mctest(lm2)
 ```
 
+## Is multicollinearity a problem? cont.
+
 ```{r}
 imcdiag(lm2, all = TRUE)
 ```
@@ -241,6 +243,8 @@ Three out of nine tests indicate that multicollinearity might be a problem.
 # If we only want to do one test
 imcdiag(lm2, method = "VIF")
 ```
+
+## Is multicollinearity a problem? cont.
 
 ```{r}
 # If we only want to do one test
