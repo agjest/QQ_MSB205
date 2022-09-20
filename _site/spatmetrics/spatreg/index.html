@@ -438,7 +438,10 @@
 </section>
 <section id="read-in-data-via-map." class="slide level2">
 <h2>Read in data via map.</h2>
-<p>This is tha map with data generated under <a href="../data/">Getting Data</a>.</p>
+<ul>
+<li class="fragment">This is the municipalities map with data from SSB generated under <a href="../data/">Getting Data</a>.</li>
+</ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -459,6 +462,7 @@ Projected CRS: ETRS89 / UTM zone 33N + NN2000 height</code></pre>
 <ul>
 <li class="fragment">Filter out municipalities with no recorded pm2.</li>
 </ul>
+</div>
 <div class="fragment">
 <div class="cell">
 <details open="">
@@ -998,8 +1002,9 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <p>Manski (“includes everything”):</p>
 <p><span class="math display">\[ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}\]</span></p>
 </section>
-<section id="lesages-2014-5-principles" class="slide level2">
+<section id="lesages-2014-5-principles" class="slide level2 smaller scrollable">
 <h2>LeSages (2014) 5 principles</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" style=".column-body-outset-left" role="doc-bibliography">
 <ol type="1">
 <li class="fragment"><p>Local versus global spillover</p>
 <ol type="i">
@@ -1013,6 +1018,133 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <li class="fragment"><p>SDM</p></li>
 </ol></li>
 </ol>
+<div id="ref-allaire2022" class="csl-entry" role="doc-biblioentry">
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2022. <em>Rmarkdown: <span>Dynamic</span> Documents for <span>R</span></em>. Manual. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
+</div>
+<div id="ref-bivand" class="csl-entry" role="doc-biblioentry">
+Bivand, Edzer Pebesma, Roger. n.d. <em>Spatial <span>Data Science</span></em>. Accessed May 12, 2021. <a href="https://keen-swartz-3146c4.netlify.app/index.html">https://keen-swartz-3146c4.netlify.app/index.html</a>.
+</div>
+<div id="ref-spdep2022" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger. 2022a. <span>“R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.”</span> <em>Geographical Analysis</em> 54 (3): 488–518. <a href="https://doi.org/10.1111/gean.12319">https://doi.org/10.1111/gean.12319</a>.
+</div>
+<div id="ref-R-spdep" class="csl-entry" role="doc-biblioentry">
+———. 2022b. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.
+</div>
+<div id="ref-sp2013" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spatialreg2013b" class="csl-entry" role="doc-biblioentry">
+———. 2013b. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spdep2013" class="csl-entry" role="doc-biblioentry">
+———. 2013c. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
+</div>
+<div id="ref-spatialreg2013a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. <span>“Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.”</span> <em>Geographical Analysis</em> 45 (2): 150–79. <a href="https://doi.org/10.1111/gean.12008">https://doi.org/10.1111/gean.12008</a>.
+</div>
+<div id="ref-spatialreg2021a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. <span>“A Review of Software for Spatial Econometrics in <span>R</span>.”</span> <em>Mathematics</em> 9 (11). <a href="https://doi.org/10.3390/math9111276">https://doi.org/10.3390/math9111276</a>.
+</div>
+<div id="ref-spatialreg2015a" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, and Gianfranco Piras. 2015. <span>“Comparing Implementations of Estimation Methods for Spatial Econometrics.”</span> <em>Journal of Statistical Software</em> 63 (18): 1–36. <a href="https://doi.org/10.18637/jss.v063.i18">https://doi.org/10.18637/jss.v063.i18</a>.
+</div>
+<div id="ref-R-spatialreg" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Spatialreg: Spatial Regression Analysis</em>. <a href="https://CRAN.R-project.org/package=spatialreg">https://CRAN.R-project.org/package=spatialreg</a>.
+</div>
+<div id="ref-spdep2018" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger, and David W. S. Wong. 2018. <span>“Comparing Implementations of Global and Local Indicators of Spatial Association.”</span> <em>TEST</em> 27 (3): 716–48. <a href="https://doi.org/10.1007/s11749-018-0599-x">https://doi.org/10.1007/s11749-018-0599-x</a>.
+</div>
+<div id="ref-chi2019spatial" class="csl-entry" role="doc-biblioentry">
+Chi, G., and J. Zhu. 2019. <em>Spatial Regression Models for the Social Sciences</em>. Advanced Quantitative Techniques in the Social Sciences. <span>SAGE Publications</span>. <a href="https://books.google.no/books?id=zHGkvwEACAAJ">https://books.google.no/books?id=zHGkvwEACAAJ</a>.
+</div>
+<div id="ref-GSS2022" class="csl-entry" role="doc-biblioentry">
+<span>“Dependency and Reproducibility – <span>GSS</span>.”</span> n.d. Accessed September 12, 2022. <a href="https://gss.civilservice.gov.uk/reproducible-analytical-pipelines/dependency-and-reproducibility/">https://gss.civilservice.gov.uk/reproducible-analytical-pipelines/dependency-and-reproducibility/</a>.
+</div>
+<div id="ref-epskamp2019" class="csl-entry" role="doc-biblioentry">
+Epskamp, Sacha. 2019. <span>“Reproducibility and <span>Replicability</span> in a <span>Fast-Paced Methodological World</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 2 (May): 251524591984742. <a href="https://doi.org/10.1177/2515245919847421">https://doi.org/10.1177/2515245919847421</a>.
+</div>
+<div id="ref-grolemund2017" class="csl-entry" role="doc-biblioentry">
+Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for <span>Data Science</span>: <span>Import</span>, <span>Tidy</span>, <span>Transform</span>, <span>Visualize</span>, and <span>Model Data</span></em>. 1st edition. <span>Sebastopol, CA</span>: <span>O’Reilly Media</span>.
+</div>
+<div id="ref-Grossenbacher2022" class="csl-entry" role="doc-biblioentry">
+Grossenbacher, Timo. n.d. <span>“A (Truly) Reproducible <span>R</span> Workflow.”</span> Accessed September 12, 2022. <a href="https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/">https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/</a>.
+</div>
+<div id="ref-guidotti2020" class="csl-entry" role="doc-biblioentry">
+Guidotti, Emanuele, and David Ardia. 2020. <span>“<span>COVID-19</span> Data Hub.”</span> <em>Journal of Open Source Software</em> 5 (51): 2376. <a href="https://doi.org/10.21105/joss.02376">https://doi.org/10.21105/joss.02376</a>.
+</div>
+<div id="ref-halleckvega2015" class="csl-entry" role="doc-biblioentry">
+Halleck Vega, Solmaria, and J. Paul Elhorst. 2015. <span>“<span>THE SLX MODEL</span>.”</span> <em>Journal of Regional Science</em> 55 (3): 339–63. <a href="https://doi.org/10.1111/jors.12188">https://doi.org/10.1111/jors.12188</a>.
+</div>
+<div id="ref-R-huxtable" class="csl-entry" role="doc-biblioentry">
+Hugh-Jones, David. 2022. <em>Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats</em>. <a href="https://hughjonesd.github.io/huxtable/">https://hughjonesd.github.io/huxtable/</a>.
+</div>
+<div id="ref-lander2017" class="csl-entry" role="doc-biblioentry">
+Lander, Jared. 2017. <em>R for <span>Everyone</span>: <span>Advanced Analytics</span> and <span>Graphics</span></em>. 2nd edition. <span>Boston</span>: <span>Addison-Wesley Professional</span>.
+</div>
+<div id="ref-R-PxWebApiData" class="csl-entry" role="doc-biblioentry">
+Langsrud, Øyvind, and Jan Bruusgaard. 2021. <em>PxWebApiData: PX-Web Data by API</em>. <a href="https://github.com/statisticsnorway/PxWebApiData">https://github.com/statisticsnorway/PxWebApiData</a>.
+</div>
+<div id="ref-lesage2014" class="csl-entry" role="doc-biblioentry">
+LeSage, James P. 2014. <span>“What <span>Regional Scientists Need</span> to <span>Know About Spatial Econometrics</span>.”</span> SSRN scholarly paper ID 2420725. <span>Rochester, NY</span>: <span>Social Science Research Network</span>. <a href="https://doi.org/10.2139/ssrn.2420725">https://doi.org/10.2139/ssrn.2420725</a>.
+</div>
+<div id="ref-RRT2022" class="csl-entry" role="doc-biblioentry">
+Ooi, Hong, and Vries, Andrie de. n.d. <em>0.1 <span>The Reproducible R Toolkit</span> (<span>RRT</span>)</em>. Accessed September 12, 2022. <a href="https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html">https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html</a>.
+</div>
+<div id="ref-osland2010" class="csl-entry" role="doc-biblioentry">
+Osland, Liv. 2010. <span>“An Application of Spatial Econometrics in Relation to Hedonic House Price Modeling.”</span> <em>Journal of Real Estate Research</em> 32 (July): 289–320.
+</div>
+<div id="ref-sf2018" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
+</div>
+<div id="ref-R-sf" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
+</div>
+<div id="ref-sp2005" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer J., and Roger S. Bivand. 2005. <span>“Classes and Methods for Spatial Data in <span>R</span>.”</span> <em>R News</em> 5 (2): 9–13. <a href="https://CRAN.R-project.org/doc/Rnews/">https://CRAN.R-project.org/doc/Rnews/</a>.
+</div>
+<div id="ref-R-sp" class="csl-entry" role="doc-biblioentry">
+Pebesma, Edzer, and Roger Bivand. 2022. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp">https://CRAN.R-project.org/package=sp</a>.
+</div>
+<div id="ref-R-broom" class="csl-entry" role="doc-biblioentry">
+Robinson, David, Alex Hayes, and Simon Couch. 2022. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.
+</div>
+<div id="ref-tmap2018" class="csl-entry" role="doc-biblioentry">
+Tennekes, Martijn. 2018. <span>“<span class="nocase">tmap</span>: Thematic Maps in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 84 (6): 1–39. <a href="https://doi.org/10.18637/jss.v084.i06">https://doi.org/10.18637/jss.v084.i06</a>.
+</div>
+<div id="ref-R-tmap" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
+</div>
+<div id="ref-zotero-1344" class="csl-entry" role="doc-biblioentry">
+<span>“Welcome | <span>R</span> for <span>Data Science</span>.”</span> n.d. Accessed July 22, 2022. <a href="https://r4ds.had.co.nz/">https://r4ds.had.co.nz/</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley. 2022. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-wickham2019" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019b. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-tidyverse2019" class="csl-entry" role="doc-biblioentry">
+———, et al. 2019a. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-R-readxl" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, and Jennifer Bryan. 2022. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
+</div>
+<div id="ref-xie2014" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui. 2014. <span>“Knitr: <span>A</span> Comprehensive Tool for Reproducible Research in <span>R</span>.”</span> In <em>Implementing Reproducible Computational Research</em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>. <a href="http://www.crcpress.com/product/isbn/9781466561595">http://www.crcpress.com/product/isbn/9781466561595</a>.
+</div>
+<div id="ref-xie2015" class="csl-entry" role="doc-biblioentry">
+———. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-xie2022" class="csl-entry" role="doc-biblioentry">
+———. 2022. <em>Knitr: <span>A</span> General-Purpose Package for Dynamic Report Generation in <span>R</span></em>. Manual. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-xie2018" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: <span>The</span> Definitive Guide</em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
+</div>
+<div id="ref-xie2020" class="csl-entry" role="doc-biblioentry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">https://bookdown.org/yihui/rmarkdown-cookbook</a>.
+</div>
+</div>
 </section>
 <section id="lesages-2014-5-principles-1" class="slide level2">
 <h2>LeSages (2014) 5 principles</h2>
@@ -2789,139 +2921,11 @@ Log likelihood of SEM_mod4      Log likelihood of lm4
 </details>
 </div>
 </section>
-<section id="bibliography" class="slide level2 smaller scrollable">
+<section id="bibliography" class="slide level2">
 <h2>Bibliography</h2>
 
 <div class="footer footer-default">
 <p><a href="../../index.html">MSB205</a></p>
-</div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-allaire2022" class="csl-entry" role="doc-biblioentry">
-Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2022. <em>Rmarkdown: <span>Dynamic</span> Documents for <span>R</span></em>. Manual. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
-</div>
-<div id="ref-bivand" class="csl-entry" role="doc-biblioentry">
-Bivand, Edzer Pebesma, Roger. n.d. <em>Spatial <span>Data Science</span></em>. Accessed May 12, 2021. <a href="https://keen-swartz-3146c4.netlify.app/index.html">https://keen-swartz-3146c4.netlify.app/index.html</a>.
-</div>
-<div id="ref-spdep2022" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger. 2022a. <span>“R Packages for Analyzing Spatial Data: A Comparative Case Study with Areal Data.”</span> <em>Geographical Analysis</em> 54 (3): 488–518. <a href="https://doi.org/10.1111/gean.12319">https://doi.org/10.1111/gean.12319</a>.
-</div>
-<div id="ref-R-spdep" class="csl-entry" role="doc-biblioentry">
-———. 2022b. <em>Spdep: Spatial Dependence: Weighting Schemes, Statistics</em>. <a href="https://CRAN.R-project.org/package=spdep">https://CRAN.R-project.org/package=spdep</a>.
-</div>
-<div id="ref-sp2013" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger S., Edzer Pebesma, and Virgilio Gomez-Rubio. 2013a. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
-</div>
-<div id="ref-spatialreg2013b" class="csl-entry" role="doc-biblioentry">
-———. 2013b. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
-</div>
-<div id="ref-spdep2013" class="csl-entry" role="doc-biblioentry">
-———. 2013c. <em>Applied Spatial Data Analysis with <span>R</span>, Second Edition</em>. Springer, NY. <a href="https://asdar-book.org/">https://asdar-book.org/</a>.
-</div>
-<div id="ref-spatialreg2013a" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger, Jan Hauke, and Tomasz Kossowski. 2013. <span>“Computing the Jacobian in Gaussian Spatial Autoregressive Models: An Illustrated Comparison of Available Methods.”</span> <em>Geographical Analysis</em> 45 (2): 150–79. <a href="https://doi.org/10.1111/gean.12008">https://doi.org/10.1111/gean.12008</a>.
-</div>
-<div id="ref-spatialreg2021a" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger, Giovanni Millo, and Gianfranco Piras. 2021. <span>“A Review of Software for Spatial Econometrics in <span>R</span>.”</span> <em>Mathematics</em> 9 (11). <a href="https://doi.org/10.3390/math9111276">https://doi.org/10.3390/math9111276</a>.
-</div>
-<div id="ref-spatialreg2015a" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger, and Gianfranco Piras. 2015. <span>“Comparing Implementations of Estimation Methods for Spatial Econometrics.”</span> <em>Journal of Statistical Software</em> 63 (18): 1–36. <a href="https://doi.org/10.18637/jss.v063.i18">https://doi.org/10.18637/jss.v063.i18</a>.
-</div>
-<div id="ref-R-spatialreg" class="csl-entry" role="doc-biblioentry">
-———. 2022. <em>Spatialreg: Spatial Regression Analysis</em>. <a href="https://CRAN.R-project.org/package=spatialreg">https://CRAN.R-project.org/package=spatialreg</a>.
-</div>
-<div id="ref-spdep2018" class="csl-entry" role="doc-biblioentry">
-Bivand, Roger, and David W. S. Wong. 2018. <span>“Comparing Implementations of Global and Local Indicators of Spatial Association.”</span> <em>TEST</em> 27 (3): 716–48. <a href="https://doi.org/10.1007/s11749-018-0599-x">https://doi.org/10.1007/s11749-018-0599-x</a>.
-</div>
-<div id="ref-chi2019spatial" class="csl-entry" role="doc-biblioentry">
-Chi, G., and J. Zhu. 2019. <em>Spatial Regression Models for the Social Sciences</em>. Advanced Quantitative Techniques in the Social Sciences. <span>SAGE Publications</span>. <a href="https://books.google.no/books?id=zHGkvwEACAAJ">https://books.google.no/books?id=zHGkvwEACAAJ</a>.
-</div>
-<div id="ref-GSS2022" class="csl-entry" role="doc-biblioentry">
-<span>“Dependency and Reproducibility – <span>GSS</span>.”</span> n.d. Accessed September 12, 2022. <a href="https://gss.civilservice.gov.uk/reproducible-analytical-pipelines/dependency-and-reproducibility/">https://gss.civilservice.gov.uk/reproducible-analytical-pipelines/dependency-and-reproducibility/</a>.
-</div>
-<div id="ref-epskamp2019" class="csl-entry" role="doc-biblioentry">
-Epskamp, Sacha. 2019. <span>“Reproducibility and <span>Replicability</span> in a <span>Fast-Paced Methodological World</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 2 (May): 251524591984742. <a href="https://doi.org/10.1177/2515245919847421">https://doi.org/10.1177/2515245919847421</a>.
-</div>
-<div id="ref-grolemund2017" class="csl-entry" role="doc-biblioentry">
-Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for <span>Data Science</span>: <span>Import</span>, <span>Tidy</span>, <span>Transform</span>, <span>Visualize</span>, and <span>Model Data</span></em>. 1st edition. <span>Sebastopol, CA</span>: <span>O’Reilly Media</span>.
-</div>
-<div id="ref-Grossenbacher2022" class="csl-entry" role="doc-biblioentry">
-Grossenbacher, Timo. n.d. <span>“A (Truly) Reproducible <span>R</span> Workflow.”</span> Accessed September 12, 2022. <a href="https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/">https://timogrossenbacher.ch/2017/07/a-truly-reproducible-r-workflow/</a>.
-</div>
-<div id="ref-guidotti2020" class="csl-entry" role="doc-biblioentry">
-Guidotti, Emanuele, and David Ardia. 2020. <span>“<span>COVID-19</span> Data Hub.”</span> <em>Journal of Open Source Software</em> 5 (51): 2376. <a href="https://doi.org/10.21105/joss.02376">https://doi.org/10.21105/joss.02376</a>.
-</div>
-<div id="ref-halleckvega2015" class="csl-entry" role="doc-biblioentry">
-Halleck Vega, Solmaria, and J. Paul Elhorst. 2015. <span>“<span>THE SLX MODEL</span>.”</span> <em>Journal of Regional Science</em> 55 (3): 339–63. <a href="https://doi.org/10.1111/jors.12188">https://doi.org/10.1111/jors.12188</a>.
-</div>
-<div id="ref-R-huxtable" class="csl-entry" role="doc-biblioentry">
-Hugh-Jones, David. 2022. <em>Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats</em>. <a href="https://hughjonesd.github.io/huxtable/">https://hughjonesd.github.io/huxtable/</a>.
-</div>
-<div id="ref-lander2017" class="csl-entry" role="doc-biblioentry">
-Lander, Jared. 2017. <em>R for <span>Everyone</span>: <span>Advanced Analytics</span> and <span>Graphics</span></em>. 2nd edition. <span>Boston</span>: <span>Addison-Wesley Professional</span>.
-</div>
-<div id="ref-R-PxWebApiData" class="csl-entry" role="doc-biblioentry">
-Langsrud, Øyvind, and Jan Bruusgaard. 2021. <em>PxWebApiData: PX-Web Data by API</em>. <a href="https://github.com/statisticsnorway/PxWebApiData">https://github.com/statisticsnorway/PxWebApiData</a>.
-</div>
-<div id="ref-lesage2014" class="csl-entry" role="doc-biblioentry">
-LeSage, James P. 2014. <span>“What <span>Regional Scientists Need</span> to <span>Know About Spatial Econometrics</span>.”</span> SSRN scholarly paper ID 2420725. <span>Rochester, NY</span>: <span>Social Science Research Network</span>. <a href="https://doi.org/10.2139/ssrn.2420725">https://doi.org/10.2139/ssrn.2420725</a>.
-</div>
-<div id="ref-RRT2022" class="csl-entry" role="doc-biblioentry">
-Ooi, Hong, and Vries, Andrie de. n.d. <em>0.1 <span>The Reproducible R Toolkit</span> (<span>RRT</span>)</em>. Accessed September 12, 2022. <a href="https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html">https://cran.r-project.org/web/packages/checkpoint/vignettes/checkpoint.html</a>.
-</div>
-<div id="ref-osland2010" class="csl-entry" role="doc-biblioentry">
-Osland, Liv. 2010. <span>“An Application of Spatial Econometrics in Relation to Hedonic House Price Modeling.”</span> <em>Journal of Real Estate Research</em> 32 (July): 289–320.
-</div>
-<div id="ref-sf2018" class="csl-entry" role="doc-biblioentry">
-Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
-</div>
-<div id="ref-R-sf" class="csl-entry" role="doc-biblioentry">
-———. 2022. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
-</div>
-<div id="ref-sp2005" class="csl-entry" role="doc-biblioentry">
-Pebesma, Edzer J., and Roger S. Bivand. 2005. <span>“Classes and Methods for Spatial Data in <span>R</span>.”</span> <em>R News</em> 5 (2): 9–13. <a href="https://CRAN.R-project.org/doc/Rnews/">https://CRAN.R-project.org/doc/Rnews/</a>.
-</div>
-<div id="ref-R-sp" class="csl-entry" role="doc-biblioentry">
-Pebesma, Edzer, and Roger Bivand. 2022. <em>Sp: Classes and Methods for Spatial Data</em>. <a href="https://CRAN.R-project.org/package=sp">https://CRAN.R-project.org/package=sp</a>.
-</div>
-<div id="ref-R-broom" class="csl-entry" role="doc-biblioentry">
-Robinson, David, Alex Hayes, and Simon Couch. 2022. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.
-</div>
-<div id="ref-tmap2018" class="csl-entry" role="doc-biblioentry">
-Tennekes, Martijn. 2018. <span>“<span class="nocase">tmap</span>: Thematic Maps in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 84 (6): 1–39. <a href="https://doi.org/10.18637/jss.v084.i06">https://doi.org/10.18637/jss.v084.i06</a>.
-</div>
-<div id="ref-R-tmap" class="csl-entry" role="doc-biblioentry">
-———. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
-</div>
-<div id="ref-zotero-1344" class="csl-entry" role="doc-biblioentry">
-<span>“Welcome | <span>R</span> for <span>Data Science</span>.”</span> n.d. Accessed July 22, 2022. <a href="https://r4ds.had.co.nz/">https://r4ds.had.co.nz/</a>.
-</div>
-<div id="ref-R-tidyverse" class="csl-entry" role="doc-biblioentry">
-Wickham, Hadley. 2022. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
-</div>
-<div id="ref-wickham2019" class="csl-entry" role="doc-biblioentry">
-Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019b. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
-</div>
-<div id="ref-tidyverse2019" class="csl-entry" role="doc-biblioentry">
-———, et al. 2019a. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
-</div>
-<div id="ref-R-readxl" class="csl-entry" role="doc-biblioentry">
-Wickham, Hadley, and Jennifer Bryan. 2022. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
-</div>
-<div id="ref-xie2014" class="csl-entry" role="doc-biblioentry">
-Xie, Yihui. 2014. <span>“Knitr: <span>A</span> Comprehensive Tool for Reproducible Research in <span>R</span>.”</span> In <em>Implementing Reproducible Computational Research</em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. <span>Chapman and Hall/CRC</span>. <a href="http://www.crcpress.com/product/isbn/9781466561595">http://www.crcpress.com/product/isbn/9781466561595</a>.
-</div>
-<div id="ref-xie2015" class="csl-entry" role="doc-biblioentry">
-———. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
-</div>
-<div id="ref-xie2022" class="csl-entry" role="doc-biblioentry">
-———. 2022. <em>Knitr: <span>A</span> General-Purpose Package for Dynamic Report Generation in <span>R</span></em>. Manual. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
-</div>
-<div id="ref-xie2018" class="csl-entry" role="doc-biblioentry">
-Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: <span>The</span> Definitive Guide</em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
-</div>
-<div id="ref-xie2020" class="csl-entry" role="doc-biblioentry">
-Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. <span>Boca Raton, Florida</span>: <span>Chapman and Hall/CRC</span>. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">https://bookdown.org/yihui/rmarkdown-cookbook</a>.
-</div>
 </div>
 </section></section>
     </div>

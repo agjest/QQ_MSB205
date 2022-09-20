@@ -97,7 +97,7 @@ red_house_sf <- house %>%
 
 ```{r}
 #| cache: true
-plot(red_house_sf["price"], cex = 0.01, pch = 20)
+plot(red_house_sf["price"], cex = 0.1, pch = 20)
 ```
 
 ```{r}

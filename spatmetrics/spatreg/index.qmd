@@ -70,7 +70,9 @@ options(scipen = 5)
 
 ## Read in data via map.
 
-This is tha map with data generated under [Getting Data](../data/).
+-   This is the municipalities map with data from SSB generated under [Getting Data](../data/).
+
+. . .
 
 ```{r}
 # run data/get_ssb_data.Rmd if data needs to be updated
@@ -339,6 +341,7 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$
 
 ## LeSages (2014) 5 principles
 
+::: {#refs style=".column-body-outset-left"}
 1.  Local versus global spillover
 
     i.  "A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers."
@@ -352,6 +355,7 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$
     i.  SDEM
 
     ii. SDM
+:::
 
 ## LeSages (2014) 5 principles
 
