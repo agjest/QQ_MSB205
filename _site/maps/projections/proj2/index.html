@@ -1881,8 +1881,51 @@ BOUNDCRS[
 </section>
 <section id="the-final-winkel-triple-map.-plot" class="slide level2">
 <h2>The final Winkel triple map. PLOT</h2>
+<div class="cell">
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-85-1.png" width="960" class="r-stretch"></section>
+</div>
+</section>
+<section id="cran-mirrors" class="slide level2">
+<h2>Cran mirrors</h2>
+<div class="cell" data-hash="index_cache/revealjs/unnamed-chunk-86_cac90d4fde5d075f780be5f2682b079e">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>Mirrors <span class="ot">&lt;-</span> <span class="fu">getCRANmirrors</span>(<span class="at">all =</span> <span class="cn">FALSE</span>, <span class="at">local.only =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb77-3"><a href="#cb77-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(City, <span class="at">pattern =</span> <span class="st">"0-Cloud.*"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb77-4"><a href="#cb77-4"></a>  <span class="fu">pull</span>(City) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-5"><a href="#cb77-5"></a>  <span class="fu">str_conv</span>(<span class="st">"UTF-8"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-6"><a href="#cb77-6"></a>  <span class="fu">geocode_OSM</span>(<span class="at">as.sf =</span> <span class="cn">TRUE</span>, <span class="at">geometry =</span> <span class="st">'point'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-7"><a href="#cb77-7"></a>  <span class="fu">st_transform_proj</span>(<span class="at">crs =</span> crs_wintri) <span class="sc">%&gt;%</span></span>
+<span id="cb77-8"><a href="#cb77-8"></a>  <span class="fu">transmute</span>(<span class="at">city =</span> query) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-9"><a href="#cb77-9"></a>  <span class="fu">group_by</span>(city) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-10"><a href="#cb77-10"></a>  <span class="fu">summarise</span>(<span class="at">mirrors =</span> <span class="fu">as.character</span>(<span class="fu">n</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-11"><a href="#cb77-11"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb77-12"><a href="#cb77-12"></a>    <span class="at">mirrors =</span> <span class="fu">factor</span>(mirrors, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>))</span>
+<span id="cb77-13"><a href="#cb77-13"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>final_winkel_world <span class="sc">+</span></span>
+<span id="cb78-2"><a href="#cb78-2"></a>  <span class="co"># add mirrors geom</span></span>
+<span id="cb78-3"><a href="#cb78-3"></a>  <span class="fu">geom_sf</span>(</span>
+<span id="cb78-4"><a href="#cb78-4"></a>    <span class="at">data =</span> Mirrors, </span>
+<span id="cb78-5"><a href="#cb78-5"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb78-6"><a href="#cb78-6"></a>      <span class="at">shape =</span> mirrors</span>
+<span id="cb78-7"><a href="#cb78-7"></a>      )</span>
+<span id="cb78-8"><a href="#cb78-8"></a>    )  <span class="sc">+</span></span>
+<span id="cb78-9"><a href="#cb78-9"></a>  <span class="co"># perhaps use geom_text_repel to name the cities with more than 1 mirror</span></span>
+<span id="cb78-10"><a href="#cb78-10"></a>  <span class="fu">ggtitle</span>(<span class="st">"Location of CRAN mirrors"</span>) <span class="sc">+</span></span>
+<span id="cb78-11"><a href="#cb78-11"></a>  <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="cn">NULL</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="cran-mirrors-plot" class="slide level2">
+<h2>Cran mirrors plot</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-88-1.png" width="960" class="r-stretch"></section>
 <section id="sp-versus-sf" class="slide level2">
 <h2>sp versus sf</h2>
 <div class="columns">
@@ -1962,11 +2005,17 @@ Sievert, Carson. 2020. <em>Interactive Web-Based Data Visualization with r, Plot
 <div id="ref-R-plotly" class="csl-entry" role="doc-biblioentry">
 Sievert, Carson, Chris Parmer, Toby Hocking, Scott Chamberlain, Karthik Ram, Marianne Corvellec, and Pedro Despouy. 2021. <em>Plotly: Create Interactive Web Graphics via Plotly.js</em>. <a href="https://CRAN.R-project.org/package=plotly">https://CRAN.R-project.org/package=plotly</a>.
 </div>
+<div id="ref-R-ggrepel" class="csl-entry" role="doc-biblioentry">
+Slowikowski, Kamil. 2021. <em>Ggrepel: Automatically Position Non-Overlapping Text Labels with Ggplot2</em>. <a href="https://github.com/slowkow/ggrepel">https://github.com/slowkow/ggrepel</a>.
+</div>
 <div id="ref-R-rnaturalearth" class="csl-entry" role="doc-biblioentry">
 South, Andy. 2017. <em>Rnaturalearth: World Map Data from Natural Earth</em>. <a href="https://github.com/ropenscilabs/rnaturalearth">https://github.com/ropenscilabs/rnaturalearth</a>.
 </div>
 <div id="ref-tmap2018" class="csl-entry" role="doc-biblioentry">
 Tennekes, Martijn. 2018. <span>“<span class="nocase">tmap</span>: Thematic Maps in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 84 (6): 1–39. <a href="https://doi.org/10.18637/jss.v084.i06">https://doi.org/10.18637/jss.v084.i06</a>.
+</div>
+<div id="ref-R-tmaptools" class="csl-entry" role="doc-biblioentry">
+———. 2021. <em>Tmaptools: Thematic Map Tools</em>. <a href="https://github.com/mtennekes/tmaptools">https://github.com/mtennekes/tmaptools</a>.
 </div>
 <div id="ref-R-tmap" class="csl-entry" role="doc-biblioentry">
 ———. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.

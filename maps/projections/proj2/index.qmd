@@ -46,6 +46,8 @@ suppressPackageStartupMessages({
   library(rnaturalearthhires)
   library(plotly)
   library(units)
+  library(tmaptools)
+  library(ggrepel)
 })
 ```
 
@@ -71,7 +73,9 @@ knitr::write_bib(
   "rgeos",
   "rnaturalearth",
   "plotly",
-  "units"
+  "units",
+  "tmaptools",
+  "ggrepel"
     ),
   file = "proj2-packages.bib"
   )
@@ -1457,7 +1461,7 @@ ggplot() +
 ```{r}
 #| echo: false
 #| eval: true
-ggplot() + 
+final_winkel_world <- ggplot() + 
   geom_sf(data = wintri_outline, 
           fill = "#56B4E950", 
           color = "grey30", 
@@ -1466,8 +1470,58 @@ ggplot() +
   geom_sf(data = world_wintri, 
           aes(fill = continent), 
           color = "black", 
-          size = 0.5/.pt) +
-  coord_sf(datum = NULL)
+          size = 0.5/.pt)
+```
+
+## Cran mirrors
+
+```{r}
+#| cache: true
+Mirrors <- getCRANmirrors(all = FALSE, local.only = FALSE) %>% 
+  as_tibble() %>% 
+  filter(!str_detect(City, pattern = "0-Cloud.*")) %>%
+  pull(City) %>% 
+  str_conv("UTF-8") %>% 
+  geocode_OSM(as.sf = TRUE, geometry = 'point') %>% 
+  st_transform_proj(crs = crs_wintri) %>%
+  transmute(city = query) %>% 
+  group_by(city) %>% 
+  summarise(mirrors = as.character(n())) %>% 
+  mutate(
+    mirrors = factor(mirrors, levels = c("1", "2", "3"))
+  ) 
+```
+
+```{r}
+#| eval: false
+final_winkel_world +
+  # add mirrors geom
+  geom_sf(
+    data = Mirrors, 
+    mapping = aes(
+      shape = mirrors
+      )
+    )  +
+  # perhaps use geom_text_repel to name the cities with more than 1 mirror
+  ggtitle("Location of CRAN mirrors") +
+  coord_sf(datum = NULL) 
+```
+
+## Cran mirrors plot
+
+```{r}
+#| echo: false
+final_winkel_world +
+  # add mirrors geom
+  geom_sf(
+    data = Mirrors, 
+    mapping = aes(
+      shape = mirrors
+      )
+    )  +
+  # perhaps use geom_text_repel to name the cities with more than 1 mirror
+  ggtitle("Location of CRAN mirrors") +
+  coord_sf(datum = NULL) 
 ```
 
 ## sp versus sf
