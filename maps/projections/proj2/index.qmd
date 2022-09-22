@@ -1518,7 +1518,8 @@ final_winkel_world +
     data = Mirrors, 
     mapping = aes(
       shape = mirrors
-      )
+      ),
+    colour = 'dark red'
     )  +
   # perhaps use geom_text_repel to name the cities with more than 1 mirror
   ggtitle("Location of CRAN mirrors") +
