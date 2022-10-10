@@ -845,9 +845,13 @@
 <pre><code>character(0)</code></pre>
 </div>
 </div>
+</section>
+<section id="qgis-dissolve-cont.-6" class="slide level2">
+<h2>Qgis dissolve cont.</h2>
 <ul>
 <li class="fragment">Something wrong?</li>
 </ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -867,6 +871,8 @@
 <ul>
 <li class="fragment">No, in the map some municipalities are split on two, or more, polygons</li>
 </ul>
+</div>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -885,6 +891,7 @@
 <pre><code>[1] 423</code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="how-to-do-it-in-r" class="slide level2">
 <h2>How to do it in R</h2>
@@ -892,6 +899,7 @@
 <li class="fragment">Start with a fresh map (run sosicon again)</li>
 <li class="fragment">Try with <code>sf::st_read()</code></li>
 </ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -904,6 +912,7 @@
 <li class="fragment">Gives: “Reading layer kom_2017_R_Kommune_FLATE from data source /Users/agwd/Dev/met2/kom_2017_R using driver ESRI Shapefile Error in make.names(vnames, unique = TRUE) : invalid multibyte string 8 Error during wrapup: invalid multibyte string at <d8>LGE Error: no more error handlers available (recursive errors?); invoking abort restart”</d8></li>
 <li class="fragment">seems to be some problem with sosiconv, different character set in variables (Norvegian characters in .dbf) and in the values.</li>
 </ul>
+</div>
 </section>
 <section id="using-sp-and-rgdal" class="slide level2">
 <h2>Using sp and rgdal</h2>
@@ -914,8 +923,8 @@
 <span id="cb24-2"><a href="#cb24-2"></a>kf <span class="ot">&lt;-</span> <span class="fu">readOGR</span>(<span class="at">dsn =</span> <span class="st">'kom_2017_R'</span>, </span>
 <span id="cb24-3"><a href="#cb24-3"></a>              <span class="at">layer =</span> <span class="st">'kom_2017_R_Kommune_FLATE'</span>, </span>
 <span id="cb24-4"><a href="#cb24-4"></a>              <span class="at">verbose =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb24-5"><a href="#cb24-5"></a>              <span class="at">p4s=</span><span class="cn">NULL</span>,  </span>
-<span id="cb24-6"><a href="#cb24-6"></a>              <span class="at">drop_unsupported_fields=</span><span class="cn">TRUE</span>, </span>
+<span id="cb24-5"><a href="#cb24-5"></a>              <span class="at">p4s =</span> <span class="cn">NULL</span>,  </span>
+<span id="cb24-6"><a href="#cb24-6"></a>              <span class="at">drop_unsupported_fields =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb24-7"><a href="#cb24-7"></a>              <span class="at">use_iconv =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb24-8"><a href="#cb24-8"></a>              <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -954,6 +963,7 @@ value       :       2003,     172718,      Vadsø,      FLATE </code></pre>
 <li class="fragment">Change the names</li>
 <li class="fragment">Plot the map</li>
 </ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -964,12 +974,14 @@ value       :       2003,     172718,      Vadsø,      FLATE </code></pre>
 <span id="cb28-5"><a href="#cb28-5"></a><span class="co">#plot(kf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</div>
 </section>
 <section id="more-work-on-kf" class="slide level2">
 <h2>More work on kf</h2>
 <ul>
 <li class="fragment">Check class</li>
 </ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -984,6 +996,8 @@ attr(,"package")
 <ul>
 <li class="fragment">Convert to sf object</li>
 </ul>
+</div>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -993,6 +1007,7 @@ attr(,"package")
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "sf"         "data.frame"</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -1029,6 +1044,7 @@ Projected CRS: ETRS89 / UTM zone 33N
 <li class="fragment">Merge municipalities, for instance 0709 + 0728 to 0712 Larvik</li>
 <li class="fragment">Put the map together again</li>
 </ul>
+<div class="fragment">
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -1041,6 +1057,7 @@ Projected CRS: ETRS89 / UTM zone 33N
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 426   3</code></pre>
+</div>
 </div>
 </div>
 </section>

@@ -95,7 +95,7 @@
     "href": "maps/index.html",
     "title": "Maps",
     "section": "",
-    "text": "The Process\nEDA\nProjections 1\nProjections 2"
+    "text": "The Process\nEDA\nProjections 1\nProjections 2\nMore about maps"
   },
   {
     "objectID": "maps/projections/proj2/index.html#standard-projections-for-norway",
@@ -2006,21 +2006,21 @@
     "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-5",
     "title": "We have to talk more about maps",
     "section": "Qgis dissolve cont.",
-    "text": "Qgis dissolve cont.\n\n\nCode\nkom_2017_mapB <- read_csv(\"kom_2017_mapB.csv\")\nkom_2017_mapB <- kom_2017_mapB %>% \n  select(KOMMUNENUM,NAVN)\n\nmap_knr_2017B <- kom_2017_mapB$KOMMUNENUM\n# in map_knr_2017, but not in data_knr_2018\nsetdiff(map_knr_2017B, data_knr_2018)\n\n\ncharacter(0)\n\n\n\n\nCode\n# in data_knr_2018, but not in map_knr_2017\nsetdiff(data_knr_2018, map_knr_2017B)\n\n\ncharacter(0)\n\n\n\nSomething wrong?\n\n\n\nCode\nlength(data_knr_2018)\n\n\n[1] 423\n\n\nCode\nlength(map_knr_2017B)\n\n\n[1] 429\n\n\n\nNo, in the map some municipalities are split on two, or more, polygons\n\n\n\nCode\nlength(unique(data_knr_2018))\n\n\n[1] 423\n\n\n\n\nCode\nlength(unique(map_knr_2017B))\n\n\n[1] 423"
+    "text": "Qgis dissolve cont.\n\n\nCode\nkom_2017_mapB <- read_csv(\"kom_2017_mapB.csv\")\nkom_2017_mapB <- kom_2017_mapB %>% \n  select(KOMMUNENUM,NAVN)\n\nmap_knr_2017B <- kom_2017_mapB$KOMMUNENUM\n# in map_knr_2017, but not in data_knr_2018\nsetdiff(map_knr_2017B, data_knr_2018)\n\n\ncharacter(0)\n\n\n\n\nCode\n# in data_knr_2018, but not in map_knr_2017\nsetdiff(data_knr_2018, map_knr_2017B)\n\n\ncharacter(0)"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#how-to-do-it-in-r",
     "href": "maps/qgismaps/maps_example.html#how-to-do-it-in-r",
     "title": "We have to talk more about maps",
     "section": "How to do it in R",
-    "text": "How to do it in R\n\nStart with a fresh map (run sosicon again)\nTry with sf::st_read()\n\n\n\nCode\nlibrary(sf)\n#Sys.setenv(\"SHAPE_ENCODING\"= \"UTF-8\")\n#kom_map <- st_read(dsn = 'kom_2017_R', layer = 'kom_2017_R_Kommune_FLATE')\n\n\n\nGives: “Reading layer kom_2017_R_Kommune_FLATE from data source /Users/agwd/Dev/met2/kom_2017_R using driver ESRI Shapefile Error in make.names(vnames, unique = TRUE) : invalid multibyte string 8 Error during wrapup: invalid multibyte string at LGE Error: no more error handlers available (recursive errors?); invoking abort restart”\nseems to be some problem with sosiconv, different character set in variables (Norvegian characters in .dbf) and in the values."
+    "text": "How to do it in R\n\nStart with a fresh map (run sosicon again)\nTry with sf::st_read()\n\n\n\n\nCode\nlibrary(sf)\n#Sys.setenv(\"SHAPE_ENCODING\"= \"UTF-8\")\n#kom_map <- st_read(dsn = 'kom_2017_R', layer = 'kom_2017_R_Kommune_FLATE')\n\n\n\nGives: “Reading layer kom_2017_R_Kommune_FLATE from data source /Users/agwd/Dev/met2/kom_2017_R using driver ESRI Shapefile Error in make.names(vnames, unique = TRUE) : invalid multibyte string 8 Error during wrapup: invalid multibyte string at LGE Error: no more error handlers available (recursive errors?); invoking abort restart”\nseems to be some problem with sosiconv, different character set in variables (Norvegian characters in .dbf) and in the values."
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#using-sp-and-rgdal",
     "href": "maps/qgismaps/maps_example.html#using-sp-and-rgdal",
     "title": "We have to talk more about maps",
     "section": "Using sp and rgdal",
-    "text": "Using sp and rgdal\n\n\nCode\nlibrary(rgdal)\nkf <- readOGR(dsn = 'kom_2017_R', \n              layer = 'kom_2017_R_Kommune_FLATE', \n              verbose = TRUE, \n              p4s=NULL,  \n              drop_unsupported_fields=TRUE, \n              use_iconv = TRUE, \n              encoding = \"UTF-8\")\n\n\nOGR data source with driver: ESRI Shapefile \nSource: \"/Users/ag/Dev/QQ_MSB205/maps/qgismaps/kom_2017_R\", layer: \"kom_2017_R_Kommune_FLATE\"\nwith 432 features\nIt has 12 fields"
+    "text": "Using sp and rgdal\n\n\nCode\nlibrary(rgdal)\nkf <- readOGR(dsn = 'kom_2017_R', \n              layer = 'kom_2017_R_Kommune_FLATE', \n              verbose = TRUE, \n              p4s = NULL,  \n              drop_unsupported_fields = TRUE, \n              use_iconv = TRUE, \n              encoding = \"UTF-8\")\n\n\nOGR data source with driver: ESRI Shapefile \nSource: \"/Users/ag/Dev/QQ_MSB205/maps/qgismaps/kom_2017_R\", layer: \"kom_2017_R_Kommune_FLATE\"\nwith 432 features\nIt has 12 fields"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#using-sp-and-rgdal-cont.",
@@ -2034,14 +2034,14 @@
     "href": "maps/qgismaps/maps_example.html#working-with-the-rgdal-map",
     "title": "We have to talk more about maps",
     "section": "Working with the rgdal map",
-    "text": "Working with the rgdal map\n\nPick the two variables we want, KOMMUNENUM and NAVN……\nChange the names\nPlot the map\n\n\n\nCode\n# variable 1 and 3\nkf <- kf[,c(1,3)]\nnames(kf) <- c(\"knr\", \"kNavn\")\n# Too time consuming for the slides\n#plot(kf)"
+    "text": "Working with the rgdal map\n\nPick the two variables we want, KOMMUNENUM and NAVN……\nChange the names\nPlot the map\n\n\n\n\nCode\n# variable 1 and 3\nkf <- kf[,c(1,3)]\nnames(kf) <- c(\"knr\", \"kNavn\")\n# Too time consuming for the slides\n#plot(kf)"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#more-work-on-kf",
     "href": "maps/qgismaps/maps_example.html#more-work-on-kf",
     "title": "We have to talk more about maps",
     "section": "More work on kf",
-    "text": "More work on kf\n\nCheck class\n\n\n\nCode\nclass(kf)\n\n\n[1] \"SpatialPolygonsDataFrame\"\nattr(,\"package\")\n[1] \"sp\"\n\n\n\nConvert to sf object\n\n\n\nCode\n# Tools to convert from sp to sf, and from sf to sp\nkf_sf <- st_as_sf(kf)\nclass(kf_sf)\n\n\n[1] \"sf\"         \"data.frame\""
+    "text": "More work on kf\n\nCheck class\n\n\n\n\nCode\nclass(kf)\n\n\n[1] \"SpatialPolygonsDataFrame\"\nattr(,\"package\")\n[1] \"sp\"\n\n\n\nConvert to sf object\n\n\n\n\n\nCode\n# Tools to convert from sp to sf, and from sf to sp\nkf_sf <- st_as_sf(kf)\nclass(kf_sf)\n\n\n[1] \"sf\"         \"data.frame\""
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#more-work-on-kf-cont.",
@@ -2055,7 +2055,7 @@
     "href": "maps/qgismaps/maps_example.html#merging-municipalities",
     "title": "We have to talk more about maps",
     "section": "Merging municipalities",
-    "text": "Merging municipalities\n\nSelect the municipalities that are not merged\nMerge municipalities, for instance 0709 + 0728 to 0712 Larvik\nPut the map together again\n\n\n\nCode\n# not merged\n# remember kf_sf works well with the Tidyverse\nkf_sf_nm <- kf_sf %>% \n  # not in c()\n  filter(!knr %in% c(\"0709\", \"0728\", \"0702\", \"0714\", \"0722\", \"0723\"))\ndim(kf_sf_nm)\n\n\n[1] 426   3"
+    "text": "Merging municipalities\n\nSelect the municipalities that are not merged\nMerge municipalities, for instance 0709 + 0728 to 0712 Larvik\nPut the map together again\n\n\n\n\nCode\n# not merged\n# remember kf_sf works well with the Tidyverse\nkf_sf_nm <- kf_sf %>% \n  # not in c()\n  filter(!knr %in% c(\"0709\", \"0728\", \"0702\", \"0714\", \"0722\", \"0723\"))\ndim(kf_sf_nm)\n\n\n[1] 426   3"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#merging-municipalities-cont.",
@@ -2259,5 +2259,12 @@
     "title": "We have to talk more about maps",
     "section": "Change name of new object",
     "text": "Change name of new object\n\n\n\nEnable editing (Click on the pencil)\nClick on “Identifiser objekter”\n\n\n\n\n\nPlot title."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-6",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-6",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve cont.",
+    "text": "Qgis dissolve cont.\n\nSomething wrong?\n\n\n\n\nCode\nlength(data_knr_2018)\n\n\n[1] 423\n\n\nCode\nlength(map_knr_2017B)\n\n\n[1] 429\n\n\n\nNo, in the map some municipalities are split on two, or more, polygons\n\n\n\n\n\nCode\nlength(unique(data_knr_2018))\n\n\n[1] 423\n\n\n\n\nCode\nlength(unique(map_knr_2017B))\n\n\n[1] 423"
   }
 ]
