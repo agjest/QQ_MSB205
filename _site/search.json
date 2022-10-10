@@ -1853,5 +1853,411 @@
     "title": "Maps and Projections 2",
     "section": "Cran mirrors plot",
     "text": "Cran mirrors plot"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#example",
+    "href": "maps/qgismaps/maps_example.html#example",
+    "title": "We have to talk more about maps",
+    "section": "Example",
+    "text": "Example\n\nwe want to study the price per square meter for single family dwellings in Norwegian muncipalities.\nwe have some data originally from SSB in the file bld06_19.Rdata.\nwe start by loading the data"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#import-data",
+    "href": "maps/qgismaps/maps_example.html#import-data",
+    "title": "We have to talk more about maps",
+    "section": "Import data",
+    "text": "Import data\n\n\nCode\nload(file = \"bld06_19.Rdata\")\nbld90_19\n\n\n# A tibble: 2,538 × 16\n   knrNavn     btype y2006 y2007 y2008 y2009 y2010 y2011 y2012 y2013 y2014 y2015\n   <chr>       <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>\n 1 0101 Halden Andr…   629   630   600   596   629   639   648   660   663   661\n 2 0101 Halden Boli…  2108  2088  2135  2164  2168  2168  2174  2171  2177  2202\n 3 0101 Halden Bygn…   181   181   181   173   173   173   173   173   236   459\n 4 0101 Halden Eneb…  7134  7168  7258  7323  7381  7425  7453  7528  7628  7680\n 5 0101 Halden Rekk…  1768  1812  1874  1935  1973  1995  2012  2049  2078  2109\n 6 0101 Halden Toma…  2101  2140  2155  2171  2159  2159  2181  2204  2212  2254\n 7 0104 Moss   Andr…   612   526   555   572   569   590   583   589   615   603\n 8 0104 Moss   Boli…  3640  3763  3981  4155  4176  4216  4244  4264  4460  4560\n 9 0104 Moss   Bygn…    89   150   179   181   181   181   194   194   250   259\n10 0104 Moss   Eneb…  4907  4936  4936  4982  5010  5046  4998  5018  5029  5041\n# … with 2,528 more rows, and 4 more variables: y2016 <dbl>, y2017 <dbl>,\n#   y2018 <dbl>, y2019 <dbl>\n\n\n\nwe have 2538 observations and 16 variables\nis the data Tidy? No!"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#making-the-data-tidy",
+    "href": "maps/qgismaps/maps_example.html#making-the-data-tidy",
+    "title": "We have to talk more about maps",
+    "section": "Making the data tidy",
+    "text": "Making the data tidy\n\nwe are only interested in single family dwellings, so we start by picking those observation\nmake a new variable with municipality number\n‘pivot_longer’ to make a ‘year’ variable\ncontains data for the period 2006 to 2019\n\n\n\n\nCode\nsfd_06_19 <- bld90_19 %>% \n  #pick 'Enebolig'\n  filter(btype == 'Enebolig') %>% \n  #make new variable with municipality number\n  mutate(knr = substr(knrNavn, start = 1, stop = 4)) %>% \n  #put our new variable at the far left\n  select(knr, everything()) %>% \n  #pivot_longer the variables y2006 to y2019\n  pivot_longer(cols = y2006:y2019, names_to = \"year\", names_prefix = \"y\", values_to = \"pm2\") %>% \n  #drop btype, all obs. are 'Enebolig'\n  select(-btype)\n\n\n\nAre the data tidy now?"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#tidy-data",
+    "href": "maps/qgismaps/maps_example.html#tidy-data",
+    "title": "We have to talk more about maps",
+    "section": "Tidy data?",
+    "text": "Tidy data?\n\n\nCode\nsfd_06_19 %>% \n  head(n = 10)\n\n\n# A tibble: 10 × 4\n   knr   knrNavn     year    pm2\n   <chr> <chr>       <chr> <dbl>\n 1 0101  0101 Halden 2006   7134\n 2 0101  0101 Halden 2007   7168\n 3 0101  0101 Halden 2008   7258\n 4 0101  0101 Halden 2009   7323\n 5 0101  0101 Halden 2010   7381\n 6 0101  0101 Halden 2011   7425\n 7 0101  0101 Halden 2012   7453\n 8 0101  0101 Halden 2013   7528\n 9 0101  0101 Halden 2014   7628\n10 0101  0101 Halden 2015   7680\n\n\n\nlooks OK"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#pick-the-year-2018",
+    "href": "maps/qgismaps/maps_example.html#pick-the-year-2018",
+    "title": "We have to talk more about maps",
+    "section": "Pick the year 2018",
+    "text": "Pick the year 2018\n\n\nCode\nsfd_18 <- sfd_06_19 %>% \n  filter(year == '2018')\n\nsummary(sfd_18)\n\n\n     knr              knrNavn              year                pm2         \n Length:423         Length:423         Length:423         Min.   :   99.0  \n Class :character   Class :character   Class :character   1st Qu.:  980.5  \n Mode  :character   Mode  :character   Mode  :character   Median : 1843.0  \n                                                          Mean   : 3005.1  \n                                                          3rd Qu.: 3469.0  \n                                                          Max.   :35733.0  \n\n\n\nwe have 423 observations (municipalities) and no NAs (missing values)\nnow our data should be tidy"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#alternatives",
+    "href": "maps/qgismaps/maps_example.html#alternatives",
+    "title": "We have to talk more about maps",
+    "section": "Alternatives",
+    "text": "Alternatives\n\nan online alternative is mygeodata.cloud/converter/sosi-to-shp to convert from sosi to .shp (did not work late May 2021, still not working oct. 2022)\nanother alternative is https://sosicon.espenandersen.no/download/"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#sosi-file-converter",
+    "href": "maps/qgismaps/maps_example.html#sosi-file-converter",
+    "title": "We have to talk more about maps",
+    "section": "SOSI File Converter",
+    "text": "SOSI File Converter\n\n\n\nNote, shape format selected\nSelect “Create subfolder”, use one subfolder per map when you have it in shape format"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#read-feature-data-into-r",
+    "href": "maps/qgismaps/maps_example.html#read-feature-data-into-r",
+    "title": "We have to talk more about maps",
+    "section": "Read feature data into R",
+    "text": "Read feature data into R\n\n\nCode\nlibrary(readr)\nkom_2018_map <- read_csv(\"kom_2018_map.csv\")\n\n\n\npick what we need\n\n\n\n\nCode\nkom_2018_map <- kom_2018_map %>% \n  select(KOMMUNENUM,NAVN)\n\nmap_knr_2018 <- kom_2018_map$KOMMUNENUM\ndata_knr_2018 <- sfd_18$knr\n# knr in map, but not in data file\nsetdiff(map_knr_2018,data_knr_2018)\n\n\n [1] \"5020\" \"5033\" \"5038\" \"5031\" \"5016\" \"5053\" \"5013\" \"5036\" \"5051\" \"5048\"\n[11] \"5005\" \"5042\" \"5024\" \"5034\" \"5029\" \"5015\" \"5017\" \"5032\" \"5025\" \"5054\"\n[21] \"5021\" \"5037\" \"5027\" \"5047\" \"5044\" \"5046\" \"5012\" \"5026\" \"5050\" \"5045\"\n[31] \"5030\" \"5019\" \"5018\" \"5040\" \"5011\" \"5001\" \"5035\" \"5039\" \"5004\" \"5028\"\n[41] \"5052\" \"5049\" \"5014\" \"5043\" \"5041\" \"5023\" \"5022\"\n\n\n\nwe got “new Trøndelag”. Our data uses municipality structure before 2018 to be consistent over time."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#change-name-of-new-object-cont.",
+    "href": "maps/qgismaps/maps_example.html#change-name-of-new-object-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Change name of new object cont.",
+    "text": "Change name of new object cont.\n\n\n\nClick on the new object\nClick on the icon above “Objekt” heading\n\n\n\n\n\nPlot title."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#change-name-of-new-object-cont.-1",
+    "href": "maps/qgismaps/maps_example.html#change-name-of-new-object-cont.-1",
+    "title": "We have to talk more about maps",
+    "section": "Change name of new object cont.",
+    "text": "Change name of new object cont.\n\n\n\nChange “KOMMUNENUM to 0712\nName is already”Larvik”, so OK\nClick OK\nDisable editing (click the pencil again) and save the map"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#municipality-map",
+    "href": "maps/qgismaps/maps_example.html#municipality-map",
+    "title": "We have to talk more about maps",
+    "section": "Municipality map",
+    "text": "Municipality map\n\n\n\nQgis\nwe have got a whole collection of maps, Kommune_FLATE.shp is probably the one we want\nthe map has 428 features (here “Kommune”)\nA “feature” will be a polygon, line or point with associated data\nThe projection of the map is “EPSG:25833” or UTM zone 33N (the recommended projection when we plot the whole of Norway)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#we-need-a-map",
+    "href": "maps/qgismaps/maps_example.html#we-need-a-map",
+    "title": "We have to talk more about maps",
+    "section": "We need a map",
+    "text": "We need a map\n\n\n\nSource: geonorge (Norge digitalt) “https://kartkatalog.geonorge.no”\nMunicipality borders 2020, we need 2018\nAdministrative enheter - historiske versjoner\n2018, sosi format?\nwikipedia: “SOSI-formatet er et filformat for utveksling av digitale geodata. Utviklingen av SOSI-formatet startet på 1970-tallet. [1] I dag[når?] utvikles SOSI-formatet lite, siden det er ventet at GML vil overta som utvekslingsformat.”\nRecent maps are made available in other formats, but older ones only in .sosi\ngdal has a plugin for sosi (but not part of standard installation), gdal must be compiled with the plugin enabled (multiple versions of the gdal library is asking for trouble, “been there, done that”)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#export-list-of-features",
+    "href": "maps/qgismaps/maps_example.html#export-list-of-features",
+    "title": "We have to talk more about maps",
+    "section": "Export list of features",
+    "text": "Export list of features\n\n\n\nWe export the features as a .csv file\nThis gives us the the data associated with each feature (municipality number, name etc.)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#map",
+    "href": "maps/qgismaps/maps_example.html#map",
+    "title": "We have to talk more about maps",
+    "section": "2017 map",
+    "text": "2017 map\n\n\n\nDo to 2017 what we did with 2018\npick the variables we need\n\nThe problematic municipalities\nTaken from: https://no.wikipedia.org/wiki/Norske_kommunenummer"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#fix-the-problem",
+    "href": "maps/qgismaps/maps_example.html#fix-the-problem",
+    "title": "We have to talk more about maps",
+    "section": "Fix the problem",
+    "text": "Fix the problem\n\nIn the map we must join 0709 and 0728 into 0712 Larvik\nIn the map we must join 0702 + 0714 into 0715 Holmestrand\nIn the map we must join 0722 + 0723 into 0729 Færder\nThis can be done in R, but we do it first in Qgis."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-løs-opp",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-løs-opp",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve (“Løs opp …”)",
+    "text": "Qgis dissolve (“Løs opp …”)\n\n\n\nEasiest way:\n\nFirst name the polygons\nright click/crtl click on the map layer\nSelect “Egenskaper” and then “Påskrifter” (4. in the list on the left)\nThen select “Enkle påskrifter” from the drop-down menu at the top, and select KOMMUNENUM as the variable to be used for “påskrift”\nWe know that “07” is “Vestfold” county, so we zoom in on the lower right corner"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#select-0709-and-0728",
+    "href": "maps/qgismaps/maps_example.html#select-0709-and-0728",
+    "title": "We have to talk more about maps",
+    "section": "Select 0709 and 0728",
+    "text": "Select 0709 and 0728\n\n\n\nChoose the select tool\nShift-click on 0728 and 0709"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#dissolve-union-0709-and-0728-into-0712-larvik",
+    "href": "maps/qgismaps/maps_example.html#dissolve-union-0709-and-0728-into-0712-larvik",
+    "title": "We have to talk more about maps",
+    "section": "Dissolve (union) 0709 and 0728 into 0712 Larvik",
+    "text": "Dissolve (union) 0709 and 0728 into 0712 Larvik\n\n\n\nDissolve"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#dissolve",
+    "href": "maps/qgismaps/maps_example.html#dissolve",
+    "title": "We have to talk more about maps",
+    "section": "Dissolve",
+    "text": "Dissolve\n\n\n\nImportant!\n\nSelect “Kun valgte objekter”\nLet “Oppløst” be “midlertidig lag”\nClick “Kjør”, and then “Close”"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve cont.",
+    "text": "Qgis dissolve cont.\n\n\n\ndeselect the “Oppløst” layer"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#do-the-same-for-0715-holmestrand-and-0729-færder",
+    "href": "maps/qgismaps/maps_example.html#do-the-same-for-0715-holmestrand-and-0729-færder",
+    "title": "We have to talk more about maps",
+    "section": "Do the same for 0715 Holmestrand and 0729 Færder",
+    "text": "Do the same for 0715 Holmestrand and 0729 Færder\n\nJoin 0702 + 0714 into 0715 Holmestrand\nJoin 07232 + 0723 into 0729 Færder\nRemember to save the map\nExport the finished map as .csv format"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-5",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-5",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve cont.",
+    "text": "Qgis dissolve cont.\n\n\nCode\nkom_2017_mapB <- read_csv(\"kom_2017_mapB.csv\")\nkom_2017_mapB <- kom_2017_mapB %>% \n  select(KOMMUNENUM,NAVN)\n\nmap_knr_2017B <- kom_2017_mapB$KOMMUNENUM\n# in map_knr_2017, but not in data_knr_2018\nsetdiff(map_knr_2017B, data_knr_2018)\n\n\ncharacter(0)\n\n\n\n\nCode\n# in data_knr_2018, but not in map_knr_2017\nsetdiff(data_knr_2018, map_knr_2017B)\n\n\ncharacter(0)\n\n\n\nSomething wrong?\n\n\n\nCode\nlength(data_knr_2018)\n\n\n[1] 423\n\n\nCode\nlength(map_knr_2017B)\n\n\n[1] 429\n\n\n\nNo, in the map some municipalities are split on two, or more, polygons\n\n\n\nCode\nlength(unique(data_knr_2018))\n\n\n[1] 423\n\n\n\n\nCode\nlength(unique(map_knr_2017B))\n\n\n[1] 423"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#how-to-do-it-in-r",
+    "href": "maps/qgismaps/maps_example.html#how-to-do-it-in-r",
+    "title": "We have to talk more about maps",
+    "section": "How to do it in R",
+    "text": "How to do it in R\n\nStart with a fresh map (run sosicon again)\nTry with sf::st_read()\n\n\n\nCode\nlibrary(sf)\n#Sys.setenv(\"SHAPE_ENCODING\"= \"UTF-8\")\n#kom_map <- st_read(dsn = 'kom_2017_R', layer = 'kom_2017_R_Kommune_FLATE')\n\n\n\nGives: “Reading layer kom_2017_R_Kommune_FLATE from data source /Users/agwd/Dev/met2/kom_2017_R using driver ESRI Shapefile Error in make.names(vnames, unique = TRUE) : invalid multibyte string 8 Error during wrapup: invalid multibyte string at LGE Error: no more error handlers available (recursive errors?); invoking abort restart”\nseems to be some problem with sosiconv, different character set in variables (Norvegian characters in .dbf) and in the values."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#using-sp-and-rgdal",
+    "href": "maps/qgismaps/maps_example.html#using-sp-and-rgdal",
+    "title": "We have to talk more about maps",
+    "section": "Using sp and rgdal",
+    "text": "Using sp and rgdal\n\n\nCode\nlibrary(rgdal)\nkf <- readOGR(dsn = 'kom_2017_R', \n              layer = 'kom_2017_R_Kommune_FLATE', \n              verbose = TRUE, \n              p4s=NULL,  \n              drop_unsupported_fields=TRUE, \n              use_iconv = TRUE, \n              encoding = \"UTF-8\")\n\n\nOGR data source with driver: ESRI Shapefile \nSource: \"/Users/ag/Dev/QQ_MSB205/maps/qgismaps/kom_2017_R\", layer: \"kom_2017_R_Kommune_FLATE\"\nwith 432 features\nIt has 12 fields"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#using-sp-and-rgdal-cont.",
+    "href": "maps/qgismaps/maps_example.html#using-sp-and-rgdal-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Using sp and rgdal cont.",
+    "text": "Using sp and rgdal cont.\n\n\nCode\n# Drop some of the variables of no interest to us\nhead(kf[, c(1:3, length(names(kf)))], n=1)\n\n\nclass       : SpatialPolygonsDataFrame \nfeatures    : 1 \nextent      : 1019225, 1101314, 7833981, 7881130  (xmin, xmax, ymin, ymax)\ncrs         : +proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs \nvariables   : 4\nnames       : KOMMUNENUM, LOKALID..., NAVN......, TYPE...... \nvalue       :       2003,     172718,      Vadsø,      FLATE \n\n\nuses NA and NA..1 as names for the two problematic variables REKKEFØLGE og SPRÅK we do not need them, so OK. What`s important for us is to get the map read into R and also preserve the right encoding for the municipality names (which might contain Norwegian characters)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#working-with-the-rgdal-map",
+    "href": "maps/qgismaps/maps_example.html#working-with-the-rgdal-map",
+    "title": "We have to talk more about maps",
+    "section": "Working with the rgdal map",
+    "text": "Working with the rgdal map\n\nPick the two variables we want, KOMMUNENUM and NAVN……\nChange the names\nPlot the map\n\n\n\nCode\n# variable 1 and 3\nkf <- kf[,c(1,3)]\nnames(kf) <- c(\"knr\", \"kNavn\")\n# Too time consuming for the slides\n#plot(kf)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#more-work-on-kf",
+    "href": "maps/qgismaps/maps_example.html#more-work-on-kf",
+    "title": "We have to talk more about maps",
+    "section": "More work on kf",
+    "text": "More work on kf\n\nCheck class\n\n\n\nCode\nclass(kf)\n\n\n[1] \"SpatialPolygonsDataFrame\"\nattr(,\"package\")\n[1] \"sp\"\n\n\n\nConvert to sf object\n\n\n\nCode\n# Tools to convert from sp to sf, and from sf to sp\nkf_sf <- st_as_sf(kf)\nclass(kf_sf)\n\n\n[1] \"sf\"         \"data.frame\""
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#more-work-on-kf-cont.",
+    "href": "maps/qgismaps/maps_example.html#more-work-on-kf-cont.",
+    "title": "We have to talk more about maps",
+    "section": "More work on kf cont.",
+    "text": "More work on kf cont.\n\n\nCode\ndim(kf_sf)\n\n\n[1] 432   3\n\n\nCode\nhead(kf_sf, n = 2)\n\n\nSimple feature collection with 2 features and 2 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 228157.8 ymin: 7122683 xmax: 1101314 ymax: 7881130\nProjected CRS: ETRS89 / UTM zone 33N\n   knr kNavn                       geometry\n0 2003 Vadsø POLYGON ((1032759 7861936, ...\n1 1633  Osen POLYGON ((244675.8 7151794,..."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#merging-municipalities",
+    "href": "maps/qgismaps/maps_example.html#merging-municipalities",
+    "title": "We have to talk more about maps",
+    "section": "Merging municipalities",
+    "text": "Merging municipalities\n\nSelect the municipalities that are not merged\nMerge municipalities, for instance 0709 + 0728 to 0712 Larvik\nPut the map together again\n\n\n\nCode\n# not merged\n# remember kf_sf works well with the Tidyverse\nkf_sf_nm <- kf_sf %>% \n  # not in c()\n  filter(!knr %in% c(\"0709\", \"0728\", \"0702\", \"0714\", \"0722\", \"0723\"))\ndim(kf_sf_nm)\n\n\n[1] 426   3"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#merging-municipalities-cont.",
+    "href": "maps/qgismaps/maps_example.html#merging-municipalities-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Merging municipalities cont.",
+    "text": "Merging municipalities cont.\n\n\nCode\nLarvik_0712 <- kf_sf %>% \n  filter(knr %in% c(\"0709\", \"0728\")) %>% \n  st_union() %>%\n  # we have a sfc object (polygon), ned sf data.frame\n  st_sf(knr=\"0712\", kNavn=\"Larvik\")  %>% \n  # The geometry clumn has ended up with the name \".\",\n  # change it back to geometry\n  rename(\"geometry\" = \".\")\n\nHolmestrand_0715 <- kf_sf %>% \n  filter(knr %in% c(\"0702\", \"0714\")) %>% \n  st_union() %>%\n  st_sf(knr=\"0715\", kNavn=\"Holmestrand\") %>% \n  rename(\"geometry\" = \".\")\n\nFaerder_0729 <- kf_sf %>% \n  filter(knr %in% c(\"0722\", \"0723\")) %>% \n  st_union() %>%\n  st_sf(knr=\"0729\", kNavn=\"Færder\") %>% \n  rename(\"geometry\" = \".\")"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#bind-the-parts-together",
+    "href": "maps/qgismaps/maps_example.html#bind-the-parts-together",
+    "title": "We have to talk more about maps",
+    "section": "Bind the parts together",
+    "text": "Bind the parts together\n\nwe use rbind() to assemble the parts\n\n\n\n\nCode\nkf_sf_new <- rbind(kf_sf_nm, \n                   Larvik_0712, \n                   Holmestrand_0715, \n                   Faerder_0729)\nclass(kf_sf_new)\n\n\n[1] \"sf\"         \"data.frame\"\n\n\nCode\nhead(kf_sf_new)\n\n\nSimple feature collection with 6 features and 2 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -79642.38 ymin: 6432782 xmax: 1101314 ymax: 7881130\nProjected CRS: ETRS89 / UTM zone 33N\n   knr        kNavn                       geometry\n1 2003        Vadsø POLYGON ((1032759 7861936, ...\n2 1633         Osen POLYGON ((244675.8 7151794,...\n3 1438    Bremanger POLYGON ((-66423.89 6897184...\n4 1244    Austevoll POLYGON ((-79575.13 6709024...\n5 1001 Kristiansand POLYGON ((81925.32 6466723,...\n6 0914  Tvedestrand POLYGON ((136145.2 6512556,..."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#plot-new-vestfold",
+    "href": "maps/qgismaps/maps_example.html#plot-new-vestfold",
+    "title": "We have to talk more about maps",
+    "section": "Plot new Vestfold",
+    "text": "Plot new Vestfold\n\n\nCode\nkf_sf_new %>% \n  filter(as.numeric(knr) > 700 & as.numeric(knr) < 800) %>% \n  select(knr) %>% \n  plot(key.pos=3)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#merge-map-and-data",
+    "href": "maps/qgismaps/maps_example.html#merge-map-and-data",
+    "title": "We have to talk more about maps",
+    "section": "Merge map and data",
+    "text": "Merge map and data\n\nWe can do the merge of data and map in Qgis\nHere we do it in R, using sf our new toy\n\n\n\n\nCode\ndim(kf_sf_new)\n\n\n[1] 429   3\n\n\n\n\nCode\ndim(sfd_18)\n\n\n[1] 423   4\n\n\n\nWhat’s wrong"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#merge-map-and-data-cont.",
+    "href": "maps/qgismaps/maps_example.html#merge-map-and-data-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Merge map and data cont.",
+    "text": "Merge map and data cont.\n\nNothing, but som municipalities have multiple polygons\n\n\n\n\nCode\nkf_sf_new %>% \n  filter(knr == \"0710\")\n\n\nSimple feature collection with 2 features and 2 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 214716 ymin: 6523881 xmax: 236648.8 ymax: 6593351\nProjected CRS: ETRS89 / UTM zone 33N\n   knr      kNavn                       geometry\n1 0710 Sandefjord POLYGON ((220354.2 6572257,...\n2 0710 Sandefjord POLYGON ((220485 6561491, 2..."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#merge-map-and-data-cont.-1",
+    "href": "maps/qgismaps/maps_example.html#merge-map-and-data-cont.-1",
+    "title": "We have to talk more about maps",
+    "section": "Merge map and data cont.",
+    "text": "Merge map and data cont.\n\n0710 Sandefjord has an enclave inside 0712 Larvik\nFind duplicates (more than one polygon)\n\n\n\n\nCode\nkf_sf_new %>% \n  filter(duplicated(knr))\n\n\nSimple feature collection with 6 features and 2 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 148155.3 ymin: 6561053 xmax: 298002.9 ymax: 7048475\nProjected CRS: ETRS89 / UTM zone 33N\n   knr      kNavn                       geometry\n1 1663     Malvik POLYGON ((292666.4 7030893,...\n2 0819       Nome POLYGON ((148567.8 6586721,...\n3 1663     Malvik POLYGON ((280936.1 7037994,...\n4 0215      Frogn POLYGON ((249548 6626601, 2...\n5 0701     Horten POLYGON ((238010.9 6591209,...\n6 0710 Sandefjord POLYGON ((220485 6561491, 2..."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#plot-malvik",
+    "href": "maps/qgismaps/maps_example.html#plot-malvik",
+    "title": "We have to talk more about maps",
+    "section": "Plot Malvik",
+    "text": "Plot Malvik\n\n\nCode\nkf_sf_new %>% \n  filter(knr %in% c(\"1663\")) %>% \n  select(kNavn) %>% \n  plot(key.pos = 4)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#make-multipolygons",
+    "href": "maps/qgismaps/maps_example.html#make-multipolygons",
+    "title": "We have to talk more about maps",
+    "section": "Make multipolygons",
+    "text": "Make multipolygons\n\n\nCode\nkf_sf_423 <- kf_sf_new %>%\n  # kNavn unnecessary, but nice trick to carry along the variable\n  group_by(knr, kNavn) %>%\n  summarise(geometry = st_combine(geometry)) %>% \n  ungroup()\n\ndim(kf_sf_423)\n\n\n[1] 423   3"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#make-multipolygons-cont.",
+    "href": "maps/qgismaps/maps_example.html#make-multipolygons-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Make multipolygons cont.",
+    "text": "Make multipolygons cont.\n\n\nCode\nhead(kf_sf_423, n = 3)\n\n\nSimple feature collection with 3 features and 2 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 246920.8 ymin: 6531541 xmax: 311244.9 ymax: 6607757\nProjected CRS: ETRS89 / UTM zone 33N\n# A tibble: 3 × 3\n  knr   kNavn                                                           geometry\n  <chr> <chr>                                                 <MULTIPOLYGON [m]>\n1 0101  Halden    (((279596.3 6555228, 280474 6556668, 280474 6556668, 281380.5…\n2 0104  Moss      (((247465.5 6599443, 248497.9 6601261, 248497.9 6601261, 2501…\n3 0105  Sarpsborg (((273359.1 6577360, 273356.2 6577381, 273356.2 6577381, 2733…"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#plot-1663-malvik",
+    "href": "maps/qgismaps/maps_example.html#plot-1663-malvik",
+    "title": "We have to talk more about maps",
+    "section": "Plot 1663 Malvik",
+    "text": "Plot 1663 Malvik\n\n\nCode\n# Now as MULTIPOLYGON\nkf_sf_423 %>% filter(knr %in% c(\"1663\")) %>% select(kNavn) %>% plot(key.pos=4)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#færder",
+    "href": "maps/qgismaps/maps_example.html#færder",
+    "title": "We have to talk more about maps",
+    "section": "Færder",
+    "text": "Færder\n\n\nCode\nkf_sf_423 %>% \n  filter(knr %in% c(\"0729\")) %>% \n  select(kNavn) %>% \n  plot(key.pos = 1)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#finally-ready-to-join",
+    "href": "maps/qgismaps/maps_example.html#finally-ready-to-join",
+    "title": "We have to talk more about maps",
+    "section": "Finally ready to join",
+    "text": "Finally ready to join\n\n\nCode\nkf_sf_423_2018_pm2 <- left_join(x = kf_sf_423, y =  sfd_18, by = \"knr\")\n# Next take a long time\n#View(tmp)\nhead(kf_sf_423_2018_pm2, n = 5)\n\n\nSimple feature collection with 5 features and 5 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 245176.8 ymin: 6521821 xmax: 311244.9 ymax: 6607757\nProjected CRS: ETRS89 / UTM zone 33N\n# A tibble: 5 × 6\n  knr   kNavn                                       geometry knrNavn year    pm2\n  <chr> <chr>                             <MULTIPOLYGON [m]> <chr>   <chr> <dbl>\n1 0101  Halden      (((279596.3 6555228, 280474 6556668, 28… 0101 H… 2018   7864\n2 0104  Moss        (((247465.5 6599443, 248497.9 6601261, … 0104 M… 2018   5084\n3 0105  Sarpsborg   (((273359.1 6577360, 273356.2 6577381, … 0105 S… 2018  13028\n4 0106  Fredrikstad (((249999.8 6574664, 249814.3 6575270, … 0106 F… 2018  18700\n5 0111  Hvaler      (((251957.3 6553129, 256847.8 6552769, … 0111 H… 2018   1923"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#finally-ready-to-join-cont.",
+    "href": "maps/qgismaps/maps_example.html#finally-ready-to-join-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Finally ready to join cont.",
+    "text": "Finally ready to join cont.\n\n\nCode\nkf_sf_423_2018_pm2 <- kf_sf_423_2018_pm2 %>% \n  # split knrNavn from sfd_18 into sfd_knr and sfd_kNavn\n  separate(knrNavn, into = c(\"sfd_knr\", \"sfd_kNavn\"), sep = \"\\\\d\\\\s\") %>% \n  # we do not have to specify geometry it`s taken automatically\n  select(knr, kNavn, sfd_kNavn, pm2)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#finally-ready-to-join-cont.-1",
+    "href": "maps/qgismaps/maps_example.html#finally-ready-to-join-cont.-1",
+    "title": "We have to talk more about maps",
+    "section": "Finally ready to join cont.",
+    "text": "Finally ready to join cont.\n\n\nCode\nhead(kf_sf_423_2018_pm2, n = 5)\n\n\nSimple feature collection with 5 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 245176.8 ymin: 6521821 xmax: 311244.9 ymax: 6607757\nProjected CRS: ETRS89 / UTM zone 33N\n# A tibble: 5 × 5\n  knr   kNavn       sfd_kNavn     pm2                                   geometry\n  <chr> <chr>       <chr>       <dbl>                         <MULTIPOLYGON [m]>\n1 0101  Halden      Halden       7864 (((279596.3 6555228, 280474 6556668, 2804…\n2 0104  Moss        Moss         5084 (((247465.5 6599443, 248497.9 6601261, 24…\n3 0105  Sarpsborg   Sarpsborg   13028 (((273359.1 6577360, 273356.2 6577381, 27…\n4 0106  Fredrikstad Fredrikstad 18700 (((249999.8 6574664, 249814.3 6575270, 24…\n5 0111  Hvaler      Hvaler       1923 (((251957.3 6553129, 256847.8 6552769, 25…"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#check-that-the-names-are-equal",
+    "href": "maps/qgismaps/maps_example.html#check-that-the-names-are-equal",
+    "title": "We have to talk more about maps",
+    "section": "Check that the names are equal",
+    "text": "Check that the names are equal\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  filter(!identical(kNavn, sfd_kNavn)) %>% \n  print(n=5)\n\n\nSimple feature collection with 423 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744\nProjected CRS: ETRS89 / UTM zone 33N\n# A tibble: 423 × 5\n  knr   kNavn       sfd_kNavn     pm2                                   geometry\n* <chr> <chr>       <chr>       <dbl>                         <MULTIPOLYGON [m]>\n1 0101  Halden      Halden       7864 (((279596.3 6555228, 280474 6556668, 2804…\n2 0104  Moss        Moss         5084 (((247465.5 6599443, 248497.9 6601261, 24…\n3 0105  Sarpsborg   Sarpsborg   13028 (((273359.1 6577360, 273356.2 6577381, 27…\n4 0106  Fredrikstad Fredrikstad 18700 (((249999.8 6574664, 249814.3 6575270, 24…\n5 0111  Hvaler      Hvaler       1923 (((251957.3 6553129, 256847.8 6552769, 25…\n# … with 418 more rows"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#choose-norvegian-names-not-official-names",
+    "href": "maps/qgismaps/maps_example.html#choose-norvegian-names-not-official-names",
+    "title": "We have to talk more about maps",
+    "section": "Choose Norvegian names, not official names",
+    "text": "Choose Norvegian names, not official names\n\nWe choose Norvegian names\n\n\n\n\nCode\nkf_sf_423_2018_pm2 <- kf_sf_423_2018_pm2 %>% \n  # slect Norwegian names, not offical names\n  select(knr, sfd_kNavn, pm2) %>% \n  rename(kNavn = sfd_kNavn)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#histogram-of-price-per-square-meter",
+    "href": "maps/qgismaps/maps_example.html#histogram-of-price-per-square-meter",
+    "title": "We have to talk more about maps",
+    "section": "Histogram of price per square meter",
+    "text": "Histogram of price per square meter\n\nHistogram of price per square meter for single family dwellings in Norwegian municipalities in 2018\n\n\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  # Remember + not %>% \n  ggplot(aes(pm2)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#histogram-of-price-per-square-meter-1",
+    "href": "maps/qgismaps/maps_example.html#histogram-of-price-per-square-meter-1",
+    "title": "We have to talk more about maps",
+    "section": "Histogram of price per square meter",
+    "text": "Histogram of price per square meter\n\nHistogram of price per square meter for single family dwellings in Norwegian municipalities in 2018"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#log-transform-pm2",
+    "href": "maps/qgismaps/maps_example.html#log-transform-pm2",
+    "title": "We have to talk more about maps",
+    "section": "Log-transform pm2",
+    "text": "Log-transform pm2\n\nSeems like a log-transformation might be appropriate\n\n\n\n\nCode\nkf_sf_423_2018_pm2 <- kf_sf_423_2018_pm2 %>% \n  # log default 'natural logarithms, i.e. ln()\n  mutate(log_pm2 = log(pm2))"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#log-transform-pm2-cont.",
+    "href": "maps/qgismaps/maps_example.html#log-transform-pm2-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Log-transform pm2 cont.",
+    "text": "Log-transform pm2 cont.\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  # Remember + not %>% \n  ggplot(aes(log_pm2)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#log_pm2-eastern-norway",
+    "href": "maps/qgismaps/maps_example.html#log_pm2-eastern-norway",
+    "title": "We have to talk more about maps",
+    "section": "log_pm2 Eastern Norway",
+    "text": "log_pm2 Eastern Norway\n\n\nCode\n# Take to long to plot, cache it \nkf_sf_423_2018_pm2 %>%\n  filter(substr(knr, start = 1, stop = 2) %in% c(\"01\", \"02\", \"03\", \"06\", \"07\")) %>%\n  select(log_pm2) %>%\n  plot(key.pos=1)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#log_pm2-rogaland",
+    "href": "maps/qgismaps/maps_example.html#log_pm2-rogaland",
+    "title": "We have to talk more about maps",
+    "section": "log_pm2 Rogaland",
+    "text": "log_pm2 Rogaland\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  filter(\n    substr(\n      knr, \n      start = 1, \n      stop = 2\n      ) %in% c(\"11\")\n    ) %>% \n  select(log_pm2) %>% \n  plot(key.pos=1)"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#write-out-map",
+    "href": "maps/qgismaps/maps_example.html#write-out-map",
+    "title": "We have to talk more about maps",
+    "section": "Write out map",
+    "text": "Write out map\n\nTime to write out our map\nBy default we are not allowed to overwrite, hence append=FALSE\n\n\n\n\nCode\n# Do not use unless you are forced\nst_write(\n  obj = kf_sf_423,\n  dsn = \"kf_sf_423\",\n  driver = \"ESRI Shapefile\",\n  append = FALSE\n  )\n\n\nDeleting layer `kf_sf_423' using driver `ESRI Shapefile'\nWriting layer `kf_sf_423' to data source `kf_sf_423' using driver `ESRI Shapefile'\nWriting 423 features with 2 fields and geometry type Multi Polygon.\n\n\nCode\n# use\nst_write(\n  obj = kf_sf_423, \n  dsn = \"kf_sf_423.gpkg\", \n  driver = \"GPKG\", \n  append = FALSE\n  )\n\n\nDeleting layer `kf_sf_423' using driver `GPKG'\nWriting layer `kf_sf_423' to data source `kf_sf_423.gpkg' using driver `GPKG'\nWriting 423 features with 2 fields and geometry type Multi Polygon."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#write-out-map-cont.",
+    "href": "maps/qgismaps/maps_example.html#write-out-map-cont.",
+    "title": "We have to talk more about maps",
+    "section": "Write out map cont.",
+    "text": "Write out map cont.\n\nFor use with Geoda\n\n\n\n\nCode\nst_write(\n  obj = kf_sf_423_2018_pm2,\n  dsn = \"kf_sf_423_2018_pm2.gpkg\",\n  driver = \"GPKG\", \n  append = FALSE\n  )\n\n\nDeleting layer `kf_sf_423_2018_pm2' using driver `GPKG'\nWriting layer `kf_sf_423_2018_pm2' to data source \n  `kf_sf_423_2018_pm2.gpkg' using driver `GPKG'\nWriting 423 features with 4 fields and geometry type Multi Polygon.\n\n\n\n\nMSB205"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-1",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-1",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve cont.",
+    "text": "Qgis dissolve cont.\n\n\n\nClick on the map layer and enable editing"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-2",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-2",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve cont.",
+    "text": "Qgis dissolve cont.\n\n\n\nDelete selection\nChange to “Oppløst”,\nselect the object"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-3",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-3",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve cont.",
+    "text": "Qgis dissolve cont.\n\n\n\nCopy the object (Rediger > Kopier objekter)\nChange to the other layer and paste the object (Rediger > Lim inn objekter)\nDisable editing, save the map"
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-4",
+    "href": "maps/qgismaps/maps_example.html#qgis-dissolve-cont.-4",
+    "title": "We have to talk more about maps",
+    "section": "Qgis dissolve cont.",
+    "text": "Qgis dissolve cont."
+  },
+  {
+    "objectID": "maps/qgismaps/maps_example.html#change-name-of-new-object",
+    "href": "maps/qgismaps/maps_example.html#change-name-of-new-object",
+    "title": "We have to talk more about maps",
+    "section": "Change name of new object",
+    "text": "Change name of new object\n\n\n\nEnable editing (Click on the pencil)\nClick on “Identifiser objekter”\n\n\n\n\n\nPlot title."
   }
 ]

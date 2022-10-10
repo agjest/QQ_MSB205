@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.36">
+
+  <meta name="author" content="Arnstein Gjestland">
+  <title>MSB205 - We have to talk more about maps</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">We have to talk more about maps</h1>
+  <p class="author">Arnstein Gjestland</p>
+  <p class="institute">HVL</p>
+  <p class="date">Autumn 2021, revised 2022</p>
+</section>
+
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<ul>
+<li class="fragment">we want to study the price per square meter for single family dwellings in Norwegian muncipalities.</li>
+<li class="fragment">we have some data originally from SSB in the file <code>bld06_19.Rdata</code>.</li>
+<li class="fragment">we start by loading the data</li>
+</ul>
+</section>
+<section id="import-data" class="slide level2">
+<h2>Import data</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">"bld06_19.Rdata"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>bld90_19</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,538 × 16
+   knrNavn     btype y2006 y2007 y2008 y2009 y2010 y2011 y2012 y2013 y2014 y2015
+   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 0101 Halden Andr…   629   630   600   596   629   639   648   660   663   661
+ 2 0101 Halden Boli…  2108  2088  2135  2164  2168  2168  2174  2171  2177  2202
+ 3 0101 Halden Bygn…   181   181   181   173   173   173   173   173   236   459
+ 4 0101 Halden Eneb…  7134  7168  7258  7323  7381  7425  7453  7528  7628  7680
+ 5 0101 Halden Rekk…  1768  1812  1874  1935  1973  1995  2012  2049  2078  2109
+ 6 0101 Halden Toma…  2101  2140  2155  2171  2159  2159  2181  2204  2212  2254
+ 7 0104 Moss   Andr…   612   526   555   572   569   590   583   589   615   603
+ 8 0104 Moss   Boli…  3640  3763  3981  4155  4176  4216  4244  4264  4460  4560
+ 9 0104 Moss   Bygn…    89   150   179   181   181   181   194   194   250   259
+10 0104 Moss   Eneb…  4907  4936  4936  4982  5010  5046  4998  5018  5029  5041
+# … with 2,528 more rows, and 4 more variables: y2016 &lt;dbl&gt;, y2017 &lt;dbl&gt;,
+#   y2018 &lt;dbl&gt;, y2019 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">we have 2538 observations and 16 variables</li>
+<li class="fragment">is the data <strong>Tidy</strong>? No!</li>
+</ul>
+</section>
+<section id="making-the-data-tidy" class="slide level2">
+<h2>Making the data tidy</h2>
+<ul>
+<li class="fragment">we are only interested in single family dwellings, so we start by picking those observation</li>
+<li class="fragment">make a new variable with municipality number</li>
+<li class="fragment">‘pivot_longer’ to make a ‘year’ variable</li>
+<li class="fragment">contains data for the period 2006 to 2019</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>sfd_06_19 <span class="ot">&lt;-</span> bld90_19 <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="co">#pick 'Enebolig'</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">filter</span>(btype <span class="sc">==</span> <span class="st">'Enebolig'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="co">#make new variable with municipality number</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">mutate</span>(<span class="at">knr =</span> <span class="fu">substr</span>(knrNavn, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">stop =</span> <span class="dv">4</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="co">#put our new variable at the far left</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">select</span>(knr, <span class="fu">everything</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="co">#pivot_longer the variables y2006 to y2019</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> y2006<span class="sc">:</span>y2019, <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="at">names_prefix =</span> <span class="st">"y"</span>, <span class="at">values_to =</span> <span class="st">"pm2"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="co">#drop btype, all obs. are 'Enebolig'</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="fu">select</span>(<span class="sc">-</span>btype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li class="fragment">Are the data tidy now?</li>
+</ul>
+</div>
+</section>
+<section id="tidy-data" class="slide level2">
+<h2>Tidy data?</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>sfd_06_19 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   knr   knrNavn     year    pm2
+   &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;
+ 1 0101  0101 Halden 2006   7134
+ 2 0101  0101 Halden 2007   7168
+ 3 0101  0101 Halden 2008   7258
+ 4 0101  0101 Halden 2009   7323
+ 5 0101  0101 Halden 2010   7381
+ 6 0101  0101 Halden 2011   7425
+ 7 0101  0101 Halden 2012   7453
+ 8 0101  0101 Halden 2013   7528
+ 9 0101  0101 Halden 2014   7628
+10 0101  0101 Halden 2015   7680</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">looks OK</li>
+</ul>
+</section>
+<section id="pick-the-year-2018" class="slide level2">
+<h2>Pick the year 2018</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sfd_18 <span class="ot">&lt;-</span> sfd_06_19 <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">'2018'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="fu">summary</span>(sfd_18)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     knr              knrNavn              year                pm2         
+ Length:423         Length:423         Length:423         Min.   :   99.0  
+ Class :character   Class :character   Class :character   1st Qu.:  980.5  
+ Mode  :character   Mode  :character   Mode  :character   Median : 1843.0  
+                                                          Mean   : 3005.1  
+                                                          3rd Qu.: 3469.0  
+                                                          Max.   :35733.0  </code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">we have 423 observations (municipalities) and no NAs (missing values)</li>
+<li class="fragment">now our data should be tidy</li>
+</ul>
+</section>
+<section id="we-need-a-map" class="slide level2">
+<h2>We need a map</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Source: <a href="https://kartkatalog.geonorge.no">geonorge (Norge digitalt)</a> “https://kartkatalog.geonorge.no”</li>
+<li class="fragment">Municipality borders 2020, we need 2018</li>
+<li class="fragment"><a href="Administrative%20enheter%20-%20historiske%20versjoner">Administrative enheter - historiske versjoner</a></li>
+<li class="fragment">2018, sosi format?</li>
+<li class="fragment">wikipedia: “SOSI-formatet er et filformat for utveksling av digitale geodata. Utviklingen av SOSI-formatet startet på 1970-tallet. [1] I dag[når?] utvikles SOSI-formatet lite, siden det er ventet at GML vil overta som utvekslingsformat.”</li>
+<li class="fragment">Recent maps are made available in other formats, but older ones only in .sosi</li>
+<li class="fragment">gdal has a plugin for sosi (but not part of standard installation), gdal must be compiled with the plugin enabled (multiple versions of the gdal library is asking for trouble, “been there, done that”)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_1.png" alt=":scale 80%"></p>
+<p><img data-src="maps_example_insertimage_2.png" alt=":scale 80%"></p>
+</div>
+</div>
+</section>
+<section id="alternatives" class="slide level2">
+<h2>Alternatives</h2>
+<ul>
+<li class="fragment">an online alternative is <a href="https://mygeodata.cloud/converter/sosi-to-shp">mygeodata.cloud/converter/sosi-to-shp</a> to convert from sosi to .shp (did not work late May 2021, still not working oct. 2022)</li>
+<li class="fragment">another alternative is <a href="https://sosicon.espenandersen.no/download/" class="uri">https://sosicon.espenandersen.no/download/</a></li>
+</ul>
+</section>
+<section id="sosi-file-converter" class="slide level2">
+<h2>SOSI File Converter</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Note, shape format selected</p></li>
+<li class="fragment"><p>Select “Create subfolder”, use one subfolder per map when you have it in shape format</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_3.png" alt=":scale 70%"></p>
+</div>
+</div>
+</section>
+<section id="municipality-map" class="slide level2">
+<h2>Municipality map</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Qgis</p></li>
+<li class="fragment"><p>we have got a whole collection of maps, Kommune_FLATE.shp is probably the one we want</p></li>
+<li class="fragment"><p>the map has 428 features (here “Kommune”)</p></li>
+<li class="fragment"><p>A “feature” will be a polygon, line or point with associated data</p></li>
+<li class="fragment"><p>The projection of the map is “EPSG:25833” or UTM zone 33N (the recommended projection when we plot the whole of Norway)</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_4.png"></p>
+</div>
+</div>
+</section>
+<section id="export-list-of-features" class="slide level2">
+<h2>Export list of features</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">We export the features as a .csv file</li>
+<li class="fragment">This gives us the the data associated with each feature (municipality number, name etc.)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_5.png" alt=":scale 70%"></p>
+</div>
+</div>
+</section>
+<section id="read-feature-data-into-r" class="slide level2">
+<h2>Read feature data into R</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>kom_2018_map <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"kom_2018_map.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li class="fragment">pick what we need</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>kom_2018_map <span class="ot">&lt;-</span> kom_2018_map <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">select</span>(KOMMUNENUM,NAVN)</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>map_knr_2018 <span class="ot">&lt;-</span> kom_2018_map<span class="sc">$</span>KOMMUNENUM</span>
+<span id="cb9-5"><a href="#cb9-5"></a>data_knr_2018 <span class="ot">&lt;-</span> sfd_18<span class="sc">$</span>knr</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># knr in map, but not in data file</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="fu">setdiff</span>(map_knr_2018,data_knr_2018)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "5020" "5033" "5038" "5031" "5016" "5053" "5013" "5036" "5051" "5048"
+[11] "5005" "5042" "5024" "5034" "5029" "5015" "5017" "5032" "5025" "5054"
+[21] "5021" "5037" "5027" "5047" "5044" "5046" "5012" "5026" "5050" "5045"
+[31] "5030" "5019" "5018" "5040" "5011" "5001" "5035" "5039" "5004" "5028"
+[41] "5052" "5049" "5014" "5043" "5041" "5023" "5022"</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">we got “new Trøndelag”. Our data uses municipality structure before 2018 to be consistent over time.</li>
+</ul>
+</div>
+</section>
+<section id="map" class="slide level2">
+<h2>2017 map</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Do to 2017 what we did with 2018</p></li>
+<li class="fragment"><p>pick the variables we need</p>
+<ul>
+<li class="fragment">The problematic municipalities</li>
+<li class="fragment">Taken from: <a href="https://no.wikipedia.org/wiki/Norske_kommunenummer" class="uri">https://no.wikipedia.org/wiki/Norske_kommunenummer</a></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_6.png" alt=":scale 65%"></p>
+</div>
+</div>
+</section>
+<section id="fix-the-problem" class="slide level2">
+<h2>Fix the problem</h2>
+<ul>
+<li class="fragment">In the map we must join 0709 and 0728 into 0712 Larvik</li>
+<li class="fragment">In the map we must join 0702 + 0714 into 0715 Holmestrand</li>
+<li class="fragment">In the map we must join 0722 + 0723 into 0729 Færder</li>
+<li class="fragment">This can be done in R, but we do it first in Qgis.</li>
+</ul>
+</section>
+<section id="qgis-dissolve-løs-opp" class="slide level2">
+<h2>Qgis dissolve (“Løs opp …”)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Easiest way:</p>
+<ul>
+<li class="fragment"><p>First name the polygons</p></li>
+<li class="fragment"><p>right click/crtl click on the map layer</p></li>
+<li class="fragment"><p>Select “Egenskaper” and then “Påskrifter” (4. in the list on the left)</p></li>
+<li class="fragment"><p>Then select “Enkle påskrifter” from the drop-down menu at the top, and select KOMMUNENUM as the variable to be used for “påskrift”</p></li>
+<li class="fragment"><p>We know that “07” is “Vestfold” county, so we zoom in on the lower right corner</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="select-0709-and-0728" class="slide level2">
+<h2>Select 0709 and 0728</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Choose the select tool</p></li>
+<li class="fragment"><p>Shift-click on 0728 and 0709</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_11.png" alt=":scale 90%"></p>
+</div>
+</div>
+</section>
+<section id="dissolve-union-0709-and-0728-into-0712-larvik" class="slide level2">
+<h2>Dissolve (union) 0709 and 0728 into 0712 Larvik</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Dissolve</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_12.png" alt=":scale 90%"></p>
+</div>
+</div>
+</section>
+<section id="dissolve" class="slide level2">
+<h2>Dissolve</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Important!</p>
+<ul>
+<li class="fragment"><p>Select “Kun valgte objekter”</p></li>
+<li class="fragment"><p>Let “Oppløst” be “midlertidig lag”</p></li>
+<li class="fragment"><p>Click “Kjør”, and then “Close”</p></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_14.png"></p>
+</div>
+</div>
+</section>
+<section id="qgis-dissolve-cont." class="slide level2">
+<h2>Qgis dissolve cont.</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">deselect the “Oppløst” layer</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_15.png"></p>
+</div>
+</div>
+</section>
+<section id="qgis-dissolve-cont.-1" class="slide level2">
+<h2>Qgis dissolve cont.</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment">Click on the map layer and enable editing</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_16.png"></p>
+</div>
+</div>
+</section>
+<section id="qgis-dissolve-cont.-2" class="slide level2">
+<h2>Qgis dissolve cont.</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Delete selection</p></li>
+<li class="fragment"><p>Change to “Oppløst”,</p></li>
+<li class="fragment"><p>select the object</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_17.png"></p>
+</div>
+</div>
+</section>
+<section id="qgis-dissolve-cont.-3" class="slide level2">
+<h2>Qgis dissolve cont.</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Copy the object (Rediger &gt; Kopier objekter)</p></li>
+<li class="fragment"><p>Change to the other layer and paste the object (Rediger &gt; Lim inn objekter)</p></li>
+<li class="fragment"><p>Disable editing, save the map</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_18.png" alt=":scale 60%"></p>
+</div>
+</div>
+</section>
+<section id="qgis-dissolve-cont.-4" class="slide level2">
+<h2>Qgis dissolve cont.</h2>
+
+<img data-src="maps_example_insertimage_19.png" class="r-stretch"></section>
+<section id="change-name-of-new-object" class="slide level2">
+<h2>Change name of new object</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Enable editing (Click on the pencil)</p></li>
+<li class="fragment"><p>Click on “Identifiser objekter”</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="maps_example_insertimage_20.png" alt="Plot title."></p>
+<p></p><figcaption>Plot title.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="change-name-of-new-object-cont." class="slide level2">
+<h2>Change name of new object cont.</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Click on the new object</p></li>
+<li class="fragment"><p>Click on the icon above “Objekt” heading</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="maps_example_insertimage_21.png" alt="Plot title."></p>
+<p></p><figcaption>Plot title.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="change-name-of-new-object-cont.-1" class="slide level2">
+<h2>Change name of new object cont.</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Change “KOMMUNENUM to 0712</p></li>
+<li class="fragment"><p>Name is already”Larvik”, so OK</p></li>
+<li class="fragment"><p>Click OK</p></li>
+<li class="fragment"><p>Disable editing (click the pencil again) and save the map</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="maps_example_insertimage_22.png" alt="Plot title."></p>
+</div>
+</div>
+</section>
+<section id="do-the-same-for-0715-holmestrand-and-0729-færder" class="slide level2">
+<h2>Do the same for 0715 Holmestrand and 0729 Færder</h2>
+<ul>
+<li class="fragment"><p>Join 0702 + 0714 into 0715 Holmestrand</p></li>
+<li class="fragment"><p>Join 07232 + 0723 into 0729 Færder</p></li>
+<li class="fragment"><p>Remember to save the map</p></li>
+<li class="fragment"><p>Export the finished map as .csv format</p></li>
+</ul>
+</section>
+<section id="qgis-dissolve-cont.-5" class="slide level2">
+<h2>Qgis dissolve cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>kom_2017_mapB <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"kom_2017_mapB.csv"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>kom_2017_mapB <span class="ot">&lt;-</span> kom_2017_mapB <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">select</span>(KOMMUNENUM,NAVN)</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a>map_knr_2017B <span class="ot">&lt;-</span> kom_2017_mapB<span class="sc">$</span>KOMMUNENUM</span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co"># in map_knr_2017, but not in data_knr_2018</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="fu">setdiff</span>(map_knr_2017B, data_knr_2018)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>character(0)</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># in data_knr_2018, but not in map_knr_2017</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">setdiff</span>(data_knr_2018, map_knr_2017B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>character(0)</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">Something wrong?</li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">length</span>(data_knr_2018)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 423</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">length</span>(map_knr_2017B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 429</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">No, in the map some municipalities are split on two, or more, polygons</li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(data_knr_2018))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 423</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(map_knr_2017B))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 423</code></pre>
+</div>
+</div>
+</section>
+<section id="how-to-do-it-in-r" class="slide level2">
+<h2>How to do it in R</h2>
+<ul>
+<li class="fragment">Start with a fresh map (run sosicon again)</li>
+<li class="fragment">Try with <code>sf::st_read()</code></li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co">#Sys.setenv("SHAPE_ENCODING"= "UTF-8")</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="co">#kom_map &lt;- st_read(dsn = 'kom_2017_R', layer = 'kom_2017_R_Kommune_FLATE')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li class="fragment">Gives: “Reading layer kom_2017_R_Kommune_FLATE from data source /Users/agwd/Dev/met2/kom_2017_R using driver ESRI Shapefile Error in make.names(vnames, unique = TRUE) : invalid multibyte string 8 Error during wrapup: invalid multibyte string at <d8>LGE Error: no more error handlers available (recursive errors?); invoking abort restart”</d8></li>
+<li class="fragment">seems to be some problem with sosiconv, different character set in variables (Norvegian characters in .dbf) and in the values.</li>
+</ul>
+</section>
+<section id="using-sp-and-rgdal" class="slide level2">
+<h2>Using sp and rgdal</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(rgdal)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>kf <span class="ot">&lt;-</span> <span class="fu">readOGR</span>(<span class="at">dsn =</span> <span class="st">'kom_2017_R'</span>, </span>
+<span id="cb24-3"><a href="#cb24-3"></a>              <span class="at">layer =</span> <span class="st">'kom_2017_R_Kommune_FLATE'</span>, </span>
+<span id="cb24-4"><a href="#cb24-4"></a>              <span class="at">verbose =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb24-5"><a href="#cb24-5"></a>              <span class="at">p4s=</span><span class="cn">NULL</span>,  </span>
+<span id="cb24-6"><a href="#cb24-6"></a>              <span class="at">drop_unsupported_fields=</span><span class="cn">TRUE</span>, </span>
+<span id="cb24-7"><a href="#cb24-7"></a>              <span class="at">use_iconv =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb24-8"><a href="#cb24-8"></a>              <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OGR data source with driver: ESRI Shapefile 
+Source: "/Users/ag/Dev/QQ_MSB205/maps/qgismaps/kom_2017_R", layer: "kom_2017_R_Kommune_FLATE"
+with 432 features
+It has 12 fields</code></pre>
+</div>
+</div>
+</section>
+<section id="using-sp-and-rgdal-cont." class="slide level2">
+<h2>Using sp and rgdal cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Drop some of the variables of no interest to us</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">head</span>(kf[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">length</span>(<span class="fu">names</span>(kf)))], <span class="at">n=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>class       : SpatialPolygonsDataFrame 
+features    : 1 
+extent      : 1019225, 1101314, 7833981, 7881130  (xmin, xmax, ymin, ymax)
+crs         : +proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs 
+variables   : 4
+names       : KOMMUNENUM, LOKALID..., NAVN......, TYPE...... 
+value       :       2003,     172718,      Vadsø,      FLATE </code></pre>
+</div>
+</div>
+<p>uses <code>NA</code> and <code>NA..1</code> as names for the two problematic variables <code>REKKEFØLGE</code> og <code>SPRÅK</code> we do not need them, so OK. What`s important for us is to get the map read into R and also preserve the right encoding for the municipality names (which might contain Norwegian characters)</p>
+</section>
+<section id="working-with-the-rgdal-map" class="slide level2">
+<h2>Working with the rgdal map</h2>
+<ul>
+<li class="fragment">Pick the two variables we want, KOMMUNENUM and NAVN……</li>
+<li class="fragment">Change the names</li>
+<li class="fragment">Plot the map</li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># variable 1 and 3</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>kf <span class="ot">&lt;-</span> kf[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="fu">names</span>(kf) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"knr"</span>, <span class="st">"kNavn"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="co"># Too time consuming for the slides</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="co">#plot(kf)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="more-work-on-kf" class="slide level2">
+<h2>More work on kf</h2>
+<ul>
+<li class="fragment">Check class</li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">class</span>(kf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "SpatialPolygonsDataFrame"
+attr(,"package")
+[1] "sp"</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">Convert to sf object</li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Tools to convert from sp to sf, and from sf to sp</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>kf_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(kf)</span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">class</span>(kf_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sf"         "data.frame"</code></pre>
+</div>
+</div>
+</section>
+<section id="more-work-on-kf-cont." class="slide level2">
+<h2>More work on kf cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">dim</span>(kf_sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 432   3</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">head</span>(kf_sf, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 2 features and 2 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 228157.8 ymin: 7122683 xmax: 1101314 ymax: 7881130
+Projected CRS: ETRS89 / UTM zone 33N
+   knr kNavn                       geometry
+0 2003 Vadsø POLYGON ((1032759 7861936, ...
+1 1633  Osen POLYGON ((244675.8 7151794,...</code></pre>
+</div>
+</div>
+</section>
+<section id="merging-municipalities" class="slide level2">
+<h2>Merging municipalities</h2>
+<ul>
+<li class="fragment">Select the municipalities that are not merged</li>
+<li class="fragment">Merge municipalities, for instance 0709 + 0728 to 0712 Larvik</li>
+<li class="fragment">Put the map together again</li>
+</ul>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># not merged</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="co"># remember kf_sf works well with the Tidyverse</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>kf_sf_nm <span class="ot">&lt;-</span> kf_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb37-4"><a href="#cb37-4"></a>  <span class="co"># not in c()</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a>  <span class="fu">filter</span>(<span class="sc">!</span>knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0709"</span>, <span class="st">"0728"</span>, <span class="st">"0702"</span>, <span class="st">"0714"</span>, <span class="st">"0722"</span>, <span class="st">"0723"</span>))</span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="fu">dim</span>(kf_sf_nm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 426   3</code></pre>
+</div>
+</div>
+</section>
+<section id="merging-municipalities-cont." class="slide level2">
+<h2>Merging municipalities cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>Larvik_0712 <span class="ot">&lt;-</span> kf_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0709"</span>, <span class="st">"0728"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>  <span class="co"># we have a sfc object (polygon), ned sf data.frame</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>  <span class="fu">st_sf</span>(<span class="at">knr=</span><span class="st">"0712"</span>, <span class="at">kNavn=</span><span class="st">"Larvik"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb39-6"><a href="#cb39-6"></a>  <span class="co"># The geometry clumn has ended up with the name ".",</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a>  <span class="co"># change it back to geometry</span></span>
+<span id="cb39-8"><a href="#cb39-8"></a>  <span class="fu">rename</span>(<span class="st">"geometry"</span> <span class="ot">=</span> <span class="st">"."</span>)</span>
+<span id="cb39-9"><a href="#cb39-9"></a></span>
+<span id="cb39-10"><a href="#cb39-10"></a>Holmestrand_0715 <span class="ot">&lt;-</span> kf_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb39-11"><a href="#cb39-11"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0702"</span>, <span class="st">"0714"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-12"><a href="#cb39-12"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-13"><a href="#cb39-13"></a>  <span class="fu">st_sf</span>(<span class="at">knr=</span><span class="st">"0715"</span>, <span class="at">kNavn=</span><span class="st">"Holmestrand"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-14"><a href="#cb39-14"></a>  <span class="fu">rename</span>(<span class="st">"geometry"</span> <span class="ot">=</span> <span class="st">"."</span>)</span>
+<span id="cb39-15"><a href="#cb39-15"></a></span>
+<span id="cb39-16"><a href="#cb39-16"></a>Faerder_0729 <span class="ot">&lt;-</span> kf_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb39-17"><a href="#cb39-17"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0722"</span>, <span class="st">"0723"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-18"><a href="#cb39-18"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-19"><a href="#cb39-19"></a>  <span class="fu">st_sf</span>(<span class="at">knr=</span><span class="st">"0729"</span>, <span class="at">kNavn=</span><span class="st">"Færder"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-20"><a href="#cb39-20"></a>  <span class="fu">rename</span>(<span class="st">"geometry"</span> <span class="ot">=</span> <span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="bind-the-parts-together" class="slide level2">
+<h2>Bind the parts together</h2>
+<ul>
+<li class="fragment">we use rbind() to assemble the parts</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>kf_sf_new <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kf_sf_nm, </span>
+<span id="cb40-2"><a href="#cb40-2"></a>                   Larvik_0712, </span>
+<span id="cb40-3"><a href="#cb40-3"></a>                   Holmestrand_0715, </span>
+<span id="cb40-4"><a href="#cb40-4"></a>                   Faerder_0729)</span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="fu">class</span>(kf_sf_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sf"         "data.frame"</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">head</span>(kf_sf_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 2 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: -79642.38 ymin: 6432782 xmax: 1101314 ymax: 7881130
+Projected CRS: ETRS89 / UTM zone 33N
+   knr        kNavn                       geometry
+1 2003        Vadsø POLYGON ((1032759 7861936, ...
+2 1633         Osen POLYGON ((244675.8 7151794,...
+3 1438    Bremanger POLYGON ((-66423.89 6897184...
+4 1244    Austevoll POLYGON ((-79575.13 6709024...
+5 1001 Kristiansand POLYGON ((81925.32 6466723,...
+6 0914  Tvedestrand POLYGON ((136145.2 6512556,...</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-new-vestfold" class="slide level2">
+<h2>Plot new Vestfold</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>kf_sf_new <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2"></a>  <span class="fu">filter</span>(<span class="fu">as.numeric</span>(knr) <span class="sc">&gt;</span> <span class="dv">700</span> <span class="sc">&amp;</span> <span class="fu">as.numeric</span>(knr) <span class="sc">&lt;</span> <span class="dv">800</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">select</span>(knr) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="maps_example_files/figure-revealjs/unnamed-chunk-22-1.png" style="width:100.0%" class="r-stretch"></section>
+<section id="merge-map-and-data" class="slide level2">
+<h2>Merge map and data</h2>
+<ul>
+<li class="fragment">We can do the merge of data and map in Qgis</li>
+<li class="fragment">Here we do it in R, using <code>sf</code> our new toy</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">dim</span>(kf_sf_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 429   3</code></pre>
+</div>
+</div>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">dim</span>(sfd_18)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 423   4</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment">What’s wrong</li>
+</ul>
+</div>
+</section>
+<section id="merge-map-and-data-cont." class="slide level2">
+<h2>Merge map and data cont.</h2>
+<ul>
+<li class="fragment">Nothing, but som municipalities have multiple polygons</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>kf_sf_new <span class="sc">%&gt;%</span> </span>
+<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">filter</span>(knr <span class="sc">==</span> <span class="st">"0710"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 2 features and 2 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 214716 ymin: 6523881 xmax: 236648.8 ymax: 6593351
+Projected CRS: ETRS89 / UTM zone 33N
+   knr      kNavn                       geometry
+1 0710 Sandefjord POLYGON ((220354.2 6572257,...
+2 0710 Sandefjord POLYGON ((220485 6561491, 2...</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="merge-map-and-data-cont.-1" class="slide level2">
+<h2>Merge map and data cont.</h2>
+<ul>
+<li class="fragment"><p>0710 Sandefjord has an enclave inside 0712 Larvik</p></li>
+<li class="fragment"><p>Find duplicates (more than one polygon)</p></li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>kf_sf_new <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">filter</span>(<span class="fu">duplicated</span>(knr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 2 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 148155.3 ymin: 6561053 xmax: 298002.9 ymax: 7048475
+Projected CRS: ETRS89 / UTM zone 33N
+   knr      kNavn                       geometry
+1 1663     Malvik POLYGON ((292666.4 7030893,...
+2 0819       Nome POLYGON ((148567.8 6586721,...
+3 1663     Malvik POLYGON ((280936.1 7037994,...
+4 0215      Frogn POLYGON ((249548 6626601, 2...
+5 0701     Horten POLYGON ((238010.9 6591209,...
+6 0710 Sandefjord POLYGON ((220485 6561491, 2...</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-malvik" class="slide level2">
+<h2>Plot Malvik</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>kf_sf_new <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="#cb53-2"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1663"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="#cb53-3"></a>  <span class="fu">select</span>(kNavn) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-4"><a href="#cb53-4"></a>  <span class="fu">plot</span>(<span class="at">key.pos =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="maps_example_files/figure-revealjs/unnamed-chunk-27-1.png" style="width:100.0%" class="r-stretch"></section>
+<section id="make-multipolygons" class="slide level2">
+<h2>Make multipolygons</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>kf_sf_423 <span class="ot">&lt;-</span> kf_sf_new <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a>  <span class="co"># kNavn unnecessary, but nice trick to carry along the variable</span></span>
+<span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">group_by</span>(knr, kNavn) <span class="sc">%&gt;%</span></span>
+<span id="cb54-4"><a href="#cb54-4"></a>  <span class="fu">summarise</span>(<span class="at">geometry =</span> <span class="fu">st_combine</span>(geometry)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-5"><a href="#cb54-5"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb54-6"><a href="#cb54-6"></a></span>
+<span id="cb54-7"><a href="#cb54-7"></a><span class="fu">dim</span>(kf_sf_423)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 423   3</code></pre>
+</div>
+</div>
+</section>
+<section id="make-multipolygons-cont." class="slide level2">
+<h2>Make multipolygons cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">head</span>(kf_sf_423, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 3 features and 2 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 246920.8 ymin: 6531541 xmax: 311244.9 ymax: 6607757
+Projected CRS: ETRS89 / UTM zone 33N
+# A tibble: 3 × 3
+  knr   kNavn                                                           geometry
+  &lt;chr&gt; &lt;chr&gt;                                                 &lt;MULTIPOLYGON [m]&gt;
+1 0101  Halden    (((279596.3 6555228, 280474 6556668, 280474 6556668, 281380.5…
+2 0104  Moss      (((247465.5 6599443, 248497.9 6601261, 248497.9 6601261, 2501…
+3 0105  Sarpsborg (((273359.1 6577360, 273356.2 6577381, 273356.2 6577381, 2733…</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-1663-malvik" class="slide level2">
+<h2>Plot 1663 Malvik</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Now as MULTIPOLYGON</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>kf_sf_423 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1663"</span>)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(kNavn) <span class="sc">%&gt;%</span> <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="maps_example_files/figure-revealjs/unnamed-chunk-30-1.png" style="width:100.0%" class="r-stretch"></section>
+<section id="færder" class="slide level2">
+<h2>Færder</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>kf_sf_423 <span class="sc">%&gt;%</span> </span>
+<span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0729"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">select</span>(kNavn) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-4"><a href="#cb59-4"></a>  <span class="fu">plot</span>(<span class="at">key.pos =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="maps_example_files/figure-revealjs/unnamed-chunk-31-1.png" style="width:100.0%" class="r-stretch"></section>
+<section id="finally-ready-to-join" class="slide level2">
+<h2>Finally ready to join</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>kf_sf_423_2018_pm2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(<span class="at">x =</span> kf_sf_423, <span class="at">y =</span>  sfd_18, <span class="at">by =</span> <span class="st">"knr"</span>)</span>
+<span id="cb60-2"><a href="#cb60-2"></a><span class="co"># Next take a long time</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a><span class="co">#View(tmp)</span></span>
+<span id="cb60-4"><a href="#cb60-4"></a><span class="fu">head</span>(kf_sf_423_2018_pm2, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 5 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 245176.8 ymin: 6521821 xmax: 311244.9 ymax: 6607757
+Projected CRS: ETRS89 / UTM zone 33N
+# A tibble: 5 × 6
+  knr   kNavn                                       geometry knrNavn year    pm2
+  &lt;chr&gt; &lt;chr&gt;                             &lt;MULTIPOLYGON [m]&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
+1 0101  Halden      (((279596.3 6555228, 280474 6556668, 28… 0101 H… 2018   7864
+2 0104  Moss        (((247465.5 6599443, 248497.9 6601261, … 0104 M… 2018   5084
+3 0105  Sarpsborg   (((273359.1 6577360, 273356.2 6577381, … 0105 S… 2018  13028
+4 0106  Fredrikstad (((249999.8 6574664, 249814.3 6575270, … 0106 F… 2018  18700
+5 0111  Hvaler      (((251957.3 6553129, 256847.8 6552769, … 0111 H… 2018   1923</code></pre>
+</div>
+</div>
+</section>
+<section id="finally-ready-to-join-cont." class="slide level2">
+<h2>Finally ready to join cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>kf_sf_423_2018_pm2 <span class="ot">&lt;-</span> kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
+<span id="cb62-2"><a href="#cb62-2"></a>  <span class="co"># split knrNavn from sfd_18 into sfd_knr and sfd_kNavn</span></span>
+<span id="cb62-3"><a href="#cb62-3"></a>  <span class="fu">separate</span>(knrNavn, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"sfd_knr"</span>, <span class="st">"sfd_kNavn"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">s"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb62-4"><a href="#cb62-4"></a>  <span class="co"># we do not have to specify geometry it`s taken automatically</span></span>
+<span id="cb62-5"><a href="#cb62-5"></a>  <span class="fu">select</span>(knr, kNavn, sfd_kNavn, pm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="finally-ready-to-join-cont.-1" class="slide level2">
+<h2>Finally ready to join cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">head</span>(kf_sf_423_2018_pm2, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 4 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 245176.8 ymin: 6521821 xmax: 311244.9 ymax: 6607757
+Projected CRS: ETRS89 / UTM zone 33N
+# A tibble: 5 × 5
+  knr   kNavn       sfd_kNavn     pm2                                   geometry
+  &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;                         &lt;MULTIPOLYGON [m]&gt;
+1 0101  Halden      Halden       7864 (((279596.3 6555228, 280474 6556668, 2804…
+2 0104  Moss        Moss         5084 (((247465.5 6599443, 248497.9 6601261, 24…
+3 0105  Sarpsborg   Sarpsborg   13028 (((273359.1 6577360, 273356.2 6577381, 27…
+4 0106  Fredrikstad Fredrikstad 18700 (((249999.8 6574664, 249814.3 6575270, 24…
+5 0111  Hvaler      Hvaler       1923 (((251957.3 6553129, 256847.8 6552769, 25…</code></pre>
+</div>
+</div>
+</section>
+<section id="check-that-the-names-are-equal" class="slide level2">
+<h2>Check that the names are equal</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
+<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">identical</span>(kNavn, sfd_kNavn)) <span class="sc">%&gt;%</span> </span>
+<span id="cb65-3"><a href="#cb65-3"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 423 features and 4 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744
+Projected CRS: ETRS89 / UTM zone 33N
+# A tibble: 423 × 5
+  knr   kNavn       sfd_kNavn     pm2                                   geometry
+* &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;                         &lt;MULTIPOLYGON [m]&gt;
+1 0101  Halden      Halden       7864 (((279596.3 6555228, 280474 6556668, 2804…
+2 0104  Moss        Moss         5084 (((247465.5 6599443, 248497.9 6601261, 24…
+3 0105  Sarpsborg   Sarpsborg   13028 (((273359.1 6577360, 273356.2 6577381, 27…
+4 0106  Fredrikstad Fredrikstad 18700 (((249999.8 6574664, 249814.3 6575270, 24…
+5 0111  Hvaler      Hvaler       1923 (((251957.3 6553129, 256847.8 6552769, 25…
+# … with 418 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="choose-norvegian-names-not-official-names" class="slide level2">
+<h2>Choose Norvegian names, not official names</h2>
+<ul>
+<li class="fragment">We choose Norvegian names</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>kf_sf_423_2018_pm2 <span class="ot">&lt;-</span> kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="#cb67-2"></a>  <span class="co"># slect Norwegian names, not offical names</span></span>
+<span id="cb67-3"><a href="#cb67-3"></a>  <span class="fu">select</span>(knr, sfd_kNavn, pm2) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-4"><a href="#cb67-4"></a>  <span class="fu">rename</span>(<span class="at">kNavn =</span> sfd_kNavn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</section>
+<section id="histogram-of-price-per-square-meter" class="slide level2">
+<h2>Histogram of price per square meter</h2>
+<ul>
+<li class="fragment">Histogram of price per square meter for single family dwellings in Norwegian municipalities in 2018</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
+<span id="cb68-2"><a href="#cb68-2"></a>  <span class="co"># Remember + not %&gt;% </span></span>
+<span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pm2)) <span class="sc">+</span></span>
+<span id="cb68-4"><a href="#cb68-4"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</section>
+<section id="histogram-of-price-per-square-meter-1" class="slide level2">
+<h2>Histogram of price per square meter</h2>
+<ul>
+<li class="fragment">Histogram of price per square meter for single family dwellings in Norwegian municipalities in 2018</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="maps_example_files/figure-revealjs/unnamed-chunk-38-1.png" style="width:100.0%"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="log-transform-pm2" class="slide level2">
+<h2>Log-transform pm2</h2>
+<ul>
+<li class="fragment">Seems like a log-transformation might be appropriate</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>kf_sf_423_2018_pm2 <span class="ot">&lt;-</span> kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="#cb69-2"></a>  <span class="co"># log default 'natural logarithms, i.e. ln()</span></span>
+<span id="cb69-3"><a href="#cb69-3"></a>  <span class="fu">mutate</span>(<span class="at">log_pm2 =</span> <span class="fu">log</span>(pm2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div>
+</section>
+<section id="log-transform-pm2-cont." class="slide level2">
+<h2>Log-transform pm2 cont.</h2>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
+<span id="cb70-2"><a href="#cb70-2"></a>  <span class="co"># Remember + not %&gt;% </span></span>
+<span id="cb70-3"><a href="#cb70-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(log_pm2)) <span class="sc">+</span></span>
+<span id="cb70-4"><a href="#cb70-4"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="maps_example_files/figure-revealjs/unnamed-chunk-40-1.png" style="width:100.0%" class="r-stretch"></section>
+<section id="log_pm2-eastern-norway" class="slide level2">
+<h2>log_pm2 Eastern Norway</h2>
+<div class="cell" data-hash="maps_example_cache/revealjs/unnamed-chunk-41_7cd6af639beda184fe963320605aed0c">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># Take to long to plot, cache it </span></span>
+<span id="cb71-2"><a href="#cb71-2"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(knr, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">stop =</span> <span class="dv">2</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"01"</span>, <span class="st">"02"</span>, <span class="st">"03"</span>, <span class="st">"06"</span>, <span class="st">"07"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb71-4"><a href="#cb71-4"></a>  <span class="fu">select</span>(log_pm2) <span class="sc">%&gt;%</span></span>
+<span id="cb71-5"><a href="#cb71-5"></a>  <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="maps_example_files/figure-revealjs/unnamed-chunk-41-1.png" style="width:100.0%" class="r-stretch"></section>
+<section id="log_pm2-rogaland" class="slide level2">
+<h2>log_pm2 Rogaland</h2>
+<div class="cell" data-hash="maps_example_cache/revealjs/unnamed-chunk-42_6982f019a98478f4aa009547fd81069b">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">filter</span>(</span>
+<span id="cb72-3"><a href="#cb72-3"></a>    <span class="fu">substr</span>(</span>
+<span id="cb72-4"><a href="#cb72-4"></a>      knr, </span>
+<span id="cb72-5"><a href="#cb72-5"></a>      <span class="at">start =</span> <span class="dv">1</span>, </span>
+<span id="cb72-6"><a href="#cb72-6"></a>      <span class="at">stop =</span> <span class="dv">2</span></span>
+<span id="cb72-7"><a href="#cb72-7"></a>      ) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"11"</span>)</span>
+<span id="cb72-8"><a href="#cb72-8"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-9"><a href="#cb72-9"></a>  <span class="fu">select</span>(log_pm2) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-10"><a href="#cb72-10"></a>  <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="maps_example_files/figure-revealjs/unnamed-chunk-42-1.png" style="width:100.0%" class="r-stretch"></section>
+<section id="write-out-map" class="slide level2">
+<h2>Write out map</h2>
+<ul>
+<li class="fragment">Time to write out our map</li>
+<li class="fragment">By default we are not allowed to overwrite, hence <strong>append=FALSE</strong></li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># Do not use unless you are forced</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="fu">st_write</span>(</span>
+<span id="cb73-3"><a href="#cb73-3"></a>  <span class="at">obj =</span> kf_sf_423,</span>
+<span id="cb73-4"><a href="#cb73-4"></a>  <span class="at">dsn =</span> <span class="st">"kf_sf_423"</span>,</span>
+<span id="cb73-5"><a href="#cb73-5"></a>  <span class="at">driver =</span> <span class="st">"ESRI Shapefile"</span>,</span>
+<span id="cb73-6"><a href="#cb73-6"></a>  <span class="at">append =</span> <span class="cn">FALSE</span></span>
+<span id="cb73-7"><a href="#cb73-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `kf_sf_423' using driver `ESRI Shapefile'
+Writing layer `kf_sf_423' to data source `kf_sf_423' using driver `ESRI Shapefile'
+Writing 423 features with 2 fields and geometry type Multi Polygon.</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="co"># use</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a><span class="fu">st_write</span>(</span>
+<span id="cb75-3"><a href="#cb75-3"></a>  <span class="at">obj =</span> kf_sf_423, </span>
+<span id="cb75-4"><a href="#cb75-4"></a>  <span class="at">dsn =</span> <span class="st">"kf_sf_423.gpkg"</span>, </span>
+<span id="cb75-5"><a href="#cb75-5"></a>  <span class="at">driver =</span> <span class="st">"GPKG"</span>, </span>
+<span id="cb75-6"><a href="#cb75-6"></a>  <span class="at">append =</span> <span class="cn">FALSE</span></span>
+<span id="cb75-7"><a href="#cb75-7"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `kf_sf_423' using driver `GPKG'
+Writing layer `kf_sf_423' to data source `kf_sf_423.gpkg' using driver `GPKG'
+Writing 423 features with 2 fields and geometry type Multi Polygon.</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="write-out-map-cont." class="slide level2">
+<h2>Write out map cont.</h2>
+<ul>
+<li class="fragment">For use with Geoda</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">st_write</span>(</span>
+<span id="cb77-2"><a href="#cb77-2"></a>  <span class="at">obj =</span> kf_sf_423_2018_pm2,</span>
+<span id="cb77-3"><a href="#cb77-3"></a>  <span class="at">dsn =</span> <span class="st">"kf_sf_423_2018_pm2.gpkg"</span>,</span>
+<span id="cb77-4"><a href="#cb77-4"></a>  <span class="at">driver =</span> <span class="st">"GPKG"</span>, </span>
+<span id="cb77-5"><a href="#cb77-5"></a>  <span class="at">append =</span> <span class="cn">FALSE</span></span>
+<span id="cb77-6"><a href="#cb77-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deleting layer `kf_sf_423_2018_pm2' using driver `GPKG'
+Writing layer `kf_sf_423_2018_pm2' to data source 
+  `kf_sf_423_2018_pm2.gpkg' using driver `GPKG'
+Writing 423 features with 4 fields and geometry type Multi Polygon.</code></pre>
+</div>
+</div>
+
+<div class="footer footer-default">
+<p><a href="../../index.html">MSB205</a></p>
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
