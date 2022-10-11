@@ -2027,7 +2027,7 @@
     "href": "maps/qgismaps/maps_example.html#using-sp-and-rgdal-cont.",
     "title": "We have to talk more about maps",
     "section": "Using sp and rgdal cont.",
-    "text": "Using sp and rgdal cont.\n\n\nCode\n# Drop some of the variables of no interest to us\nhead(kf[, c(1:3, length(names(kf)))], n=1)\n\n\nclass       : SpatialPolygonsDataFrame \nfeatures    : 1 \nextent      : 1019225, 1101314, 7833981, 7881130  (xmin, xmax, ymin, ymax)\ncrs         : +proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs \nvariables   : 4\nnames       : KOMMUNENUM, LOKALID..., NAVN......, TYPE...... \nvalue       :       2003,     172718,      Vadsø,      FLATE \n\n\nuses NA and NA..1 as names for the two problematic variables REKKEFØLGE og SPRÅK we do not need them, so OK. What`s important for us is to get the map read into R and also preserve the right encoding for the municipality names (which might contain Norwegian characters)"
+    "text": "Using sp and rgdal cont.\n\n\nCode\n# Drop some of the variables of no interest to us\nhead(kf[, c(1:3, length(names(kf)))], n = 1)\n\n\nclass       : SpatialPolygonsDataFrame \nfeatures    : 1 \nextent      : 1019225, 1101314, 7833981, 7881130  (xmin, xmax, ymin, ymax)\ncrs         : +proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs \nvariables   : 4\nnames       : KOMMUNENUM, LOKALID..., NAVN......, TYPE...... \nvalue       :       2003,     172718,      Vadsø,      FLATE \n\n\nuses NA and NA..1 as names for the two problematic variables REKKEFØLGE og SPRÅK we do not need them, so OK. What`s important for us is to get the map read into R and also preserve the right encoding for the municipality names (which might contain Norwegian characters)"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#working-with-the-rgdal-map",
@@ -2062,7 +2062,7 @@
     "href": "maps/qgismaps/maps_example.html#merging-municipalities-cont.",
     "title": "We have to talk more about maps",
     "section": "Merging municipalities cont.",
-    "text": "Merging municipalities cont.\n\n\nCode\nLarvik_0712 <- kf_sf %>% \n  filter(knr %in% c(\"0709\", \"0728\")) %>% \n  st_union() %>%\n  # we have a sfc object (polygon), ned sf data.frame\n  st_sf(knr=\"0712\", kNavn=\"Larvik\")  %>% \n  # The geometry clumn has ended up with the name \".\",\n  # change it back to geometry\n  rename(\"geometry\" = \".\")\n\nHolmestrand_0715 <- kf_sf %>% \n  filter(knr %in% c(\"0702\", \"0714\")) %>% \n  st_union() %>%\n  st_sf(knr=\"0715\", kNavn=\"Holmestrand\") %>% \n  rename(\"geometry\" = \".\")\n\nFaerder_0729 <- kf_sf %>% \n  filter(knr %in% c(\"0722\", \"0723\")) %>% \n  st_union() %>%\n  st_sf(knr=\"0729\", kNavn=\"Færder\") %>% \n  rename(\"geometry\" = \".\")"
+    "text": "Merging municipalities cont.\n\n\nCode\nLarvik_0712 <- kf_sf %>% \n  filter(knr %in% c(\"0709\", \"0728\")) %>% \n  st_union() %>%\n  # we have a sfc object (polygon), ned sf data.frame\n  st_sf(knr = \"0712\", kNavn = \"Larvik\")  %>% \n  # The geometry clumn has ended up with the name \".\",\n  # change it back to geometry\n  rename(\"geometry\" = \".\")\n\nHolmestrand_0715 <- kf_sf %>% \n  filter(knr %in% c(\"0702\", \"0714\")) %>% \n  st_union() %>%\n  st_sf(knr = \"0715\", kNavn = \"Holmestrand\") %>% \n  rename(\"geometry\" = \".\")\n\nFaerder_0729 <- kf_sf %>% \n  filter(knr %in% c(\"0722\", \"0723\")) %>% \n  st_union() %>%\n  st_sf(knr = \"0729\", kNavn = \"Færder\") %>% \n  rename(\"geometry\" = \".\")"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#bind-the-parts-together",
@@ -2076,7 +2076,7 @@
     "href": "maps/qgismaps/maps_example.html#plot-new-vestfold",
     "title": "We have to talk more about maps",
     "section": "Plot new Vestfold",
-    "text": "Plot new Vestfold\n\n\nCode\nkf_sf_new %>% \n  filter(as.numeric(knr) > 700 & as.numeric(knr) < 800) %>% \n  select(knr) %>% \n  plot(key.pos=3)"
+    "text": "Plot new Vestfold\n\n\nCode\nkf_sf_new %>% \n  filter(as.numeric(knr) > 700 & as.numeric(knr) < 800) %>% \n  select(knr) %>% \n  plot(key.pos = 3)"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#merge-map-and-data",
@@ -2125,7 +2125,7 @@
     "href": "maps/qgismaps/maps_example.html#plot-1663-malvik",
     "title": "We have to talk more about maps",
     "section": "Plot 1663 Malvik",
-    "text": "Plot 1663 Malvik\n\n\nCode\n# Now as MULTIPOLYGON\nkf_sf_423 %>% filter(knr %in% c(\"1663\")) %>% select(kNavn) %>% plot(key.pos=4)"
+    "text": "Plot 1663 Malvik\n\n\nCode\n# Now as MULTIPOLYGON\nkf_sf_423 %>% \n  filter(knr %in% c(\"1663\")) %>% \n  select(kNavn) %>% \n  plot(key.pos = 4)"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#færder",
@@ -2160,7 +2160,7 @@
     "href": "maps/qgismaps/maps_example.html#check-that-the-names-are-equal",
     "title": "We have to talk more about maps",
     "section": "Check that the names are equal",
-    "text": "Check that the names are equal\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  filter(!identical(kNavn, sfd_kNavn)) %>% \n  print(n=5)\n\n\nSimple feature collection with 423 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744\nProjected CRS: ETRS89 / UTM zone 33N\n# A tibble: 423 × 5\n  knr   kNavn       sfd_kNavn     pm2                                   geometry\n* <chr> <chr>       <chr>       <dbl>                         <MULTIPOLYGON [m]>\n1 0101  Halden      Halden       7864 (((279596.3 6555228, 280474 6556668, 2804…\n2 0104  Moss        Moss         5084 (((247465.5 6599443, 248497.9 6601261, 24…\n3 0105  Sarpsborg   Sarpsborg   13028 (((273359.1 6577360, 273356.2 6577381, 27…\n4 0106  Fredrikstad Fredrikstad 18700 (((249999.8 6574664, 249814.3 6575270, 24…\n5 0111  Hvaler      Hvaler       1923 (((251957.3 6553129, 256847.8 6552769, 25…\n# … with 418 more rows"
+    "text": "Check that the names are equal\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  filter(!identical(kNavn, sfd_kNavn)) %>% \n  print(n = 5)\n\n\nSimple feature collection with 423 features and 4 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -99551.21 ymin: 6426048 xmax: 1121941 ymax: 7962744\nProjected CRS: ETRS89 / UTM zone 33N\n# A tibble: 423 × 5\n  knr   kNavn       sfd_kNavn     pm2                                   geometry\n* <chr> <chr>       <chr>       <dbl>                         <MULTIPOLYGON [m]>\n1 0101  Halden      Halden       7864 (((279596.3 6555228, 280474 6556668, 2804…\n2 0104  Moss        Moss         5084 (((247465.5 6599443, 248497.9 6601261, 24…\n3 0105  Sarpsborg   Sarpsborg   13028 (((273359.1 6577360, 273356.2 6577381, 27…\n4 0106  Fredrikstad Fredrikstad 18700 (((249999.8 6574664, 249814.3 6575270, 24…\n5 0111  Hvaler      Hvaler       1923 (((251957.3 6553129, 256847.8 6552769, 25…\n# … with 418 more rows"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#choose-norvegian-names-not-official-names",
@@ -2202,14 +2202,14 @@
     "href": "maps/qgismaps/maps_example.html#log_pm2-eastern-norway",
     "title": "We have to talk more about maps",
     "section": "log_pm2 Eastern Norway",
-    "text": "log_pm2 Eastern Norway\n\n\nCode\n# Take to long to plot, cache it \nkf_sf_423_2018_pm2 %>%\n  filter(substr(knr, start = 1, stop = 2) %in% c(\"01\", \"02\", \"03\", \"06\", \"07\")) %>%\n  select(log_pm2) %>%\n  plot(key.pos=1)"
+    "text": "log_pm2 Eastern Norway\n\n\nCode\n# Take to long to plot, cache it \nkf_sf_423_2018_pm2 %>%\n  filter(substr(knr, start = 1, stop = 2) %in% c(\"01\", \"02\", \"03\", \"06\", \"07\")) %>%\n  select(log_pm2) %>%\n  plot(key.pos = 1)"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#log_pm2-rogaland",
     "href": "maps/qgismaps/maps_example.html#log_pm2-rogaland",
     "title": "We have to talk more about maps",
     "section": "log_pm2 Rogaland",
-    "text": "log_pm2 Rogaland\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  filter(\n    substr(\n      knr, \n      start = 1, \n      stop = 2\n      ) %in% c(\"11\")\n    ) %>% \n  select(log_pm2) %>% \n  plot(key.pos=1)"
+    "text": "log_pm2 Rogaland\n\n\nCode\nkf_sf_423_2018_pm2 %>% \n  filter(\n    substr(\n      knr, \n      start = 1, \n      stop = 2\n      ) %in% c(\"11\")\n    ) %>% \n  select(log_pm2) %>% \n  plot(key.pos = 1)"
   },
   {
     "objectID": "maps/qgismaps/maps_example.html#write-out-map",

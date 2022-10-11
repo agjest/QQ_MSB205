@@ -942,7 +942,7 @@ It has 12 fields</code></pre>
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Drop some of the variables of no interest to us</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">head</span>(kf[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">length</span>(<span class="fu">names</span>(kf)))], <span class="at">n=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">head</span>(kf[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">length</span>(<span class="fu">names</span>(kf)))], <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>class       : SpatialPolygonsDataFrame 
@@ -1070,7 +1070,7 @@ Projected CRS: ETRS89 / UTM zone 33N
 <span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0709"</span>, <span class="st">"0728"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb39-4"><a href="#cb39-4"></a>  <span class="co"># we have a sfc object (polygon), ned sf data.frame</span></span>
-<span id="cb39-5"><a href="#cb39-5"></a>  <span class="fu">st_sf</span>(<span class="at">knr=</span><span class="st">"0712"</span>, <span class="at">kNavn=</span><span class="st">"Larvik"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb39-5"><a href="#cb39-5"></a>  <span class="fu">st_sf</span>(<span class="at">knr =</span> <span class="st">"0712"</span>, <span class="at">kNavn =</span> <span class="st">"Larvik"</span>)  <span class="sc">%&gt;%</span> </span>
 <span id="cb39-6"><a href="#cb39-6"></a>  <span class="co"># The geometry clumn has ended up with the name ".",</span></span>
 <span id="cb39-7"><a href="#cb39-7"></a>  <span class="co"># change it back to geometry</span></span>
 <span id="cb39-8"><a href="#cb39-8"></a>  <span class="fu">rename</span>(<span class="st">"geometry"</span> <span class="ot">=</span> <span class="st">"."</span>)</span>
@@ -1078,13 +1078,13 @@ Projected CRS: ETRS89 / UTM zone 33N
 <span id="cb39-10"><a href="#cb39-10"></a>Holmestrand_0715 <span class="ot">&lt;-</span> kf_sf <span class="sc">%&gt;%</span> </span>
 <span id="cb39-11"><a href="#cb39-11"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0702"</span>, <span class="st">"0714"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb39-12"><a href="#cb39-12"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb39-13"><a href="#cb39-13"></a>  <span class="fu">st_sf</span>(<span class="at">knr=</span><span class="st">"0715"</span>, <span class="at">kNavn=</span><span class="st">"Holmestrand"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-13"><a href="#cb39-13"></a>  <span class="fu">st_sf</span>(<span class="at">knr =</span> <span class="st">"0715"</span>, <span class="at">kNavn =</span> <span class="st">"Holmestrand"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb39-14"><a href="#cb39-14"></a>  <span class="fu">rename</span>(<span class="st">"geometry"</span> <span class="ot">=</span> <span class="st">"."</span>)</span>
 <span id="cb39-15"><a href="#cb39-15"></a></span>
 <span id="cb39-16"><a href="#cb39-16"></a>Faerder_0729 <span class="ot">&lt;-</span> kf_sf <span class="sc">%&gt;%</span> </span>
 <span id="cb39-17"><a href="#cb39-17"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"0722"</span>, <span class="st">"0723"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb39-18"><a href="#cb39-18"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb39-19"><a href="#cb39-19"></a>  <span class="fu">st_sf</span>(<span class="at">knr=</span><span class="st">"0729"</span>, <span class="at">kNavn=</span><span class="st">"Færder"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-19"><a href="#cb39-19"></a>  <span class="fu">st_sf</span>(<span class="at">knr =</span> <span class="st">"0729"</span>, <span class="at">kNavn =</span> <span class="st">"Færder"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb39-20"><a href="#cb39-20"></a>  <span class="fu">rename</span>(<span class="st">"geometry"</span> <span class="ot">=</span> <span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -1136,7 +1136,7 @@ Projected CRS: ETRS89 / UTM zone 33N
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>kf_sf_new <span class="sc">%&gt;%</span> </span>
 <span id="cb44-2"><a href="#cb44-2"></a>  <span class="fu">filter</span>(<span class="fu">as.numeric</span>(knr) <span class="sc">&gt;</span> <span class="dv">700</span> <span class="sc">&amp;</span> <span class="fu">as.numeric</span>(knr) <span class="sc">&lt;</span> <span class="dv">800</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">select</span>(knr) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">plot</span>(<span class="at">key.pos =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
@@ -1285,7 +1285,10 @@ Projected CRS: ETRS89 / UTM zone 33N
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Now as MULTIPOLYGON</span></span>
-<span id="cb58-2"><a href="#cb58-2"></a>kf_sf_423 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1663"</span>)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(kNavn) <span class="sc">%&gt;%</span> <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-2"><a href="#cb58-2"></a>kf_sf_423 <span class="sc">%&gt;%</span> </span>
+<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">filter</span>(knr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"1663"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-4"><a href="#cb58-4"></a>  <span class="fu">select</span>(kNavn) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-5"><a href="#cb58-5"></a>  <span class="fu">plot</span>(<span class="at">key.pos =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
@@ -1374,7 +1377,7 @@ Projected CRS: ETRS89 / UTM zone 33N
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
 <span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">identical</span>(kNavn, sfd_kNavn)) <span class="sc">%&gt;%</span> </span>
-<span id="cb65-3"><a href="#cb65-3"></a>  <span class="fu">print</span>(<span class="at">n=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb65-3"><a href="#cb65-3"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 423 features and 4 fields
@@ -1472,21 +1475,21 @@ Projected CRS: ETRS89 / UTM zone 33N
 <img data-src="maps_example_files/figure-revealjs/unnamed-chunk-40-1.png" style="width:100.0%" class="r-stretch"></section>
 <section id="log_pm2-eastern-norway" class="slide level2">
 <h2>log_pm2 Eastern Norway</h2>
-<div class="cell" data-hash="maps_example_cache/revealjs/unnamed-chunk-41_7cd6af639beda184fe963320605aed0c">
+<div class="cell" data-hash="maps_example_cache/revealjs/unnamed-chunk-41_0bbff5e75bf9394afc4811613c8f140f">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># Take to long to plot, cache it </span></span>
 <span id="cb71-2"><a href="#cb71-2"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span></span>
 <span id="cb71-3"><a href="#cb71-3"></a>  <span class="fu">filter</span>(<span class="fu">substr</span>(knr, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">stop =</span> <span class="dv">2</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"01"</span>, <span class="st">"02"</span>, <span class="st">"03"</span>, <span class="st">"06"</span>, <span class="st">"07"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb71-4"><a href="#cb71-4"></a>  <span class="fu">select</span>(log_pm2) <span class="sc">%&gt;%</span></span>
-<span id="cb71-5"><a href="#cb71-5"></a>  <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb71-5"><a href="#cb71-5"></a>  <span class="fu">plot</span>(<span class="at">key.pos =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
 <img data-src="maps_example_files/figure-revealjs/unnamed-chunk-41-1.png" style="width:100.0%" class="r-stretch"></section>
 <section id="log_pm2-rogaland" class="slide level2">
 <h2>log_pm2 Rogaland</h2>
-<div class="cell" data-hash="maps_example_cache/revealjs/unnamed-chunk-42_6982f019a98478f4aa009547fd81069b">
+<div class="cell" data-hash="maps_example_cache/revealjs/unnamed-chunk-42_db342cc2cf904aadc71c7f99adad01ce">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>kf_sf_423_2018_pm2 <span class="sc">%&gt;%</span> </span>
@@ -1498,7 +1501,7 @@ Projected CRS: ETRS89 / UTM zone 33N
 <span id="cb72-7"><a href="#cb72-7"></a>      ) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"11"</span>)</span>
 <span id="cb72-8"><a href="#cb72-8"></a>    ) <span class="sc">%&gt;%</span> </span>
 <span id="cb72-9"><a href="#cb72-9"></a>  <span class="fu">select</span>(log_pm2) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-10"><a href="#cb72-10"></a>  <span class="fu">plot</span>(<span class="at">key.pos=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb72-10"><a href="#cb72-10"></a>  <span class="fu">plot</span>(<span class="at">key.pos =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
