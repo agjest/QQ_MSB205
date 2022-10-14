@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MSB205 - Oppgavetekst termpaper MSB205; oppdatert 2022</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">MSB205</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../maps/index.html">Maps</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../spatmetrics/index.html">Spatial Econometrics</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignment/index.html">Assignment</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#spatial-regressions" id="toc-spatial-regressions" class="nav-link active" data-scroll-target="#spatial-regressions">Spatial regressions</a></li>
+  <li><a href="#hva-som-må-gjøres" id="toc-hva-som-må-gjøres" class="nav-link" data-scroll-target="#hva-som-må-gjøres">Hva som må gjøres</a></li>
+  <li><a href="#r-pakker-dere-kan-ha-bruk-for" id="toc-r-pakker-dere-kan-ha-bruk-for" class="nav-link" data-scroll-target="#r-pakker-dere-kan-ha-bruk-for">R pakker dere kan ha bruk for</a></li>
+  <li><a href="#referanser" id="toc-referanser" class="nav-link" data-scroll-target="#referanser">Referanser</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Oppgavetekst termpaper MSB205; oppdatert 2022</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>I denne oppgaven skal dere analysere et kjent datasett fra Kaggle kalt <a href="https://www.kaggle.com/harlfoxem/housesalesprediction">House Sales in King County, USA</a>. King County ligger i staten Washington og inneholder bl.a. byene Seattle og Redmond (Microsoft sitt hovedkvarter). Datasettet innholder ca. 27000 observasjoner med et rikt utvalg variabler som beskriver ulike egenskaper ved de solgte husene. I tillegg har man salgsprisen og geografiske koordinater (long, lat) for hver observasjon. De ulike variablene er beskrevet i en kommentar fra Nova19 i diskusjonsforumet for siden linket til ovenfor. De registrert salgene er fra 2014-2015. Den eksakte perioden finner dere i dataene.</p>
+<p>Det som mangler i datasettet er imidlertid variabler som beskriver området hvor husene ligger. Heldigvis har vi rik tilgang til data om dette også. Dette er data som bruker «census tracts» fra census-en i 2010, men er fra <a href="https://www.census.gov/programs-surveys/acs/about.html">American Community Survey</a> fra perioden 2010 til 2020. ACS er utvalgsundersøkelser som blir gjort kontinuerlig mellom de store «census-ene» som bare skjer hvert tiår. Undersøkelser kan strekke seg over flere år, men de variablene vi skal bruke samsvarer nokså godt med perioden 2014-15. Vi skal både bruke ACS data direkte og bearbeidet i form av en <a href="https://fortress.wa.gov/doh/wtn/WTNIBL/">Environmental Health Disparities Index</a> utarbeidet av <em>Washington State Department of Health</em> for hele staten Washington. Vi skal imidlertid benytte et subset tilbudt av King County <a href="https://gis-kingcounty.opendata.arcgis.com/datasets/kingcounty::wadoh-environmental-health-disparities-index-calculated-for-king-county-wadohehdindex-area/explore?showTable=true">her</a>. Trykk på nedlastingsikonet vist i bildet under for å laste ned datasettet. Dere kan på neste side velge format. Der velger dere shape-fil formatet.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Oppgavetekst_tpmsb205_insertimage_2.png" class="img-fluid figure-img" width="507"></p>
+<p></p><figcaption class="figure-caption">Plot title.</figcaption><p></p>
+</figure>
+</div>
+<p>Denne shape-filen inneholder EHD indeksen, men også variablene indeksen er utarbeidet fra. I tillegg er det mange variabler som vi ikke trenger. For å lette arbeidet får dere følgende tidyverse funksjon som vil velge ut de variablene vi potensielt skal bruke.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Foreslår at dere kaller kartet som inneholder dataene for kc_wadoh_map</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>kc_wadoh_map <span class="ot">&lt;-</span> kc_wadoh_map <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  GEO_ID_TRT,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  EHD_percen,<span class="co">#Environmental Health Index, weighted score many vars</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  linguist_2,<span class="co">#Pop. age 5+ speaking English less than "very well"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  poverty_pe,<span class="co">#Percentage people living in poverty</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  POC_percen,<span class="co">#People of Color in percentage of pop. in tract</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  transporta,<span class="co">#% of income spent on transportation median family in tract</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  unemploy_2,<span class="co">#percentage unemployed</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  housing_pe,<span class="co">#% of households in group "Unaffordable Housing" (&gt;30% inc.)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  traffic_pe,<span class="co">#% of pop. near heavy traffic roadways</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  diesel,<span class="co"># nox consentration</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  ozone,<span class="co"># ozone consentration</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  PM25, <span class="co"># consentration of Particulate Matter in air</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  toxic_rele, <span class="co"># Toxic release from factories</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  hazardous_, <span class="co"># Hazardous Waste Treatment Storage and disposal Facilities</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  lead_perce, <span class="co"># measure of Lead paint in houses</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  superfund, <span class="co"># Proximity to contaminated sites on national list</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  facilities, <span class="co"># Proximity to Risk Management Plan Facilities</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  wastewater, <span class="co"># Proximity to wastewater facilities</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  sen_pop_pe, <span class="co"># % pop. over 65</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  socio_perc <span class="co"># score social economic determants, low best</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En nærmere forklaring av variablene får dere ved å gå inn på <a href="https://fortress.wa.gov/doh/wtn/WTNIBL/">siden</a> og klikke på ikonet for stolpediagram. Se bildet under.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Oppgavetekst_tpmsb205_insertimage_3.png" class="img-fluid figure-img" width="463"></p>
+<p></p><figcaption class="figure-caption">Plot title.</figcaption><p></p>
+</figure>
+</div>
+<p>I tillegg til disse dataene skal vi også lage en variabel for samlet familie inntekt i de ulike områdene. Dette er mer «rå» data og angir for hvert av 398 «tracts» hvor mange familier det totalt er i området og hvor mange som er i hvert av totalt 16 inntektsintervaller (pluss en for totalt antall familier i en «tract»). Vi skal slå disse sammen til tre grupper, <em>lav-inntekt</em>, <em>middels-inntekt</em> og <em>høy-inntekt</em>.</p>
+<p>Filen er en liten del av en stor pakke med data som også inneholder «census tract map» for 2010 cencus som vi trenger i analysene. Dataene kan lastes ned fra <a href="https://kingcounty.maps.arcgis.com/home/item.html?id=976424a73b714776a73087e3243eff4a">denne siden</a>. Trykk Open oppe i høyre hjørne for å laste ned et zip-arkiv. <strong>Les dokumentet</strong> «Term of Use», spesielt punkt 7, og pass på å legge det de ber om inn i en fotnote i termpaperet. Når dere har pakket ut arkivet vil dere finne en CatalogReports mappe. Åpner dere OpenDataCatalog.htm filen i en nettleser vil dere finne en oversikt over dataene som er tilgjengelig. Vi vil benytte datafilen acs_b19101_familyincome.dbf. Formatet .dbf er et PC database format fra 1990 tallet (dbase4). Filen kan åpnes i R med funksjonen <code>read.dbf()</code> fra pakken <code>foreign</code>. Tabellen er dokumentert <a href="https://censusreporter.org/tables/B19101/">her</a>. Definer 0-35000 som <em>low</em>, 35000-100000 som <em>mid</em>, 100000 - som <em>high</em>. Variabler som begynner med E er estimerte verdier, mens M angir «margin of error» som vi ikke bryr oss om her.</p>
+<p>I mappen vil dere finne flere kart i shape-file format. Vi trenger kartene tracts10.* og tracts10_shore.*. <em>Pass på at dere laster de riktige kartene</em>. Alle område (census-tract) variablene må legges inn i disse to kartene før vi gjør en «spatial join» med hus-dataene fra Kaggle. Merk at King County benytter en Arcgis løsning fra ESRI, så census kartene benytter en spesiell ESRI projeksjon. Jeg anbefaler <em>sterkt</em> at dere endrer alle kartene dere bruker til projeksjonen EPSG:2926. Vi skal beregne avstander ut fra kartene så vi kan ikke jobbe med geografiske koordinater.</p>
+<p>Når dere har regnet ut de tre variablene må disse legges til i <em>tracts10</em> og <em>tracts10_shore</em> kartene. Dette er to versjoner av census-tracts kart. Vi skal senere avgjøre hvilket som er best å bruke.</p>
+<p>Vi skal også lage en variabel som benytter opplysningene fra husdatasettet. Før vi gjør det bør vi ordne litt i datasettet. Datasettet inneholder enkelte multiple salg i perioden (dvs. enkelte hus har blitt solgt flere ganger i perioden 2014-2015). Vi vil bare benytte det siste salget. Lag nye variabler <code>year</code>, <code>month</code> og <code>day</code> ut fra <code>date</code> og sorter salgene «descending» vha. <code>arrange()</code>. Brukt så funksjonen <code>distinct()</code> fra Tidyverse for å plukke det siste salget, i tilfelle det er flere salg.</p>
+<p>Vi skal også lage en variabel som angir avstand til CBD (Central Business District) i Seattle. Gå til wikipedia siden for Seattle og klikk på koordinatene oppe i venstre hjørne. Du får da tilgang til koordinater (longitude, latitude) i desimal. Vi bruker dette punktet som koordinater for CBD. Regn ut avstanden fra hver observasjon til dette punktet i luftlinje (se <code>st_distance()</code>) og konverter avstanden til kilometer vha. <code>units::set_units()</code>. Kall variabelen for <code>dist_cbd</code>.</p>
+<p>Når alle variablene er på plass i de to typene kart, punkt for husene, polygon (eller tracts) for acs data må vi binde områdevariablene til de respektive husene (bruk <code>sf:st_join()</code>). Før dette gjøres dobbelsjekk at projeksjonen er EPSG:2926 og lagre alle kartene i geopackage format.</p>
+<p>Utfør spatial join både for tracts10 og tracts10_shore. Sjekk områdevariablene vha. <code>summary()</code>. Har dere gjort ting riktig (dvs. som meg ;-)) vil dere se at for tracts10 er det 1 hus som har NA for samtlige områdevariabler. For tracts10_shore er det derimot 26 hus med NA for disse variablene. Ta geopackage kartene inn i QGIS og prøv å finne ut hva som har gått galt med tracts10_shore. Hint! Zoom inn på hus som ligger langs strandlinjen.</p>
+<p>Bruk data fra tracts10, men slett den ene observasjonen som har NA verdier (alternativet er å redigere koordinater).</p>
+<p>Ta kartet med hus-observasjonene, inklusive census-tract variablene, inn i GeoDa og utfør en EDA for dataene. Er det noe mønster som utpeker seg når det gjelder priser eller de andre variablene? Bruk f.eks. <em>Bivariate Local Morans I</em> for å finne ut hvor vi finner små og dyre boliger, store og dyre boliger osv.</p>
+<p>Etter EDA skal dere utvikle minst tre hedonske modeller, en med bare hus-karakteristika, en der dere benytter relevante hus-karakteristika og flere områdevariabler og til slutt en modell der dere benytter bare EHD indeksen for å beskrive området huset ligger i. Sammenlign de tre modellen og undersøk vha. Morans I hvor mye «spatial effects» det er i residualene fra de tre modellene.</p>
+<p>Husk at:</p>
+<ul>
+<li>man ofte benytter loglog modeller for hedonske modeller</li>
+<li>at log transformasjon av variabler kan gjøres direkte i formula uttrykket i R</li>
+<li>at log(0) ikke er definert. Dette løses ofte med å legge til 1 til variabler som inneholder 0 verdier.</li>
+<li>operasjonene +, * osv. har en spesiell betydning i R formulas og må «beskyttes» med <code>I()</code> funksjonen hvis de skal benyttes i et formula-uttrykk, f.eks. <code>I(log(var1 +1))</code>.</li>
+</ul>
+<p>Funksjonen <code>huxtable::huxreg()</code> er glimrende for å vise resultatet for ulike regresjonsmodeller ved siden av hverandre i en tabell. Rapporter estimatene med tilhørende t-verdier som er det vanligste innen økonometri.</p>
+<p>Husk videre at innen økonometri er man opptatt av heteroskedastisitet, så benytt <code>coeftest()</code> fra <code>lmtest</code> for å få robuste «standard error» estimat. (sett <code>type</code> argumentet til “HC4” eller “HC3”. “HC1” gir default Stata korreksjon)</p>
+<p>Datasettet vårt spenner over en tidsperiode så benytt dummy-variabler for månedene i datasettet (gjøres effektivt vha. <code>factor()</code> i R). Bruk <code>linearHypothesis()</code> fra <code>car</code> pakken for å teste om vi trenger tids-dummier, dvs. utfør en simultan test på om alle tids-dummiene kan settes lik 0. Også her bør vi benytte robuste standardfeil, så sett opsjonen white.adjust = “hc3” eller “hc4” eller “hc1”.</p>
+<p><span class="citation" data-cites="bishop2020">Bishop et al. (<a href="#ref-bishop2020" role="doc-biblioref">2020</a>)</span> er en god kilde for vurderinger rundt hvordan bygge en god hedonske modell.</p>
+<section id="spatial-regressions" class="level1">
+<h1>Spatial regressions</h1>
+<p><span class="citation" data-cites="lesage">LeSage (<a href="#ref-lesage" role="doc-biblioref">n.d.</a>)</span> er i tillegg til <span class="citation" data-cites="Anselin1988">Anselin (<a href="#ref-Anselin1988" role="doc-biblioref">1988</a>)</span> kildene vi bygger på for å utføre «spatial regressions» på et subset av disse dataene.</p>
+<p>Etter å ha bygget hedonske modeller for hele datasettet og fastslått at vi har «spatial effects» i residualene vil vi fortsette med såkalte «spatial regressions». Et viktig spørsmål her er hvilken romlig regresjonsmodell som best fanger disse romlige effektene. Vi skal se på valg av modell både vha. <span class="citation" data-cites="Anselin1988">Anselin (<a href="#ref-Anselin1988" role="doc-biblioref">1988</a>)</span> metode og <span class="citation" data-cites="lesage">LeSage (<a href="#ref-lesage" role="doc-biblioref">n.d.</a>)</span>; .</p>
+<p>Våre data er punkt-observasjoner. Vi kan da definere naboer ut fra et avstandskriterium, men vi vil heller benytte «k-nearest» som ofte blir anbefalt som et bedre kriterium (se f.eks. <span class="citation" data-cites="Bivand2013">Bivand, Pebesma, and Gómez-Rubio (<a href="#ref-Bivand2013" role="doc-biblioref">2013</a>)</span> s. 247--248 for en diskusjon av problemene med et avstandskriterium). Vil vil studere modellene med hhv. 3 nærmeste naboer og 10 nærmeste naboer.</p>
+<p>For at analysen skal bli håndterbar vil vi bruke bare et utvalg. Et forskjellig utvalg for hver gruppe, hentet fra det totale datasettet. For 9 soner som har mindre enn seks observasjoner vil samtlige observasjoner i disse sone inngå i alle tre datasettene. For de resterende sonene vil det bli valgt tilfeldig 5 observasjoner fra hver sone (ulik «seed» for de tre gruppene) slik at hver gruppe får et datasett med knapt 2000 observasjoner. Disse datasettene vil bli gjort tilgjengelig for hver gruppe i form av en geopackage fil (jeg vet, jeg er alt for snill ;-)).</p>
+<ul>
+<li>Send en epost med navn på de som deltar i gruppen. Vi benytter to studenter per gruppe og eventuelt en med tre hvis oddetall.</li>
+</ul>
+<div class="cell">
+
+</div>
+<p>Vi vil betrakte prisdannelsen for hus som et <em>lokalt fenomen</em> jmf. <span class="citation" data-cites="lesage">LeSage (<a href="#ref-lesage" role="doc-biblioref">n.d.</a>)</span> og vil estimere og teste de nestede modellene SDEM, SEM, SLX og standard lm (ols) for hhv. 3 og 10 naboer vha. en likelihood ratio test (<code>LR.Sarlm()</code> fra pakken <code>spatialreg</code>). Vi vil også benytte <span class="citation" data-cites="Anselin1988">Anselin (<a href="#ref-Anselin1988" role="doc-biblioref">1988</a>)</span> angrepsmåte (SAR, SEM og lm (OLS))) med Lagrange Multiplier Tests (gjøres enkelt vha. <code>lm.LMtests(vår_lm, listw = vår_w, test="all")</code> fra pakken <code>spdep</code>.</p>
+<p>Husk at <code>moran.plot(residuals(vår_mod), listw = vår_w, pch = ".")</code> er et flott verktøy for å sjekke hvor mye «spatial interactions» som er igjen i residualene våre.</p>
+<p>Til slutt vil vi trekke nye 2000 observasjoner tilfeldig fra det fulle datasettet for å sjekke om resultatene våre er robuste mht. teknikken vi brukte for å få et utvalg med observasjoner fra samtlige soner (som har observasjoner, noen få «census tracts» er helt uten observasjoner). Vi genererer nye vektmatriser for dette datasettet med 3 og 10 naboer. Bruk samme «seed» som ovenfor for å trekke de 2000 observasjonene.</p>
+</section>
+<section id="hva-som-må-gjøres" class="level1">
+<h1>Hva som må gjøres</h1>
+<ol type="1">
+<li><p>Study the paper by <span class="citation" data-cites="bishop2020">Bishop et al. (<a href="#ref-bishop2020" role="doc-biblioref">2020</a>)</span> . Give a short summary (around 2-3 pages) of this paper focusing on the what is presented on pages 1-13 (until Difference-in-difference research design). In your summary you should carefully answer the following questions:&nbsp;</p>
+<ol type="a">
+<li><p>Explain what is meant by Rosen’s first and second stage.</p></li>
+<li><p>Explain shortly how marginal willingness to pay for an environmental attribute can be revealed via Rosen’s first step.&nbsp;</p></li>
+<li><p>Why could it be important to define a housing market as a single metropolitan (or travel to work) area and studying a relatively short period of time, when estimating</p>
+<ol type="i">
+<li><p>hedonic price function?</p></li>
+<li><p>Explain intuitively, by using an example, why it is important to avoid omitted variable bias when estimating a hedonic price model.</p></li>
+</ol></li>
+</ol></li>
+<li><p>Last ned <em>House Sales King County, USA</em> fra Kaggle</p>
+<ol type="i">
+<li><p>Sjekk definisjonen på de ulike variablene</p></li>
+<li><p>Les .csv filen med <em>House Sales King County</em> inn i R</p></li>
+<li><p>Sorter salgene «descending» etter dato, siste først (dvs. mai 2015, april 2015 osv.)</p></li>
+<li><p>Bruk <code>dplyr::distinct()</code> til å velge siste salg der vi har multiple salg av samme eiendom.</p></li>
+<li><p>Bruk <code>st_as_sf()</code> til å konvertere house data til et sf objekt vha. long lat og sett til geografisk projeksjon, dvs EPSG:4326.</p></li>
+<li><p>Konverter dette sf objektet så til projeksjonen EPSG:2926.</p></li>
+<li><p>Bruk koordinatene fra Seattles wikipedia-side (øvre høyre hjørne, klikk linken så får dere koordinatene i desimal form) og sett dette punktet som CBD for Seattle.</p></li>
+<li><p>Konverter dette punktet til EPSG:2926. Finn avstanden mellom dette punktet og samtlige hus i datasettet i luftlinje. Konverter avstandene til km og legg dem i variabelen dest_CBD i kartet med husdata.</p></li>
+</ol></li>
+<li><p>Last ned <em>WADOH Environmental Health Disparities Index Calculated for King County</em></p>
+<ol type="i">
+<li><p>Les inn .shp filen WADOH King County.</p></li>
+<li><p>Plukk ut variablene angitt tidligere i oppgaven.</p></li>
+<li><p>Transponer kartet til projeksjonen EPSG:2926</p></li>
+<li><p>Lag inntektsvariabelen som beskrevet ovenfor. Legg disse til som nye variabler i WADOH King County.</p></li>
+<li><p>Last ned</p></li>
+<li><p>Last shape filene tracts10 og tracts10_shore fra censusSHP mappen (vær nøye med at dere velger 10 varianten)</p></li>
+<li><p>Bruk en <code>left_join()</code> for å få dataene fra WADOH King County inn i begge disse kartene</p></li>
+<li><p>Transponer begge kartene til EPSG:2926</p></li>
+</ol></li>
+<li><p>Gjør en «spatial join» av husdata med både tracts10 og så tracts10_shore</p>
+<ol type="i">
+<li><p>Sjekk områdevariablene fra WADOH vha. summary for tracts10 og tracts10_shore</p></li>
+<li><p>Forklar hvorfor vi har mange flere NA (25 flere) i tracts10_shore enn i tracts10. En hjelp kan være å lagre både husdataene, tracts10, og tracts10_shore som geopackage filer og så ta dem inn i Qgis. Legg punktene for husene øverst, tracts10 og tracts10_shore under. Ser dere nå hva som går galt med tracts10_shore?</p></li>
+<li><p>Observasjonen med id 3518000180 fra tracts10 har bare NA for områdevariablene. Dropp denne, eller eventuelt editer koordinatene og kjør spatial join på ny.</p></li>
+<li><p>Lag en faktor-variabel av år og måned ut fra Date, kall den year_month.</p></li>
+<li><p>Slett .gpkg filen for husdataene og lagre den på ny. (Får ikke overskrive filen derfor sletter vi den før vi oppdaterer. Alternativt kan vi sette opsjonen append til FALSE.)</p></li>
+</ol></li>
+<li><p>Utfør EDA i GeoDA</p>
+<ol type="i">
+<li><p>Lag et nytt prosjekt i GeoDA</p></li>
+<li><p>Last inn husdataene via .gpkg filen lagret ovenfor</p></li>
+<li><p>Generer en vekt fil utfra 3 og 10 nærmeste naboer</p></li>
+<li><p>Prøv å finne ut hvor de små og dyre, de store og dyre, de billige og store og de små og billige boligene ligger (prøv Bivariate Morans I)</p></li>
+<li><p>Dere kan eventuelt også eksperimentere med innledene SAR, SEM og lm modeller i GeoDa</p></li>
+</ol></li>
+<li><p>Returner så til Quarto dokumentet.</p>
+<ol type="i">
+<li><p>Gi en kort sammenfatning av funnene fra EDA.</p></li>
+<li><p>Definer mint tre hedonske modeller. Ta utgangspunkt i <span class="citation" data-cites="bishop2020">Bishop et al. (<a href="#ref-bishop2020" role="doc-biblioref">2020</a>)</span> og diskuter valgte modeller utfra denne.</p>
+<ol type="1">
+<li><p>En null modell med bare huskarakteristika og tids-dummier (year_month)</p></li>
+<li><p>En modell med huskarakteristika, dist_CBD, relevante tract-variabler og tids-dummier.</p></li>
+<li><p>En modell med huskarakteristika, dist_CBD, EHD indeks (eventuelt inntektsvariabel) og tids-dummier.</p></li>
+</ol></li>
+<li><p>Rapporter de tre modellen i en regresjonstabell (<code>huxtable::huxreg()</code>). Bruk robuste standard errors. Rapporter t-verdien som er det vanlig innen økonometri.</p></li>
+<li><p>Test og diskuter hvilken modell som er best. (Ta også en titt på <code>plot(lm_navnet)</code>)</p></li>
+</ol></li>
+<li><p>Bruk en simultan test på tids-dummiene for å avgjøre om vi trenger disse i modellen (<code>car::linearHypothesis()</code>) med opsjonen <code>white_adjust =</code> “hc3” eller “hc4” eller også eventuelt “hc1” hvis dere ønsker å bruke Stata sin default.</p></li>
+<li><p>Spatial Regressions</p>
+<ol type="i">
+<li><p>Last gruppens utvalg fra relevant .gpkg fil (tallene er seed verdiene som er brukt for å genererer utvalgene)</p>
+<div class="cell">
+
+</div></li>
+<li><p>Formuler modellen dere vil bruke. Kjør den som lm (OLS) modell og bruk <code>lm.morantest()</code> og <code>moran.plot()</code> på residualene for å avgjøre om vi har <em>uforklarte spatial effects</em> i residualene.</p></li>
+<li><p>Generer vektmatrise ut fra k=3 og k=10 nærmeste naboer</p></li>
+<li><p>Bruk <span class="citation" data-cites="Anselin1988">Anselin (<a href="#ref-Anselin1988" role="doc-biblioref">1988</a>)</span> sin teknikk med Lagrange Multiplikator test vha. <code>lm.LMtests()</code> og diskuter hvilken modell (SAR, SEM eller lm (OLS)) som synes å være den beste.</p></li>
+<li><p>Bruk så teknikken med nestede modeller anbefalt av <span class="citation" data-cites="lesage">LeSage (<a href="#ref-lesage" role="doc-biblioref">n.d.</a>)</span>. Diskuter først om vi står overfor et <em>lokalt</em> eller <em>globalt</em> fenomen. Bruk opsjonen <code>durban = as.formula(~ variabelnavnene du vil ha impacts for)</code>. Dette for å slippe impacts for tidsdummiene. Test så de nestede modellne vha. <em>likelihood ratio test</em>. Hvilken modell synes å være den beste?</p></li>
+<li><p>For alternativet k=10 (10 nærmeste naboer). Bruk <code>moran.plot()</code> på residualene fra de ulike modellene for å illustrere hvor godt hver modell fjerner «spatial effects» fra residualene.</p></li>
+</ol></li>
+<li><p>Til slutt skal vi sjekke om utvalgsteknikken beskrevet ovenfor (5 hus fra hver trakt) har betydning for resultatene. (Sjekk på robusthet).</p>
+<ol type="i">
+<li><p>Velg et utvalg på 2000 fra det store hus-datasettet.</p></li>
+<li><p>Lag vektmatriser for k=3 og k=10</p></li>
+<li><p>Synes samme modell fremdeles å være den beste?</p></li>
+<li><p>Diskuter om resultatene er kvalitativt like.</p></li>
+</ol></li>
+<li><p>Oppsummering/konklusjon</p></li>
+<li><p>Husk å sette en passende tittel på arbeidet.</p></li>
+</ol>
+<p><span style="font-size: 42px; color: blue;  font-weight: bold">Lykke til!</span></p>
+</section>
+<section id="r-pakker-dere-kan-ha-bruk-for" class="level1">
+<h1>R pakker dere kan ha bruk for</h1>
+<p>Jeg brukte følgende pakker når jeg «løste» oppgaven.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tmap)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spatialreg)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(units)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="referanser" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Referanser</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-Anselin1988" class="csl-entry" role="doc-biblioentry">
+Anselin, Luc. 1988. <em>Spatial Econometrics: Methods and Models</em>. Springer Netherlands. <a href="https://doi.org/10.1007/978-94-015-7799-1">https://doi.org/10.1007/978-94-015-7799-1</a>.
+</div>
+<div id="ref-bishop2020" class="csl-entry" role="doc-biblioentry">
+Bishop, Kelly C., Nicolai V. Kuminoff, H. Spencer Banzhaf, Kevin J. Boyle, Kathrine von Gravenitz, Jaren C. Pope, V. Kerry Smith, and Christopher D. Timmins. 2020. <span>“Best Practices for Using Hedonic Property Value Models to Measure Willingness to Pay for Environmental Quality.”</span> <em>Review of Environmental Economics and Policy</em> 14 (2): 260–81. <a href="https://doi.org/10.1093/reep/reaa001">https://doi.org/10.1093/reep/reaa001</a>.
+</div>
+<div id="ref-Bivand2013" class="csl-entry" role="doc-biblioentry">
+Bivand, Roger S., Edzer Pebesma, and Virgilio Gómez-Rubio. 2013. <em>Applied Spatial Data Analysis with r</em>. Springer New York. <a href="https://doi.org/10.1007/978-1-4614-7618-4">https://doi.org/10.1007/978-1-4614-7618-4</a>.
+</div>
+<div id="ref-lesage" class="csl-entry" role="doc-biblioentry">
+LeSage, James P. n.d. <span>“What Regional Scientists Need to Know about Spatial Econometrics,”</span> 31.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

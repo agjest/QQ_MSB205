@@ -1,0 +1,8 @@
+---
+title: "Assignment msb205"
+format: html
+editor: visual
+---
+
+-   [Assignment msb205 (html)](assignment_text.html "Assignment text msb205 in html format")
+-   [Assignment msb205 (pdf)](assignment_text.pdf "Assignment text msb205 in pdf format")

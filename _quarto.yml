@@ -9,6 +9,8 @@ website:
         text: Maps
       - href: spatmetrics/index.qmd
         text: Spatial Econometrics
+      - href: assignment/index.qmd
+        text: Assignment
 
 format:
   html:
