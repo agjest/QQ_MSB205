@@ -1,12 +1,13 @@
 ---
 title: "Oppgavetekst termpaper MSB205; oppdatert 2022"
-format: html
+format: pdf
 toc: true
 papersize: a4paper
 documentclass: article
 classoption: 
   - 11pt
   - a4paper
+lang: NO_nb
 bibliography: tpmsb205.bib
 ---
 
