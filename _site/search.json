@@ -1446,7 +1446,7 @@
     "href": "maps/EDA/index.html#weights-manager-cont.",
     "title": "Exploratory Data Analysis (EDA)",
     "section": "Weights manager cont.",
-    "text": "Weights manager cont.\n\n\n\nDo we have spatial autocorrelation in our data?\n\n\n\nUnivariate Moran’s I\n\n\n\n\n\nSelect Variable and Weights\n\n\n\n\n\nSelect variable and weights\n\nDocumentation is to be found at geodacenter.github.io. Most of the following is taken from this source,\nWe select log_pm2 as variable and the queen based contiguity weights\n\nMoran’s I"
+    "text": "Weights manager cont.\n\n\n\nDo we have spatial autocorrelation in our data?\n\n\n\nUnivariate Moran's I\n\n\n\n\n\nSelect Variable and Weights\n\n\n\n\n\nSelect variable and weights\n\nDocumentation is to be found at geodacenter.github.io. Most of the following is taken from this source,\nWe select log_pm2 as variable and the queen based contiguity weights\n\nMoran’s I"
   },
   {
     "objectID": "maps/EDA/index.html#options-for-global-morans-i",

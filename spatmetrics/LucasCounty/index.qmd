@@ -607,9 +607,231 @@ bptest.Sarlm(SDEM, studentize = TRUE)
 bptest.Sarlm(SDM, studentize = TRUE)
 ```
 
-## MAPS
+## Summary point data
+
+-   k nearest, neighbour structure generated from map data
+
+. . .
 
 ```{r}
+#| echo: true
+#| eval: false
+k_3_nearest <- knearneigh(my_point_data, k = 3)
+```
+
+-   Make neighbour structure
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+nb <- knn2nb(k_3_nearest)
+```
+
+-   Make weights object from neighbour structure
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+w <- nb2listw(nb, style = "W")
+```
+
+-   Is there spatial effects present in dependent variable (y, house price etc.)?
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+moran.test(y, listw = w)
+moran.plot(y, listw = w)
+```
+
+## Summary point data cont.
+
+-   Formulate linear model (lm_1).
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+mod_1 = "y ~ x1 + x2"
+```
+
+-   Has lm_1 removed spatial effects?
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+lm.morantest(lm_1, listw = w)
+```
+
+-   Yes: we can stop, lm_1 will do.
+
+-   No: Information left on the table.
+    Still information (spatial effects) in the data that we have not used.
+
+## Summary point data cont.
+
+-   Anselin 1988:
+
+    -   Spatial regressions in Geoda
+
+        -   Spatial lag
+        -   Spatial error
+
+    -   In R, Lagrange multiplier diagnostics for spatial dependence.
+
+        -   Both normal and robust version.
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+lm.LMtests(lm_1, listw = w, test = "all")
+```
+
+## Summary point data cont.
+
+-   LeSage 2014:
+
+-   Three paths of nested models under Manski Model
+
+    -   "Theoretical econometrics": SARAR; SEM; Spatial Lag; OLS
+
+    -   Global: SDM; SLX; SAR; SEM theta = - rho \* beta; OLS
+
+    -   Local: SDEM; SEM; SLX; OLS
+
+-   Use local path unless very good arguments for one of the other paths.
+
+-   Test models against each other with likelihood ratio test
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+SDEM <- errorsarlm(
+  mod_1, 
+  data = my_point_data, 
+  listw = w, 
+  Durbin = TRUE
+  )
+```
+
+-   Interpret impacts; summary(impacts(SDEM), zstats = TRUE)
+
+## Summary point data cont.
+
+```{r}
+#| echo: true
+#| eval: false
+SEM <- errorsarlm(
+  mod_1, 
+  data = my_point_data, 
+  listw = w, 
+  Durbin = FALSE
+  )
+```
+
+-   Interpret coefficients; summary(SEM)
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+SLX <- lmSLX(
+  mod_1, 
+  data = my_point_data, 
+  listw = w, 
+  Durbin = TRUE
+  )
+```
+
+-   Interpret impacts; summary(impacts(SLX), zstats = TRUE)
+
+## Summary point data cont.
+
+```{r}
+#| echo: true
+#| eval: false
+OLS <- lm(mod_1, data = my_point_data)
+```
+
+-   Choose model with Likelihood ratio test
+-   Test the nested models against each other **likelihood ratio test**
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+LR.Sarlm(SEM, SDEM)
+```
+
+## Summary point data cont.
+
+-   H0: restrict theta to 0 (theta = 0)
+
+-   H1: Do not restrict
+
+    -   p \< 0.05; Reject H0, do not restrict, keep SDEM
+
+    -   p \> 0.05; Do not reject H0, restrict to theta = 0, select SEM
+
+-   Do the same with SLX and finally OLS
+
+-   For the selected model do (here SDEM selected model):
+
+-   Check how much of spatial effects are left in selected models residuals.
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+moran.test(SDEM$residuals, listw = w)
+moran.plot(SDEM$residuals, listw = w)
+```
+
+## Summary point data cont.
+
+-   Test residuals for heteroskedasticity and normality
+
+-   Normality:
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+DescTools::JarqueBeraTest(residual(SDEM), robust = TRUE)
+```
+
+-   Heteroskedasticity:
+
+. . .
+
+```{r}
+#| echo: true
+#| eval: false
+spdep::bptest.Sarlm(SDEM, studentize = TRUE)
+```
+
+## References
+
+```{r}
+#| echo: false
+
 #  Start of code to draw a map of Lucas County
 #
 #
@@ -649,5 +871,6 @@ bptest.Sarlm(SDM, studentize = TRUE)
 ```
 
 ```{r}
+#| echo: false
 #siste
 ```
