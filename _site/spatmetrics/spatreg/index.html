@@ -1075,7 +1075,7 @@ SARMA = 53.206, df = 2, p-value = 2.796e-12</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Take care</span></span>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Take care. Do NOT interpret the regression coefficients</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a><span class="fu">summary</span>(SDEM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -1118,7 +1118,8 @@ AIC: -263.71, (AIC for lm: -229.7)</code></pre>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDEM), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># The relevant info. for SDEM. Interpret impacts</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">summary</span>(<span class="fu">impacts</span>(SDEM), <span class="at">zstats =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Impact measures (SDEM, estimable, n):
@@ -1151,6 +1152,9 @@ sen_ind       &lt; 2.22e-16   0.443935 5.8240e-12</code></pre>
 </div>
 </div>
 <p>The impacts are reported to show how it is done. One might argue that the impacts could wait until the correct model is decided upon below.</p>
+</section>
+<section id="moran-plot-sdem-residuals" class="slide level2">
+<h2>Moran plot SDEM residuals</h2>
 <div class="cell">
 <details open="">
 <summary>Code</summary>

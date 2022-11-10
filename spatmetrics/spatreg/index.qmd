@@ -409,18 +409,21 @@ SDEM <- errorsarlm(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
 ## Regression report
 
 ```{r}
-# Take care
+# Take care. Do NOT interpret the regression coefficients
 summary(SDEM)
 ```
 
 ## The impacts
 
 ```{r}
+# The relevant info. for SDEM. Interpret impacts
 summary(impacts(SDEM), zstats = TRUE)
 ```
 
 The impacts are reported to show how it is done.
 One might argue that the impacts could wait until the correct model is decided upon below.
+
+## Moran plot SDEM residuals
 
 ```{r}
 moran.plot(residuals(SDEM), listw = md_2017_w)
