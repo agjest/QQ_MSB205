@@ -7,7 +7,7 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.0.36">
+  <meta name="generator" content="quarto-1.1.189">
 
   <meta name="author" content="Arnstein Gjestland">
   <title>MSB205 - Get ssb data</title>
@@ -19,10 +19,15 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -454,7 +459,7 @@ Projected CRS: ETRS89 / UTM zone 33N</code></pre>
 </section>
 <section id="get-knr-and-knavn-from-local-file" class="slide level2">
 <h2>Get knr and kNavn from local file</h2>
-<p>We want the Norvegian names, hence we have to adjust the municipality names for Vetsfold 2017.</p>
+<p>We want the Norwegian names, hence we have to adjust the municipality names for Vetsfold 2017.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
@@ -484,7 +489,7 @@ Projected CRS: ETRS89 / UTM zone 33N</code></pre>
 </div>
 </section>
 <section id="get-ssb-data-via-api" class="slide level2">
-<h2>Get ssb data via api</h2>
+<h2>Get SSB data via api</h2>
 <ul>
 <li class="fragment"><p>Get data registered on the municipality level from SSB</p>
 <ul>
@@ -1504,20 +1509,20 @@ NULL</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>    knr gov_emp
 1  0101     997
-2  0104     614
-3  0105    1102
-4  0106     740
+2  0104     615
+3  0105    1096
+4  0106     742
 5  0111      18
 6  0118       3
 7  0119      67
 8  0121       1
 9  0122     142
 10 0123      12
-11 0124     102
+11 0124     101
 12 0125      48
 13 0127       4
-14 0128      16
-15 0135      56</code></pre>
+14 0128      17
+15 0135      58</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -2340,7 +2345,8 @@ Wickham, Hadley, and Jennifer Bryan. 2022. <em>Readxl: Read Excel Files</em>. <a
       for (var i=0; i<noterefs.length; i++) {
         const ref = noterefs[i];
         tippyHover(ref, function() {
-          let href = ref.getAttribute('href');
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);

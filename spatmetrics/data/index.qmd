@@ -77,7 +77,7 @@ map_2017 <- st_read("map_2017_uned.gpkg") %>%
 
 ## Get knr and kNavn from local file
 
-We want the Norvegian names, hence we have to adjust the municipality
+We want the Norwegian names, hence we have to adjust the municipality
 names for Vetsfold 2017.
 
 ```{r}
@@ -103,7 +103,7 @@ knr_and_knavn <- bld90_19 %>%
 # View(knr_and_knavn)
 ```
 
-## Get ssb data via api
+## Get SSB data via api
 
 -   Get data registered on the municipality level from SSB
 

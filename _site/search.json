@@ -725,14 +725,14 @@
     "href": "spatmetrics/data/index.html#get-knr-and-knavn-from-local-file",
     "title": "Get ssb data",
     "section": "Get knr and kNavn from local file",
-    "text": "Get knr and kNavn from local file\nWe want the Norvegian names, hence we have to adjust the municipality names for Vetsfold 2017.\n\n\nCode\nload(\"bld06_19.Rdata\")\n\nknr_and_knavn <- bld90_19 %>% \n  select(knrNavn) %>% \n  unique() %>%\n  # separate at the space after last digit\n  separate(col = knrNavn, into = c(\"knr\", \"kNavn\"), sep=\"\\\\s\", extra = \"merge\") %>% \n  filter(!knr %in% c(\"0712\", \"0715\", \"0729\")) %>% \n  bind_rows(\n    c(knr = \"0702\", kNavn = \"Holmestrand\"),\n    c(knr = \"0709\", kNavn = \"Larvik\"),\n    c(knr = \"0714\", kNavn = \"Hof\"),\n    c(knr = \"0722\", kNavn = \"Nøtterøy\"),\n    c(knr = \"0723\", kNavn = \"Tjøme\"),\n    c(knr = \"0728\", kNavn = \"Lardal\")\n  )\n\n\n\n\nCode\n# View(knr_and_knavn)"
+    "text": "Get knr and kNavn from local file\nWe want the Norwegian names, hence we have to adjust the municipality names for Vetsfold 2017.\n\n\nCode\nload(\"bld06_19.Rdata\")\n\nknr_and_knavn <- bld90_19 %>% \n  select(knrNavn) %>% \n  unique() %>%\n  # separate at the space after last digit\n  separate(col = knrNavn, into = c(\"knr\", \"kNavn\"), sep=\"\\\\s\", extra = \"merge\") %>% \n  filter(!knr %in% c(\"0712\", \"0715\", \"0729\")) %>% \n  bind_rows(\n    c(knr = \"0702\", kNavn = \"Holmestrand\"),\n    c(knr = \"0709\", kNavn = \"Larvik\"),\n    c(knr = \"0714\", kNavn = \"Hof\"),\n    c(knr = \"0722\", kNavn = \"Nøtterøy\"),\n    c(knr = \"0723\", kNavn = \"Tjøme\"),\n    c(knr = \"0728\", kNavn = \"Lardal\")\n  )\n\n\n\n\nCode\n# View(knr_and_knavn)"
   },
   {
     "objectID": "spatmetrics/data/index.html#get-ssb-data-via-api",
     "href": "spatmetrics/data/index.html#get-ssb-data-via-api",
     "title": "Get ssb data",
-    "section": "Get ssb data via api",
-    "text": "Get ssb data via api\n\nGet data registered on the municipality level from SSB\n\none trick to get a list of all these municipality tables is to search at SSB for (K) and then click on Statistikkbanken in the left column.\n\nWe will use the SSB api exposed through the PxWebApiData R package.\n\nThis API can also be used against most Nordic SSB sister organisations.\n\nSince we have a list of the relevant municipalities for 2017 (map_2017$knr) we can restrict our api request to just these.\nWe are just going to use some of these variables in the following example\n\nThe other variables serves as examples and some might be used in further analysis.\n\nThere is still plenty of relevant data at SSB\n\nQuite trivial to get access to these using the techniques shown below.\n\nOur new dataset use pm2 for 2017 to avoid the big changes in Trøndelag 1.1 2018."
+    "section": "Get SSB data via api",
+    "text": "Get SSB data via api\n\nGet data registered on the municipality level from SSB\n\none trick to get a list of all these municipality tables is to search at SSB for (K) and then click on Statistikkbanken in the left column.\n\nWe will use the SSB api exposed through the PxWebApiData R package.\n\nThis API can also be used against most Nordic SSB sister organisations.\n\nSince we have a list of the relevant municipalities for 2017 (map_2017$knr) we can restrict our api request to just these.\nWe are just going to use some of these variables in the following example\n\nThe other variables serves as examples and some might be used in further analysis.\n\nThere is still plenty of relevant data at SSB\n\nQuite trivial to get access to these using the techniques shown below.\n\nOur new dataset use pm2 for 2017 to avoid the big changes in Trøndelag 1.1 2018."
   },
   {
     "objectID": "spatmetrics/data/index.html#mean-price-per-sqr.-meter-for-sfd",
@@ -879,7 +879,7 @@
     "href": "spatmetrics/data/index.html#employed-by-government-1",
     "title": "Get ssb data",
     "section": "Employed by government",
-    "text": "Employed by government\n\n\nCode\n#we are tidy\nprint(head(gov_emp_2017, n = 15))\n\n\n    knr gov_emp\n1  0101     997\n2  0104     614\n3  0105    1102\n4  0106     740\n5  0111      18\n6  0118       3\n7  0119      67\n8  0121       1\n9  0122     142\n10 0123      12\n11 0124     102\n12 0125      48\n13 0127       4\n14 0128      16\n15 0135      56\n\n\n\n\nCode\ndim(gov_emp_2017)[1]\n\n\n[1] 426"
+    "text": "Employed by government\n\n\nCode\n#we are tidy\nprint(head(gov_emp_2017, n = 15))\n\n\n    knr gov_emp\n1  0101     997\n2  0104     615\n3  0105    1096\n4  0106     742\n5  0111      18\n6  0118       3\n7  0119      67\n8  0121       1\n9  0122     142\n10 0123      12\n11 0124     101\n12 0125      48\n13 0127       4\n14 0128      17\n15 0135      58\n\n\n\n\nCode\ndim(gov_emp_2017)[1]\n\n\n[1] 426"
   },
   {
     "objectID": "spatmetrics/data/index.html#wholesale-and-retail-trade-sales",
