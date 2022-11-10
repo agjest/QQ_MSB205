@@ -432,7 +432,12 @@ moran.plot(residuals(SDEM), listw = md_2017_w)
 ## SLX model
 
 ```{r}
-SLX <- lmSLX(mod2, data = md_2017, listw = md_2017_w, Durbin = TRUE)
+SLX <- lmSLX(
+  mod2, 
+  data = md_2017, 
+  listw = md_2017_w, 
+  Durbin = TRUE
+  )
 ```
 
 ```{r}
@@ -445,16 +450,21 @@ summary(SLX)
 summary(impacts(SLX), z.values = TRUE)
 ```
 
-## Spatial lag only `prct_20_64?`
+## Spatial lag only `prct_20_64` and `sen_ind`?
 
-Perhaps spatial lag just for `prct_20_64`is more appropriate?
+Perhaps spatial lag just for `prct_20_64` and `sen_ind` is more appropriate?
 
 ```{r}
-SLX_red <- lmSLX(mod2, data = md_2017, listw = md_2017_w, Durbin =~prct_20_64 + sen_ind)
+SLXred <- lmSLX(
+  mod2, 
+  data = md_2017, 
+  listw = md_2017_w, 
+  Durbin =~prct_20_64 + sen_ind
+  )
 ```
 
 ```{r}
-summary(SLX_red)
+summary(SLXred)
 ```
 
 ## SLX residuals?
@@ -483,9 +493,29 @@ lm.morantest(
 moran.plot(residuals(SLX), listw = md_2017_w)
 ```
 
+## SLXred residuals?
+
+```{r}
+lm.morantest(
+  SLXred, 
+  listw = md_2017_w, 
+  alternative = "greater", 
+  resfun = residuals, 
+  naSubset = TRUE
+  )
+```
+
+## SLXred residuals plot
+
+```{r}
+moran.plot(residuals(SLX), listw = md_2017_w)
+```
+
+-   Not much difference SLX and SLXred
+
 ## SEM model
 
--   **S**patail **E**rror **M**odel
+-   **S**patial **E**rror **M**odel
 
 . . .
 
@@ -530,7 +560,8 @@ LR.Sarlm(SDEM, SEM)# used to be spdep::LR.sarlm() now spatialreg::LR.Sarlm()
 # Go with SEM, Drop spatial effects in X
 ```
 
-We apparently need $\lambda > 0$ to handle spatial effects in the error terms.
+-   We should restrict $\theta$ to zero. Spatial interaction in Xs not required.
+-   Drop SDEM and continue with SEM
 
 ```{r lmtest-chunck}
 # lrtest from the lmtest packages gives the same result.
@@ -538,16 +569,16 @@ We apparently need $\lambda > 0$ to handle spatial effects in the error terms.
 #lmtest::lrtest(SDEM, SEM)
 ```
 
-Should we restrict SDEM to SLX?
+## Should we restrict SEM to SLX?
 
 ```{r}
-# p <0,05. Do not restrict. Keep SDEM
-LR.Sarlm(SDEM, SLX)
-# or broom::tidy(lmtest::lrtest(SLX, SDEM))
+# p <0,05. Do not restrict. Keep SEM
+LR.Sarlm(SEM, SLX)
+# or broom::tidy(lmtest::lrtest(SLX, SEM))
 ```
 
 H0: restrict model to SLX, p \< 0,05 and we discard H0.
-We chose SDEM over SLX.
+We chose SEM over SLX.
 
 Hence we end up with SEM as the best (given that DGP is local) spatial model for this dataset.
 
@@ -578,7 +609,7 @@ Test the spatial models against OLS.
 ```{r}
 # Likelihood ratio test
 # SDEM
-LR1.Sarlm(SDEM)
+# LR1.Sarlm(SDEM)
 ```
 
 ```{r}
@@ -631,7 +662,7 @@ JarqueBeraTest(residuals(SEM), robust = TRUE)
 # Conclusion: not normal
 ```
 
-The residuals are far from normal!
+The residuals are not normal!
 
 ```{r}
  md_2017 <- md_2017 %>% 
@@ -648,13 +679,13 @@ This file can then be opened in Geoda and we can do further EDA of the resisuals
 
 ```{r tmap_plot, cache=TRUE}
 tmap_mode("plot")
-t1 <-tm_shape(md_2017) +
-  tm_borders(alpha=0.1) +
+t1 <- tm_shape(md_2017) +
+  tm_borders(alpha = 0.1) +
    tm_polygons("SEM_residuals")
-t2 <-tm_shape(md_2017) +
-    tm_borders(alpha=0.1) +
+t2 <- tm_shape(md_2017) +
+    tm_borders(alpha = 0.1) +
    tm_polygons("OLS_residuals")
-tmap_arrange(t1, t2, nrow=1)
+tmap_arrange(t1, t2, nrow = 1)
 ```
 
 ```{r}
@@ -678,7 +709,7 @@ What might it be?
 mod3 <- "log_pm2 ~ log_prct_20_64 + log_net_cap_3000k_p + log_sen_ind"
 ```
 
-The variable `log_prct_20_64` is just the natural logarithm of the percentage op population of a working age.
+The variable `log_prct_20_64` is just the natural logarithm of the percentage of population of a working age.
 The variable `log_net_cap_3000k_p` the natural logarithm of the percentage of population with a net wealth exceeding NOK 3.000.000.
 
 ```{r}
@@ -702,10 +733,21 @@ summary(SEM_mod3)
 moran.plot(residuals(SEM_mod3), listw = md_2017_w)
 ```
 
-huxreg("OLS_mod3" = lm3, "SEM_mod3" = SEM_mod3, error_format = "({statistic})", note = "{stars}.
-T-values reported.")
+```{r}
+huxreg("OLS_mod3" = lm3, "SEM_mod3" = SEM_mod3, error_format = "({statistic})", note = "{stars}. T-values reported.")
+```
 
-What´s the big problem with this model?
+## What´s the big problem with this model?
+
+. . .
+
+```{r}
+plot(log(md_2017$log_pm2), log(md_2017$net_cap_3000k_p))
+```
+
+```{r}
+cor(log(md_2017$log_pm2), log(md_2017$net_cap_3000k_p))
+```
 
 ## Global DGP
 
@@ -816,7 +858,7 @@ Should we restrict to $\theta = 0$?
 LR.Sarlm(SDM, SAR)
 ```
 
-H0 restrict \$\theta\$ to 0.
+H0 restrict $\theta$ to 0.
 
 We reject H0, continue with SDM.
 
@@ -826,7 +868,7 @@ Should we restrict with $\rho = 0$?
 LR.Sarlm(SDM, SLX)
 ```
 
-H0 restrict \$\rho\$ to 0.
+H0 restrict $\rho$ to 0.
 
 We reject H0, continue with SDM.
 
