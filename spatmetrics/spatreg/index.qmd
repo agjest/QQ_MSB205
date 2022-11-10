@@ -341,7 +341,6 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$
 
 ## LeSages (2014) 5 principles
 
-::: {#refs style=".column-body-outset-left"}
 1.  Local versus global spillover
 
     i.  "A resource shared by numerous regions such as a highway (or river) can be one cause of global spillovers."
@@ -355,7 +354,6 @@ $$ {\bf y = \rho W y + X \beta +W X\theta + u\quad u = \lambda Wu + \epsilon}$$
     i.  SDEM
 
     ii. SDM
-:::
 
 ## LeSages (2014) 5 principles
 

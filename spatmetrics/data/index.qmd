@@ -479,7 +479,7 @@ edu_2017 <- ApiData(
     ContentsCode = "PersonerProsent",
     Region = map_2017$knr,
     # Drop "00" since total, 
-    # 100%, also dro "09a" Uoppgit
+    # 100%, also drop "09a" Uoppgit
     Nivaa = c("01", "02a", 
               "11", "03a", "04a"),
     Kjonn = FALSE,
